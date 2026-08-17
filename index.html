@@ -65,6 +65,52 @@
             background: #edf0f2;
             border: 1.5px dashed #8b969f;
             color: #53616c;
+            transition: all 0.25s ease;
+        }
+
+        /* Mode Switching: Wireframe vs Website View */
+        .mode-toggle-btn {
+            border: 1px solid transparent;
+            transition: all 0.18s ease;
+        }
+
+        .mode-toggle-btn.active-mode {
+            background-color: #1e293b;
+            color: #ffffff;
+            border-color: #475569;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* In Website Mode: Hide wireframe labels and render rich modern cards */
+        body.mode-website .wire-label {
+            display: none !important;
+        }
+
+        body.mode-website .placeholder {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important;
+            border: 1px solid #334155 !important;
+            color: #f8fafc !important;
+            box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.25);
+            border-radius: 0.75rem;
+        }
+
+        body.mode-website .placeholder i {
+            color: #38bdf8 !important;
+        }
+
+        body.mode-website .placeholder strong {
+            color: #ffffff !important;
+        }
+
+        body.mode-website .placeholder span {
+            color: #94a3b8 !important;
+        }
+
+        body.mode-website .border-dashed {
+            border-style: solid !important;
+            border-color: #cbd5e1 !important;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         /* View Switching System */
@@ -319,19 +365,29 @@
 
 <body class="w-full flex flex-col min-h-screen">
 
-    <!-- Wireframe Status / Info Bar -->
-    <aside aria-label="Wireframe Info" class="bg-slate-900 text-slate-300 text-[10px] sm:text-[11px] font-mono-tag py-2 px-4 sm:px-5 border-b border-slate-800 flex items-center justify-between">
+    <!-- Top Bar: Wireframe & Website View Mode Switcher -->
+    <aside aria-label="View Mode Controller" class="bg-slate-950 text-slate-300 text-[10px] sm:text-[11px] font-mono-tag py-1.5 px-4 sm:px-6 border-b border-slate-800 flex items-center justify-between gap-3 relative z-50">
         <div class="flex items-center gap-2 sm:gap-3 truncate">
-            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700 text-[9px] sm:text-[10px] font-bold shrink-0">
+            <span id="mode-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700 text-[9px] sm:text-[10px] font-bold shrink-0">
                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                WIREFRAME v2.0
+                <span id="mode-badge-text">WIREFRAME v2.0</span>
             </span>
-            <span class="truncate text-slate-400">VilPower Solutions (Tamil Nadu, India)</span>
+            <span class="truncate text-slate-400 hidden sm:inline">VilPower Solutions — HITL AI & Data Operations</span>
         </div>
-        <div class="flex items-center gap-3 text-slate-400 text-[9px] sm:text-[10px] shrink-0">
-            <span class="hidden sm:inline">Responsive Mobile/Desktop</span>
-            <span class="hidden md:inline text-slate-600">|</span>
-            <span>HITL AI + BPO</span>
+
+        <!-- Wireframe & Website View Toggle Switch -->
+        <div class="flex items-center gap-2 shrink-0">
+            <span class="text-slate-400 hidden md:inline text-[9px] uppercase font-bold tracking-wider">Display Mode:</span>
+            <div class="flex items-center p-0.5 bg-slate-900 border border-slate-700 rounded-lg shadow-inner">
+                <button id="btn-mode-wireframe" type="button" onclick="setPresentationMode('wireframe')" class="mode-toggle-btn active-mode flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-bold transition-all text-white" aria-label="Switch to Wireframe view">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-cyan-400"></i>
+                    <span>Wireframe</span>
+                </button>
+                <button id="btn-mode-website" type="button" onclick="setPresentationMode('website')" class="mode-toggle-btn flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-bold transition-all text-slate-400 hover:text-white" aria-label="Switch to Website Live view">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <span>Website Live</span>
+                </button>
+            </div>
         </div>
     </aside>
 
@@ -2150,6 +2206,36 @@
             { title: "Rural Women Tech Empowerment Graduation", category: "Events" }
         ];
 
+        // 0. Presentation Mode (Wireframe vs Website Live View)
+        function setPresentationMode(mode) {
+            const isWebsite = mode === 'website';
+            document.body.classList.toggle('mode-website', isWebsite);
+            document.body.classList.toggle('mode-wireframe', !isWebsite);
+
+            const btnWire = document.getElementById('btn-mode-wireframe');
+            const btnWeb = document.getElementById('btn-mode-website');
+            const badgeText = document.getElementById('mode-badge-text');
+
+            if (btnWire && btnWeb) {
+                btnWire.classList.toggle('active-mode', !isWebsite);
+                btnWire.classList.toggle('text-white', !isWebsite);
+                btnWire.classList.toggle('text-slate-400', isWebsite);
+
+                btnWeb.classList.toggle('active-mode', isWebsite);
+                btnWeb.classList.toggle('text-white', isWebsite);
+                btnWeb.classList.toggle('text-slate-400', !isWebsite);
+            }
+
+            if (badgeText) {
+                badgeText.textContent = isWebsite ? 'LIVE WEBSITE PREVIEW' : 'WIREFRAME v2.0';
+            }
+
+            try {
+                localStorage.setItem('vilpower_presentation_mode', mode);
+            } catch (e) {}
+            lucide.createIcons();
+        }
+
         // 1. Navigation & View Switching
         function showView(id) {
             const valid = ['home', 'about', 'services', 'industries', 'gallery', 'contact'];
@@ -2190,6 +2276,8 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('vilpower_presentation_mode') || 'wireframe';
+            setPresentationMode(savedMode);
             const hash = window.location.hash.replace('#', '') || 'home';
             showView(hash);
             lucide.createIcons();
