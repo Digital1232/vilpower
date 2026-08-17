@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VilPower Solutions — Interactive Website Wireframe (v2.0)</title>
+    <meta name="description" content="Presentation-ready interactive website wireframe for VilPower Solutions — Human-in-the-Loop AI & Enterprise Data Operations.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (v3.4) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #66717d;
+            --line: #cbd2d9;
+            --paper: #f7f8f8;
+            --panel: #ffffff;
+            --accent: #254e70;
+            --dark: #20313d;
+            --wire-tag: #72808b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Work Sans", sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+        }
+
+        .display {
+            font-family: "Source Serif 4", serif;
+        }
+
+        .font-mono-tag {
+            font-family: "Space Mono", monospace;
+        }
+
+        /* Architectural Wireframe Annotation Badges */
+        .wire-label {
+            font-family: "Space Mono", monospace;
+            font-size: 10px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #72808b;
+            font-weight: 700;
+        }
+
+        .wire-pill {
+            font-family: "Space Mono", monospace;
+            font-size: 9px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            font-weight: 700;
+        }
+
+        /* Classic Wireframe Placeholder Box */
+        .placeholder {
+            background: #edf0f2;
+            border: 1.5px dashed #8b969f;
+            color: #53616c;
+        }
+
+        .placeholder-blueprint {
+            background: #f1f5f9;
+            border: 1px dashed #94a3b8;
+            color: #475569;
+        }
+
+        /* View Switching System */
+        .page-view {
+            display: none;
+            animation: wireFade .2s ease;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes wireFade {
+            from {
+                opacity: 0.4;
+                transform: translateY(4px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Hero Carousel */
+        .hero-slide {
+            display: none;
+        }
+
+        .hero-slide.active {
+            display: grid;
+            animation: wireFade .3s ease;
+        }
+
+        /* Benefit & Process Accordions */
+        .benefit-body,
+        .process-body {
+            display: none;
+        }
+
+        .benefit.open .benefit-body,
+        .process.open .process-body {
+            display: block;
+        }
+
+        .benefit.open .accordion-icon {
+            transform: rotate(45deg);
+            color: #254e70;
+        }
+
+        /* Gallery Item Filter */
+        .gallery-item.hidden-gallery {
+            display: none;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        /* Nav active link */
+        .nav-link.active-nav {
+            color: #254e70;
+            border-bottom: 2px solid #254e70;
+            font-weight: 700;
+        }
+
+        /* Map Radar Dot */
+        .map-dot:hover {
+            transform: scale(1.08);
+            background: #254e70;
+            color: white;
+        }
+
+        /* Service Anchor */
+        .service-anchor {
+            scroll-margin-top: 120px;
+        }
+    </style>
+</head>
+
+<body class="w-full flex flex-col min-h-screen">
+
+    <!-- Wireframe Status / Info Bar -->
+    <aside aria-label="Wireframe Info" class="bg-slate-900 text-slate-300 text-[11px] font-mono-tag py-2 px-5 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-cyan-400 border border-slate-700 text-[10px] font-bold">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                WIREFRAME PROTOTYPE v2.0
+            </span>
+            <span class="hidden sm:inline text-slate-400">Client: VilPower Solutions (Tamil Nadu, India)</span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400 text-[10px]">
+            <span>Layout: Desktop & Mobile Responsive</span>
+            <span class="hidden md:inline text-slate-600">|</span>
+            <span class="hidden md:inline">Specs: HITL AI + BPO Wireframe</span>
+        </div>
+    </aside>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-300 bg-white/95 backdrop-blur">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4" aria-label="Main navigation">
+            <!-- Brand Logo -->
+            <button type="button" onclick="showView('home')" class="flex items-center gap-3 text-left focus:outline-none" aria-label="Go to VilPower home">
+                <span class="grid h-10 w-10 place-items-center border-2 border-slate-800 font-display font-bold text-slate-900 text-base shadow-sm">
+                    VP
+                </span>
+                <span class="flex flex-col">
+                    <strong class="block text-base tracking-tight font-bold text-slate-900">VilPower Solutions</strong>
+                    <span class="wire-label">Human-in-the-Loop AI & Data Services</span>
+                </span>
+            </button>
+
+            <!-- Desktop Navigation Links -->
+            <div class="desktop-nav hidden md:flex items-center gap-7 text-sm font-medium text-slate-700">
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="home" onclick="showView('home')">Home</button>
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="about" onclick="showView('about')">About Us</button>
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="services" onclick="showView('services')">Services</button>
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="industries" onclick="showView('industries')">Industries</button>
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="gallery" onclick="showView('gallery')">Gallery</button>
+                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="contact" onclick="showView('contact')">Contact Us</button>
+            </div>
+
+            <!-- Header Action CTAs -->
+            <div class="flex items-center gap-3">
+                <button type="button" onclick="openPilotModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded border border-slate-400 bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-700"></i> Free Pilot Sample
+                </button>
+                <button type="button" onclick="showView('contact')" class="rounded bg-slate-800 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-700 transition-colors">
+                    Request Quote
+                </button>
+                <button class="md:hidden rounded border border-slate-400 p-2 text-slate-800" type="button" onclick="toggleMenu()" aria-label="Open menu">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="mobile-menu border-t border-slate-200 bg-white px-5 pb-4">
+            <div class="grid gap-1 pt-3 text-sm font-semibold text-slate-800">
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('home');toggleMenu()">Home</button>
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('about');toggleMenu()">About Us</button>
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('services');toggleMenu()">Services</button>
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('industries');toggleMenu()">Industries</button>
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('gallery');toggleMenu()">Gallery</button>
+                <button class="rounded px-3 py-2 text-left hover:bg-slate-100" onclick="showView('contact');toggleMenu()">Contact Us</button>
+                <div class="pt-2 border-t border-slate-200">
+                    <button class="w-full text-center py-2 px-3 text-xs font-bold rounded border border-slate-400 bg-slate-100" onclick="openPilotModal(); toggleMenu()">
+                        Request Free 50-Record Pilot Batch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ================================================================= -->
+        <!-- VIEW: HOME                                                       -->
+        <!-- ================================================================= -->
+        <section id="home" class="page-view active" aria-label="Home">
+            <!-- 01 / Hero Carousel -->
+            <section class="border-b border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-6">
+                    <div class="flex items-center justify-between pb-2">
+                        <span class="wire-label">01 / Hero carousel (Interactive)</span>
+                        <div class="flex items-center gap-2">
+                            <span class="wire-label">Auto rotating (6.5s)</span>
+                            <span id="auto-dot" class="h-2 w-2 rounded-full bg-slate-700 animate-pulse"></span>
+                        </div>
+                    </div>
+
+                    <div class="relative mt-3">
+                        <!-- Slide 0: AI Data Services -->
+                        <article class="hero-slide active grid-cols-1 gap-8 border border-slate-300 bg-slate-50 p-6 md:grid-cols-2 md:p-12" data-slide="0">
+                            <div class="flex flex-col justify-center">
+                                <span class="wire-label">Human-in-the-loop AI data operations</span>
+                                <h1 class="display mt-4 text-4xl font-bold leading-tight md:text-5xl text-slate-900">
+                                    High-Precision AI Data & Publishing Services.
+                                </h1>
+                                <p class="mt-4 max-w-xl text-base leading-7 text-slate-600">
+                                    Empowering global AI pipelines, digital publishing, and commercial lease abstractions with 99.7% audited accuracy — powered by a 95%+ rural women workforce in Tamil Nadu.
+                                </p>
+                                <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                                    <button class="rounded bg-slate-800 px-5 py-3 font-semibold text-white hover:bg-slate-700 text-sm" onclick="showView('contact')">
+                                        Schedule Consultation →
+                                    </button>
+                                    <button class="rounded border border-slate-500 bg-white px-5 py-3 font-semibold text-slate-800 hover:bg-slate-100 text-sm" onclick="showView('services')">
+                                        Explore Services
+                                    </button>
+                                </div>
+                                <div class="mt-9 grid grid-cols-3 gap-3 border-t border-slate-300 pt-5 text-center">
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">15+</strong>
+                                        <span class="wire-label">Years of Delivery</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">99.7%</strong>
+                                        <span class="wire-label">Audited Accuracy</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">95%</strong>
+                                        <span class="wire-label">Women Workforce</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="placeholder flex min-h-72 items-center justify-center p-8 text-center">
+                                <div>
+                                    <i data-lucide="brain-circuit" class="mx-auto mb-4 h-14 w-14 text-slate-600"></i>
+                                    <strong class="block text-slate-800 text-base">Human + AI Data Operations Visual</strong>
+                                    <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
+                                        [Visual Wireframe Spec: 2D/3D Bounding Boxes, LiDAR point clouds, and HITL QA pipeline diagram]
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Slide 1: Rural Women Empowerment -->
+                        <article class="hero-slide grid-cols-1 gap-8 border border-slate-300 bg-slate-50 p-6 md:grid-cols-2 md:p-12" data-slide="1">
+                            <div class="flex flex-col justify-center">
+                                <span class="wire-label">Precision-driven services with purpose</span>
+                                <h1 class="display mt-4 text-4xl font-bold leading-tight md:text-5xl text-slate-900">
+                                    Empowered Rural Talent. Enterprise-Grade Delivery.
+                                </h1>
+                                <p class="mt-4 max-w-xl text-base leading-7 text-slate-600">
+                                    Transforming rural communities by training local women in high-demand digital workflows, resulting in lower project attrition (&lt;3%) and meticulous quality focus.
+                                </p>
+                                <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                                    <button class="rounded bg-slate-800 px-5 py-3 font-semibold text-white hover:bg-slate-700 text-sm" onclick="showView('about')">
+                                        Our Impact Story →
+                                    </button>
+                                    <button class="rounded border border-slate-500 bg-white px-5 py-3 font-semibold text-slate-800 hover:bg-slate-100 text-sm" onclick="showView('contact')">
+                                        Partner With Us
+                                    </button>
+                                </div>
+                                <div class="mt-9 grid grid-cols-3 gap-3 border-t border-slate-300 pt-5 text-center">
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">1,500+</strong>
+                                        <span class="wire-label">People Empowered</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">&lt; 3%</strong>
+                                        <span class="wire-label">Attrition Rate</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">8 Wks</strong>
+                                        <span class="wire-label">In-House Training</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="placeholder flex min-h-72 items-center justify-center p-8 text-center">
+                                <div>
+                                    <i data-lucide="users-round" class="mx-auto mb-4 h-14 w-14 text-slate-600"></i>
+                                    <strong class="block text-slate-800 text-base">Women-Led Delivery Team Visual</strong>
+                                    <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
+                                        [Visual Wireframe Spec: Tirunelveli operations floor, training academy, and collaborative quality reviews]
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Slide 2: Global Enterprise Scale -->
+                        <article class="hero-slide grid-cols-1 gap-8 border border-slate-300 bg-slate-50 p-6 md:grid-cols-2 md:p-12" data-slide="2">
+                            <div class="flex flex-col justify-center">
+                                <span class="wire-label">Enterprise-grade delivery</span>
+                                <h1 class="display mt-4 text-4xl font-bold leading-tight md:text-5xl text-slate-900">
+                                    Trusted by Global Clients Across US, UK, EU & AU.
+                                </h1>
+                                <p class="mt-4 max-w-xl text-base leading-7 text-slate-600">
+                                    Controlled cleanrooms, air-gapped workstations, multi-tier QA gates, and robust NDA compliance for data-intensive enterprises.
+                                </p>
+                                <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                                    <button class="rounded bg-slate-800 px-5 py-3 font-semibold text-white hover:bg-slate-700 text-sm" onclick="openPilotModal()">
+                                        Request Sample Project →
+                                    </button>
+                                    <button class="rounded border border-slate-500 bg-white px-5 py-3 font-semibold text-slate-800 hover:bg-slate-100 text-sm" onclick="document.getElementById('proof').scrollIntoView({behavior:'smooth'})">
+                                        View Track Record
+                                    </button>
+                                </div>
+                                <div class="mt-9 grid grid-cols-3 gap-3 border-t border-slate-300 pt-5 text-center">
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">70+</strong>
+                                        <span class="wire-label">Projects Delivered</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">157M+</strong>
+                                        <span class="wire-label">Records Processed</span>
+                                    </div>
+                                    <div>
+                                        <strong class="display block text-2xl font-bold text-slate-900">400+</strong>
+                                        <span class="wire-label">Trained Analysts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="placeholder flex min-h-72 items-center justify-center p-8 text-center">
+                                <div>
+                                    <i data-lucide="shield-check" class="mx-auto mb-4 h-14 w-14 text-slate-600"></i>
+                                    <strong class="block text-slate-800 text-base">Global Data Operations Visual</strong>
+                                    <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
+                                        [Visual Wireframe Spec: Cleanroom security, ISO 27001 readiness & worldwide client distribution map]
+                                    </span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Carousel Controls -->
+                        <div class="mt-4 flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <button class="rounded border border-slate-400 p-2 bg-white hover:bg-slate-100" type="button" onclick="moveSlide(-1)" aria-label="Previous slide">
+                                    <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                                </button>
+                                <button class="rounded border border-slate-400 p-2 bg-white hover:bg-slate-100" type="button" onclick="moveSlide(1)" aria-label="Next slide">
+                                    <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                            <div class="flex gap-2" aria-label="Hero slide navigation">
+                                <button class="slide-dot h-3 w-3 rounded-full bg-slate-800" onclick="setSlide(0)" aria-label="Slide 1"></button>
+                                <button class="slide-dot h-3 w-3 rounded-full border border-slate-600" onclick="setSlide(1)" aria-label="Slide 2"></button>
+                                <button class="slide-dot h-3 w-3 rounded-full border border-slate-600" onclick="setSlide(2)" aria-label="Slide 3"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 02 / Company Proof Metrics -->
+            <section id="proof" class="mx-auto max-w-7xl px-5 py-20">
+                <div class="max-w-3xl">
+                    <span class="wire-label">02 / Company proof</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                        Audited Quality Across 15+ Years of Global Delivery
+                    </h2>
+                    <p class="mt-4 text-base leading-7 text-slate-600">
+                        VilPower delivers precision data solutions across international borders, ensuring adherence to strict SLAs, turnaround schedules, and data confidentiality standards.
+                    </p>
+                    <p class="mt-4 text-xs font-mono-tag font-bold text-slate-700 bg-slate-200/70 p-2.5 rounded border border-slate-300 inline-block">
+                        PRIMARY MARKETS: United States · United Kingdom · Europe · Australia · India
+                    </p>
+                </div>
+
+                <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden border border-slate-300 bg-slate-300 md:grid-cols-5 shadow-sm">
+                    <div class="bg-white p-6 text-center">
+                        <strong class="display text-3xl font-bold text-slate-900">15+</strong>
+                        <span class="mt-2 block text-xs font-semibold text-slate-600">Years of Delivery</span>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <strong class="display text-3xl font-bold text-slate-900">70+</strong>
+                        <span class="mt-2 block text-xs font-semibold text-slate-600">Projects Delivered</span>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <strong class="display text-3xl font-bold text-slate-900">157M+</strong>
+                        <span class="mt-2 block text-xs font-semibold text-slate-600">Records Processed</span>
+                    </div>
+                    <div class="bg-white p-6 text-center">
+                        <strong class="display text-3xl font-bold text-slate-900">99.7%</strong>
+                        <span class="mt-2 block text-xs font-semibold text-slate-600">Audited Accuracy</span>
+                    </div>
+                    <div class="bg-white p-6 text-center col-span-2 md:col-span-1">
+                        <strong class="display text-3xl font-bold text-slate-900">1,500+</strong>
+                        <span class="mt-2 block text-xs font-semibold text-slate-600">People Empowered</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 03 / Services Overview -->
+            <section class="border-y border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-20">
+                    <span class="wire-label">03 / Services</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                        What We Do — Core Capabilities
+                    </h2>
+                    <p class="mt-3 max-w-3xl text-base text-slate-600 leading-relaxed">
+                        End-to-end human-in-the-loop services engineered for accuracy, compliance, and rapid scalability.
+                    </p>
+
+                    <div class="mt-10 grid gap-6 md:grid-cols-3">
+                        <!-- Service Card 1 -->
+                        <button class="border border-slate-300 bg-slate-50 p-6 text-left hover:border-slate-800 transition-colors group flex flex-col justify-between" onclick="chooseService('AI Data Services')">
+                            <div>
+                                <i data-lucide="scan-line" class="h-8 w-8 text-slate-700 mb-4"></i>
+                                <h3 class="text-xl font-bold text-slate-900">AI Data Services</h3>
+                                <p class="mt-3 text-xs leading-6 text-slate-600">
+                                    High-precision image annotation, video tracking, and audio transcription with human-verified quality gates.
+                                </p>
+                            </div>
+                            <span class="mt-6 block text-xs font-bold text-slate-900 group-hover:underline">
+                                Learn More & Request Sample →
+                            </span>
+                        </button>
+
+                        <!-- Service Card 2 -->
+                        <button class="border border-slate-300 bg-slate-50 p-6 text-left hover:border-slate-800 transition-colors group flex flex-col justify-between" onclick="chooseService('XML & Digital Publishing')">
+                            <div>
+                                <i data-lucide="file-code-2" class="h-8 w-8 text-slate-700 mb-4"></i>
+                                <h3 class="text-xl font-bold text-slate-900">XML & Digital Publishing</h3>
+                                <p class="mt-3 text-xs leading-6 text-slate-600">
+                                    Standards-compliant JATS, BITS, DocBook XML content structuring with zero-schema error guarantee.
+                                </p>
+                            </div>
+                            <span class="mt-6 block text-xs font-bold text-slate-900 group-hover:underline">
+                                Learn More & Request Sample →
+                            </span>
+                        </button>
+
+                        <!-- Service Card 3 -->
+                        <button class="border border-slate-300 bg-slate-50 p-6 text-left hover:border-slate-800 transition-colors group flex flex-col justify-between" onclick="chooseService('Lease Abstraction')">
+                            <div>
+                                <i data-lucide="file-search" class="h-8 w-8 text-slate-700 mb-4"></i>
+                                <h3 class="text-xl font-bold text-slate-900">Lease Abstraction</h3>
+                                <p class="mt-3 text-xs leading-6 text-slate-600">
+                                    Extraction of critical covenants, rent rolls, options, and CAM reconciliation for commercial real estate portfolios.
+                                </p>
+                            </div>
+                            <span class="mt-6 block text-xs font-bold text-slate-900 group-hover:underline">
+                                Learn More & Request Sample →
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Secondary Services Strip -->
+                    <div class="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-4 text-xs">
+                        <div class="border border-dashed border-slate-400 p-4 bg-slate-50/50">
+                            <strong>Web Research</strong>
+                            <span class="mt-1 block text-slate-500">B2B intelligence & data mining</span>
+                        </div>
+                        <div class="border border-dashed border-slate-400 p-4 bg-slate-50/50">
+                            <strong>Legal Data Services</strong>
+                            <span class="mt-1 block text-slate-500">Contract indexing & taxonomy</span>
+                        </div>
+                        <div class="border border-dashed border-slate-400 p-4 bg-slate-50/50">
+                            <strong>E-Commerce Support</strong>
+                            <span class="mt-1 block text-slate-500">Catalog tagging & attribute audit</span>
+                        </div>
+                        <div class="border border-dashed border-slate-400 p-4 bg-slate-50/50">
+                            <strong>Custom Back-Office</strong>
+                            <span class="mt-1 block text-slate-500">Custom transactional workflows</span>
+                        </div>
+                    </div>
+
+                    <button class="mt-8 rounded border border-slate-700 bg-white px-6 py-3 font-semibold text-sm hover:bg-slate-100 transition-colors" onclick="showView('services')">
+                        View Full Services Catalog →
+                    </button>
+                </div>
+            </section>
+
+            <!-- 04 / Reasons to Choose VilPower (Accordion) -->
+            <section class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 items-center">
+                <div class="placeholder flex min-h-96 items-center justify-center p-8 text-center">
+                    <div>
+                        <i data-lucide="building-2" class="mx-auto mb-4 h-14 w-14 text-slate-600"></i>
+                        <strong class="block text-slate-800 text-base">VilPower Team / Facility Wireframe Spec</strong>
+                        <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
+                            [Photography Wireframe: Modern cleanroom facility, multi-tier QA pods, and trained women operators]
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <span class="wire-label">04 / Reasons to choose VilPower</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                        Why Global Enterprises Choose Us
+                    </h2>
+                    <div class="mt-6 divide-y divide-slate-300 border-y border-slate-300">
+                        <!-- Item 1 -->
+                        <button class="benefit open w-full py-4 text-left focus:outline-none" onclick="toggleExpand(this)">
+                            <span class="flex items-center justify-between">
+                                <span><b>01</b> <strong class="ml-3 text-slate-900">Accuracy You Can Measure (99.7%)</strong></span>
+                                <i data-lucide="plus" class="accordion-icon h-4 w-4 transition-transform text-slate-600"></i>
+                            </span>
+                            <span class="benefit-body mt-3 pr-8 text-xs leading-6 text-slate-600">
+                                99.7% audited precision backed by multi-level QA: initial labeling $\rightarrow$ peer verification $\rightarrow$ senior SME sign-off.
+                            </span>
+                        </button>
+
+                        <!-- Item 2 -->
+                        <button class="benefit w-full py-4 text-left focus:outline-none" onclick="toggleExpand(this)">
+                            <span class="flex items-center justify-between">
+                                <span><b>02</b> <strong class="ml-3 text-slate-900">Scale When You Need It (400+ Analysts)</strong></span>
+                                <i data-lucide="plus" class="accordion-icon h-4 w-4 transition-transform text-slate-600"></i>
+                            </span>
+                            <span class="benefit-body mt-3 pr-8 text-xs leading-6 text-slate-600">
+                                Ready pipeline of pre-trained operators from our in-house academy allows rapid project ramp-ups in under two weeks.
+                            </span>
+                        </button>
+
+                        <!-- Item 3 -->
+                        <button class="benefit w-full py-4 text-left focus:outline-none" onclick="toggleExpand(this)">
+                            <span class="flex items-center justify-between">
+                                <span><b>03</b> <strong class="ml-3 text-slate-900">Data Security & Confidentiality First</strong></span>
+                                <i data-lucide="plus" class="accordion-icon h-4 w-4 transition-transform text-slate-600"></i>
+                            </span>
+                            <span class="benefit-body mt-3 pr-8 text-xs leading-6 text-slate-600">
+                                Biometric access, USB-blocked air-gapped workstations, strict NDA compliance, and dedicated offshore cleanroom facilities.
+                            </span>
+                        </button>
+
+                        <!-- Item 4 -->
+                        <button class="benefit w-full py-4 text-left focus:outline-none" onclick="toggleExpand(this)">
+                            <span class="flex items-center justify-between">
+                                <span><b>04</b> <strong class="ml-3 text-slate-900">Social Impact & High Team Diligence</strong></span>
+                                <i data-lucide="plus" class="accordion-icon h-4 w-4 transition-transform text-slate-600"></i>
+                            </span>
+                            <span class="benefit-body mt-3 pr-8 text-xs leading-6 text-slate-600">
+                                95%+ rural women workforce delivers higher focus and exceptionally low project attrition (&lt;3%) compared to metro vendors.
+                            </span>
+                        </button>
+
+                        <!-- Item 5 -->
+                        <button class="benefit w-full py-4 text-left focus:outline-none" onclick="toggleExpand(this)">
+                            <span class="flex items-center justify-between">
+                                <span><b>05</b> <strong class="ml-3 text-slate-900">15+ Years Domain Experience</strong></span>
+                                <i data-lucide="plus" class="accordion-icon h-4 w-4 transition-transform text-slate-600"></i>
+                            </span>
+                            <span class="benefit-body mt-3 pr-8 text-xs leading-6 text-slate-600">
+                                Proven delivery across complex computer vision annotations, scientific publishing schemas (JATS), and real estate software.
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 / Human + AI Story (The Digital Banyan Tree) -->
+            <section class="border-y border-slate-300 bg-white">
+                <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 items-center">
+                    <div>
+                        <span class="wire-label">05 / Human + AI story</span>
+                        <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                            The Human-in-the-Loop Engine
+                        </h2>
+                        <strong class="mt-4 block text-lg font-bold text-slate-800">95% Women-Led Rural Workforce</strong>
+                        <p class="mt-3 max-w-xl text-sm leading-7 text-slate-600">
+                            VilPower's workforce has been built through structured 8-week incubation programs that provide dignified, high-tech career paths for women in rural Tirunelveli.
+                        </p>
+                        <div class="mt-5 space-y-2 text-xs font-mono-tag text-slate-700 bg-slate-100 p-4 border border-slate-300 rounded">
+                            <div>🌱 <strong>Roots:</strong> Rural talent incubation & community empowerment</div>
+                            <div>⚡ <strong>Trunk:</strong> Robust SOPs, 3-tier QA & ISO data governance</div>
+                            <div>🌿 <strong>Branches:</strong> AI Annotation, XML Publishing & Lease Abstraction</div>
+                            <div>🌍 <strong>Canopy:</strong> Global enterprise clients in US, UK, EU & Australia</div>
+                        </div>
+                        <button class="mt-6 rounded border border-slate-700 bg-white px-5 py-2.5 font-semibold text-xs hover:bg-slate-100 transition-colors" onclick="showView('about')">
+                            Read Our Origin Story →
+                        </button>
+                    </div>
+                    <div class="placeholder flex min-h-80 items-center justify-center p-8 text-center">
+                        <div>
+                            <i data-lucide="tree-pine" class="mx-auto mb-4 h-16 w-16 text-slate-600"></i>
+                            <strong class="block text-base font-bold text-slate-800">AI Banyan Tree Wireframe Spec</strong>
+                            <span class="mt-2 block max-w-sm text-xs text-slate-500 leading-relaxed">
+                                [Conceptual Infographic Wireframe: Illustrating the connection between rural community roots and global enterprise canopy]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 06 / Process Rail -->
+            <section class="mx-auto max-w-7xl px-5 py-20">
+                <span class="wire-label">06 / Process blueprint</span>
+                <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                    How We Ensure Zero-Defect Delivery
+                </h2>
+                <div class="process-rail mt-10 grid border-t-2 border-slate-300 md:grid-cols-5 md:border-l-0">
+                    <!-- Step 1 -->
+                    <button class="process open border-b border-r border-slate-300 p-5 text-left hover:bg-white transition-colors" onclick="toggleExpand(this)">
+                        <span class="wire-label">01</span>
+                        <strong class="mt-2 block text-slate-900 text-sm">Understand</strong>
+                        <span class="process-body mt-3 block text-xs leading-6 text-slate-600">
+                            We analyze your guidelines, taxonomies, edge cases, data schemas, and quality benchmarks.
+                        </span>
+                    </button>
+
+                    <!-- Step 2 -->
+                    <button class="process open border-b border-r border-slate-300 p-5 text-left hover:bg-white transition-colors" onclick="toggleExpand(this)">
+                        <span class="wire-label">02</span>
+                        <strong class="mt-2 block text-slate-900 text-sm">Pilot Batch</strong>
+                        <span class="process-body mt-3 block text-xs leading-6 text-slate-600">
+                            A calibration sample (50–100 records) is delivered for review, alignment, and sign-off.
+                        </span>
+                    </button>
+
+                    <!-- Step 3 -->
+                    <button class="process open border-b border-r border-slate-300 p-5 text-left hover:bg-white transition-colors" onclick="toggleExpand(this)">
+                        <span class="wire-label">03</span>
+                        <strong class="mt-2 block text-slate-900 text-sm">Scale Team</strong>
+                        <span class="process-body mt-3 block text-xs leading-6 text-slate-600">
+                            Trained teams ramp up with dedicated workspace, project manager, and SLA monitoring.
+                        </span>
+                    </button>
+
+                    <!-- Step 4 -->
+                    <button class="process open border-b border-r border-slate-300 p-5 text-left hover:bg-white transition-colors" onclick="toggleExpand(this)">
+                        <span class="wire-label">04</span>
+                        <strong class="mt-2 block text-slate-900 text-sm">3-Tier QA</strong>
+                        <span class="process-body mt-3 block text-xs leading-6 text-slate-600">
+                            Dual peer review + senior SME audit ensures agreed 99.7% accuracy threshold is met.
+                        </span>
+                    </button>
+
+                    <!-- Step 5 -->
+                    <button class="process open border-b border-slate-300 p-5 text-left hover:bg-white transition-colors" onclick="toggleExpand(this)">
+                        <span class="wire-label">05</span>
+                        <strong class="mt-2 block text-slate-900 text-sm">Deliver & Support</strong>
+                        <span class="process-body mt-3 block text-xs leading-6 text-slate-600">
+                            Continuous data delivery via secure sFTP / Cloud S3 with weekly status reports.
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 07 / Global Reach Wireframe Map -->
+            <section class="border-y border-slate-300 bg-white">
+                <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-2 items-center">
+                    <div>
+                        <span class="wire-label">07 / Global reach</span>
+                        <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                            Serving Clients Across 5 Major Markets
+                        </h2>
+                        <p class="mt-4 text-base text-slate-600 leading-relaxed">
+                            Interfacing across multiple time zones (EST, PST, GMT, CET, AEST) with 24-hour turnaround capabilities.
+                        </p>
+                        <div class="mt-6 space-y-2 text-xs text-slate-700">
+                            <div>• <strong>North America:</strong> USA & Canada (AI Annotation & NLP)</div>
+                            <div>• <strong>Europe:</strong> UK, Germany & France (STM Publishing & XML)</div>
+                            <div>• <strong>Asia-Pacific:</strong> Australia & NZ (Lease Abstraction)</div>
+                            <div>• <strong>Delivery HQ:</strong> Tirunelveli, Tamil Nadu, India (400+ Analysts)</div>
+                        </div>
+                    </div>
+
+                    <!-- World Map Placeholder -->
+                    <div class="placeholder relative min-h-72 overflow-hidden p-5 rounded">
+                        <span class="wire-label block mb-2">World map wireframe — Active client hubs</span>
+                        <div class="relative w-full h-56 flex items-center justify-center">
+                            <i data-lucide="globe-2" class="w-32 h-32 text-slate-400/60"></i>
+                            <button class="map-dot absolute left-[14%] top-[30%] rounded border border-slate-500 bg-white px-2 py-1 text-xs font-mono font-bold shadow-sm" onclick="alert('United States Hub: AI Data Annotation & Medical NLP')">United States</button>
+                            <button class="map-dot absolute left-[45%] top-[24%] rounded border border-slate-500 bg-white px-2 py-1 text-xs font-mono font-bold shadow-sm" onclick="alert('United Kingdom Hub: STM Publishing & JATS XML')">United Kingdom</button>
+                            <button class="map-dot absolute left-[54%] top-[32%] rounded border border-slate-500 bg-white px-2 py-1 text-xs font-mono font-bold shadow-sm" onclick="alert('Europe Hub: Academic & Scientific XML')">Europe</button>
+                            <button class="map-dot absolute left-[62%] top-[54%] rounded border-2 border-slate-800 bg-slate-800 text-white px-2.5 py-1 text-xs font-mono font-bold shadow-md" onclick="alert('VilPower Delivery HQ (Tirunelveli, India): 400+ Trained Operators')">⭐ India (HQ)</button>
+                            <button class="map-dot absolute left-[80%] top-[70%] rounded border border-slate-500 bg-white px-2 py-1 text-xs font-mono font-bold shadow-sm" onclick="alert('Australia Hub: Commercial Lease Abstraction')">Australia</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 08 / Conversion CTA -->
+            <section class="bg-slate-800 text-white">
+                <div class="mx-auto max-w-7xl px-5 py-20">
+                    <span class="wire-label !text-slate-300">08 / Conversion CTA</span>
+                    <h2 class="display mt-3 text-4xl font-bold">
+                        Start with a Free 50-Record Benchmark Pilot.
+                    </h2>
+                    <p class="mt-4 max-w-2xl text-base text-slate-300 leading-relaxed">
+                        Test our 99.7% accuracy, turnaround speed, and communication firsthand with zero upfront commitment.
+                    </p>
+                    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                        <button class="rounded bg-white px-6 py-3.5 font-semibold text-slate-900 hover:bg-slate-100 text-sm transition-colors" onclick="openPilotModal()">
+                            Request Free Pilot Batch →
+                        </button>
+                        <button class="rounded border border-white px-6 py-3.5 font-semibold text-white hover:bg-slate-700 text-sm transition-colors" onclick="showView('contact')">
+                            Contact Operations Desk
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- VIEW: ABOUT US                                                   -->
+        <!-- ================================================================= -->
+        <section id="about" class="page-view">
+            <div class="border-b border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-16">
+                    <span class="wire-label">About VilPower</span>
+                    <h1 class="display mt-3 max-w-4xl text-5xl font-bold text-slate-900">
+                        Pioneering Impact Sourcing in High-Tech AI Operations.
+                    </h1>
+                    <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                        Connecting passionate, meticulously trained rural talent in South India with global technology giants, delivering uncompromised accuracy and building generational change.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-5 py-20">
+                <div class="grid gap-12 md:grid-cols-2 items-center">
+                    <div>
+                        <span class="wire-label">Our story</span>
+                        <h2 class="display mt-3 text-4xl font-bold text-slate-900">
+                            Real Careers, Not Just Temporary Jobs.
+                        </h2>
+                        <p class="mt-5 text-sm leading-7 text-slate-600">
+                            VilPower Solutions began over 15 years ago with a simple mission: give women in rural Tirunelveli, Tamil Nadu real careers in technology.
+                        </p>
+                        <p class="mt-4 text-sm leading-7 text-slate-600">
+                            We trained local women in computer vision annotation, JATS XML schemas, and complex lease abstraction — skills global enterprises need every day.
+                        </p>
+                        <p class="mt-4 text-sm leading-7 text-slate-600">
+                            Today, over 95% of our workforce is women, consistently delivering 99.7% audited accuracy with exceptionally low attrition (&lt;3%).
+                        </p>
+                    </div>
+                    <div class="placeholder flex min-h-72 items-center justify-center p-8 text-center">
+                        <div>
+                            <i data-lucide="graduation-cap" class="mx-auto mb-3 h-14 w-14 text-slate-600"></i>
+                            <strong class="block text-slate-800 text-base">Workforce Training Wireframe Spec</strong>
+                            <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
+                                [Photography Wireframe: 8-week onboarding academy, mentoring pods & paid skill training]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision & Mission -->
+                <div class="mt-16 grid gap-6 md:grid-cols-2">
+                    <article class="border border-slate-300 bg-white p-7 shadow-sm">
+                        <span class="wire-label">Vision</span>
+                        <p class="display mt-3 text-xl font-bold text-slate-900">
+                            To be the leading rural, women-led human-in-the-loop AI BPO/KPO, trusted worldwide for accurate, secure, and compliant workflows.
+                        </p>
+                    </article>
+                    <article class="border border-slate-300 bg-white p-7 shadow-sm">
+                        <span class="wire-label">Mission</span>
+                        <p class="mt-3 text-sm leading-7 text-slate-700">
+                            To deliver high-quality, AI-integrated back-office and data operations by combining trained rural, women-led teams with human-in-the-loop workflows, creating sustainable livelihoods in small towns.
+                        </p>
+                    </article>
+                </div>
+
+                <!-- What Makes Us Different -->
+                <h2 class="display mt-20 text-4xl font-bold text-slate-900">What Makes Us Different</h2>
+                <div class="mt-7 grid gap-4 md:grid-cols-4">
+                    <div class="border border-slate-300 bg-white p-5">
+                        <b class="text-sm text-slate-900 block mb-2">Trained, Not Just Hired</b>
+                        <p class="text-xs leading-6 text-slate-600">Structured 8-week in-house training before touching live client datasets.</p>
+                    </div>
+                    <div class="border border-slate-300 bg-white p-5">
+                        <b class="text-sm text-slate-900 block mb-2">95% Women Workforce</b>
+                        <p class="text-xs leading-6 text-slate-600">Deliberate commitment within the operating model resulting in &lt;3% attrition.</p>
+                    </div>
+                    <div class="border border-slate-300 bg-white p-5">
+                        <b class="text-sm text-slate-900 block mb-2">Process-Driven Quality</b>
+                        <p class="text-xs leading-6 text-slate-600">Multi-tier QA, standardized SOPs, and 99.7% audited accuracy benchmarks.</p>
+                    </div>
+                    <div class="border border-slate-300 bg-white p-5">
+                        <b class="text-sm text-slate-900 block mb-2">Confidential & Secure</b>
+                        <p class="text-xs leading-6 text-slate-600">Air-gapped workstations, biometric cleanroom access, and strict NDAs.</p>
+                    </div>
+                </div>
+
+                <!-- Leadership Team -->
+                <h2 class="display mt-20 text-4xl font-bold text-slate-900">The People Behind VilPower</h2>
+                <div class="mt-7 grid gap-6 md:grid-cols-3">
+                    <article class="border border-slate-300 bg-white p-6 text-center">
+                        <div class="placeholder grid h-40 place-items-center">
+                            <i data-lucide="user-round" class="h-12 w-12 text-slate-600"></i>
+                        </div>
+                        <h3 class="mt-4 font-bold text-slate-900 text-base">Managing Director</h3>
+                        <p class="mt-1 text-xs text-slate-600">Founder & Strategy</p>
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Managing Director', '20+ years steering IT & BPO operations, championing rural women incubation and global client delivery.')">
+                            View Profile
+                        </button>
+                    </article>
+
+                    <article class="border border-slate-300 bg-white p-6 text-center">
+                        <div class="placeholder grid h-40 place-items-center">
+                            <i data-lucide="user-round" class="h-12 w-12 text-slate-600"></i>
+                        </div>
+                        <h3 class="mt-4 font-bold text-slate-900 text-base">Director of Operations</h3>
+                        <p class="mt-1 text-xs text-slate-600">Delivery & QA</p>
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Director of Operations', 'Overseeing project delivery SLAs, tool configurations, and multi-tier quality gates.')">
+                            View Profile
+                        </button>
+                    </article>
+
+                    <article class="border border-slate-300 bg-white p-6 text-center">
+                        <div class="placeholder grid h-40 place-items-center">
+                            <i data-lucide="users" class="h-12 w-12 text-slate-600"></i>
+                        </div>
+                        <h3 class="mt-4 font-bold text-slate-900 text-base">Head of Training</h3>
+                        <p class="mt-1 text-xs text-slate-600">Academy & Skill Development</p>
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Head of Training', 'Leading the 8-week onboarding curriculum, AI annotation mastery, and team welfare.')">
+                            View Profile
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- VIEW: SERVICES                                                   -->
+        <!-- ================================================================= -->
+        <section id="services" class="page-view">
+            <div class="border-b border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-16">
+                    <span class="wire-label">Services overview</span>
+                    <h1 class="display mt-3 text-5xl font-bold text-slate-900">
+                        Precision-Driven Data & Back-Office Services
+                    </h1>
+                    <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                        End-to-end human-in-the-loop workflows built for machine learning datasets, STM digital publishing, and commercial lease abstractions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sticky Sub-navigation -->
+            <div class="sticky top-[73px] z-20 overflow-x-auto border-b border-slate-300 bg-slate-100">
+                <div class="mx-auto flex max-w-7xl gap-6 whitespace-nowrap px-5 py-3.5 text-xs font-bold text-slate-700">
+                    <button class="hover:text-slate-900" onclick="scrollService('ai-data')">AI Data Services</button>
+                    <button class="hover:text-slate-900" onclick="scrollService('xml')">XML & Digital Publishing</button>
+                    <button class="hover:text-slate-900" onclick="scrollService('lease')">Lease Abstraction</button>
+                    <button class="hover:text-slate-900" onclick="scrollService('future')">Web Research & Legal</button>
+                </div>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-5 py-16 space-y-16">
+                <!-- AI Data Services -->
+                <article id="ai-data" class="service-anchor border-b border-slate-300 pb-16">
+                    <span class="wire-label">01 / AI data services</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">AI Data Annotation Services</h2>
+                    <p class="mt-4 max-w-2xl text-base text-slate-600 leading-relaxed">
+                        High-quality, human-verified ground truth data is the bedrock of reliable machine learning models.
+                    </p>
+                    <div class="mt-8 grid gap-4 md:grid-cols-3">
+                        <div class="border border-slate-300 bg-white p-6">
+                            <b class="text-sm text-slate-900 block mb-2">Image Annotation</b>
+                            <p class="text-xs leading-6 text-slate-600">2D/3D bounding boxes, polygons, semantic segmentation, and keypoints.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-6">
+                            <b class="text-sm text-slate-900 block mb-2">Video Annotation</b>
+                            <p class="text-xs leading-6 text-slate-600">Frame-by-frame object tracking, event detection, and multi-class tagging.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-6">
+                            <b class="text-sm text-slate-900 block mb-2">Voice & Audio</b>
+                            <p class="text-xs leading-6 text-slate-600">Transcription, speaker diarization, sentiment labeling, and phonetic tags.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 border-l-4 border-slate-700 bg-slate-100 p-5 text-xs text-slate-700 leading-relaxed">
+                        <b>Why It Matters:</b> Poor data labeling degrades AI performance. Our 3-tier validation guarantees clean, consistent, and audit-ready training datasets.
+                    </div>
+                    <button class="mt-6 rounded bg-slate-800 px-5 py-3 font-semibold text-white text-xs hover:bg-slate-700" onclick="chooseService('AI Data Services')">
+                        Request Sample Project →
+                    </button>
+                </article>
+
+                <!-- XML & Digital Publishing -->
+                <article id="xml" class="service-anchor border-b border-slate-300 pb-16">
+                    <span class="wire-label">02 / XML & Digital Publishing</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">XML-Based Digital Publishing Services</h2>
+                    <p class="mt-4 max-w-2xl text-base text-slate-600 leading-relaxed">
+                        Over 157M records processed for scientific, medical, and academic book/journal publishers worldwide.
+                    </p>
+                    <div class="mt-8 grid gap-4 md:grid-cols-2">
+                        <div class="border border-slate-300 bg-white p-6">
+                            <b class="text-sm text-slate-900 block mb-2">STM & Journal Publishing</b>
+                            <p class="text-xs leading-6 text-slate-600">Conversion of complex manuscripts into JATS 1.3, BITS, and DocBook schemas.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-6">
+                            <b class="text-sm text-slate-900 block mb-2">ePUB3 & MathML Structuring</b>
+                            <p class="text-xs leading-6 text-slate-600">Accessible eBooks, MathML equations, and cross-platform digital distribution.</p>
+                        </div>
+                    </div>
+                    <button class="mt-6 rounded bg-slate-800 px-5 py-3 font-semibold text-white text-xs hover:bg-slate-700" onclick="chooseService('XML & Digital Publishing')">
+                        Request Sample Project →
+                    </button>
+                </article>
+
+                <!-- Lease Abstraction -->
+                <article id="lease" class="service-anchor border-b border-slate-300 pb-16">
+                    <span class="wire-label">03 / Lease abstraction</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">Commercial Lease Abstraction Services</h2>
+                    <div class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4 text-xs">
+                        <div class="border border-slate-300 bg-white p-5 font-bold text-slate-800">Commercial Lease Abstraction</div>
+                        <div class="border border-slate-300 bg-white p-5 font-bold text-slate-800">Rent Roll & Escalation Extraction</div>
+                        <div class="border border-slate-300 bg-white p-5 font-bold text-slate-800">CAM & Audit Support</div>
+                        <div class="border border-slate-300 bg-white p-5 font-bold text-slate-800">Yardi / MRI System Uploads</div>
+                    </div>
+                    <button class="mt-6 rounded bg-slate-800 px-5 py-3 font-semibold text-white text-xs hover:bg-slate-700" onclick="chooseService('Lease Abstraction')">
+                        Request Sample Lease Abstract →
+                    </button>
+                </article>
+
+                <!-- Additional Services -->
+                <article id="future" class="service-anchor">
+                    <span class="wire-label">04 / Additional services</span>
+                    <h2 class="display mt-3 text-4xl font-bold text-slate-900">Web Research, Legal & E-Commerce</h2>
+                    <div class="mt-6 grid gap-4 md:grid-cols-3 text-xs">
+                        <div class="border border-dashed border-slate-400 bg-white p-6">
+                            <strong class="text-sm block mb-1">Web Research & Mining</strong>
+                            <p class="text-slate-600 mt-2">B2B intelligence, lead enrichment, executive validation & custom data collection.</p>
+                        </div>
+                        <div class="border border-dashed border-slate-400 bg-white p-6">
+                            <strong class="text-sm block mb-1">Legal Data Services</strong>
+                            <p class="text-slate-600 mt-2">Contract indexing, Bates tagging, regulatory audit & NDA-governed workflows.</p>
+                        </div>
+                        <div class="border border-dashed border-slate-400 bg-white p-6">
+                            <strong class="text-sm block mb-1">E-Commerce Support</strong>
+                            <p class="text-slate-600 mt-2">Catalog standardization, attribute tagging, image clean-up & competitor tracking.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- VIEW: INDUSTRIES                                                 -->
+        <!-- ================================================================= -->
+        <section id="industries" class="page-view">
+            <div class="mx-auto max-w-7xl px-5 py-20">
+                <span class="wire-label">Industries overview</span>
+                <h1 class="display mt-3 text-5xl font-bold text-slate-900">Built for Data-Intensive Verticals</h1>
+                <p class="mt-4 max-w-2xl text-base text-slate-600 leading-relaxed">
+                    Customized human-in-the-loop delivery teams tailored for enterprise industry domains worldwide.
+                </p>
+                <div class="mt-10 grid gap-4 md:grid-cols-3">
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('AI Data Services')">
+                        <b class="text-base text-slate-900 block">AI & Machine Learning</b>
+                        <p class="text-xs text-slate-600 mt-2">Ground truth data for computer vision, robotics, and LLM foundations.</p>
+                    </button>
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('XML & Digital Publishing')">
+                        <b class="text-base text-slate-900 block">STM & Publishing</b>
+                        <p class="text-xs text-slate-600 mt-2">JATS, BITS XML conversion for scientific journals and textbooks.</p>
+                    </button>
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('Lease Abstraction')">
+                        <b class="text-base text-slate-900 block">Commercial Real Estate</b>
+                        <p class="text-xs text-slate-600 mt-2">Lease abstraction, rent roll audits & Yardi portfolio uploads.</p>
+                    </button>
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('Legal Data Services')">
+                        <b class="text-base text-slate-900 block">Legal & Compliance</b>
+                        <p class="text-xs text-slate-600 mt-2">Contract indexing, Bates tagging & NDA-backed data audits.</p>
+                    </button>
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('E-Commerce Support')">
+                        <b class="text-base text-slate-900 block">E-Commerce & Retail</b>
+                        <p class="text-xs text-slate-600 mt-2">Catalog taxonomy tagging, image clean-up & marketplace monitoring.</p>
+                    </button>
+                    <button class="border border-slate-300 bg-white p-6 text-left hover:border-slate-800 transition-colors" onclick="chooseService('AI Data Services')">
+                        <b class="text-base text-slate-900 block">Healthcare & Bio-Tech</b>
+                        <p class="text-xs text-slate-600 mt-2">Medical imaging segmentation (CT/MRI) under strict confidentiality.</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- VIEW: GALLERY                                                    -->
+        <!-- ================================================================= -->
+        <section id="gallery" class="page-view">
+            <div class="border-b border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-16">
+                    <span class="wire-label">Operations Gallery</span>
+                    <h1 class="display mt-3 text-5xl font-bold text-slate-900">Facility & Operations Showcase</h1>
+                    <p class="mt-4 max-w-2xl text-base text-slate-600">Inside the VilPower cleanrooms, training academy, and team delivery floors.</p>
+                </div>
+            </div>
+            <div class="mx-auto max-w-7xl px-5 py-12">
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn rounded border border-slate-700 bg-slate-800 text-white px-4 py-2 text-xs font-bold" onclick="filterGallery('all', this)">All</button>
+                    <button class="filter-btn rounded border border-slate-300 bg-white text-slate-700 px-4 py-2 text-xs" onclick="filterGallery('Infrastructure', this)">Infrastructure</button>
+                    <button class="filter-btn rounded border border-slate-300 bg-white text-slate-700 px-4 py-2 text-xs" onclick="filterGallery('Team', this)">Team</button>
+                    <button class="filter-btn rounded border border-slate-300 bg-white text-slate-700 px-4 py-2 text-xs" onclick="filterGallery('Training', this)">Training</button>
+                    <button class="filter-btn rounded border border-slate-300 bg-white text-slate-700 px-4 py-2 text-xs" onclick="filterGallery('Events', this)">Events</button>
+                </div>
+
+                <div id="gallery-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Infrastructure" data-caption="Workstations & Cleanroom Setup" onclick="openLightbox(0)">
+                        <i data-lucide="monitor-cog" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">Secure Workstations Floor</strong>
+                        <span class="text-xs text-slate-500">Air-gapped dual monitor setup</span>
+                    </button>
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Infrastructure" data-caption="Secure Server & Network Vault" onclick="openLightbox(1)">
+                        <i data-lucide="server" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">Server & Data Vault</strong>
+                        <span class="text-xs text-slate-500">Biometric access controls</span>
+                    </button>
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Training" data-caption="In-House 8-Week Incubation Batch" onclick="openLightbox(2)">
+                        <i data-lucide="presentation" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">Skill Incubation Room</strong>
+                        <span class="text-xs text-slate-500">AI annotation classroom</span>
+                    </button>
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Team" data-caption="Computer Vision Quality Assurance Team" onclick="openLightbox(3)">
+                        <i data-lucide="scan-line" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">AI Annotation Team</strong>
+                        <span class="text-xs text-slate-500">LiDAR & 2D labeling unit</span>
+                    </button>
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Team" data-caption="JATS XML Scientific Publishing Team" onclick="openLightbox(4)">
+                        <i data-lucide="files" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">Publishing Quality Unit</strong>
+                        <span class="text-xs text-slate-500">STM schema specialists</span>
+                    </button>
+                    <button class="gallery-item placeholder min-h-52 p-5 text-left" data-category="Events" data-caption="Rural Women Tech Empowerment Graduation" onclick="openLightbox(5)">
+                        <i data-lucide="heart-handshake" class="h-8 w-8 text-slate-600"></i>
+                        <strong class="mt-4 block text-slate-900">Impact Graduation Day</strong>
+                        <span class="text-xs text-slate-500">Empowering rural careers</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- VIEW: CONTACT US / LEAD FORM                                     -->
+        <!-- ================================================================= -->
+        <section id="contact" class="page-view">
+            <div class="border-b border-slate-300 bg-white">
+                <div class="mx-auto max-w-7xl px-5 py-16">
+                    <span class="wire-label">Contact / Lead generation</span>
+                    <h1 class="display mt-3 text-5xl font-bold text-slate-900">Start a Project Conversation</h1>
+                    <p class="mt-4 max-w-2xl text-base text-slate-600">Request a quote, discuss technical specs, or claim a 50-record sample run.</p>
+                </div>
+            </div>
+            <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2">
+                <aside>
+                    <h2 class="display text-3xl font-bold text-slate-900">Why Work With VilPower?</h2>
+                    <ul class="mt-6 grid gap-3 text-sm text-slate-700">
+                        <li class="border-l-2 border-slate-700 pl-4"><b>15+ Years</b> — Proven offshore delivery track record</li>
+                        <li class="border-l-2 border-slate-700 pl-4"><b>99.7% Accuracy</b> — Audited multi-tier QA SLA</li>
+                        <li class="border-l-2 border-slate-700 pl-4"><b>400+ Analysts</b> — Scalable dedicated delivery teams</li>
+                        <li class="border-l-2 border-slate-700 pl-4"><b>Secure Cleanrooms</b> — ISO 27001 readiness & strict NDAs</li>
+                        <li class="border-l-2 border-slate-700 pl-4"><b>95% Women Workforce</b> — Impact sourcing with &lt;3% attrition</li>
+                    </ul>
+                    <div class="mt-10 border-t border-slate-300 pt-6 text-xs leading-7 text-slate-600">
+                        <p><b>Email:</b> <a href="mailto:contact@vilpower.com" class="text-slate-900 underline font-semibold">contact@vilpower.com</a></p>
+                        <p><b>Phone:</b> +91 (0462) 250-XXXX</p>
+                        <p><b>Address:</b> VilPower Tower, Tirunelveli, Tamil Nadu 627001, India</p>
+                    </div>
+                    <div class="placeholder mt-6 flex h-40 items-center justify-center text-xs text-slate-500 rounded">
+                        [Embedded Facility Map Wireframe Spec]
+                    </div>
+                </aside>
+
+                <section class="border border-slate-300 bg-white p-6 md:p-8 shadow-sm">
+                    <div id="form-wrap">
+                        <h2 class="display text-3xl font-bold text-slate-900">Project Scope Form</h2>
+                        <p class="mt-2 text-xs text-slate-600">Tell us what you need. Required fields are marked with an asterisk (*).</p>
+                        <form id="lead-form" class="mt-7 grid gap-5" onsubmit="handleLeadSubmit(event)">
+                            <div>
+                                <label class="mb-1 block text-xs font-semibold text-slate-800" for="full-name">Full Name *</label>
+                                <input id="full-name" name="full_name" required placeholder="Your full name" class="w-full border border-slate-400 px-3 py-2.5 outline-none focus:border-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-xs font-semibold text-slate-800" for="company-email">Company Email *</label>
+                                <input id="company-email" name="company_email" type="email" required placeholder="name@company.com" class="w-full border border-slate-400 px-3 py-2.5 outline-none focus:border-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-xs font-semibold text-slate-800" for="company-name">Company Name *</label>
+                                <input id="company-name" name="company_name" required placeholder="Your company name" class="w-full border border-slate-400 px-3 py-2.5 outline-none focus:border-slate-800 text-sm">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-xs font-semibold text-slate-800" for="service-interest">Service of Interest *</label>
+                                <select id="service-interest" name="service_interest" required onchange="updateQualifications()" class="w-full border border-slate-400 bg-white px-3 py-2.5 text-sm">
+                                    <option value="">Select a service</option>
+                                    <option value="AI Data Services">AI Data Services</option>
+                                    <option value="XML & Digital Publishing">XML & Digital Publishing</option>
+                                    <option value="Lease Abstraction">Lease Abstraction</option>
+                                    <option value="Web Research">Web Research</option>
+                                    <option value="Legal Data Services">Legal Data Services</option>
+                                    <option value="E-Commerce Support">E-Commerce Support</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Dynamic Qualification for AI Data -->
+                            <div id="ai-fields" class="qualification hidden grid gap-3 border-l-2 border-slate-700 bg-slate-50 p-4 text-xs">
+                                <strong class="text-xs text-slate-800">AI Data Services Specs</strong>
+                                <div>
+                                    <label for="data-type" class="mb-1 block">Data Type (2D/3D, Video, Audio)</label>
+                                    <input id="data-type" name="data_type" placeholder="e.g. 2D Bounding Box" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                                <div>
+                                    <label for="approx-volume-ai" class="mb-1 block">Approximate Volume</label>
+                                    <input id="approx-volume-ai" name="approximate_volume" placeholder="e.g. 50k frames" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Qualification for Lease Abstraction -->
+                            <div id="lease-fields" class="qualification hidden grid gap-3 border-l-2 border-slate-700 bg-slate-50 p-4 text-xs">
+                                <strong class="text-xs text-slate-800">Lease Abstraction Specs</strong>
+                                <div>
+                                    <label for="number-of-leases" class="mb-1 block">Number of Leases</label>
+                                    <input id="number-of-leases" name="number_of_leases" placeholder="e.g. 150 leases" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                                <div>
+                                    <label for="document-format" class="mb-1 block">Document Format</label>
+                                    <input id="document-format" name="document_format" placeholder="e.g. Scanned PDF" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Qualification for XML -->
+                            <div id="xml-fields" class="qualification hidden grid gap-3 border-l-2 border-slate-700 bg-slate-50 p-4 text-xs">
+                                <strong class="text-xs text-slate-800">XML Publishing Specs</strong>
+                                <div>
+                                    <label for="content-type" class="mb-1 block">Content Standard (JATS, BITS)</label>
+                                    <input id="content-type" name="content_type" placeholder="e.g. JATS 1.3" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                                <div>
+                                    <label for="approx-volume-xml" class="mb-1 block">Approximate Page Count</label>
+                                    <input id="approx-volume-xml" name="approx_volume_xml" placeholder="e.g. 5,000 pages" class="w-full border border-slate-400 px-3 py-2 bg-white">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="mb-1 block text-xs font-semibold text-slate-800" for="project-details">Project Details *</label>
+                                <textarea id="project-details" name="project_details" required rows="4" placeholder="Describe your project scope, turnaround timeline, or ask for a free pilot sample batch..." class="w-full border border-slate-400 px-3 py-2.5 outline-none focus:border-slate-800 text-sm"></textarea>
+                            </div>
+
+                            <button id="submit-btn" type="submit" class="rounded bg-slate-800 px-5 py-3 font-semibold text-white hover:bg-slate-700 text-sm">
+                                Submit Project Scope →
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Submission Success Confirmation -->
+                    <div id="success-wrap" class="hidden py-10 text-center">
+                        <i data-lucide="circle-check-big" class="mx-auto h-12 w-12 text-slate-800"></i>
+                        <h2 class="display mt-5 text-3xl font-bold text-slate-900">Thank You! Scope Received.</h2>
+                        <p class="mx-auto mt-3 max-w-md text-xs leading-6 text-slate-600">
+                            Our solutions desk has received your project details. We will respond with a proposal within 4 business hours.
+                        </p>
+                        <button class="mt-6 rounded border border-slate-700 bg-white px-5 py-2 text-xs font-semibold hover:bg-slate-100" onclick="showView('home')">
+                            Return to Home View
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Wireframe Footer -->
+    <footer class="border-t border-slate-300 bg-white">
+        <div class="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4 text-xs">
+            <div>
+                <strong class="text-sm text-slate-900 block mb-2">VilPower Solutions</strong>
+                <p class="leading-6 text-slate-600">
+                    Human-in-the-loop AI data operations, digital publishing, and lease abstraction wireframe prototype.
+                </p>
+                <div class="mt-3 text-[11px] font-mono-tag text-slate-500">
+                    Tirunelveli, Tamil Nadu, India
+                </div>
+            </div>
+            <div>
+                <h2 class="wire-label">Company</h2>
+                <div class="mt-3 grid gap-2 text-slate-700">
+                    <button class="text-left hover:underline" onclick="showView('home')">Home</button>
+                    <button class="text-left hover:underline" onclick="showView('about')">About Us</button>
+                    <button class="text-left hover:underline" onclick="showView('services')">Services</button>
+                    <button class="text-left hover:underline" onclick="showView('gallery')">Gallery</button>
+                    <button class="text-left hover:underline" onclick="showView('contact')">Contact Us</button>
+                </div>
+            </div>
+            <div>
+                <h2 class="wire-label">Services</h2>
+                <div class="mt-3 grid gap-2 text-slate-700">
+                    <button class="text-left hover:underline" onclick="chooseService('AI Data Services')">AI Data Services</button>
+                    <button class="text-left hover:underline" onclick="chooseService('XML & Digital Publishing')">XML & Digital Publishing</button>
+                    <button class="text-left hover:underline" onclick="chooseService('Lease Abstraction')">Lease Abstraction</button>
+                    <button class="text-left hover:underline" onclick="chooseService('Web Research')">Web Research</button>
+                    <button class="text-left hover:underline" onclick="chooseService('Legal Data Services')">Legal Data Services</button>
+                </div>
+            </div>
+            <div>
+                <h2 class="wire-label">Contact</h2>
+                <p class="mt-3 leading-6 text-slate-600">
+                    Email: contact@vilpower.com<br>
+                    Phone: +91 (0462) 250-XXXX<br>
+                    Tirunelveli, Tamil Nadu, India
+                </p>
+                <div class="placeholder mt-3 flex h-16 items-center justify-center text-[10px] text-slate-500">
+                    Map Wireframe Placeholder
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-slate-200 px-5 py-4 text-center text-xs text-slate-500 font-mono-tag">
+            © 2026 VilPower Solutions — Presentation-Ready Interactive Wireframe Prototype
+        </div>
+    </footer>
+
+    <!-- Modal 1: Leadership Modal -->
+    <div id="leadership-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/60 p-5" role="dialog" aria-modal="true">
+        <div class="w-full max-w-md bg-white p-7 shadow-xl border border-slate-300">
+            <div class="flex items-start justify-between">
+                <div>
+                    <span class="wire-label">Leadership profile</span>
+                    <h2 id="leader-modal-title" class="display mt-2 text-2xl font-bold text-slate-900">Leadership Profile</h2>
+                </div>
+                <button class="rounded border border-slate-400 p-1.5 hover:bg-slate-100" onclick="closeModal('leadership-modal')" aria-label="Close profile">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+            </div>
+            <div class="placeholder mt-5 flex h-36 items-center justify-center text-xs text-slate-500">
+                [Executive Headshot Wireframe Placeholder]
+            </div>
+            <p id="leader-modal-desc" class="mt-4 text-xs leading-6 text-slate-600">
+                Over two decades driving technical delivery, quality assurance, and rural women skill incubation for global clients.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal 2: Lightbox Modal -->
+    <div id="lightbox-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/70 p-5" role="dialog" aria-modal="true">
+        <div class="w-full max-w-2xl bg-white p-6 border border-slate-300">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+                <span id="lightbox-category" class="wire-label">Infrastructure</span>
+                <button class="rounded border border-slate-400 p-1.5 hover:bg-slate-100" onclick="closeModal('lightbox-modal')" aria-label="Close gallery image">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+            </div>
+            <div class="placeholder my-4 flex h-72 flex-col items-center justify-center text-slate-600">
+                <i data-lucide="image" class="h-14 w-14 mb-2"></i>
+                <span class="text-xs font-mono-tag">[Visual Asset Wireframe Specification]</span>
+            </div>
+            <div class="flex items-center justify-between gap-4 pt-2">
+                <button class="rounded border border-slate-400 px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 flex items-center gap-1" onclick="moveLightbox(-1)">
+                    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Previous
+                </button>
+                <p id="lightbox-caption" class="text-xs font-bold text-slate-800 text-center"></p>
+                <button class="rounded border border-slate-400 px-3 py-1.5 text-xs font-semibold hover:bg-slate-100 flex items-center gap-1" onclick="moveLightbox(1)">
+                    Next <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Free Pilot Request Modal -->
+    <div id="pilot-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-950/60 p-5" role="dialog" aria-modal="true">
+        <div class="w-full max-w-md bg-white p-6 border border-slate-300 shadow-xl">
+            <div class="flex items-start justify-between pb-3 border-b border-slate-200">
+                <div>
+                    <span class="wire-label">Sample benchmark</span>
+                    <h3 class="display mt-1 text-2xl font-bold text-slate-900">Request Free Pilot Batch</h3>
+                </div>
+                <button class="rounded border border-slate-400 p-1.5 hover:bg-slate-100" onclick="closePilotModal()">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+            </div>
+            <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+                Send us a sample dataset (up to 50 records). Our team will process it free of charge so you can audit our 99.7% precision benchmark.
+            </p>
+            <form onsubmit="handlePilotSubmit(event)" class="mt-4 space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Your Name</label>
+                    <input id="pilot-name" required placeholder="Full Name" class="w-full border border-slate-400 p-2 outline-none">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Work Email</label>
+                    <input id="pilot-email" type="email" required placeholder="name@company.com" class="w-full border border-slate-400 p-2 outline-none">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Service Type</label>
+                    <select id="pilot-service" class="w-full border border-slate-400 p-2 bg-white">
+                        <option>AI Data Annotation (Images/Video/Audio)</option>
+                        <option>XML & Digital Publishing (JATS/BITS)</option>
+                        <option>Commercial Lease Abstraction</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full rounded bg-slate-800 p-2.5 text-xs font-bold text-white hover:bg-slate-700">
+                    Claim 50-Record Free Pilot →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Application JavaScript Engine -->
+    <script>
+        let currentSlide = 0;
+        let lightboxIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+
+        const galleryData = [
+            { title: "Workstations & Cleanroom Setup", category: "Infrastructure" },
+            { title: "Secure Server & Network Vault", category: "Infrastructure" },
+            { title: "In-House 8-Week Incubation Batch", category: "Training" },
+            { title: "Computer Vision Quality Assurance Team", category: "Team" },
+            { title: "JATS XML Scientific Publishing Team", category: "Team" },
+            { title: "Rural Women Tech Empowerment Graduation", category: "Events" }
+        ];
+
+        // 1. Navigation & View Switching
+        function showView(id) {
+            const valid = ['home', 'about', 'services', 'industries', 'gallery', 'contact'];
+            if (!valid.includes(id)) id = 'home';
+
+            document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active-nav', link.getAttribute('data-view') === id);
+            });
+
+            if (window.location.hash !== '#' + id) {
+                history.pushState(null, null, '#' + id);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            lucide.createIcons();
+        }
+
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            showView(hash);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            showView(hash);
+            lucide.createIcons();
+        });
+
+        // 2. Mobile Menu
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
+
+        // 3. Hero Slider
+        function setSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+            document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+                dot.className = 'slide-dot h-3 w-3 rounded-full ' + (i === currentSlide ? 'bg-slate-800' : 'border border-slate-600');
+            });
+            lucide.createIcons();
+        }
+
+        function moveSlide(dir) {
+            setSlide(currentSlide + dir);
+        }
+
+        setInterval(() => setSlide(currentSlide + 1), 6500);
+
+        // 4. Accordion Toggle
+        function toggleExpand(el) {
+            el.classList.toggle('open');
+            lucide.createIcons();
+        }
+
+        // 5. Scroll to Service
+        function scrollService(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 6. Preselect Service in Contact Form
+        function chooseService(serviceName) {
+            showView('contact');
+            setTimeout(() => {
+                const select = document.getElementById('service-interest');
+                if (select) {
+                    select.value = serviceName;
+                    updateQualifications();
+                }
+                const form = document.getElementById('form-wrap');
+                if (form) form.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function updateQualifications() {
+            const val = document.getElementById('service-interest').value;
+            document.querySelectorAll('.qualification').forEach(el => el.classList.add('hidden'));
+
+            if (val === 'AI Data Services') {
+                document.getElementById('ai-fields').classList.remove('hidden');
+            } else if (val === 'Lease Abstraction') {
+                document.getElementById('lease-fields').classList.remove('hidden');
+            } else if (val === 'XML & Digital Publishing') {
+                document.getElementById('xml-fields').classList.remove('hidden');
+            }
+        }
+
+        // 7. Modals
+        function openLeadership(title, desc) {
+            document.getElementById('leader-modal-title').textContent = title;
+            document.getElementById('leader-modal-desc').textContent = desc;
+            document.getElementById('leadership-modal').classList.add('show');
+            lucide.createIcons();
+        }
+
+        function openPilotModal() {
+            document.getElementById('pilot-modal').classList.add('show');
+            lucide.createIcons();
+        }
+
+        function closePilotModal() {
+            document.getElementById('pilot-modal').classList.remove('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        // 8. Gallery Filter & Lightbox
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = 'filter-btn rounded border border-slate-300 bg-white text-slate-700 px-4 py-2 text-xs';
+            });
+            btn.className = 'filter-btn rounded border border-slate-700 bg-slate-800 text-white px-4 py-2 text-xs font-bold';
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.classList.toggle('hidden-gallery', category !== 'all' && item.dataset.category !== category);
+            });
+        }
+
+        function openLightbox(index) {
+            lightboxIndex = index;
+            const item = galleryData[lightboxIndex];
+            document.getElementById('lightbox-caption').textContent = item.title;
+            document.getElementById('lightbox-category').textContent = item.category;
+            document.getElementById('lightbox-modal').classList.add('show');
+            lucide.createIcons();
+        }
+
+        function moveLightbox(dir) {
+            lightboxIndex = (lightboxIndex + dir + galleryData.length) % galleryData.length;
+            openLightbox(lightboxIndex);
+        }
+
+        // 9. Lead Form Submission Handlers
+        function handleLeadSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Submitting Scope...';
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = 'Submit Project Scope →';
+                document.getElementById('form-wrap').classList.add('hidden');
+                document.getElementById('success-wrap').classList.remove('hidden');
+                lucide.createIcons();
+            }, 500);
+        }
+
+        function handlePilotSubmit(e) {
+            e.preventDefault();
+            closePilotModal();
+            alert('Thank you! Your request for a Free 50-Record Benchmark Pilot has been logged. Our operations manager will reach out within 4 hours.');
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
