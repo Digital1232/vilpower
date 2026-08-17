@@ -81,36 +81,57 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
-        /* In Website Mode: Hide wireframe labels and render rich modern cards */
+        /* Mode Switching: Wireframe vs Website View (Pure Light Theme) */
+        .live-mockup-visual {
+            display: none !important;
+        }
+
+        .wireframe-spec-text {
+            display: block;
+        }
+
         body.mode-website .wire-label {
             display: none !important;
         }
 
+        body.mode-website .wireframe-spec-text {
+            display: none !important;
+        }
+
+        body.mode-website .live-mockup-visual {
+            display: flex !important;
+        }
+
         body.mode-website .placeholder {
-            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important;
-            border: 1px solid #334155 !important;
-            color: #f8fafc !important;
-            box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.25);
-            border-radius: 0.75rem;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #0f172a !important;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.02) !important;
+            border-radius: 0.75rem !important;
+            padding: 1rem !important;
         }
 
-        body.mode-website .placeholder i {
-            color: #38bdf8 !important;
+        body.mode-website .gallery-item {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+            border-radius: 0.75rem !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
-        body.mode-website .placeholder strong {
-            color: #ffffff !important;
-        }
-
-        body.mode-website .placeholder span {
-            color: #94a3b8 !important;
+        body.mode-website .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -5px rgba(15, 23, 42, 0.12) !important;
+            border-color: #94a3b8 !important;
         }
 
         body.mode-website .border-dashed {
             border-style: solid !important;
-            border-color: #cbd5e1 !important;
+            border-color: #e2e8f0 !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
             border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         /* View Switching System */
@@ -1139,13 +1160,54 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-6 sm:p-8 text-center">
-                                <div>
+                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                                <!-- Wireframe Mode View -->
+                                <div class="wireframe-spec-text">
                                     <i data-lucide="brain-circuit" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
                                     <strong class="block text-slate-800 text-sm sm:text-base">Human + AI Data Operations Visual</strong>
                                     <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
                                         [Visual Wireframe Spec: 2D/3D Bounding Boxes, LiDAR point clouds, and HITL QA pipeline diagram]
                                     </span>
+                                </div>
+
+                                <!-- Website Live Mode View (Light Theme Realistic AI Studio) -->
+                                <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                                    <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                        <div class="flex items-center gap-2">
+                                            <span class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                            <strong class="text-xs font-bold text-slate-900 font-mono-tag">HITL Annotation Studio v3.4</strong>
+                                        </div>
+                                        <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-bold">QA Gate: 99.8% Audited</span>
+                                    </div>
+
+                                    <div class="my-3 rounded-lg border border-slate-200 bg-slate-50/80 p-3 relative overflow-hidden">
+                                        <div class="flex items-center justify-between text-[11px] text-slate-500 mb-2 font-mono-tag">
+                                            <span>Stream: Camera_04_Wide.mp4 (4K)</span>
+                                            <span class="text-emerald-700 font-bold">Tier-3 Verified ✓</span>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-2 gap-2 text-xs">
+                                            <div class="p-2 rounded bg-white border border-blue-300 shadow-xs">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="font-bold text-blue-900 text-[11px]">🚗 Vehicle_082</span>
+                                                    <span class="text-[9px] px-1 rounded bg-blue-100 text-blue-800 font-mono-tag">3D Bounding</span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-500 mt-0.5 block">Confidence: 99.9% (Dual Pass)</span>
+                                            </div>
+                                            <div class="p-2 rounded bg-white border border-emerald-300 shadow-xs">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="font-bold text-emerald-900 text-[11px]">🚶 Pedestrian_14</span>
+                                                    <span class="text-[9px] px-1 rounded bg-emerald-100 text-emerald-800 font-mono-tag">Polygon</span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-500 mt-0.5 block">Keypoints: 17 joints mapped</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i> Zero-Defect QA SLA</span>
+                                        <span class="font-bold text-slate-900">400+ Analysts</span>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -1183,13 +1245,43 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-6 sm:p-8 text-center">
-                                <div>
+                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                                <!-- Wireframe Mode View -->
+                                <div class="wireframe-spec-text">
                                     <i data-lucide="users-round" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
                                     <strong class="block text-slate-800 text-sm sm:text-base">Women-Led Delivery Team Visual</strong>
                                     <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
                                         [Visual Wireframe Spec: Tirunelveli operations floor, training academy, and collaborative quality reviews]
                                     </span>
+                                </div>
+
+                                <!-- Website Live Mode View (Light Theme Operations Hub) -->
+                                <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                                    <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="map-pin" class="w-4 h-4 text-slate-700"></i>
+                                            <strong class="text-xs font-bold text-slate-900 font-mono-tag">Tirunelveli Delivery Campus (HQ)</strong>
+                                        </div>
+                                        <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">15+ Years Active</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2 my-2.5">
+                                        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                                            <span class="text-[10px] uppercase font-bold text-slate-500 font-mono-tag block">Workforce Base</span>
+                                            <strong class="text-base font-bold text-slate-900 block mt-0.5">95% Women</strong>
+                                            <span class="text-[10px] text-emerald-600 font-semibold">Rural Tech Empowerment</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                                            <span class="text-[10px] uppercase font-bold text-slate-500 font-mono-tag block">Retention Rate</span>
+                                            <strong class="text-base font-bold text-slate-900 block mt-0.5">&lt; 3% Attrition</strong>
+                                            <span class="text-[10px] text-blue-600 font-semibold">Unmatched Team Stability</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i> In-House 8-Week Incubation</span>
+                                        <span class="font-bold text-slate-900">1,500+ Graduated</span>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -1227,13 +1319,41 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-6 sm:p-8 text-center">
-                                <div>
+                            <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                                <!-- Wireframe Mode View -->
+                                <div class="wireframe-spec-text">
                                     <i data-lucide="shield-check" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
                                     <strong class="block text-slate-800 text-sm sm:text-base">Global Data Operations Visual</strong>
                                     <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
                                         [Visual Wireframe Spec: Cleanroom security, ISO 27001 readiness & worldwide client distribution map]
                                     </span>
+                                </div>
+
+                                <!-- Website Live Mode View (Light Theme Security & Cleanroom Hub) -->
+                                <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                                    <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="shield-check" class="w-4 h-4 text-blue-600"></i>
+                                            <strong class="text-xs font-bold text-slate-900 font-mono-tag">Offshore Cleanroom Governance</strong>
+                                        </div>
+                                        <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-bold">ISO & NDA Compliant</span>
+                                    </div>
+
+                                    <div class="my-2.5 space-y-1.5 text-xs">
+                                        <div class="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-200">
+                                            <span class="flex items-center gap-2 text-slate-700 text-[11px] font-medium"><i data-lucide="lock" class="w-3.5 h-3.5 text-slate-500"></i> Air-Gapped Workstations</span>
+                                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100/60 px-1.5 py-0.5 rounded">USB Disabled</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-200">
+                                            <span class="flex items-center gap-2 text-slate-700 text-[11px] font-medium"><i data-lucide="network" class="w-3.5 h-3.5 text-slate-500"></i> Secure Transfer (sFTP / S3)</span>
+                                            <span class="text-[10px] font-bold text-blue-700 bg-blue-100/60 px-1.5 py-0.5 rounded">256-bit AES</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                                        <span class="flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5 text-slate-700"></i> Global Delivery</span>
+                                        <span class="font-bold text-slate-900">US · UK · EU · AU · IN</span>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -1380,13 +1500,62 @@
 
             <!-- 04 / Reasons to Choose VilPower (Accordion) -->
             <section id="capabilities-reasons" class="service-anchor mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 sm:px-5 py-12 sm:py-20 md:grid-cols-2 items-center">
-                <div class="placeholder flex min-h-60 sm:min-h-80 md:min-h-96 items-center justify-center p-6 sm:p-8 text-center">
-                    <div>
+                <div class="placeholder flex min-h-60 sm:min-h-80 md:min-h-96 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                    <!-- Wireframe Mode View -->
+                    <div class="wireframe-spec-text">
                         <i data-lucide="building-2" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
                         <strong class="block text-slate-800 text-sm sm:text-base">VilPower Team / Facility Wireframe Spec</strong>
                         <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
                             [Photography Wireframe: Modern cleanroom facility, multi-tier QA pods, and trained women operators]
                         </span>
+                    </div>
+
+                    <!-- Website Live Mode View (Light Theme Delivery Architecture) -->
+                    <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                            <strong class="text-xs font-bold text-slate-900 font-mono-tag">Multi-Tier Delivery Quality Architecture</strong>
+                            <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">99.7% Accuracy</span>
+                        </div>
+
+                        <div class="space-y-2 my-3">
+                            <div class="p-2.5 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="grid h-6 w-6 place-items-center rounded bg-slate-900 text-white text-[10px] font-bold">01</span>
+                                    <div>
+                                        <strong class="text-xs text-slate-900 block">Micro-Annotation Tasking</strong>
+                                        <span class="text-[10px] text-slate-500">Dedicated domain-trained analyst pods</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-slate-600">100% Ingestion</span>
+                            </div>
+
+                            <div class="p-2.5 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="grid h-6 w-6 place-items-center rounded bg-blue-600 text-white text-[10px] font-bold">02</span>
+                                    <div>
+                                        <strong class="text-xs text-slate-900 block">Dual Peer Verification</strong>
+                                        <span class="text-[10px] text-slate-500">Cross-validation on boundary & schema edge cases</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-blue-700">Dual-Pass Gate</span>
+                            </div>
+
+                            <div class="p-2.5 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="grid h-6 w-6 place-items-center rounded bg-emerald-600 text-white text-[10px] font-bold">03</span>
+                                    <div>
+                                        <strong class="text-xs text-slate-900 block">Senior SME Audit & Sign-off</strong>
+                                        <span class="text-[10px] text-slate-500">Statistical sampling & zero-defect threshold check</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700">✓ 99.7% Signed</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                            <span>SLA Delivery Model</span>
+                            <span class="font-bold text-slate-900">Zero-Defect Commitment</span>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -1475,13 +1644,49 @@
                             Read Our Origin Story →
                         </button>
                     </div>
-                    <div class="placeholder flex min-h-60 sm:min-h-80 items-center justify-center p-6 sm:p-8 text-center">
-                        <div>
+                    <div class="placeholder flex min-h-60 sm:min-h-80 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                        <!-- Wireframe Mode View -->
+                        <div class="wireframe-spec-text">
                             <i data-lucide="tree-pine" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-16 sm:w-16 text-slate-600"></i>
                             <strong class="block text-sm sm:text-base font-bold text-slate-800">AI Banyan Tree Wireframe Spec</strong>
                             <span class="mt-2 block max-w-sm text-xs text-slate-500 leading-relaxed">
                                 [Conceptual Infographic Wireframe: Illustrating the connection between rural community roots and global enterprise canopy]
                             </span>
+                        </div>
+
+                        <!-- Website Live Mode View (Digital Banyan Tree Infographic Card) -->
+                        <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                            <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-base">🌳</span>
+                                    <strong class="text-xs font-bold text-slate-900 font-mono-tag">The Impact Banyan Model</strong>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">157M+ Records</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 my-2.5 text-xs">
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                                    <span class="text-[10px] font-bold text-emerald-700 block">🌱 1. Community Roots</span>
+                                    <p class="text-[11px] text-slate-600 mt-0.5">Rural women talent onboarding & 8-week incubation.</p>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                                    <span class="text-[10px] font-bold text-blue-700 block">⚡ 2. Rigorous Trunk</span>
+                                    <p class="text-[11px] text-slate-600 mt-0.5">3-tier QA & ISO 27001-ready data security.</p>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                                    <span class="text-[10px] font-bold text-slate-800 block">🌿 3. Core Branches</span>
+                                    <p class="text-[11px] text-slate-600 mt-0.5">Computer Vision, XML STM Publishing, Lease Audit.</p>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                                    <span class="text-[10px] font-bold text-purple-700 block">🌍 4. Global Canopy</span>
+                                    <p class="text-[11px] text-slate-600 mt-0.5">US, UK, EU, Australia & global enterprise clients.</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                                <span>Impact Sourcing</span>
+                                <span class="font-bold text-emerald-700">100% Fair-Wage Incubation</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1562,14 +1767,55 @@
 
                     <!-- World Map Placeholder -->
                     <div class="placeholder relative min-h-64 sm:min-h-72 overflow-hidden p-4 sm:p-5 rounded">
-                        <span class="wire-label block mb-2">World map wireframe — Active client hubs</span>
-                        <div class="relative w-full h-48 sm:h-56 flex items-center justify-center">
-                            <i data-lucide="globe-2" class="w-24 h-24 sm:w-32 sm:h-32 text-slate-400/60"></i>
-                            <button class="map-dot absolute left-[10%] sm:left-[14%] top-[28%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('United States Hub: AI Data Annotation & Medical NLP')">United States</button>
-                            <button class="map-dot absolute left-[40%] sm:left-[45%] top-[20%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('United Kingdom Hub: STM Publishing & JATS XML')">UK</button>
-                            <button class="map-dot absolute left-[50%] sm:left-[54%] top-[30%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('Europe Hub: Academic & Scientific XML')">Europe</button>
-                            <button class="map-dot absolute left-[56%] sm:left-[62%] top-[52%] rounded border-2 border-slate-800 bg-slate-800 text-white px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-md" onclick="alert('VilPower Delivery HQ (Tirunelveli, India): 400+ Trained Operators')">⭐ India (HQ)</button>
-                            <button class="map-dot absolute left-[74%] sm:left-[80%] top-[68%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('Australia Hub: Commercial Lease Abstraction')">Australia</button>
+                        <!-- Wireframe Mode View -->
+                        <div class="wireframe-spec-text">
+                            <span class="wire-label block mb-2">World map wireframe — Active client hubs</span>
+                            <div class="relative w-full h-48 sm:h-56 flex items-center justify-center">
+                                <i data-lucide="globe-2" class="w-24 h-24 sm:w-32 sm:h-32 text-slate-400/60"></i>
+                                <button class="map-dot absolute left-[10%] sm:left-[14%] top-[28%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('United States Hub: AI Data Annotation & Medical NLP')">United States</button>
+                                <button class="map-dot absolute left-[40%] sm:left-[45%] top-[20%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('United Kingdom Hub: STM Publishing & JATS XML')">UK</button>
+                                <button class="map-dot absolute left-[50%] sm:left-[54%] top-[30%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('Europe Hub: Academic & Scientific XML')">Europe</button>
+                                <button class="map-dot absolute left-[56%] sm:left-[62%] top-[52%] rounded border-2 border-slate-800 bg-slate-800 text-white px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-md" onclick="alert('VilPower Delivery HQ (Tirunelveli, India): 400+ Trained Operators')">⭐ India (HQ)</button>
+                                <button class="map-dot absolute left-[74%] sm:left-[80%] top-[68%] rounded border border-slate-500 bg-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono font-bold shadow-sm" onclick="alert('Australia Hub: Commercial Lease Abstraction')">Australia</button>
+                            </div>
+                        </div>
+
+                        <!-- Website Live Mode View (Light Theme Global Operations Grid) -->
+                        <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                            <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="globe" class="w-4 h-4 text-blue-600"></i>
+                                    <strong class="text-xs font-bold text-slate-900 font-mono-tag">Worldwide Enterprise Client Footprint</strong>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-bold">24/7 SLA Support</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 my-2.5 text-xs">
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-900">🇺🇸 United States</span>
+                                    <span class="text-[10px] text-slate-500 font-mono-tag">EST / PST</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-900">🇬🇧 United Kingdom</span>
+                                    <span class="text-[10px] text-slate-500 font-mono-tag">GMT</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-900">🇪🇺 Continental Europe</span>
+                                    <span class="text-[10px] text-slate-500 font-mono-tag">CET</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-900">🇦🇺 Australia / NZ</span>
+                                    <span class="text-[10px] text-slate-500 font-mono-tag">AEST</span>
+                                </div>
+                            </div>
+
+                            <div class="p-2 rounded-lg bg-emerald-50/70 border border-emerald-200 flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                                    <strong class="text-emerald-950 font-mono-tag text-[11px]">Delivery Center: Tirunelveli (HQ)</strong>
+                                </div>
+                                <span class="text-[11px] font-bold text-emerald-800">400+ Analysts Active</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1630,13 +1876,49 @@
                             Today, over 95% of our workforce is women, consistently delivering 99.7% audited accuracy with exceptionally low attrition (&lt;3%).
                         </p>
                     </div>
-                    <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-6 sm:p-8 text-center">
-                        <div>
+                    <div class="placeholder flex min-h-60 sm:min-h-72 items-center justify-center p-4 sm:p-6 text-center relative overflow-hidden">
+                        <!-- Wireframe Mode View -->
+                        <div class="wireframe-spec-text">
                             <i data-lucide="graduation-cap" class="mx-auto mb-3 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
                             <strong class="block text-slate-800 text-sm sm:text-base">Workforce Training Wireframe Spec</strong>
                             <span class="mt-2 block text-xs text-slate-500 max-w-xs mx-auto">
                                 [Photography Wireframe: 8-week onboarding academy, mentoring pods & paid skill training]
                             </span>
+                        </div>
+
+                        <!-- Website Live Mode View (Light Theme Training Academy Card) -->
+                        <div class="live-mockup-visual w-full h-full flex flex-col justify-between text-left p-1">
+                            <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+                                    <strong class="text-xs font-bold text-slate-900 font-mono-tag">VilPower Incubation Academy</strong>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">8-Week Program</span>
+                            </div>
+
+                            <div class="space-y-1.5 my-2.5 text-xs">
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-[11px]">W1–2: Digital Tooling & Precision Input</span>
+                                    <span class="text-[10px] text-slate-500 font-mono-tag">Module 1</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-[11px]">W3–4: 2D/3D CVAT & LiDAR Annotation</span>
+                                    <span class="text-[10px] text-blue-700 font-mono-tag">Module 2</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-[11px]">W5–6: JATS XML & Commercial Leases</span>
+                                    <span class="text-[10px] text-emerald-700 font-mono-tag">Module 3</span>
+                                </div>
+                                <div class="p-2 rounded bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                    <span class="font-bold text-slate-800 text-[11px]">W7–8: Multi-Tier QA & 99.7% Benchmark</span>
+                                    <span class="text-[10px] text-purple-700 font-mono-tag">Graduation</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono-tag text-slate-600">
+                                <span>Impact Metric</span>
+                                <span class="font-bold text-slate-900">1,500+ Rural Women Graduated</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1684,35 +1966,59 @@
                 <div id="about-leadership" class="service-anchor">
                     <h2 class="display mt-16 sm:mt-20 text-3xl sm:text-4xl font-bold text-slate-900">The People Behind VilPower</h2>
                     <div class="mt-6 sm:mt-7 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center">
-                        <div class="placeholder grid h-36 sm:h-40 place-items-center">
-                            <i data-lucide="user-round" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center shadow-xs rounded-lg">
+                        <div class="placeholder grid h-36 sm:h-40 place-items-center relative overflow-hidden rounded-lg">
+                            <div class="wireframe-spec-text">
+                                <i data-lucide="user-round" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                            </div>
+                            <div class="live-mockup-visual flex-col items-center justify-center p-3">
+                                <div class="grid h-16 w-16 place-items-center rounded-full bg-slate-900 text-white font-bold text-lg font-display shadow-sm">
+                                    MD
+                                </div>
+                                <span class="mt-2 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-mono-tag">20+ Yrs Exp</span>
+                            </div>
                         </div>
                         <h3 class="mt-4 font-bold text-slate-900 text-sm sm:text-base">Managing Director</h3>
                         <p class="mt-1 text-xs text-slate-600">Founder & Strategy</p>
-                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Managing Director', '20+ years steering IT & BPO operations, championing rural women incubation and global client delivery.')">
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline hover:text-slate-600" onclick="openLeadership('Managing Director', '20+ years steering IT & BPO operations, championing rural women incubation and global client delivery.')">
                             View Profile
                         </button>
                     </article>
 
-                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center">
-                        <div class="placeholder grid h-36 sm:h-40 place-items-center">
-                            <i data-lucide="user-round" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center shadow-xs rounded-lg">
+                        <div class="placeholder grid h-36 sm:h-40 place-items-center relative overflow-hidden rounded-lg">
+                            <div class="wireframe-spec-text">
+                                <i data-lucide="user-round" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                            </div>
+                            <div class="live-mockup-visual flex-col items-center justify-center p-3">
+                                <div class="grid h-16 w-16 place-items-center rounded-full bg-blue-700 text-white font-bold text-lg font-display shadow-sm">
+                                    DO
+                                </div>
+                                <span class="mt-2 text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-mono-tag">Delivery Architect</span>
+                            </div>
                         </div>
                         <h3 class="mt-4 font-bold text-slate-900 text-sm sm:text-base">Director of Operations</h3>
                         <p class="mt-1 text-xs text-slate-600">Delivery & QA</p>
-                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Director of Operations', 'Overseeing project delivery SLAs, tool configurations, and multi-tier quality gates.')">
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline hover:text-slate-600" onclick="openLeadership('Director of Operations', 'Overseeing project delivery SLAs, tool configurations, and multi-tier quality gates.')">
                             View Profile
                         </button>
                     </article>
 
-                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center col-span-1 sm:col-span-2 md:col-span-1">
-                        <div class="placeholder grid h-36 sm:h-40 place-items-center">
-                            <i data-lucide="users" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                    <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center shadow-xs rounded-lg col-span-1 sm:col-span-2 md:col-span-1">
+                        <div class="placeholder grid h-36 sm:h-40 place-items-center relative overflow-hidden rounded-lg">
+                            <div class="wireframe-spec-text">
+                                <i data-lucide="users" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
+                            </div>
+                            <div class="live-mockup-visual flex-col items-center justify-center p-3">
+                                <div class="grid h-16 w-16 place-items-center rounded-full bg-purple-700 text-white font-bold text-lg font-display shadow-sm">
+                                    HT
+                                </div>
+                                <span class="mt-2 text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full font-mono-tag">Academy Lead</span>
+                            </div>
                         </div>
                         <h3 class="mt-4 font-bold text-slate-900 text-sm sm:text-base">Head of Training</h3>
                         <p class="mt-1 text-xs text-slate-600">Academy & Skill Development</p>
-                        <button class="mt-4 text-xs font-bold text-slate-800 underline" onclick="openLeadership('Head of Training', 'Leading the 8-week onboarding curriculum, AI annotation mastery, and team welfare.')">
+                        <button class="mt-4 text-xs font-bold text-slate-800 underline hover:text-slate-600" onclick="openLeadership('Head of Training', 'Leading the 8-week onboarding curriculum, AI annotation mastery, and team welfare.')">
                             View Profile
                         </button>
                     </article>
@@ -1955,8 +2261,25 @@
                         <p><b>Phone:</b> +91 (0462) 250-XXXX</p>
                         <p><b>Address:</b> VilPower Tower, Tirunelveli, Tamil Nadu 627001, India</p>
                     </div>
-                    <div class="placeholder mt-6 flex h-36 sm:h-40 items-center justify-center text-xs text-slate-500 rounded">
-                        [Embedded Facility Map Wireframe Spec]
+                    <div class="placeholder mt-6 flex min-h-36 sm:min-h-40 items-center justify-center text-xs text-slate-500 rounded p-4 relative overflow-hidden">
+                        <div class="wireframe-spec-text text-center">
+                            <i data-lucide="map" class="w-6 h-6 mx-auto mb-1.5 text-slate-500"></i>
+                            <span>[Embedded Facility Map Wireframe Spec]</span>
+                        </div>
+                        <div class="live-mockup-visual w-full flex-col justify-between text-left">
+                            <div class="flex items-center justify-between pb-1.5 border-b border-slate-200">
+                                <span class="font-bold text-slate-900 text-xs font-mono-tag flex items-center gap-1.5">
+                                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                                    Tirunelveli Operations Center
+                                </span>
+                                <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Offshore HQ</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-2">VilPower Tower, High-Tech Operations Zone, Tirunelveli, TN, India</p>
+                            <div class="mt-2 text-[10px] font-mono-tag text-slate-500 flex items-center justify-between pt-1 border-t border-slate-100">
+                                <span>24/7 Redundant Power</span>
+                                <span>Dedicated Fiber</span>
+                            </div>
+                        </div>
                     </div>
                 </aside>
 
