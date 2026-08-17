@@ -137,11 +137,147 @@
             display: block;
         }
 
-        /* Nav active link */
-        .nav-link.active-nav {
-            color: #254e70;
-            border-bottom: 2px solid #254e70;
+        /* Nav active link & Indicators */
+        .nav-link.active-nav,
+        .nav-item-btn.active-nav {
+            color: #0f172a;
             font-weight: 700;
+        }
+
+        .nav-item-btn {
+            position: relative;
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: #254e70;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 9999px;
+        }
+
+        .nav-item-btn:hover .nav-indicator,
+        .nav-item-btn.active-nav .nav-indicator {
+            transform: scaleX(1);
+        }
+
+        .menu-chevron {
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .has-dropdown:hover .menu-chevron,
+        .has-dropdown:focus-within .menu-chevron,
+        .has-dropdown.is-open .menu-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Mega Menu Dropdown Panel (100% Solid, Non-Transparent) */
+        .mega-menu-panel {
+            position: absolute;
+            top: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: opacity 0.18s ease,
+                        transform 0.18s ease,
+                        visibility 0.18s;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .has-dropdown:hover .mega-menu-panel,
+        .has-dropdown:focus-within .mega-menu-panel,
+        .has-dropdown.is-open .mega-menu-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .mega-menu-card {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(203, 213, 225, 0.9) !important;
+            position: relative;
+            z-index: 101;
+        }
+
+        /* Subtle AI Flow Node Animations */
+        @keyframes nodePulse {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        @keyframes dataStream {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .ai-pulse-dot {
+            animation: nodePulse 2.8s ease-in-out infinite;
+        }
+
+        /* Mega Menu Service Item */
+        .mega-item {
+            background-color: #ffffff;
+            transition: all 0.16s ease;
+            border-radius: 6px;
+        }
+
+        .mega-item:hover {
+            background-color: #f1f5f9 !important;
+            color: #0f172a;
+            padding-left: 0.5rem;
+        }
+
+        .mega-item .item-arrow {
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.16s ease;
+        }
+
+        .mega-item:hover .item-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Sticky Header Scrolled State */
+        #main-header {
+            transition: padding 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        #main-header.header-scrolled {
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+            background-color: rgba(255, 255, 255, 0.98);
+            border-color: #e2e8f0;
+        }
+
+        #main-header.header-scrolled #header-nav-wrap {
+            padding-top: 0.55rem;
+            padding-bottom: 0.55rem;
+        }
+
+        /* Mobile Sub-menu Accordion */
+        .mobile-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-accordion-content.open {
+            max-height: 1000px;
+        }
+
+        .mobile-acc-btn.open .mobile-chevron {
+            transform: rotate(180deg);
         }
 
         /* Map Radar Dot */
@@ -200,67 +336,697 @@
     </aside>
 
     <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 w-full border-b border-slate-300 bg-white/95 backdrop-blur">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 py-3 sm:py-4" aria-label="Main navigation">
-            <!-- Brand Logo -->
-            <button type="button" onclick="showView('home')" class="flex items-center gap-2.5 sm:gap-3 text-left focus:outline-none" aria-label="Go to VilPower home">
-                <span class="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center border-2 border-slate-800 font-display font-bold text-slate-900 text-sm sm:text-base shadow-sm shrink-0">
+    <header id="main-header" class="sticky top-0 z-50 w-full border-b border-slate-300 bg-white">
+        <nav id="header-nav-wrap" class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3.5 transition-all duration-300" aria-label="Main navigation">
+            <!-- Brand Logo (Left) -->
+            <button type="button" onclick="showView('home')" class="flex items-center gap-2.5 sm:gap-3 text-left focus:outline-none group" aria-label="Go to VilPower home">
+                <span class="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center border-2 border-slate-900 bg-slate-900 text-white font-display font-bold text-sm sm:text-base shadow-sm shrink-0 rounded transition-transform group-hover:scale-105">
                     VP
                 </span>
                 <span class="flex flex-col">
-                    <strong class="block text-sm sm:text-base tracking-tight font-bold text-slate-900 leading-tight">VilPower Solutions</strong>
-                    <span class="wire-label text-[9px] sm:text-[10px]">HITL AI & Data Services</span>
+                    <strong class="block text-sm sm:text-base tracking-tight font-bold text-slate-900 leading-tight">VilPower</strong>
+                    <span class="wire-label text-[9px] sm:text-[10px] text-slate-500">HITL AI & Data Operations</span>
                 </span>
             </button>
 
-            <!-- Desktop Navigation Links -->
-            <div class="desktop-nav hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-slate-700">
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="home" onclick="showView('home')">Home</button>
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="about" onclick="showView('about')">About Us</button>
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="services" onclick="showView('services')">Services</button>
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="industries" onclick="showView('industries')">Industries</button>
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="gallery" onclick="showView('gallery')">Gallery</button>
-                <button class="nav-link border-b-2 border-transparent py-2 hover:text-slate-900 transition-colors" data-view="contact" onclick="showView('contact')">Contact Us</button>
+            <!-- Desktop Navigation Bar (Center) -->
+            <div class="desktop-nav hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-slate-700">
+                
+                <!-- 1. SOLUTIONS MEGA MENU -->
+                <div class="has-dropdown relative group py-2">
+                    <button type="button" class="nav-item-btn flex items-center gap-1 px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" data-view="services" onclick="showView('services')" aria-expanded="false" aria-haspopup="true">
+                        <span>Solutions</span>
+                        <i data-lucide="chevron-down" class="menu-chevron w-3.5 h-3.5 text-slate-500"></i>
+                        <span class="nav-indicator"></span>
+                    </button>
+
+                    <!-- SOLUTIONS Mega Menu Container -->
+                    <div class="mega-menu-panel absolute top-full -left-20 md:-left-36 lg:left-1/2 lg:-translate-x-[35%] pt-2 w-[980px] max-w-[95vw] z-50">
+                        <div class="mega-menu-card bg-white p-6 rounded-xl shadow-2xl">
+                            
+                            <!-- Minimal AI / Data Visual Flow Pipeline -->
+                            <div class="mb-5 rounded-lg border border-slate-200 bg-slate-50 p-3.5 text-slate-800">
+                                <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+                                    <div class="flex items-center gap-2 font-mono-tag">
+                                        <span class="relative flex h-2 w-2">
+                                            <span class="ai-pulse-dot absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-800"></span>
+                                        </span>
+                                        <span class="text-[10px] font-bold tracking-wider uppercase text-slate-700">AI Data Ecosystem</span>
+                                    </div>
+                                    
+                                    <!-- Flow Nodes -->
+                                    <div class="flex items-center gap-2 font-mono-tag text-[10px] text-slate-600 overflow-x-auto w-full md:w-auto justify-between md:justify-end">
+                                        <span class="px-2 py-0.5 rounded bg-white border border-slate-300 font-semibold text-slate-800 shrink-0">Raw Datasets</span>
+                                        <span class="text-slate-400">→</span>
+                                        <span class="px-2 py-0.5 rounded bg-white border border-slate-300 font-semibold text-slate-800 shrink-0">HITL Annotation</span>
+                                        <span class="text-slate-400">→</span>
+                                        <span class="px-2 py-0.5 rounded bg-white border border-slate-300 font-semibold text-slate-800 shrink-0">3-Tier QA (99.7%)</span>
+                                        <span class="text-slate-400">→</span>
+                                        <span class="px-2 py-0.5 rounded bg-slate-900 text-cyan-400 border border-slate-800 font-bold shrink-0">Business Intelligence</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4 Category Grid -->
+                            <div class="grid grid-cols-4 gap-5 divide-x divide-slate-200">
+                                
+                                <!-- Category 1: AI & DATA -->
+                                <div class="pr-2">
+                                    <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+                                        <i data-lucide="brain-circuit" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                        <strong class="text-xs font-bold uppercase tracking-wider text-slate-900">AI & Data</strong>
+                                    </div>
+                                    <ul class="space-y-1 text-xs text-slate-600">
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>AI Data Annotation</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Image Annotation</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Video Annotation</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Voice / Audio Annotation</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Data Labeling</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Data Classification</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Data Validation</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('AI Data Services')">
+                                                <span>Human-in-the-Loop QA</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Category 2: DIGITAL CONTENT -->
+                                <div class="pl-4 pr-2">
+                                    <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+                                        <i data-lucide="file-code-2" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                        <strong class="text-xs font-bold uppercase tracking-wider text-slate-900">Digital Content</strong>
+                                    </div>
+                                    <ul class="space-y-1 text-xs text-slate-600">
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>XML Publishing</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>E-Publishing</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>XML Content Structuring</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>JATS</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>DocBook</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>DITA</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('XML & Digital Publishing')">
+                                                <span>EPUB / HTML Conversion</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Category 3: RESEARCH & DATA -->
+                                <div class="pl-4 pr-2">
+                                    <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+                                        <i data-lucide="search" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                        <strong class="text-xs font-bold uppercase tracking-wider text-slate-900">Research & Data</strong>
+                                    </div>
+                                    <ul class="space-y-1 text-xs text-slate-600">
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Web Research</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Market Research</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Competitor Research</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Data Extraction</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Data Enrichment</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Data Processing</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Web Research')">
+                                                <span>Information Gathering</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Category 4: REAL ESTATE & LEGAL -->
+                                <div class="pl-4">
+                                    <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+                                        <i data-lucide="building-2" class="w-4 h-4 text-slate-700 shrink-0"></i>
+                                        <strong class="text-xs font-bold uppercase tracking-wider text-slate-900">Real Estate & Legal</strong>
+                                    </div>
+                                    <ul class="space-y-1 text-xs text-slate-600">
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Lease Abstraction')">
+                                                <span>Lease Abstraction</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Lease Abstraction')">
+                                                <span>Lease Data Extraction</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Lease Abstraction')">
+                                                <span>Lease Audit Support</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Legal Data Services')">
+                                                <span>Legal Data Services</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Legal Data Services')">
+                                                <span>Legal Research</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Legal Data Services')">
+                                                <span>Document Review</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="mega-item w-full text-left py-1 px-1.5 flex items-center justify-between hover:text-slate-900" onclick="chooseService('Legal Data Services')">
+                                                <span>Document Classification</span>
+                                                <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Footer Action -->
+                            <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+                                <span class="text-[11px] text-slate-500 font-mono-tag">Additional Services — Coming Soon / Content Pending</span>
+                                <button type="button" onclick="showView('services')" class="inline-flex items-center gap-1.5 font-bold text-slate-900 hover:text-slate-700 underline underline-offset-4">
+                                    <span>View All Services</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. INDUSTRIES MEGA MENU -->
+                <div class="has-dropdown relative group py-2">
+                    <button type="button" class="nav-item-btn flex items-center gap-1 px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" data-view="industries" onclick="showView('industries')" aria-expanded="false" aria-haspopup="true">
+                        <span>Industries</span>
+                        <i data-lucide="chevron-down" class="menu-chevron w-3.5 h-3.5 text-slate-500"></i>
+                        <span class="nav-indicator"></span>
+                    </button>
+
+                    <!-- INDUSTRIES Mega Menu Container -->
+                    <div class="mega-menu-panel absolute top-full -left-36 md:-left-48 lg:left-1/2 lg:-translate-x-[42%] pt-2 w-[840px] max-w-[95vw] z-50">
+                        <div class="mega-menu-card bg-white p-6 rounded-xl shadow-2xl">
+                            <div class="mb-4 pb-2 border-b border-slate-200 flex items-center justify-between">
+                                <div>
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono-tag">Industry Solutions</strong>
+                                    <p class="text-xs text-slate-500 mt-0.5">Specialized human-in-the-loop workflows engineered for data-intensive enterprise verticals.</p>
+                                </div>
+                            </div>
+
+                            <!-- 6 Industry Categories -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <!-- AI & Machine Learning -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('AI Data Services')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="cpu" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>AI & Machine Learning</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        Data annotation, training data, computer vision, NLP and human-in-the-loop workflows.
+                                    </p>
+                                </button>
+
+                                <!-- Publishing & Media -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('XML & Digital Publishing')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="book-open" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>Publishing & Media</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        XML structuring, e-publishing and digital content operations.
+                                    </p>
+                                </button>
+
+                                <!-- Commercial Real Estate -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('Lease Abstraction')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="building-2" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>Commercial Real Estate</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        Lease abstraction, lease data extraction and lease audit support.
+                                    </p>
+                                </button>
+
+                                <!-- Legal -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('Legal Data Services')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="scale" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>Legal</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        Legal data processing, document review and research.
+                                    </p>
+                                </button>
+
+                                <!-- E-Commerce -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('E-Commerce Support')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="shopping-bag" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>E-Commerce</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        Product data, catalog operations and data enrichment.
+                                    </p>
+                                </button>
+
+                                <!-- Research & Analytics -->
+                                <button class="border border-slate-200 bg-white rounded-lg p-3.5 text-left hover:border-slate-800 hover:bg-slate-50 transition-all group shadow-xs" onclick="chooseService('Web Research')">
+                                    <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
+                                        <i data-lucide="line-chart" class="w-4 h-4 text-slate-700 group-hover:text-slate-900"></i>
+                                        <span>Research & Analytics</span>
+                                    </div>
+                                    <p class="mt-1.5 text-[11px] leading-relaxed text-slate-600">
+                                        Web research, market research and information extraction.
+                                    </p>
+                                </button>
+                            </div>
+
+                            <!-- Bottom Footer Action -->
+                            <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+                                <span class="text-[11px] text-slate-500 font-mono-tag">Domain teams ramp up in &lt;14 business days</span>
+                                <button type="button" onclick="showView('industries')" class="inline-flex items-center gap-1.5 font-bold text-slate-900 hover:text-slate-700 underline underline-offset-4">
+                                    <span>Explore All Industries</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. CAPABILITIES MEGA MENU -->
+                <div class="has-dropdown relative group py-2">
+                    <button type="button" class="nav-item-btn flex items-center gap-1 px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" onclick="navigateTo('home', 'capabilities-reasons')" aria-expanded="false" aria-haspopup="true">
+                        <span>Capabilities</span>
+                        <i data-lucide="chevron-down" class="menu-chevron w-3.5 h-3.5 text-slate-500"></i>
+                        <span class="nav-indicator"></span>
+                    </button>
+
+                    <!-- CAPABILITIES Mega Menu Container -->
+                    <div class="mega-menu-panel absolute top-full -left-52 md:-left-64 lg:left-1/2 lg:-translate-x-[52%] pt-2 w-[840px] max-w-[95vw] z-50">
+                        <div class="mega-menu-card bg-white p-6 rounded-xl shadow-2xl">
+                            <div class="mb-4 pb-2 border-b border-slate-200 flex items-center justify-between">
+                                <div>
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono-tag">Delivery Capability Engine</strong>
+                                    <p class="text-xs text-slate-500 mt-0.5">VilPower is not just selling individual services; we deliver an enterprise-grade delivery capability.</p>
+                                </div>
+                            </div>
+
+                            <!-- 6 Capability Pillars -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <!-- Quality -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Quality</span>
+                                        <i data-lucide="award" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="display block text-base font-bold text-slate-900 mt-1">99.7% Average Accuracy</strong>
+                                    <p class="mt-1 text-[11px] leading-relaxed text-slate-600">Multi-level QA and structured quality controls.</p>
+                                </div>
+
+                                <!-- Scale -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Scale</span>
+                                        <i data-lucide="users-2" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="display block text-base font-bold text-slate-900 mt-1">400+ Professionals</strong>
+                                    <p class="mt-1 text-[11px] leading-relaxed text-slate-600">Scalable delivery for large-volume and time-sensitive projects.</p>
+                                </div>
+
+                                <!-- Security -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Security</span>
+                                        <i data-lucide="shield-check" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="block text-xs font-bold text-slate-900 mt-1">Cleanroom Workflows</strong>
+                                    <p class="mt-1 text-[11px] leading-relaxed text-slate-600">Controlled facility operations, NDAs and secure workflows.</p>
+                                </div>
+
+                                <!-- Process -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Process</span>
+                                        <i data-lucide="workflow" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="block text-xs font-bold text-slate-900 mt-1">Structured SOPs</strong>
+                                    <p class="mt-1 text-[11px] leading-relaxed text-slate-600">Structured SOPs, training and multi-tier QA.</p>
+                                </div>
+
+                                <!-- Human Expertise -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Human Expertise</span>
+                                        <i data-lucide="heart-handshake" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="display block text-base font-bold text-slate-900 mt-1">95% Women Workforce</strong>
+                                    <p class="mt-1 text-[11px] leading-relaxed text-slate-600">A trained rural workforce delivering enterprise-grade services.</p>
+                                </div>
+
+                                <!-- Global Delivery -->
+                                <div class="border border-slate-200 rounded-lg p-3.5 bg-slate-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="wire-label !text-slate-700">Global Delivery</span>
+                                        <i data-lucide="globe" class="w-4 h-4 text-slate-700"></i>
+                                    </div>
+                                    <strong class="block text-xs font-bold text-slate-900 mt-1">5 Core Markets</strong>
+                                    <p class="mt-1 text-[10px] leading-relaxed text-slate-600 font-mono-tag">
+                                        United States | UK | Europe | Australia | India
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Footer Action -->
+                            <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+                                <span class="text-[11px] text-slate-500 font-mono-tag">Zero-defect delivery SLA model</span>
+                                <button type="button" onclick="navigateTo('home', 'process-blueprint')" class="inline-flex items-center gap-1.5 font-bold text-slate-900 hover:text-slate-700 underline underline-offset-4">
+                                    <span>Explore Delivery Methodology</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. ABOUT DROPDOWN -->
+                <div class="has-dropdown relative group py-2">
+                    <button type="button" class="nav-item-btn flex items-center gap-1 px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" data-view="about" onclick="showView('about')" aria-expanded="false" aria-haspopup="true">
+                        <span>About</span>
+                        <i data-lucide="chevron-down" class="menu-chevron w-3.5 h-3.5 text-slate-500"></i>
+                        <span class="nav-indicator"></span>
+                    </button>
+
+                    <!-- ABOUT Dropdown Container -->
+                    <div class="mega-menu-panel absolute top-full -left-40 lg:left-1/2 lg:-translate-x-[50%] pt-2 w-[520px] max-w-[95vw] z-50">
+                        <div class="mega-menu-card bg-white p-5 rounded-xl shadow-2xl">
+                            <div class="mb-3 pb-2 border-b border-slate-200">
+                                <strong class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono-tag">About VilPower</strong>
+                                <p class="text-xs text-slate-500 mt-0.5">Empowered Rural Talent. Enterprise-Grade Delivery.</p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="showView('about')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>About VilPower</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Company overview & philosophy</p>
+                                </button>
+
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="navigateTo('about', 'about-story')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>Our Story</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">15+ years rural incubation journey</p>
+                                </button>
+
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="navigateTo('about', 'about-vision-mission')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>Vision & Mission</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Ethical AI & sustainable careers</p>
+                                </button>
+
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="navigateTo('about', 'about-leadership')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>Leadership</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">Executive & operational leadership</p>
+                                </button>
+
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="navigateTo('home', 'banyan-tree')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>Women Empowerment</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">95% rural women-led workforce</p>
+                                </button>
+
+                                <button class="mega-item p-2 text-left rounded hover:bg-slate-50" onclick="navigateTo('home', 'global-reach')">
+                                    <div class="font-bold text-slate-900 flex items-center justify-between">
+                                        <span>Impact</span>
+                                        <i data-lucide="chevron-right" class="item-arrow w-3 h-3 text-slate-400"></i>
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 mt-0.5">157M+ audited enterprise records</p>
+                                </button>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-200 flex items-center justify-end">
+                                <button type="button" onclick="showView('about')" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 hover:text-slate-700 underline underline-offset-4">
+                                    <span>Discover Our Story</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. DIRECT LINK: GALLERY -->
+                <button type="button" class="nav-link nav-item-btn px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" data-view="gallery" onclick="showView('gallery')">
+                    <span>Gallery</span>
+                    <span class="nav-indicator"></span>
+                </button>
+
+                <!-- 6. DIRECT LINK: CONTACT -->
+                <button type="button" class="nav-link nav-item-btn px-3 py-1.5 rounded hover:text-slate-900 hover:bg-slate-100/80 transition-colors" data-view="contact" onclick="showView('contact')">
+                    <span>Contact</span>
+                    <span class="nav-indicator"></span>
+                </button>
             </div>
 
-            <!-- Header Action CTAs -->
+            <!-- Single Primary Header CTA (Right) -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <button type="button" onclick="openPilotModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded border border-slate-400 bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-700"></i> Free Pilot Sample
+                <button type="button" onclick="showView('contact')" class="group inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-slate-800 transition-all shadow-sm active:scale-95">
+                    <span>Get a Free Quote</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1"></i>
                 </button>
-                <button type="button" onclick="showView('contact')" class="rounded bg-slate-800 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white hover:bg-slate-700 transition-colors">
-                    Request Quote
-                </button>
-                <button class="md:hidden rounded border border-slate-400 p-2 text-slate-800 hover:bg-slate-100" type="button" onclick="toggleMenu()" aria-label="Open menu">
-                    <i data-lucide="menu" class="h-5 w-5"></i>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-toggle-btn" class="lg:hidden rounded border border-slate-300 p-2 text-slate-800 hover:bg-slate-100 transition-colors" type="button" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+                    <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
                 </button>
             </div>
         </nav>
 
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="mobile-menu border-t border-slate-200 bg-white px-4 sm:px-5 pb-4">
-            <div class="grid gap-1 pt-3 text-sm font-semibold text-slate-800">
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('home');toggleMenu()">
-                    <span>Home</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="mobile-menu border-t border-slate-200 bg-white px-4 sm:px-5 pb-5 pt-2 max-h-[85vh] overflow-y-auto">
+            <div class="grid gap-2 text-sm font-semibold text-slate-800">
+                
+                <!-- Mobile: Solutions Accordion -->
+                <div class="border-b border-slate-100 pb-1">
+                    <button class="mobile-acc-btn w-full py-2.5 px-2 text-left flex items-center justify-between hover:bg-slate-50 rounded" onclick="toggleMobileSub('mobile-sub-solutions', this)">
+                        <span class="font-bold text-slate-900">Solutions</span>
+                        <i data-lucide="chevron-down" class="mobile-chevron w-4 h-4 text-slate-500 transition-transform"></i>
+                    </button>
+                    <div id="mobile-sub-solutions" class="mobile-accordion-content space-y-3 pl-3 pr-2 py-2 text-xs">
+                        <div>
+                            <span class="wire-label text-[10px] block mb-1">AI & DATA</span>
+                            <div class="grid grid-cols-2 gap-1 text-slate-600">
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• AI Data Annotation</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• Image Annotation</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• Video Annotation</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• Voice / Audio</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• Data Labeling</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• Data Validation</button>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="wire-label text-[10px] block mb-1">DIGITAL CONTENT</span>
+                            <div class="grid grid-cols-2 gap-1 text-slate-600">
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('XML & Digital Publishing');toggleMenu()">• XML Publishing</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('XML & Digital Publishing');toggleMenu()">• E-Publishing</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('XML & Digital Publishing');toggleMenu()">• JATS & DocBook</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('XML & Digital Publishing');toggleMenu()">• EPUB Conversion</button>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="wire-label text-[10px] block mb-1">RESEARCH & LEGAL</span>
+                            <div class="grid grid-cols-2 gap-1 text-slate-600">
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('Web Research');toggleMenu()">• Web Research</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('Lease Abstraction');toggleMenu()">• Lease Abstraction</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('Legal Data Services');toggleMenu()">• Legal Data</button>
+                                <button class="text-left py-1 hover:text-slate-900" onclick="chooseService('Web Research');toggleMenu()">• Data Extraction</button>
+                            </div>
+                        </div>
+                        <button class="w-full text-left py-1.5 font-bold text-slate-900 underline" onclick="showView('services');toggleMenu()">
+                            View All Services →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile: Industries Accordion -->
+                <div class="border-b border-slate-100 pb-1">
+                    <button class="mobile-acc-btn w-full py-2.5 px-2 text-left flex items-center justify-between hover:bg-slate-50 rounded" onclick="toggleMobileSub('mobile-sub-industries', this)">
+                        <span class="font-bold text-slate-900">Industries</span>
+                        <i data-lucide="chevron-down" class="mobile-chevron w-4 h-4 text-slate-500 transition-transform"></i>
+                    </button>
+                    <div id="mobile-sub-industries" class="mobile-accordion-content space-y-1.5 pl-3 pr-2 py-2 text-xs text-slate-600">
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('AI Data Services');toggleMenu()">• AI & Machine Learning</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('XML & Digital Publishing');toggleMenu()">• Publishing & Media</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('Lease Abstraction');toggleMenu()">• Commercial Real Estate</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('Legal Data Services');toggleMenu()">• Legal & Compliance</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('E-Commerce Support');toggleMenu()">• E-Commerce</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="chooseService('Web Research');toggleMenu()">• Research & Analytics</button>
+                        <button class="w-full text-left py-1.5 font-bold text-slate-900 underline" onclick="showView('industries');toggleMenu()">
+                            View All Industries →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile: Capabilities Accordion -->
+                <div class="border-b border-slate-100 pb-1">
+                    <button class="mobile-acc-btn w-full py-2.5 px-2 text-left flex items-center justify-between hover:bg-slate-50 rounded" onclick="toggleMobileSub('mobile-sub-capabilities', this)">
+                        <span class="font-bold text-slate-900">Capabilities</span>
+                        <i data-lucide="chevron-down" class="mobile-chevron w-4 h-4 text-slate-500 transition-transform"></i>
+                    </button>
+                    <div id="mobile-sub-capabilities" class="mobile-accordion-content space-y-1.5 pl-3 pr-2 py-2 text-xs text-slate-600">
+                        <div class="py-1"><strong>Quality:</strong> 99.7% Audited Accuracy</div>
+                        <div class="py-1"><strong>Scale:</strong> 400+ Trained Analysts</div>
+                        <div class="py-1"><strong>Security:</strong> Cleanrooms & ISO Readiness</div>
+                        <div class="py-1"><strong>Workforce:</strong> 95% Empowered Women</div>
+                        <div class="py-1"><strong>Global:</strong> US, UK, EU, Australia & India</div>
+                        <button class="w-full text-left py-1.5 font-bold text-slate-900 underline" onclick="navigateTo('home', 'capabilities-reasons');toggleMenu()">
+                            Explore Capabilities →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile: About Accordion -->
+                <div class="border-b border-slate-100 pb-1">
+                    <button class="mobile-acc-btn w-full py-2.5 px-2 text-left flex items-center justify-between hover:bg-slate-50 rounded" onclick="toggleMobileSub('mobile-sub-about', this)">
+                        <span class="font-bold text-slate-900">About</span>
+                        <i data-lucide="chevron-down" class="mobile-chevron w-4 h-4 text-slate-500 transition-transform"></i>
+                    </button>
+                    <div id="mobile-sub-about" class="mobile-accordion-content space-y-1.5 pl-3 pr-2 py-2 text-xs text-slate-600">
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="showView('about');toggleMenu()">• About VilPower</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="navigateTo('about', 'about-story');toggleMenu()">• Our Story</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="navigateTo('about', 'about-vision-mission');toggleMenu()">• Vision & Mission</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="navigateTo('about', 'about-leadership');toggleMenu()">• Leadership</button>
+                        <button class="text-left py-1 block w-full hover:text-slate-900" onclick="navigateTo('home', 'banyan-tree');toggleMenu()">• Women Empowerment</button>
+                    </div>
+                </div>
+
+                <!-- Mobile: Direct Link Gallery -->
+                <button class="rounded px-2 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('gallery');toggleMenu()">
+                    <span class="font-bold text-slate-900">Gallery</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </button>
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('about');toggleMenu()">
-                    <span>About Us</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+
+                <!-- Mobile: Direct Link Contact -->
+                <button class="rounded px-2 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('contact');toggleMenu()">
+                    <span class="font-bold text-slate-900">Contact</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
                 </button>
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('services');toggleMenu()">
-                    <span>Services</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-                </button>
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('industries');toggleMenu()">
-                    <span>Industries</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-                </button>
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('gallery');toggleMenu()">
-                    <span>Gallery</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-                </button>
-                <button class="rounded px-3 py-2.5 text-left hover:bg-slate-100 flex items-center justify-between" onclick="showView('contact');toggleMenu()">
-                    <span>Contact Us</span> <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-                </button>
-                <div class="pt-2 border-t border-slate-200 mt-1">
-                    <button class="w-full text-center py-2.5 px-3 text-xs font-bold rounded border border-slate-400 bg-slate-100 hover:bg-slate-200" onclick="openPilotModal(); toggleMenu()">
-                        ✨ Request Free 50-Record Pilot Batch
+
+                <!-- Mobile Header CTA Button -->
+                <div class="pt-3 border-t border-slate-200 mt-2">
+                    <button class="w-full text-center py-3 px-4 text-xs font-bold rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors shadow-sm" onclick="showView('contact'); toggleMenu()">
+                        Get a Free Quote →
                     </button>
                 </div>
             </div>
@@ -557,7 +1323,7 @@
             </section>
 
             <!-- 04 / Reasons to Choose VilPower (Accordion) -->
-            <section class="mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 sm:px-5 py-12 sm:py-20 md:grid-cols-2 items-center">
+            <section id="capabilities-reasons" class="service-anchor mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 sm:px-5 py-12 sm:py-20 md:grid-cols-2 items-center">
                 <div class="placeholder flex min-h-60 sm:min-h-80 md:min-h-96 items-center justify-center p-6 sm:p-8 text-center">
                     <div>
                         <i data-lucide="building-2" class="mx-auto mb-3 sm:mb-4 h-12 w-12 sm:h-14 sm:w-14 text-slate-600"></i>
@@ -632,7 +1398,7 @@
             </section>
 
             <!-- 05 / Human + AI Story (The Digital Banyan Tree) -->
-            <section class="border-y border-slate-300 bg-white">
+            <section id="banyan-tree" class="service-anchor border-y border-slate-300 bg-white">
                 <div class="mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 sm:px-5 py-12 sm:py-20 md:grid-cols-2 items-center">
                     <div>
                         <span class="wire-label">05 / Human + AI story</span>
@@ -666,7 +1432,7 @@
             </section>
 
             <!-- 06 / Process Rail -->
-            <section class="mx-auto max-w-7xl px-4 sm:px-5 py-12 sm:py-20">
+            <section id="process-blueprint" class="service-anchor mx-auto max-w-7xl px-4 sm:px-5 py-12 sm:py-20">
                 <span class="wire-label">06 / Process blueprint</span>
                 <h2 class="display mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
                     How We Ensure Zero-Defect Delivery
@@ -720,7 +1486,7 @@
             </section>
 
             <!-- 07 / Global Reach Wireframe Map -->
-            <section class="border-y border-slate-300 bg-white">
+            <section id="global-reach" class="service-anchor border-y border-slate-300 bg-white">
                 <div class="mx-auto grid max-w-7xl gap-8 sm:gap-10 px-4 sm:px-5 py-12 sm:py-20 md:grid-cols-2 items-center">
                     <div>
                         <span class="wire-label">07 / Global reach</span>
@@ -792,7 +1558,7 @@
             </div>
 
             <div class="mx-auto max-w-7xl px-4 sm:px-5 py-12 sm:py-20">
-                <div class="grid gap-8 sm:gap-12 md:grid-cols-2 items-center">
+                <div id="about-story" class="service-anchor grid gap-8 sm:gap-12 md:grid-cols-2 items-center">
                     <div>
                         <span class="wire-label">Our story</span>
                         <h2 class="display mt-3 text-3xl sm:text-4xl font-bold text-slate-900">
@@ -820,7 +1586,7 @@
                 </div>
 
                 <!-- Vision & Mission -->
-                <div class="mt-12 sm:mt-16 grid gap-6 md:grid-cols-2">
+                <div id="about-vision-mission" class="service-anchor mt-12 sm:mt-16 grid gap-6 md:grid-cols-2">
                     <article class="border border-slate-300 bg-white p-6 sm:p-7 shadow-sm">
                         <span class="wire-label">Vision</span>
                         <p class="display mt-3 text-lg sm:text-xl font-bold text-slate-900">
@@ -836,29 +1602,32 @@
                 </div>
 
                 <!-- What Makes Us Different -->
-                <h2 class="display mt-16 sm:mt-20 text-3xl sm:text-4xl font-bold text-slate-900">What Makes Us Different</h2>
-                <div class="mt-6 sm:mt-7 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-                    <div class="border border-slate-300 bg-white p-4 sm:p-5">
-                        <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Trained, Not Just Hired</b>
-                        <p class="text-xs leading-5 sm:leading-6 text-slate-600">Structured 8-week in-house training before touching live client datasets.</p>
-                    </div>
-                    <div class="border border-slate-300 bg-white p-4 sm:p-5">
-                        <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">95% Women Workforce</b>
-                        <p class="text-xs leading-5 sm:leading-6 text-slate-600">Deliberate commitment within the operating model resulting in &lt;3% attrition.</p>
-                    </div>
-                    <div class="border border-slate-300 bg-white p-4 sm:p-5">
-                        <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Process-Driven Quality</b>
-                        <p class="text-xs leading-5 sm:leading-6 text-slate-600">Multi-tier QA, standardized SOPs, and 99.7% audited accuracy benchmarks.</p>
-                    </div>
-                    <div class="border border-slate-300 bg-white p-4 sm:p-5">
-                        <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Confidential & Secure</b>
-                        <p class="text-xs leading-5 sm:leading-6 text-slate-600">Air-gapped workstations, biometric cleanroom access, and strict NDAs.</p>
+                <div id="about-different" class="service-anchor">
+                    <h2 class="display mt-16 sm:mt-20 text-3xl sm:text-4xl font-bold text-slate-900">What Makes Us Different</h2>
+                    <div class="mt-6 sm:mt-7 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+                        <div class="border border-slate-300 bg-white p-4 sm:p-5">
+                            <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Trained, Not Just Hired</b>
+                            <p class="text-xs leading-5 sm:leading-6 text-slate-600">Structured 8-week in-house training before touching live client datasets.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-4 sm:p-5">
+                            <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">95% Women Workforce</b>
+                            <p class="text-xs leading-5 sm:leading-6 text-slate-600">Deliberate commitment within the operating model resulting in &lt;3% attrition.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-4 sm:p-5">
+                            <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Process-Driven Quality</b>
+                            <p class="text-xs leading-5 sm:leading-6 text-slate-600">Multi-tier QA, standardized SOPs, and 99.7% audited accuracy benchmarks.</p>
+                        </div>
+                        <div class="border border-slate-300 bg-white p-4 sm:p-5">
+                            <b class="text-xs sm:text-sm text-slate-900 block mb-1 sm:mb-2">Confidential & Secure</b>
+                            <p class="text-xs leading-5 sm:leading-6 text-slate-600">Air-gapped workstations, biometric cleanroom access, and strict NDAs.</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Leadership Team -->
-                <h2 class="display mt-16 sm:mt-20 text-3xl sm:text-4xl font-bold text-slate-900">The People Behind VilPower</h2>
-                <div class="mt-6 sm:mt-7 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+                <div id="about-leadership" class="service-anchor">
+                    <h2 class="display mt-16 sm:mt-20 text-3xl sm:text-4xl font-bold text-slate-900">The People Behind VilPower</h2>
+                    <div class="mt-6 sm:mt-7 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
                     <article class="border border-slate-300 bg-white p-5 sm:p-6 text-center">
                         <div class="placeholder grid h-36 sm:h-40 place-items-center">
                             <i data-lucide="user-round" class="h-10 w-10 sm:h-12 sm:w-12 text-slate-600"></i>
@@ -1390,8 +2159,9 @@
             const target = document.getElementById(id);
             if (target) target.classList.add('active');
 
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.toggle('active-nav', link.getAttribute('data-view') === id);
+            document.querySelectorAll('.nav-link, .nav-item-btn').forEach(link => {
+                const match = link.getAttribute('data-view') === id;
+                link.classList.toggle('active-nav', match);
             });
 
             if (window.location.hash !== '#' + id) {
@@ -1399,6 +2169,19 @@
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             lucide.createIcons();
+        }
+
+        // Navigate to view and scroll to anchor
+        function navigateTo(viewId, anchorId) {
+            showView(viewId);
+            if (anchorId) {
+                setTimeout(() => {
+                    const el = document.getElementById(anchorId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 80);
+            }
         }
 
         window.addEventListener('popstate', () => {
@@ -1412,10 +2195,35 @@
             lucide.createIcons();
         });
 
-        // 2. Mobile Menu
+        // 2. Mobile Menu & Accordion System
         function toggleMenu() {
-            document.getElementById('mobile-menu').classList.toggle('open');
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            const isOpen = menu.classList.toggle('open');
+            if (icon) {
+                icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+                lucide.createIcons();
+            }
         }
+
+        function toggleMobileSub(id, btn) {
+            const sub = document.getElementById(id);
+            if (!sub) return;
+            const isOpen = sub.classList.toggle('open');
+            btn.classList.toggle('open', isOpen);
+            lucide.createIcons();
+        }
+
+        // 3. Header Scroll Behavior (Sticky transition)
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (!header) return;
+            if (window.scrollY > 20) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }, { passive: true });
 
         // 3. Hero Slider
         function setSlide(index) {
