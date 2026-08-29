@@ -1,0 +1,299 @@
+/* ==========================================================================
+   VilPower Solutions — Official Brand Design System
+   Primary Color: #1B45BD (Deep Royal Sapphire Blue)
+   Secondary Color: #029146 (Vibrant Impact Emerald Green)
+   ========================================================================== */
+
+:root {
+    --brand-primary: #1B45BD;
+    --brand-primary-hover: #15379b;
+    --brand-primary-light: #eff4ff;
+    --brand-primary-border: #bfdbfe;
+    
+    --brand-secondary: #029146;
+    --brand-secondary-hover: #027a3a;
+    --brand-secondary-light: #ecfdf3;
+    --brand-secondary-border: #a7f3d0;
+
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.98);
+    --bg-subtle: #f1f5f9;
+    --border-glass: #e2e8f0;
+    --border-highlight: #1B45BD;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-page);
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 10%, rgba(27, 69, 189, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(2, 145, 70, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(27, 69, 189, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   High-Performance Scroll Reveal Animations
+   ========================================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-36px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(36px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger Delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right, .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Crisp Glassmorphic Surfaces */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+}
+
+.glass-panel-hover {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+    transform: translateY(-4px);
+    border-color: #bfdbfe;
+    box-shadow: 0 20px 40px -12px rgba(27, 69, 189, 0.14), 0 0 0 1px rgba(27, 69, 189, 0.25);
+}
+
+/* Brand Gradient Headings */
+.gradient-text {
+    background: linear-gradient(135deg, #1B45BD 0%, #029146 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-blue-green {
+    background: linear-gradient(135deg, #1B45BD 0%, #029146 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Light Tech Grid Background */
+.bg-tech-grid {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(27, 69, 189, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(27, 69, 189, 0.04) 1px, transparent 1px);
+}
+
+/* Navigation Indicator & Hover */
+.nav-item-btn {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: -4px;
+    left: 12px;
+    right: 12px;
+    height: 2.5px;
+    background: linear-gradient(90deg, #1B45BD, #029146);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 9999px;
+    box-shadow: 0 0 6px rgba(27, 69, 189, 0.4);
+}
+
+.nav-item-btn:hover .nav-indicator,
+.nav-item-btn.active-nav .nav-indicator {
+    transform: scaleX(1);
+}
+
+.menu-chevron {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.has-dropdown:hover .menu-chevron,
+.has-dropdown:focus-within .menu-chevron {
+    transform: rotate(180deg);
+    color: #1B45BD;
+}
+
+/* ==========================================================================
+   Elevated Dropdown & Mega Menu System
+   ========================================================================== */
+
+.mega-menu-panel,
+.dropdown-menu-panel {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.22s;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.has-dropdown:hover > .mega-menu-panel,
+.has-dropdown:focus-within > .mega-menu-panel,
+.has-dropdown:hover > .dropdown-menu-panel,
+.has-dropdown:focus-within > .dropdown-menu-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Dropdown Card Hover Details */
+.dropdown-item-card {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dropdown-item-card:hover {
+    transform: translateX(3px);
+    background-color: #eff4ff;
+}
+
+/* Brand Button Classes */
+.btn-primary {
+    background-color: #1B45BD;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+.btn-primary:hover {
+    background-color: #15379b;
+    box-shadow: 0 10px 25px -5px rgba(27, 69, 189, 0.35);
+}
+
+.btn-secondary {
+    background-color: #029146;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+    background-color: #027a3a;
+    box-shadow: 0 10px 25px -5px rgba(2, 145, 70, 0.35);
+}
+
+/* AI Pulse Glow */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.85; box-shadow: 0 0 8px rgba(27, 69, 189, 0.5); }
+    50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 16px rgba(2, 145, 70, 0.8); }
+}
+
+.ai-pulse-dot {
+    animation: pulseGlow 2.4s infinite ease-in-out;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* Mobile Drawer Accordions */
+.mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-accordion.open .mobile-accordion-content {
+    max-height: 500px;
+}
+.mobile-accordion.open .mobile-accordion-chevron {
+    transform: rotate(180deg);
+    color: #1B45BD;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+    border: 2px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #1B45BD;
+}
