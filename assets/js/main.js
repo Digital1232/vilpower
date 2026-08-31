@@ -59,9 +59,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Scroll Reveal Animations
     initScrollReveal();
+    // Initialize Nexaris-style Split Text reveals
+    initSplitText();
     // Initialize Odometer counters
     initCounters();
+    // Initialize Hero Rotating Service Titles
+    initRotatingServiceTitles();
 });
+
+// Nexaris-Style Split Text / Word Stagger Reveal
+function initSplitText() {
+    const splitElements = document.querySelectorAll('.split-headline');
+    splitElements.forEach(el => {
+        const text = el.textContent.trim();
+        const words = text.split(/\s+/);
+        el.innerHTML = words.map((word, i) => {
+            const delay = (i * 0.045).toFixed(3);
+            return `<span class="split-word"><span class="split-word-inner" style="transition-delay: ${delay}s">${word}</span></span>`;
+        }).join(' ');
+    });
+
+    const splitObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    splitElements.forEach(el => splitObserver.observe(el));
+}
 
 // Scroll Reveal Intersection Observer
 function initScrollReveal() {
@@ -128,6 +156,89 @@ function switchDemoTab(tabName) {
     });
     if (window.lucide) lucide.createIcons();
 }
+
+// Vaulta Style Showcase Tab Switcher (Home Page 2)
+function switchVaultaTab(tabKey) {
+    const tabs = ['insights', 'publishing', 'lease', 'intelligence'];
+    tabs.forEach(k => {
+        const btn = document.getElementById(`vtab-btn-${k}`);
+        const pane = document.getElementById(`vtab-pane-${k}`);
+        if (btn && pane) {
+            if (k === tabKey) {
+                btn.classList.add('active');
+                pane.classList.remove('hidden');
+            } else {
+                btn.classList.remove('active');
+                pane.classList.add('hidden');
+            }
+        }
+    });
+    if (window.lucide) lucide.createIcons();
+}
+
+// Hero Filled-Side Slider Controller (Home Page 2)
+let currentHeroSlide = 0;
+const totalHeroSlides = 4;
+let heroSliderTimer = null;
+
+function setHeroSlide(index) {
+    currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+    
+    for (let i = 0; i < totalHeroSlides; i++) {
+        const slide = document.getElementById(`hero-slide-${i}`);
+        const tab = document.getElementById(`hero-tab-${i}`);
+        const dot = document.getElementById(`hero-dot-${i}`);
+        
+        if (slide) {
+            slide.classList.toggle('active', i === currentHeroSlide);
+        }
+        if (tab) {
+            tab.classList.remove('active');
+            if (i === currentHeroSlide) {
+                void tab.offsetWidth; // Trigger layout reflow to restart CSS progress fill
+                tab.classList.add('active');
+            }
+        }
+        if (dot) {
+            dot.classList.toggle('active', i === currentHeroSlide);
+        }
+    }
+    if (window.lucide) lucide.createIcons();
+}
+
+function nextHeroSlide() {
+    setHeroSlide(currentHeroSlide + 1);
+}
+
+function prevHeroSlide() {
+    setHeroSlide(currentHeroSlide - 1);
+}
+
+function startHeroSliderAutoPlay() {
+    if (heroSliderTimer) clearInterval(heroSliderTimer);
+    heroSliderTimer = setInterval(() => {
+        nextHeroSlide();
+    }, 5500);
+}
+
+function pauseHeroSlider() {
+    if (heroSliderTimer) {
+        clearInterval(heroSliderTimer);
+        heroSliderTimer = null;
+    }
+}
+
+// Initialize hero slider on load if present
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderWrap = document.getElementById('hero-slider-wrap');
+    if (sliderWrap) {
+        setHeroSlide(0);
+        startHeroSliderAutoPlay();
+        sliderWrap.addEventListener('mouseenter', pauseHeroSlider);
+        sliderWrap.addEventListener('mouseleave', startHeroSliderAutoPlay);
+    }
+});
+
 
 // Modal Handlers
 function openPilotModal(servicePreset) {
@@ -266,53 +377,160 @@ function scrollToTop() {
 }
 
 // Odometer / Count up animation for stats
+// Multi-Column Slot-Machine Drum Number Tumbler & Odometer (Dribbble Kinetic Style)
 function initCounters() {
-    const counters = document.querySelectorAll('.stat-counter');
-    if (counters.length === 0) return;
+    const odometers = document.querySelectorAll('.stat-counter, [data-stat-counter]');
+    if (odometers.length === 0) return;
+
+    odometers.forEach(el => {
+        const rawTarget = el.getAttribute('data-stat-counter') || el.getAttribute('data-target') || el.textContent.trim();
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        const useCommas = el.getAttribute('data-use-commas') === 'true' || rawTarget.includes(',') || (!isNaN(parseFloat(rawTarget)) && parseFloat(rawTarget) >= 1000);
+        
+        let numStr = rawTarget.replace(/[^0-9.]/g, '');
+        let targetNum = parseFloat(numStr);
+        if (isNaN(targetNum)) return;
+
+        let formattedTarget = targetNum.toFixed(decimals);
+        if (useCommas) {
+            const parts = formattedTarget.split('.');
+            parts[0] = parseInt(parts[0], 10).toLocaleString();
+            formattedTarget = parts.join('.');
+        }
+
+        // Build HTML with slot columns
+        let html = '';
+        if (prefix) html += `<span class="slot-static-char">${prefix}</span>`;
+
+        const chars = formattedTarget.split('');
+        chars.forEach((char, i) => {
+            if (/[0-9]/.test(char)) {
+                const digit = parseInt(char, 10);
+                let ribbonHtml = '';
+                const spinCycles = 2; // 2 full revolutions + target digit
+                for (let r = 0; r < spinCycles; r++) {
+                    for (let d = 0; d <= 9; d++) {
+                        ribbonHtml += `<span class="slot-char">${d}</span>`;
+                    }
+                }
+                ribbonHtml += `<span class="slot-char">${digit}</span>`;
+
+                const totalItems = (spinCycles * 10) + digit + 1;
+                const finalTranslate = ((totalItems - 1) / totalItems) * 100;
+                const delay = (i * 0.085).toFixed(3);
+
+                html += `<span class="slot-column" data-target-digit="${digit}">
+                    <span class="slot-ribbon" data-translate="${finalTranslate}" style="transition-delay: ${delay}s">${ribbonHtml}</span>
+                </span>`;
+            } else {
+                html += `<span class="slot-static-char">${char}</span>`;
+            }
+        });
+
+        if (suffix) html += `<span class="slot-static-char">${suffix}</span>`;
+
+        el.innerHTML = html;
+        el.classList.add('slot-odometer');
+    });
 
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const el = entry.target;
-                const target = parseFloat(el.getAttribute('data-target'));
-                const prefix = el.getAttribute('data-prefix') || '';
-                const suffix = el.getAttribute('data-suffix') || '';
-                const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
-                const useCommas = el.getAttribute('data-use-commas') === 'true';
-                const duration = 2000; // 2 seconds
-                const startTime = performance.now();
+                el.querySelectorAll('.slot-ribbon').forEach(ribbon => {
+                    const trans = ribbon.getAttribute('data-translate');
+                    ribbon.style.transform = `translateY(-${trans}%)`;
+                });
 
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    // Ease out quadratic
-                    const easeProgress = progress * (2 - progress);
-                    const currentVal = easeProgress * target;
-                    
-                    let formattedVal = currentVal.toFixed(decimals);
-                    if (useCommas) {
-                        formattedVal = Math.floor(currentVal).toLocaleString();
-                    }
-                    
-                    el.textContent = prefix + formattedVal + suffix;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        let finalVal = target.toFixed(decimals);
-                        if (useCommas) {
-                            finalVal = Math.floor(target).toLocaleString();
-                        }
-                        el.textContent = prefix + finalVal + suffix;
+                // Trigger associated progress bar if present in parent card
+                const parent = el.closest('.nexaris-card, .nexaris-card-emerald, div');
+                if (parent) {
+                    const fill = parent.querySelector('.metric-progress-fill');
+                    if (fill) {
+                        const targetWidth = fill.getAttribute('data-fill') || '100%';
+                        fill.style.width = targetWidth;
                     }
                 }
 
-                requestAnimationFrame(update);
                 obs.unobserve(el);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
-    counters.forEach(counter => observer.observe(counter));
+    odometers.forEach(el => observer.observe(el));
 }
+
+// Hero Rotating Service Title Controller (Vertical Slide + Fade)
+function initRotatingServiceTitles() {
+    const wrap = document.querySelector('.hero-rotating-service-wrap');
+    if (!wrap) return;
+
+    const items = wrap.querySelectorAll('.hero-rotating-service-item');
+    if (items.length <= 1) return;
+
+    let currentIndex = 0;
+    const intervalTime = 3400; // 3.4 seconds rotation cycle
+    let rotateTimer = null;
+
+    // Measure and set minimum width to prevent any layout shifts
+    function adjustWrapWidth() {
+        if (window.innerWidth >= 640) {
+            let maxWidth = 0;
+            items.forEach(item => {
+                const prevPos = item.style.position;
+                item.style.position = 'relative';
+                const w = item.offsetWidth;
+                item.style.position = prevPos;
+                if (w > maxWidth) maxWidth = w;
+            });
+            if (maxWidth > 0) {
+                wrap.style.minWidth = (maxWidth + 4) + 'px';
+            }
+        } else {
+            wrap.style.minWidth = 'auto';
+        }
+    }
+
+    adjustWrapWidth();
+    window.addEventListener('resize', adjustWrapWidth);
+
+    function rotateNext() {
+        const currentItem = items[currentIndex];
+        const nextIndex = (currentIndex + 1) % items.length;
+        const nextItem = items[nextIndex];
+
+        // Animate current out
+        currentItem.classList.remove('active');
+        currentItem.classList.add('exit');
+
+        // Animate next in
+        nextItem.classList.remove('exit');
+        nextItem.classList.add('active');
+
+        // Cleanup previous after animation finishes
+        setTimeout(() => {
+            currentItem.classList.remove('exit');
+        }, 700);
+
+        currentIndex = nextIndex;
+    }
+
+    function startRotation() {
+        if (rotateTimer) clearInterval(rotateTimer);
+        rotateTimer = setInterval(rotateNext, intervalTime);
+    }
+
+    startRotation();
+
+    // Pause on hover
+    wrap.addEventListener('mouseenter', () => {
+        if (rotateTimer) clearInterval(rotateTimer);
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+        startRotation();
+    });
+}
+
