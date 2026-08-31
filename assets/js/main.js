@@ -23,6 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    // Scroll Progress Indicator Logic
+    const progressBar = document.getElementById('scroll-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            progressBar.style.width = scrolled + '%';
+        }, { passive: true });
+    }
+
+    // Back to Top Button visibility toggler
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }, { passive: true });
+    }
+
     // Highlight active link on desktop navigation based on current page
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-item-btn, .mobile-nav-link').forEach(link => {
@@ -34,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Scroll Reveal Animations
     initScrollReveal();
+    // Initialize Odometer counters
+    initCounters();
 });
 
 // Scroll Reveal Intersection Observer
@@ -192,6 +219,7 @@ function updateQualifications() {
 function handleLeadSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
+    const form = document.getElementById('lead-form');
     if (btn) {
         btn.disabled = true;
         btn.textContent = 'Transmitting Scope to Ops...';
@@ -204,7 +232,21 @@ function handleLeadSubmit(e) {
         const fw = document.getElementById('form-wrap');
         const sw = document.getElementById('success-wrap');
         if (fw) fw.classList.add('hidden');
-        if (sw) sw.classList.remove('hidden');
+        if (sw) {
+            sw.classList.remove('hidden');
+            // Force redraw/re-render of the animated SVG checkmark elements
+            const svgEl = sw.querySelector('svg');
+            if (svgEl) {
+                const content = svgEl.innerHTML;
+                svgEl.innerHTML = '';
+                void svgEl.offsetWidth; // Trigger layout reflow
+                svgEl.innerHTML = content;
+            }
+        }
+        if (form) {
+            form.reset();
+            updateQualifications(); // Restore default dynamic fields visibility
+        }
         if (window.lucide) lucide.createIcons();
     }, 600);
 }
@@ -213,4 +255,64 @@ function handlePilotSubmit(e) {
     e.preventDefault();
     closePilotModal();
     alert('🎉 Thank you! Your request for a Free 50-Record Benchmark Pilot has been received. Our operations team will contact you within 4 hours.');
+}
+
+// Smooth scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Odometer / Count up animation for stats
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+    if (counters.length === 0) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.getAttribute('data-target'));
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+                const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+                const useCommas = el.getAttribute('data-use-commas') === 'true';
+                const duration = 2000; // 2 seconds
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Ease out quadratic
+                    const easeProgress = progress * (2 - progress);
+                    const currentVal = easeProgress * target;
+                    
+                    let formattedVal = currentVal.toFixed(decimals);
+                    if (useCommas) {
+                        formattedVal = Math.floor(currentVal).toLocaleString();
+                    }
+                    
+                    el.textContent = prefix + formattedVal + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        let finalVal = target.toFixed(decimals);
+                        if (useCommas) {
+                            finalVal = Math.floor(target).toLocaleString();
+                        }
+                        el.textContent = prefix + finalVal + suffix;
+                    }
+                }
+
+                requestAnimationFrame(update);
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    counters.forEach(counter => observer.observe(counter));
 }

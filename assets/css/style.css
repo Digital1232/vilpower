@@ -145,12 +145,38 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Light Tech Grid Background */
+/* Light Tech Glow Background (Aurora Mesh Trend) */
 .bg-tech-grid {
-    background-size: 40px 40px;
-    background-image: 
-        linear-gradient(to right, rgba(27, 69, 189, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(27, 69, 189, 0.04) 1px, transparent 1px);
+    position: relative !important;
+    background-color: #fafbfc !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
+
+.bg-tech-grid::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -20% !important;
+    left: -10% !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, rgba(27, 69, 189, 0.09) 0%, rgba(27, 69, 189, 0) 70%) !important;
+    filter: blur(100px) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+.bg-tech-grid::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -20% !important;
+    right: -10% !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, rgba(2, 145, 70, 0.07) 0%, rgba(2, 145, 70, 0) 70%) !important;
+    filter: blur(100px) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
 }
 
 /* Navigation Indicator & Hover */
@@ -297,3 +323,224 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #1B45BD;
 }
+
+/* ==========================================================================
+   2026 UI/UX Professional Enhancements
+   ========================================================================== */
+
+/* High-Fidelity Soft Focus Ring Systems */
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: none !important;
+    border-color: #1B45BD !important;
+    box-shadow: 0 0 0 4px rgba(27, 69, 189, 0.15) !important;
+    background-color: #ffffff !important;
+}
+
+/* Form specific validation feedback transition */
+input, select, textarea {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+/* Green Focused inputs for xml pages / segments */
+.theme-green input:focus,
+.theme-green select:focus,
+.theme-green textarea:focus {
+    border-color: #029146 !important;
+    box-shadow: 0 0 0 4px rgba(2, 145, 70, 0.15) !important;
+}
+
+/* Mega Menu card icon scale micro-animation */
+.dropdown-item-card:hover group-hover\/card\:scale-110,
+.dropdown-item-card:hover .group-hover\/card\:scale-110 {
+    transform: scale(1.08);
+}
+
+/* Custom Interactive tab button focus ring styles */
+.demo-tab-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 69, 189, 0.3);
+}
+
+/* Premium Animated SVG Checkmark Visuals */
+.checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #029146;
+    fill: none;
+    animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke-width: 3;
+    stroke: #029146;
+    fill: none;
+    animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes strokeCircle {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes strokeCheck {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Shimmer Glare Sweep Effect on Buttons (2026 Trend) */
+.btn-glare {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-glare::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -150% !important;
+    width: 60% !important;
+    height: 100% !important;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%
+    ) !important;
+    transform: skewX(-25deg) !important;
+    pointer-events: none !important;
+    transition: none !important;
+}
+
+.btn-glare:hover::after {
+    left: 150% !important;
+    transition: left 0.8s ease-in-out !important;
+}
+
+/* Premium Rotating RGB Gradient Border (2026 Trend) */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.btn-rgb-glow {
+    position: relative !important;
+    z-index: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    padding: 1px !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-rgb-glow:hover {
+    transform: scale(1.05) !important;
+}
+
+.btn-rgb-glow::before {
+    content: '' !important;
+    position: absolute !important;
+    z-index: -2 !important;
+    left: -50% !important;
+    top: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: conic-gradient(
+        from var(--angle),
+        #1B45BD,
+        #029146,
+        #bfdbfe,
+        #a7f3d0,
+        #1B45BD
+    ) !important;
+    animation: rotateGlow 3s linear infinite !important;
+}
+
+.btn-rgb-glow::after {
+    content: '' !important;
+    position: absolute !important;
+    z-index: -1 !important;
+    left: 1px !important;
+    top: 1px !important;
+    width: calc(100% - 2px) !important;
+    height: calc(100% - 2px) !important;
+    background: #ffffff !important;
+    border-radius: 7px !important;
+    transition: background-color 0.25s ease !important;
+}
+
+@keyframes rotateGlow {
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Logo Glare Sweep Effect (2026 Trend) */
+.logo-glare {
+    position: relative !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    border-radius: 6px !important;
+}
+
+.logo-glare::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -150% !important;
+    width: 60% !important;
+    height: 100% !important;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+    ) !important;
+    transform: skewX(-25deg) !important;
+    pointer-events: none !important;
+    transition: none !important;
+}
+
+.logo-glare:hover::after {
+    left: 150% !important;
+    transition: left 0.8s ease-in-out !important;
+}
+
+/* Sticky Stacking Cards (2026 Trend) */
+.stacking-cards-container {
+    perspective: 1000px;
+}
+
+.stacking-card {
+    will-change: transform, top;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.stacking-card:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+}
+
+/* Mockup Panel Designs */
+.mockup-cv-bg {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%) !important;
+}
+
+
+
+
+

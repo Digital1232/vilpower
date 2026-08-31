@@ -26,6 +26,9 @@
 
 <body class="w-full flex flex-col min-h-screen text-slate-900 bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#1B45BD] to-[#029146] z-[60] transition-all duration-75" style="width: 0%;"></div>
+
     <!-- Top Announcement Bar -->
     <aside class="bg-white border-b border-slate-200 text-[11px] sm:text-xs py-2 px-4 sm:px-6 relative z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -45,7 +48,7 @@
     <!-- Header Navigation -->
     <header id="main-header" class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-xl transition-all">
         <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3.5">
-            <a href="index.html" class="flex items-center gap-3 text-left focus:outline-none group">
+            <a href="index.html" class="logo-glare flex items-center gap-3 text-left focus:outline-none group">
                 <img src="img/logo/VilPower%20Logo.svg" alt="VilPower Solutions Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-[1.02]">
             </a>
 
@@ -330,15 +333,18 @@
                         <label for="pilot-check" class="text-xs text-slate-600">Include complimentary 50-record quality benchmark pilot in this request</label>
                     </div>
 
-                    <button id="submit-btn" type="submit" class="w-full py-4 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg transition-all">
+                    <button id="submit-btn" type="submit" class="btn-glare w-full py-4 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg transition-all">
                         Submit Project Scope for Formal Proposal →
                     </button>
                 </form>
             </div>
 
             <div id="success-wrap" class="hidden bg-white p-10 rounded-3xl border border-[#a7f3d0] text-center space-y-4 shadow-xl">
-                <div class="w-16 h-16 rounded-full bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] mx-auto">
-                    <i data-lucide="check" class="w-8 h-8"></i>
+                <div class="w-16 h-16 mx-auto flex items-center justify-center">
+                    <svg class="w-16 h-16" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-slate-900 font-display">Scope Successfully Logged!</h3>
                 <p class="text-sm text-slate-600 max-w-md mx-auto">
@@ -365,6 +371,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white border border-slate-200 shadow-xl text-slate-700 hover:text-[#1B45BD] hover:border-[#bfdbfe] transition-all duration-300 translate-y-10 opacity-0 pointer-events-none hover:-translate-y-1" aria-label="Scroll back to top">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
 
     <script src="assets/js/main.js"></script>
 </body>
