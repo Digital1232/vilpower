@@ -65,7 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     // Initialize Hero Rotating Service Titles
     initRotatingServiceTitles();
+    // Initialize Cursor Spotlight Glow Cards
+    initSpotlightCards();
 });
+
+// Cursor Spotlight Glow Tracker (Linear / Stripe Signature Effect)
+function initSpotlightCards() {
+    const spotlightCards = document.querySelectorAll('.spotlight-card');
+    spotlightCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        }, { passive: true });
+    });
+}
 
 // Nexaris-Style Split Text / Word Stagger Reveal
 function initSplitText() {
@@ -74,7 +90,7 @@ function initSplitText() {
         const text = el.textContent.trim();
         const words = text.split(/\s+/);
         el.innerHTML = words.map((word, i) => {
-            const delay = (i * 0.045).toFixed(3);
+            const delay = (i * 0.032).toFixed(3);
             return `<span class="split-word"><span class="split-word-inner" style="transition-delay: ${delay}s">${word}</span></span>`;
         }).join(' ');
     });
@@ -86,12 +102,15 @@ function initSplitText() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { 
+        rootMargin: '0px 0px -20px 0px',
+        threshold: 0.05 
+    });
 
     splitElements.forEach(el => splitObserver.observe(el));
 }
 
-// Scroll Reveal Intersection Observer
+// Scroll Reveal Intersection Observer (Smooth Eased Triggering)
 function initScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
     
@@ -109,8 +128,8 @@ function initScrollReveal() {
         });
     }, {
         root: null,
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1
+        rootMargin: '0px 0px -20px 0px',
+        threshold: 0.05
     });
 
     revealElements.forEach(el => {
@@ -376,73 +395,62 @@ function scrollToTop() {
     });
 }
 
-// Odometer / Count up animation for stats
-// Multi-Column Slot-Machine Drum Number Tumbler & Odometer (Dribbble Kinetic Style)
+// High-Precision Smooth Number Counter Animation with easeOutExpo curve
 function initCounters() {
-    const odometers = document.querySelectorAll('.stat-counter, [data-stat-counter]');
-    if (odometers.length === 0) return;
-
-    odometers.forEach(el => {
-        const rawTarget = el.getAttribute('data-stat-counter') || el.getAttribute('data-target') || el.textContent.trim();
-        const prefix = el.getAttribute('data-prefix') || '';
-        const suffix = el.getAttribute('data-suffix') || '';
-        const decimals = parseInt(el.getAttribute('data-decimals')) || 0;
-        const useCommas = el.getAttribute('data-use-commas') === 'true' || rawTarget.includes(',') || (!isNaN(parseFloat(rawTarget)) && parseFloat(rawTarget) >= 1000);
-        
-        let numStr = rawTarget.replace(/[^0-9.]/g, '');
-        let targetNum = parseFloat(numStr);
-        if (isNaN(targetNum)) return;
-
-        let formattedTarget = targetNum.toFixed(decimals);
-        if (useCommas) {
-            const parts = formattedTarget.split('.');
-            parts[0] = parseInt(parts[0], 10).toLocaleString();
-            formattedTarget = parts.join('.');
-        }
-
-        // Build HTML with slot columns
-        let html = '';
-        if (prefix) html += `<span class="slot-static-char">${prefix}</span>`;
-
-        const chars = formattedTarget.split('');
-        chars.forEach((char, i) => {
-            if (/[0-9]/.test(char)) {
-                const digit = parseInt(char, 10);
-                let ribbonHtml = '';
-                const spinCycles = 2; // 2 full revolutions + target digit
-                for (let r = 0; r < spinCycles; r++) {
-                    for (let d = 0; d <= 9; d++) {
-                        ribbonHtml += `<span class="slot-char">${d}</span>`;
-                    }
-                }
-                ribbonHtml += `<span class="slot-char">${digit}</span>`;
-
-                const totalItems = (spinCycles * 10) + digit + 1;
-                const finalTranslate = ((totalItems - 1) / totalItems) * 100;
-                const delay = (i * 0.085).toFixed(3);
-
-                html += `<span class="slot-column" data-target-digit="${digit}">
-                    <span class="slot-ribbon" data-translate="${finalTranslate}" style="transition-delay: ${delay}s">${ribbonHtml}</span>
-                </span>`;
-            } else {
-                html += `<span class="slot-static-char">${char}</span>`;
-            }
-        });
-
-        if (suffix) html += `<span class="slot-static-char">${suffix}</span>`;
-
-        el.innerHTML = html;
-        el.classList.add('slot-odometer');
-    });
+    const counters = document.querySelectorAll('.stat-counter, [data-stat-counter]');
+    if (counters.length === 0) return;
 
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const el = entry.target;
-                el.querySelectorAll('.slot-ribbon').forEach(ribbon => {
-                    const trans = ribbon.getAttribute('data-translate');
-                    ribbon.style.transform = `translateY(-${trans}%)`;
-                });
+                const rawTarget = el.getAttribute('data-stat-counter') || el.getAttribute('data-target') || el.textContent.trim();
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+                const decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+                const useCommas = el.getAttribute('data-use-commas') === 'true' || rawTarget.includes(',') || (!isNaN(parseFloat(rawTarget)) && parseFloat(rawTarget) >= 1000);
+                
+                const numStr = rawTarget.replace(/[^0-9.]/g, '');
+                const targetNum = parseFloat(numStr);
+                if (isNaN(targetNum)) {
+                    obs.unobserve(el);
+                    return;
+                }
+
+                const duration = 1800; // 1.8s smooth duration
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Smooth easeOutExpo: progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
+                    const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    const currentVal = easeProgress * targetNum;
+                    
+                    let formattedVal = currentVal.toFixed(decimals);
+                    if (useCommas) {
+                        const parts = formattedVal.split('.');
+                        parts[0] = parseInt(parts[0], 10).toLocaleString('en-US');
+                        formattedVal = parts.join('.');
+                    }
+                    
+                    el.textContent = `${prefix}${formattedVal}${suffix}`;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        let finalVal = targetNum.toFixed(decimals);
+                        if (useCommas) {
+                            const parts = finalVal.split('.');
+                            parts[0] = parseInt(parts[0], 10).toLocaleString('en-US');
+                            finalVal = parts.join('.');
+                        }
+                        el.textContent = `${prefix}${finalVal}${suffix}`;
+                    }
+                }
+
+                requestAnimationFrame(update);
 
                 // Trigger associated progress bar if present in parent card
                 const parent = el.closest('.nexaris-card, .nexaris-card-emerald, div');
@@ -459,7 +467,7 @@ function initCounters() {
         });
     }, { threshold: 0.15 });
 
-    odometers.forEach(el => observer.observe(el));
+    counters.forEach(el => observer.observe(el));
 }
 
 // Hero Rotating Service Title Controller (Vertical Slide + Fade)

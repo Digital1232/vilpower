@@ -26,6 +26,10 @@
     --text-muted: #64748b;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -45,14 +49,24 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Global Smooth Transitions for Interactive Elements */
+a, button {
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s ease;
+}
+
 /* ==========================================================================
-   High-Performance Scroll Reveal Animations
+   High-Performance Smooth Scroll Reveal Animations (Cinematic Glide)
    ========================================================================== */
 
 .reveal {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(22px);
+    transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
@@ -63,8 +77,8 @@ body {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-36px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-24px);
+    transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
@@ -75,8 +89,8 @@ body {
 
 .reveal-right {
     opacity: 0;
-    transform: translateX(36px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(24px);
+    transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
@@ -87,8 +101,8 @@ body {
 
 .reveal-scale {
     opacity: 0;
-    transform: scale(0.92);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.95);
+    transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
@@ -98,11 +112,11 @@ body {
 }
 
 /* Stagger Delays */
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
+.stagger-1 { transition-delay: 0.08s; }
+.stagger-2 { transition-delay: 0.16s; }
+.stagger-3 { transition-delay: 0.24s; }
+.stagger-4 { transition-delay: 0.32s; }
+.stagger-5 { transition-delay: 0.40s; }
 
 @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal-left, .reveal-right, .reveal-scale {
@@ -123,7 +137,9 @@ body {
 }
 
 .glass-panel-hover {
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .glass-panel-hover:hover {
@@ -132,17 +148,54 @@ body {
     box-shadow: 0 20px 40px -12px rgba(27, 69, 189, 0.14), 0 0 0 1px rgba(27, 69, 189, 0.25);
 }
 
-/* Brand Gradient Headings */
-.gradient-text {
-    background: linear-gradient(135deg, #1B45BD 0%, #029146 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Brand Gradient Headings with Continuous Flowing Aurora Animation */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.gradient-blue-green {
-    background: linear-gradient(135deg, #1B45BD 0%, #029146 100%);
+.gradient-text, .gradient-blue-green {
+    background: linear-gradient(135deg, #1B45BD 0%, #029146 50%, #1B45BD 100%);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: gradientFlow 5.5s ease infinite;
+}
+
+/* Multi-Ring Radar Telemetry Ping Animation */
+@keyframes radarPing {
+    0% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+    100% {
+        transform: scale(3.2);
+        opacity: 0;
+    }
+}
+
+.radar-dot-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+}
+
+.radar-dot-wrap::before, .radar-dot-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: #10b981;
+    animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    pointer-events: none;
+}
+
+.radar-dot-wrap::after {
+    animation-delay: 1.1s;
 }
 
 /* Light Tech Glow Background (Aurora Mesh Trend) */
@@ -182,7 +235,7 @@ body {
 /* Navigation Indicator & Hover */
 .nav-item-btn {
     position: relative;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-indicator {
@@ -194,7 +247,7 @@ body {
     background: linear-gradient(90deg, #1B45BD, #029146);
     transform: scaleX(0);
     transform-origin: center;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: 9999px;
     box-shadow: 0 0 6px rgba(27, 69, 189, 0.4);
 }
@@ -205,7 +258,7 @@ body {
 }
 
 .menu-chevron {
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
 }
 
 .has-dropdown:hover .menu-chevron,
@@ -215,7 +268,7 @@ body {
 }
 
 /* ==========================================================================
-   Elevated Dropdown & Mega Menu System
+   Elevated Dropdown & Mega Menu System (Smooth Gliding Float)
    ========================================================================== */
 
 .mega-menu-panel,
@@ -224,10 +277,10 @@ body {
     top: 100%;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px) scale(0.98);
-    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-                visibility 0.22s;
+    transform: translateY(6px);
+    transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), 
+                visibility 0.28s;
     pointer-events: none;
     z-index: 100;
 }
@@ -238,16 +291,16 @@ body {
 .has-dropdown:focus-within > .dropdown-menu-panel {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
 /* Dropdown Card Hover Details */
 .dropdown-item-card {
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease, border-color 0.3s ease;
 }
 .dropdown-item-card:hover {
-    transform: translateX(3px);
+    transform: translateX(4px);
     background-color: #eff4ff;
 }
 
@@ -255,21 +308,23 @@ body {
 .btn-primary {
     background-color: #1B45BD;
     color: #ffffff;
-    transition: all 0.2s ease;
+    transition: background-color 0.3s ease, box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 .btn-primary:hover {
     background-color: #15379b;
-    box-shadow: 0 10px 25px -5px rgba(27, 69, 189, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -6px rgba(27, 69, 189, 0.35);
 }
 
 .btn-secondary {
     background-color: #029146;
     color: #ffffff;
-    transition: all 0.2s ease;
+    transition: background-color 0.3s ease, box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 .btn-secondary:hover {
     background-color: #027a3a;
-    box-shadow: 0 10px 25px -5px rgba(2, 145, 70, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -6px rgba(2, 145, 70, 0.35);
 }
 
 /* AI Pulse Glow */
@@ -520,19 +575,29 @@ input, select, textarea {
     transition: left 0.8s ease-in-out !important;
 }
 
-/* Sticky Stacking Cards (2026 Trend) */
+/* Sticky Stacking Cards */
 .stacking-cards-container {
-    perspective: 1000px;
+    /* Prevent 3D perspective distortion that causes subpixel text blur */
 }
 
 .stacking-card {
-    will-change: transform, top;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 .stacking-card:hover {
-    transform: translateY(-5px) scale(1.01) !important;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+    transform: translate3d(0, -4px, 0) !important;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04) !important;
+}
+
+.stacking-card * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Mockup Panel Designs */
@@ -557,7 +622,7 @@ input, select, textarea {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 14px 0 rgba(27, 69, 189, 0.35);
     border: 1px solid rgba(27, 69, 189, 0.5);
     text-decoration: none;
@@ -567,7 +632,7 @@ input, select, textarea {
 .btn-brand-primary:hover {
     background-color: #15379b;
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px 0 rgba(27, 69, 189, 0.45);
+    box-shadow: 0 10px 24px 0 rgba(27, 69, 189, 0.45);
     color: #ffffff;
 }
 
@@ -582,7 +647,7 @@ input, select, textarea {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 4px 14px 0 rgba(2, 145, 70, 0.35);
     border: 1px solid rgba(2, 145, 70, 0.5);
     text-decoration: none;
@@ -592,7 +657,7 @@ input, select, textarea {
 .btn-brand-secondary:hover, .btn-lime:hover {
     background-color: #027a3a;
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px 0 rgba(2, 145, 70, 0.45);
+    box-shadow: 0 10px 24px 0 rgba(2, 145, 70, 0.45);
     color: #ffffff;
 }
 
@@ -608,7 +673,7 @@ input, select, textarea {
     justify-content: center;
     gap: 0.5rem;
     border: 1.5px solid #e2e8f0;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     text-decoration: none;
     cursor: pointer;
 }
@@ -633,7 +698,7 @@ input, select, textarea {
     gap: 0.5rem;
     border: 1.5px solid rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(8px);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     text-decoration: none;
     cursor: pointer;
 }
@@ -970,6 +1035,72 @@ input, select, textarea {
     }
 }
 
+/* Shimmer Button Effect */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    transform: rotate(25deg);
+    animation: shimmerSweep 4.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Cursor Spotlight Glow Effect (Linear / Stripe Signature 2026)
+   ========================================================================== */
+
+.spotlight-card {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(27, 69, 189, 0.35),
+        transparent 65%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 10;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+.spotlight-card-emerald::before {
+    background: radial-gradient(
+        350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+        rgba(2, 145, 70, 0.45),
+        transparent 65%
+    ) !important;
+}
+
 /* 6. Staggered Word / Split-Text Reveal */
 .split-headline {
     overflow: hidden;
@@ -986,7 +1117,7 @@ input, select, textarea {
     display: inline-block;
     transform: translateY(115%);
     opacity: 0;
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform, opacity;
 }
 
@@ -996,19 +1127,21 @@ input, select, textarea {
     opacity: 1;
 }
 
-/* 7. Nexaris Dynamic Card Glow & Tilt Physics */
+/* 7. Nexaris Dynamic Card Glow & Tilt Physics (Smooth & Crisp) */
 .nexaris-card {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
 }
 
 .nexaris-card:hover {
-    transform: translateY(-6px) scale(1.01);
+    transform: translateY(-6px);
     box-shadow: 0 25px 50px -12px rgba(27, 69, 189, 0.18), 0 0 0 1px rgba(27, 69, 189, 0.2);
 }
 
 .nexaris-card-emerald:hover {
-    transform: translateY(-6px) scale(1.01);
+    transform: translateY(-6px);
     box-shadow: 0 25px 50px -12px rgba(2, 145, 70, 0.18), 0 0 0 1px rgba(2, 145, 70, 0.2);
 }
 
@@ -1042,7 +1175,7 @@ input, select, textarea {
     white-space: nowrap;
     opacity: 0;
     transform: translateY(110%);
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
     will-change: transform, opacity;
 }
@@ -1062,48 +1195,17 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   Multi-Column Slot-Machine Number Tumbler & Odometer Animation (Dribbble Style)
+   Smooth Stat Counters & Metrics (High-Precision Eased Typography)
    ========================================================================== */
 
-.slot-odometer {
-    display: inline-flex !important;
-    align-items: baseline;
-    justify-content: center;
+.stat-counter, [data-stat-counter] {
     font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    letter-spacing: -0.02em;
+    display: inline-block;
+    vertical-align: baseline;
     line-height: 1.15;
-    overflow: hidden;
-    height: 1.18em;
-    vertical-align: middle;
-}
-
-.slot-column {
-    display: inline-block;
-    position: relative;
-    height: 1.18em;
-    overflow: hidden;
-    line-height: 1.18em;
-    vertical-align: top;
-}
-
-.slot-ribbon {
-    display: flex;
-    flex-direction: column;
-    transform: translateY(0%);
-    transition: transform 1.8s cubic-bezier(0.12, 0.85, 0.2, 1);
     will-change: transform;
-}
-
-.slot-char {
-    display: block;
-    height: 1.18em;
-    line-height: 1.18em;
-    text-align: center;
-}
-
-.slot-static-char {
-    display: inline-block;
-    height: 1.18em;
-    line-height: 1.18em;
 }
 
 .metric-progress-track {

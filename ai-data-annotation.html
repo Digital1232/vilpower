@@ -79,69 +79,33 @@
                         <span class="nav-indicator"></span>
                     </button>
 
-                    <div class="mega-menu-panel absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-[880px] max-w-[95vw]">
-                        <div class="bg-white p-6 shadow-2xl rounded-2xl border border-slate-200 ring-1 ring-slate-900/5">
-                            <div class="mb-4 rounded-xl border border-blue-100 bg-[#eff4ff]/60 p-3.5 flex items-center justify-between text-xs font-mono">
-                                <div class="flex items-center gap-2 text-[#1B45BD] font-bold">
-                                    <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot"></span>
-                                    <span>ENTERPRISE DATA CAPABILITIES</span>
+                    <!-- SOLUTIONS Dropdown Panel -->
+                    <div class="dropdown-menu-panel absolute top-full left-0 pt-2.5 w-72">
+                        <div class="bg-white p-3 shadow-2xl rounded-2xl border border-slate-200 space-y-1">
+                            <a href="ai-data-annotation.html" class="p-2.5 rounded-xl bg-blue-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#eff4ff] text-[#1B45BD] flex items-center justify-center shrink-0">
+                                    <i data-lucide="scan-eye" class="w-4 h-4"></i>
                                 </div>
-                                <span class="text-[#029146] font-bold">99.7% Audited SLA • Sub-24h Pilot TAT</span>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <a href="ai-data-annotation.html" class="dropdown-item-card p-3.5 rounded-xl border border-[#bfdbfe] bg-[#eff4ff]/50 flex items-start gap-3.5 group/card">
-                                    <div class="w-9 h-9 rounded-lg bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] shrink-0">
-                                        <i data-lucide="scan-eye" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="flex items-center gap-2">
-                                            <h4 class="text-xs font-bold text-[#1B45BD]">AI Data Annotation</h4>
-                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-100 text-[#1B45BD] font-bold">CURRENT</span>
-                                        </div>
-                                        <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">2D/3D Bounding Boxes, LiDAR 3D Cuboids & RLHF.</p>
-                                    </div>
-                                </a>
-
-                                <a href="xml-stm-publishing.html" class="dropdown-item-card p-3.5 rounded-xl border border-slate-100 bg-slate-50/70 hover:border-[#a7f3d0] flex items-start gap-3.5 group/card">
-                                    <div class="w-9 h-9 rounded-lg bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] shrink-0 group-hover/card:scale-110 transition-transform">
-                                        <i data-lucide="file-code" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="flex items-center gap-2">
-                                            <h4 class="text-xs font-bold text-slate-900 group-hover/card:text-[#029146] transition-colors">XML & STM Publishing</h4>
-                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-[#029146] font-bold">JATS 1.3</span>
-                                        </div>
-                                        <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">PubMed Central, BITS 2.1, MathML 3.0 & EPUB3.</p>
-                                    </div>
-                                </a>
-
-                                <a href="lease-abstraction.html" class="dropdown-item-card p-3.5 rounded-xl border border-slate-100 bg-slate-50/70 hover:border-[#bfdbfe] flex items-start gap-3.5 group/card">
-                                    <div class="w-9 h-9 rounded-lg bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] shrink-0 group-hover/card:scale-110 transition-transform">
-                                        <i data-lucide="building-2" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="flex items-center gap-2">
-                                            <h4 class="text-xs font-bold text-slate-900 group-hover/card:text-[#1B45BD] transition-colors">Commercial Lease Abstraction</h4>
-                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-100 text-[#1B45BD] font-bold">REIT GRADE</span>
-                                        </div>
-                                        <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">40+ critical dates, CAM caps & Yardi/MRI integration.</p>
-                                    </div>
-                                </a>
-
-                                <a href="legal-data-intelligence.html" class="dropdown-item-card p-3.5 rounded-xl border border-slate-100 bg-slate-50/70 hover:border-[#a7f3d0] flex items-start gap-3.5 group/card">
-                                    <div class="w-9 h-9 rounded-lg bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] shrink-0 group-hover/card:scale-110 transition-transform">
-                                        <i data-lucide="database-zap" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="flex items-center gap-2">
-                                            <h4 class="text-xs font-bold text-slate-900 group-hover/card:text-[#029146] transition-colors">Legal & Web Intelligence</h4>
-                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-[#029146] font-bold">CLEANROOM</span>
-                                        </div>
-                                        <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">Entity disambiguation, KYC & corporate registries.</p>
-                                    </div>
-                                </a>
-                            </div>
+                                <span class="text-xs font-semibold text-[#1B45BD]">AI Data Annotation</span>
+                            </a>
+                            <a href="xml-stm-publishing.html" class="p-2.5 rounded-xl hover:bg-emerald-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#ecfdf3] text-[#029146] flex items-center justify-center shrink-0">
+                                    <i data-lucide="file-code" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-800 group-hover/item:text-[#029146]">XML & STM Publishing</span>
+                            </a>
+                            <a href="lease-abstraction.html" class="p-2.5 rounded-xl hover:bg-blue-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#eff4ff] text-[#1B45BD] flex items-center justify-center shrink-0">
+                                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-800 group-hover/item:text-[#1B45BD]">Commercial Lease Abstraction</span>
+                            </a>
+                            <a href="legal-data-intelligence.html" class="p-2.5 rounded-xl hover:bg-emerald-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#ecfdf3] text-[#029146] flex items-center justify-center shrink-0">
+                                    <i data-lucide="database-zap" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-800 group-hover/item:text-[#029146]">Legal & Web Intelligence</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -178,21 +142,19 @@
                         <i data-lucide="chevron-down" class="menu-chevron w-3.5 h-3.5 text-slate-400"></i>
                         <span class="nav-indicator"></span>
                     </button>
-                    <div class="dropdown-menu-panel absolute top-full left-0 pt-2.5 w-80">
-                        <div class="bg-white p-3.5 shadow-2xl rounded-2xl border border-slate-200 space-y-1.5">
-                            <a href="about.html" class="p-3 rounded-xl hover:bg-emerald-50/60 flex items-start gap-3">
-                                <i data-lucide="sprout" class="w-4 h-4 text-[#029146] mt-0.5"></i>
-                                <div>
-                                    <div class="text-xs font-bold text-slate-900">About & Digital Banyan Tree</div>
-                                    <p class="text-[11px] text-slate-500 mt-0.5">Our 15-year story & 95%+ rural women leadership.</p>
+                    <div class="dropdown-menu-panel absolute top-full left-0 pt-2.5 w-72">
+                        <div class="bg-white p-3 shadow-2xl rounded-2xl border border-slate-200 space-y-1">
+                            <a href="about.html" class="p-2.5 rounded-xl hover:bg-emerald-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#ecfdf3] text-[#029146] flex items-center justify-center shrink-0">
+                                    <i data-lucide="sprout" class="w-4 h-4"></i>
                                 </div>
+                                <span class="text-xs font-semibold text-slate-800 group-hover/item:text-[#029146]">About & Digital Banyan Tree</span>
                             </a>
-                            <a href="gallery.html" class="p-3 rounded-xl hover:bg-blue-50/60 flex items-start gap-3">
-                                <i data-lucide="image" class="w-4 h-4 text-[#1B45BD] mt-0.5"></i>
-                                <div>
-                                    <div class="text-xs font-bold text-slate-900">Operations Gallery</div>
-                                    <p class="text-[11px] text-slate-500 mt-0.5">Cleanrooms, ISO 27001 vaults & academy.</p>
+                            <a href="gallery.html" class="p-2.5 rounded-xl hover:bg-blue-50/60 flex items-center gap-3 group/item transition-colors">
+                                <div class="w-8 h-8 rounded-lg bg-[#eff4ff] text-[#1B45BD] flex items-center justify-center shrink-0">
+                                    <i data-lucide="image" class="w-4 h-4"></i>
                                 </div>
+                                <span class="text-xs font-semibold text-slate-800 group-hover/item:text-[#1B45BD]">Operations Gallery</span>
                             </a>
                         </div>
                     </div>
