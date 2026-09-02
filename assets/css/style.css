@@ -1385,22 +1385,22 @@ input, select, textarea {
 
 /* ── Tab active / inactive states ──────────────────────────────────────── */
 .hitl-tab-active {
-    background: rgba(27, 69, 189, 0.25) !important;
-    color: #93c5fd !important;
-    border: 1px solid rgba(27, 69, 189, 0.5) !important;
+    background: #1B45BD !important;
+    color: #ffffff !important;
+    border: 1px solid #1B45BD !important;
     font-weight: 700;
 }
 
 .hitl-tab-inactive {
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.35) !important;
+    color: #64748b !important;
     border: 1px solid transparent !important;
     font-weight: 500;
 }
 
 .hitl-tab-inactive:hover {
-    color: rgba(255, 255, 255, 0.7) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
+    color: #1B45BD !important;
+    background: #eff4ff !important;
 }
 
 /* ── Status ticker text ─────────────────────────────────────────────────── */
@@ -1414,8 +1414,8 @@ input, select, textarea {
     transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
 }
 .hitl-cockpit-panel:hover {
-    box-shadow: 0 0 0 1px rgba(27, 69, 189, 0.5), 0 32px 64px -16px rgba(27, 69, 189, 0.25);
-    border-color: rgba(27, 69, 189, 0.55) !important;
+    box-shadow: 0 0 0 1px rgba(27, 69, 189, 0.2), 0 20px 40px -10px rgba(27, 69, 189, 0.1);
+    border-color: #bfdbfe !important;
 }
 
 /* ==========================================================================
@@ -1495,13 +1495,13 @@ input, select, textarea {
 /* Inactive tabs — brighter so they're readable */
 .hitl-tab-inactive {
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.55) !important;
+    color: #64748b !important;
     border: 1px solid transparent !important;
     font-weight: 500;
 }
 .hitl-tab-inactive:hover {
-    color: rgba(255, 255, 255, 0.85) !important;
-    background: rgba(255, 255, 255, 0.07) !important;
+    color: #1B45BD !important;
+    background: #eff4ff !important;
 }
 
 /* Wave bar — override inline width if needed */
