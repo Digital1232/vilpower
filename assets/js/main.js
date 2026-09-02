@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Initialize Desktop Nav Dropdown Controller (Prevents overlapping & stuck focus)
+    initDesktopDropdowns();
     // Initialize Scroll Reveal Animations
     initScrollReveal();
     // Initialize Nexaris-style Split Text reveals
@@ -70,6 +72,79 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize HITL Cockpit Panel
     initHITLPanel();
 });
+
+// Desktop Nav Dropdown Controller — prevents stuck focus, double-activation, and overlapping panels
+function initDesktopDropdowns() {
+    const dropdownContainers = document.querySelectorAll('.desktop-nav .has-dropdown');
+    if (!dropdownContainers.length) return;
+
+    dropdownContainers.forEach(container => {
+        const btn = container.querySelector('.nav-item-btn');
+
+        // On mouse enter, remove stuck focus or is-open state from any other dropdown across the nav
+        container.addEventListener('mouseenter', () => {
+            dropdownContainers.forEach(other => {
+                if (other !== container) {
+                    other.classList.remove('is-open');
+                    const otherBtn = other.querySelector('.nav-item-btn');
+                    if (otherBtn && document.activeElement === otherBtn) {
+                        otherBtn.blur();
+                    }
+                }
+            });
+        });
+
+        // Mouse leave clears any temporary is-open state
+        container.addEventListener('mouseleave', () => {
+            container.classList.remove('is-open');
+            if (btn && document.activeElement === btn) {
+                btn.blur();
+            }
+        });
+
+        // Toggle on click (for touch or click interaction)
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                const isCurrentlyOpen = container.classList.contains('is-open');
+                
+                // Close all others first
+                dropdownContainers.forEach(other => {
+                    other.classList.remove('is-open');
+                    const otherBtn = other.querySelector('.nav-item-btn');
+                    if (otherBtn) otherBtn.blur();
+                });
+
+                if (!isCurrentlyOpen) {
+                    container.classList.add('is-open');
+                } else {
+                    btn.blur();
+                }
+            });
+        }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.desktop-nav .has-dropdown')) {
+            dropdownContainers.forEach(c => {
+                c.classList.remove('is-open');
+                const b = c.querySelector('.nav-item-btn');
+                if (b && document.activeElement === b) b.blur();
+            });
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdownContainers.forEach(c => {
+                c.classList.remove('is-open');
+                const b = c.querySelector('.nav-item-btn');
+                if (b) b.blur();
+            });
+        }
+    });
+}
 
 // Cursor Spotlight Glow Tracker (Linear / Stripe Signature Effect)
 function initSpotlightCards() {
