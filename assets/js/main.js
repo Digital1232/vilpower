@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initRotatingServiceTitles();
     // Initialize Cursor Spotlight Glow Cards
     initSpotlightCards();
+    // Initialize HITL Cockpit Panel
+    initHITLPanel();
 });
 
 // Cursor Spotlight Glow Tracker (Linear / Stripe Signature Effect)
@@ -157,23 +159,366 @@ function toggleMobileAccordion(id) {
     if (window.lucide) lucide.createIcons();
 }
 
-// Interactive Hero Playground Tab Switcher
+// Interactive Hero Playground Tab Switcher (HITL Cockpit)
+// Tab switcher — delegates to live engine
 function switchDemoTab(tabName) {
     const tabs = ['vision', 'nlp', 'audio'];
     tabs.forEach(t => {
-        const btn = document.getElementById(`demo-tab-${t}`);
+        const btn  = document.getElementById(`demo-tab-${t}`);
         const pane = document.getElementById(`demo-content-${t}`);
-        if (btn && pane) {
-            if (t === tabName) {
-                btn.className = 'demo-tab-btn py-1.5 px-2 rounded-md bg-white text-[#1B45BD] border border-[#bfdbfe] text-center transition-all font-bold shadow-sm';
-                pane.classList.remove('hidden');
-            } else {
-                btn.className = 'demo-tab-btn py-1.5 px-2 rounded-md text-slate-500 hover:text-slate-900 text-center transition-all';
-                pane.classList.add('hidden');
-            }
+        if (!btn || !pane) return;
+        if (t === tabName) {
+            btn.classList.remove('hitl-tab-inactive');
+            btn.classList.add('hitl-tab-active');
+            pane.classList.remove('hidden');
+        } else {
+            btn.classList.remove('hitl-tab-active');
+            btn.classList.add('hitl-tab-inactive');
+            pane.classList.add('hidden');
         }
     });
     if (window.lucide) lucide.createIcons();
+    if (window._hitlEngine) window._hitlEngine.onTabSwitch(tabName);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HITL Live Demo Engine — unified live controller for all 3 tabs
+   ═══════════════════════════════════════════════════════════════════════════ */
+function initHITLPanel() {
+    const panel = document.querySelector('.hitl-cockpit-panel');
+    if (!panel) return;
+
+    let paused     = false;
+    let activeTab  = 'vision';
+    const _timers  = { vision: [], nlp: [], audio: [] };
+
+    function _later(fn, ms, tab) {
+        const id = setTimeout(fn, ms);
+        const key = tab || activeTab;
+        if (_timers[key]) _timers[key].push({t:'to', id});
+        return id;
+    }
+    function _every(fn, ms, tab) {
+        const id = setInterval(fn, ms);
+        const key = tab || activeTab;
+        if (_timers[key]) _timers[key].push({t:'iv', id});
+        return id;
+    }
+    function _clearTab(tab) {
+        (_timers[tab] || []).forEach(x => x.t === 'iv' ? clearInterval(x.id) : clearTimeout(x.id));
+        _timers[tab] = [];
+    }
+
+    // Always live — no pause on hover
+
+    /* ── helpers ─────────────────────────────────────────────────────── */
+    function _fadeText(elId, txt) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        el.style.opacity = '0';
+        _later(() => { el.textContent = txt; el.style.transition = 'opacity 0.35s'; el.style.opacity = '1'; }, 220);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       VISION ENGINE
+       ══════════════════════════════════════════════════════════════════ */
+    const vMsgs = [
+        'Initialising LiDAR+RGB fusion…',
+        'Scanning frame…',
+        'Detecting objects…',
+        'VEHICLE #049 locked · conf 99.8%',
+        'PEDESTRIAN locked · conf 99.6%',
+        'SIGNAL locked · conf 97.1%',
+        'Running Tier-3 QA audit…',
+        'Multi-pass verification ✓',
+        'Output dispatched to pipeline',
+        'Next frame queued…',
+    ];
+    let vMsgIdx = 0, vRunning = false;
+
+    function vSetProcBar(pct) {
+        const b = document.getElementById('vision-proc-bar');
+        if (b) { b.style.transition = pct === 0 ? 'none' : 'width 0.1s linear'; b.style.width = pct + '%'; }
+    }
+    function vSetObjCount(n) { const e = document.getElementById('vision-obj-count'); if (e) e.textContent = n; }
+
+    function vLoop() {
+        if (!vRunning) return;
+        vMsgIdx = 0;
+
+        // Reset boxes + bar
+        ['anno-vehicle','anno-ped','anno-sig'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('hitl-drawn');
+        });
+        vSetProcBar(0); vSetObjCount(0);
+
+        const frameEl  = document.getElementById('hitl-frame-num');
+        const frameBase = 49 + Math.floor(Math.random() * 60);
+        if (frameEl) frameEl.textContent = String(frameBase).padStart(4, '0');
+
+        // Tick status messages
+        const msgIv = _every(() => {
+            if (paused || activeTab !== 'vision') return;
+            _fadeText('hitl-status-text', vMsgs[vMsgIdx % vMsgs.length]);
+            vMsgIdx++;
+        }, 850);
+
+        // Fill progress bar
+        let pct = 0;
+        const barIv = _every(() => {
+            if (paused) return;
+            pct = Math.min(pct + 2.8, 100);
+            vSetProcBar(pct);
+            if (pct >= 100) clearInterval(barIv);
+        }, 55);
+
+        // Staggered annotation draw-in
+        const steps = [
+            { delay: 380,  id: 'anno-vehicle', n: 1, dFrame: 0 },
+            { delay: 780,  id: 'anno-ped',     n: 2, dFrame: 1 },
+            { delay: 1180, id: 'anno-sig',     n: 3, dFrame: 2 },
+        ];
+        steps.forEach(s => {
+            _later(() => {
+                const el = document.getElementById(s.id);
+                if (el) el.classList.add('hitl-drawn');
+                vSetObjCount(s.n);
+                if (frameEl) frameEl.textContent = String(frameBase + s.dFrame).padStart(4,'0');
+            }, s.delay);
+        });
+
+        // After full cycle, hold then loop
+        _later(() => {
+            clearInterval(msgIv);
+            _later(() => { if (vRunning && activeTab === 'vision') vLoop(); }, 1800);
+        }, 2600);
+    }
+
+    function startVision() { vRunning = true;  vLoop(); }
+    function stopVision()  { vRunning = false; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       NLP ENGINE
+       ══════════════════════════════════════════════════════════════════ */
+    const nlpDocs = [
+        {
+            parts: [
+                {t:'tx', v:'"The tenant '},
+                {t:'en', label:'ORG',   v:'ACME Global Logistics Inc.', color:'#93c5fd', bg:'rgba(59,130,246,0.22)',  bd:'rgba(59,130,246,0.4)'},
+                {t:'tx', v:' agreed to lease Suite 400 at '},
+                {t:'en', label:'LOC',   v:'500 Silicon Way, Austin TX', color:'#67e8f9', bg:'rgba(6,182,212,0.22)',   bd:'rgba(6,182,212,0.4)'},
+                {t:'tx', v:' commencing '},
+                {t:'en', label:'DATE',  v:'Nov 1, 2026',                color:'#6ee7b7', bg:'rgba(2,145,70,0.22)',    bd:'rgba(2,145,70,0.4)'},
+                {t:'tx', v:' at '},
+                {t:'en', label:'MONEY', v:'$48,500/mo',                 color:'#fcd34d', bg:'rgba(245,158,11,0.22)', bd:'rgba(245,158,11,0.4)'},
+                {t:'tx', v:'."'},
+            ],
+            intent: 'COMMERCIAL_LEASE · HIGH_CONF',
+            halluc: '0.00% (Audited)',
+        },
+        {
+            parts: [
+                {t:'tx', v:'"Landlord '},
+                {t:'en', label:'ORG',  v:'Pinnacle REIT LLC',  color:'#93c5fd', bg:'rgba(59,130,246,0.22)',  bd:'rgba(59,130,246,0.4)'},
+                {t:'tx', v:' grants renewal option at '},
+                {t:'en', label:'LOC',  v:'Tower B, Floor 12',  color:'#67e8f9', bg:'rgba(6,182,212,0.22)',   bd:'rgba(6,182,212,0.4)'},
+                {t:'tx', v:' until '},
+                {t:'en', label:'DATE', v:'Dec 31, 2028',       color:'#6ee7b7', bg:'rgba(2,145,70,0.22)',    bd:'rgba(2,145,70,0.4)'},
+                {t:'tx', v:'."'},
+            ],
+            intent: 'RENEWAL_OPTION · HIGH_CONF',
+            halluc: '0.00% (Audited)',
+        },
+    ];
+    const nlpStatusSteps = [
+        'Tokenising clause…',
+        'Running Legal-BERT NER…',
+        'Entities extracted…',
+        'Intent classified ✓',
+        'Hallucination check pass ✓',
+    ];
+    let nlpDocIdx = 0, nlpRunning = false;
+
+    function nlpLoop() {
+        if (!nlpRunning) return;
+        const doc = nlpDocs[nlpDocIdx % nlpDocs.length];
+        nlpDocIdx++;
+
+        const sentEl  = document.getElementById('nlp-sentence');
+        const intentEl = document.getElementById('nlp-intent');
+        const hallucEl = document.getElementById('nlp-halluc');
+        if (!sentEl) return;
+
+        sentEl.innerHTML = '';
+        if (intentEl) intentEl.textContent = '—';
+        if (hallucEl) hallucEl.textContent  = '—';
+        _fadeText('nlp-status-text', nlpStatusSteps[0]);
+
+        const entitySpans = [];
+        doc.parts.forEach(p => {
+            if (p.t === 'tx') {
+                sentEl.appendChild(document.createTextNode(p.v));
+            } else {
+                const s = document.createElement('span');
+                s.className = 'nlp-entity';
+                s.style.cssText = `background:${p.bg};color:${p.color};border:1px solid ${p.bd};`;
+                s.textContent = `[${p.label}: ${p.v}]`;
+                sentEl.appendChild(s);
+                entitySpans.push(s);
+            }
+        });
+
+        // Reveal entities with stagger
+        entitySpans.forEach((span, i) => {
+            _later(() => {
+                span.classList.add('visible');
+                _fadeText('nlp-status-text', nlpStatusSteps[Math.min(i + 1, nlpStatusSteps.length - 1)]);
+            }, 550 + i * 500);
+        });
+
+        const done = 550 + entitySpans.length * 500 + 400;
+        _later(() => {
+            // Populate result cards directly (not via _fadeText to avoid id lookup timing issues)
+            const intentEl2 = document.getElementById('nlp-intent');
+            const hallucEl2 = document.getElementById('nlp-halluc');
+            if (intentEl2) {
+                intentEl2.style.opacity = '0';
+                setTimeout(() => { intentEl2.textContent = doc.intent; intentEl2.style.transition = 'opacity 0.4s'; intentEl2.style.opacity = '1'; }, 150);
+            }
+            if (hallucEl2) {
+                hallucEl2.style.opacity = '0';
+                setTimeout(() => { hallucEl2.textContent = doc.halluc; hallucEl2.style.transition = 'opacity 0.4s'; hallucEl2.style.opacity = '1'; }, 350);
+            }
+            _fadeText('nlp-status-text', nlpStatusSteps[nlpStatusSteps.length - 1]);
+            // Use native setTimeout (not _later) so _clearTab won't kill the loop restart
+            setTimeout(() => { if (nlpRunning && activeTab === 'nlp') nlpLoop(); }, 2400);
+        }, done);
+    }
+
+    function startNlp() { nlpRunning = true;  nlpLoop(); }
+    function stopNlp()  { nlpRunning = false; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       AUDIO ENGINE
+       ══════════════════════════════════════════════════════════════════ */
+    const jatsLines = [
+        '<span style="color:#7dd3fc">&lt;article&gt;</span>',
+        '  <span style="color:#7dd3fc">&lt;front&gt;&lt;article-meta&gt;</span>',
+        '    <span style="color:#7dd3fc">&lt;article-id</span> <span style="color:#fcd34d">pub-id-type</span>=<span style="color:#a3e635">"doi"</span><span style="color:#7dd3fc">&gt;</span><span style="color:#e2e8f0">10.1016/j.cell.2026.08.004</span><span style="color:#7dd3fc">&lt;/article-id&gt;</span>',
+        '    <span style="color:#7dd3fc">&lt;title-group&gt;</span>',
+        '      <span style="color:#7dd3fc">&lt;article-title&gt;</span><span style="color:#e2e8f0">Clinical Precision Bio-Assay in Neural Tissue</span><span style="color:#7dd3fc">&lt;/article-title&gt;</span>',
+        '    <span style="color:#7dd3fc">&lt;/title-group&gt;</span>',
+        '    <span style="color:#7dd3fc">&lt;pub-date</span> <span style="color:#fcd34d">pub-type</span>=<span style="color:#a3e635">"epub"</span><span style="color:#7dd3fc">&gt;&lt;year&gt;</span><span style="color:#e2e8f0">2026</span><span style="color:#7dd3fc">&lt;/year&gt;&lt;/pub-date&gt;</span>',
+        '  <span style="color:#7dd3fc">&lt;/article-meta&gt;&lt;/front&gt;</span>',
+        '<span style="color:#34d399">✓ Schema valid · PubMed DTD · 100% Pass</span>',
+    ];
+    const audioMsgs = [
+        'Diarising audio stream…',
+        'SPK_A detected · 00:04.2',
+        'SPK_B detected · 00:12.8',
+        'Transcription aligned…',
+        'Parsing JATS 1.3 XML…',
+        'Schema validation running…',
+        'PubMed Central DTD ✓',
+        'Validation 100% Pass',
+    ];
+    let jatsIdx = 0, audioSecs = 0, audioRunning = false, audioMsgIdx = 0;
+
+    function startAudio() {
+        audioRunning = true;
+        jatsIdx = 0; audioSecs = 0; audioMsgIdx = 0;
+        const jatsEl = document.getElementById('jats-output');
+        if (jatsEl) jatsEl.innerHTML = '';
+
+        // Timer counter
+        _every(() => {
+            if (paused || activeTab !== 'audio') return;
+            audioSecs += 0.1;
+            const m = Math.floor(audioSecs / 60).toString().padStart(2,'0');
+            const s = (audioSecs % 60).toFixed(1).padStart(4,'0');
+            const el = document.getElementById('audio-timer');
+            if (el) el.textContent = `${m}:${s}`;
+        }, 100);
+
+        // Waveform randomiser
+        _every(() => {
+            if (paused || activeTab !== 'audio') return;
+            for (let i = 0; i < 12; i++) {
+                const b = document.getElementById(`wb${i}`);
+                if (b) b.style.height = (Math.floor(Math.random() * 75) + 10) + '%';
+            }
+            const isA = Math.random() > 0.45;
+            const spkA = document.getElementById('audio-spk-a');
+            const spkB = document.getElementById('audio-spk-b');
+            if (spkA) spkA.style.opacity = isA ? '1' : '0.3';
+            if (spkB) spkB.style.opacity = isA ? '0.3' : '1';
+        }, 180);
+
+        // JATS XML lines typewriter
+        _every(() => {
+            if (paused || activeTab !== 'audio') return;
+            const jEl = document.getElementById('jats-output');
+            if (!jEl) return;
+            if (jatsIdx < jatsLines.length) {
+                const d = document.createElement('div');
+                d.innerHTML = jatsLines[jatsIdx++];
+                jEl.appendChild(d);
+                jEl.scrollTop = jEl.scrollHeight;
+            } else {
+                // Reset and loop
+                _later(() => { jatsIdx = 0; audioSecs = 0; if (jEl) jEl.innerHTML = ''; }, 1800);
+            }
+        }, 700);
+
+        // Status messages
+        _every(() => {
+            if (paused || activeTab !== 'audio') return;
+            _fadeText('audio-status-text', audioMsgs[audioMsgIdx % audioMsgs.length]);
+            audioMsgIdx++;
+        }, 1100);
+    }
+
+    function stopAudio() { audioRunning = false; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       TAB SWITCH HANDLER
+       ══════════════════════════════════════════════════════════════════ */
+    function onTabSwitch(tab) {
+        const prev = activeTab;
+        activeTab = tab;
+
+        if (tab === 'nlp')   { nlpRunning = false;   _clearTab('nlp');   startNlp();   }
+        if (tab === 'audio') { audioRunning = false; _clearTab('audio'); startAudio(); }        if (tab === 'vision') {
+            _clearTab('vision');
+            vRunning = true;
+            _later(vLoop, 80, 'vision');
+        }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       BOOT — wait for panel to slide into view then start vision
+       ══════════════════════════════════════════════════════════════════ */
+    function boot() {
+        activeTab = 'vision';
+        startVision();
+    }
+
+    const revealEl = panel.closest('.reveal-right');
+    if (revealEl) {
+        const mo = new MutationObserver(() => {
+            if (revealEl.classList.contains('active')) {
+                mo.disconnect();
+                _later(boot, 420, 'vision');
+            }
+        });
+        mo.observe(revealEl, { attributes: true, attributeFilter: ['class'] });
+    } else {
+        _later(boot, 100, 'vision');
+    }
+
+    // Expose engine globally so switchDemoTab can call it
+    window._hitlEngine = { onTabSwitch };
 }
 
 // Vaulta Style Showcase Tab Switcher (Home Page 2)

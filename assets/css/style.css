@@ -47,6 +47,7 @@ body {
     background-attachment: fixed;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Global Smooth Transitions for Interactive Elements */
@@ -67,48 +68,48 @@ a, button {
     opacity: 0;
     transform: translateY(22px);
     transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+    will-change: auto;
 }
 
 .reveal-left {
     opacity: 0;
     transform: translateX(-24px);
     transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
 }
 
 .reveal-left.active {
     opacity: 1;
     transform: translateX(0);
+    will-change: auto;
 }
 
 .reveal-right {
     opacity: 0;
     transform: translateX(24px);
     transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
 }
 
 .reveal-right.active {
     opacity: 1;
     transform: translateX(0);
+    will-change: auto;
 }
 
 .reveal-scale {
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
 }
 
 .reveal-scale.active {
     opacity: 1;
     transform: scale(1);
+    will-change: auto;
 }
 
 /* Stagger Delays */
@@ -584,9 +585,6 @@ input, select, textarea {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translateZ(0);
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
@@ -899,20 +897,33 @@ input, select, textarea {
    NEXARIS ANIMATION SUITE (Organic Levitation, Progress Line, Glow Ellipses & Split Reveals)
    ========================================================================== */
 
-/* 1. Multi-Frequency Organic Levitation Physics */
+/* Multi-Frequency Organic Levitation Physics */
 [data-levitation="1"] {
     animation: levitateFirst 6s ease-in-out infinite;
     will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 [data-levitation="2"] {
     animation: levitateSecond 5s ease-in-out infinite;
     will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 [data-levitation="3"] {
     animation: levitateThird 7.5s ease-in-out infinite;
     will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[data-levitation="1"] *,
+[data-levitation="2"] *,
+[data-levitation="3"] * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes levitateFirst {
@@ -947,9 +958,9 @@ input, select, textarea {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    will-change: filter, transform;
-    transform: translateZ(0);
     opacity: 0.45;
+    /* Isolated to its own layer to prevent blur bleed onto sibling text */
+    isolation: isolate;
 }
 
 .glow-ellipse-primary {
@@ -1118,13 +1129,13 @@ input, select, textarea {
     transform: translateY(115%);
     opacity: 0;
     transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform, opacity;
 }
 
 .split-headline.revealed .split-word-inner,
 .reveal.active .split-word-inner {
     transform: translateY(0%);
     opacity: 1;
+    will-change: auto;
 }
 
 /* 7. Nexaris Dynamic Card Glow & Tilt Physics (Smooth & Crisp) */
@@ -1132,7 +1143,6 @@ input, select, textarea {
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
     position: relative;
     -webkit-font-smoothing: antialiased;
-    backface-visibility: hidden;
 }
 
 .nexaris-card:hover {
@@ -1177,7 +1187,6 @@ input, select, textarea {
     transform: translateY(110%);
     transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
-    will-change: transform, opacity;
 }
 
 .hero-rotating-service-item.active {
@@ -1185,6 +1194,7 @@ input, select, textarea {
     opacity: 1;
     transform: translateY(0%);
     pointer-events: auto;
+    will-change: auto;
 }
 
 .hero-rotating-service-item.exit {
@@ -1205,7 +1215,6 @@ input, select, textarea {
     display: inline-block;
     vertical-align: baseline;
     line-height: 1.15;
-    will-change: transform;
 }
 
 .metric-progress-track {
@@ -1232,3 +1241,247 @@ input, select, textarea {
 
 
 
+
+/* ==========================================================================
+   HITL Cockpit Panel — Dark Inspector UI
+   ========================================================================== */
+
+/* ── Annotation boxes ──────────────────────────────────────────────────── */
+.hitl-anno-box {
+    position: absolute;
+    pointer-events: none;
+    /* start invisible; JS adds .hitl-drawn to trigger the draw-in */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.hitl-anno-box.hitl-drawn {
+    opacity: 1;
+}
+
+/* Coloured fill tint */
+.hitl-anno-blue  { background: rgba(59, 130, 246, 0.08); }
+.hitl-anno-green { background: rgba(2, 145, 70, 0.08); }
+.hitl-anno-amber { background: rgba(217, 119, 6, 0.08); }
+
+/* ── Corner bracket markers ─────────────────────────────────────────────── */
+.hitl-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+}
+
+.hitl-anno-blue  .hitl-corner { border-color: #60a5fa; }
+.hitl-anno-green .hitl-corner { border-color: #34d399; }
+.hitl-anno-amber .hitl-corner { border-color: #fbbf24; }
+
+.hitl-corner.tl { top: 0;    left: 0;  border-top: 2px solid; border-left:  2px solid; }
+.hitl-corner.tr { top: 0;    right: 0; border-top: 2px solid; border-right: 2px solid; }
+.hitl-corner.bl { bottom: 0; left: 0;  border-bottom: 2px solid; border-left:  2px solid; }
+.hitl-corner.br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* Draw-in animation: corners scale from 0 → full on appear */
+.hitl-anno-box .hitl-corner {
+    transform: scale(0);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hitl-anno-box.hitl-drawn .hitl-corner {
+    transform: scale(1);
+}
+/* Stagger the 4 corners so they feel hand-drawn */
+.hitl-anno-box.hitl-drawn .hitl-corner.tl { transition-delay: 0.00s; }
+.hitl-anno-box.hitl-drawn .hitl-corner.tr { transition-delay: 0.06s; }
+.hitl-anno-box.hitl-drawn .hitl-corner.bl { transition-delay: 0.12s; }
+.hitl-anno-box.hitl-drawn .hitl-corner.br { transition-delay: 0.18s; }
+
+/* ── Label tag ──────────────────────────────────────────────────────────── */
+.hitl-anno-tag {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    font-size: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 0 0 4px 0;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease 0.25s, transform 0.2s ease 0.25s;
+}
+.hitl-anno-box.hitl-drawn .hitl-anno-tag {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Confidence score ───────────────────────────────────────────────────── */
+.hitl-conf {
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.4s;
+}
+.hitl-anno-box.hitl-drawn .hitl-conf {
+    opacity: 1;
+}
+
+/* ── Scanline sweep ─────────────────────────────────────────────────────── */
+@keyframes hitlScanSweep {
+    0%   { top: -4px; opacity: 0.7; }
+    80%  { opacity: 0.7; }
+    100% { top: 100%; opacity: 0; }
+}
+
+.hitl-scanline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(27, 69, 189, 0.6) 20%,
+        rgba(2, 145, 70, 0.9) 50%,
+        rgba(27, 69, 189, 0.6) 80%,
+        transparent 100%
+    );
+    box-shadow: 0 0 8px rgba(2, 145, 70, 0.7);
+    animation: hitlScanSweep 3s linear infinite;
+    z-index: 10;
+}
+
+/* ── Tab active / inactive states ──────────────────────────────────────── */
+.hitl-tab-active {
+    background: rgba(27, 69, 189, 0.25) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(27, 69, 189, 0.5) !important;
+    font-weight: 700;
+}
+
+.hitl-tab-inactive {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.35) !important;
+    border: 1px solid transparent !important;
+    font-weight: 500;
+}
+
+.hitl-tab-inactive:hover {
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ── Status ticker text ─────────────────────────────────────────────────── */
+.hitl-ticker-text {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* ── Outer panel subtle border glow on hover ────────────────────────────── */
+.hitl-cockpit-panel {
+    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+}
+.hitl-cockpit-panel:hover {
+    box-shadow: 0 0 0 1px rgba(27, 69, 189, 0.5), 0 32px 64px -16px rgba(27, 69, 189, 0.25);
+    border-color: rgba(27, 69, 189, 0.55) !important;
+}
+
+/* ==========================================================================
+   HITL Live Demo — Processing Bar, Waveform Bars, Typewriter
+   ========================================================================== */
+
+/* ── Processing bar (vision top) ─────────────────────────────────────────── */
+.hitl-proc-bar {
+    transition: width 0.12s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+/* ── Waveform bars (audio tab) ───────────────────────────────────────────── */
+.hitl-wave-bar {
+    width: 7px;
+    border-radius: 2px 2px 0 0;
+    height: 30%;
+    transition: height 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    flex-shrink: 0;
+}
+
+/* ── NLP entity spans — fade-in on appear ───────────────────────────────── */
+.nlp-entity {
+    display: inline;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.nlp-entity.visible {
+    opacity: 1;
+}
+
+/* ── Typewriter cursor blink ─────────────────────────────────────────────── */
+@keyframes hitlBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+.hitl-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 0.9em;
+    background: #60a5fa;
+    margin-left: 1px;
+    vertical-align: middle;
+    animation: hitlBlink 0.9s step-end infinite;
+}
+
+/* ==========================================================================
+   HITL Panel — v2 fixes: conf-ext labels, inactive tab brightness,
+   wave-bar width override, anno overflow
+   ========================================================================== */
+
+/* Confidence label OUTSIDE box (below bottom-right corner) */
+.hitl-conf-ext {
+    position: absolute;
+    bottom: -16px;
+    right: 2px;
+    font-size: 9px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.4s;
+    pointer-events: none;
+}
+.hitl-anno-box.hitl-drawn .hitl-conf-ext {
+    opacity: 1;
+}
+
+/* Remove old .hitl-conf (inside box) overflow — keep outside variant only */
+.hitl-conf {
+    display: none;
+}
+
+/* Inactive tabs — brighter so they're readable */
+.hitl-tab-inactive {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid transparent !important;
+    font-weight: 500;
+}
+.hitl-tab-inactive:hover {
+    color: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Wave bar — override inline width if needed */
+.hitl-wave-bar {
+    width: 9px !important;
+    border-radius: 2px 2px 0 0;
+    height: 30%;
+    transition: height 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    flex-shrink: 0;
+}
