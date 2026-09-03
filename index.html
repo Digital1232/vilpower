@@ -625,32 +625,30 @@
 
                     <!-- Right Column: Interactive Demo — Dark Cockpit Edition -->
                     <div class="lg:col-span-5 reveal-right">
-                        <div class="hitl-cockpit-panel rounded-2xl overflow-hidden shadow-2xl relative" style="background: linear-gradient(160deg, #0d1628 0%, #0a1020 60%, #060d1a 100%); border: 1px solid rgba(27,69,189,0.35);">
+                        <div class="hitl-cockpit-panel rounded-2xl overflow-hidden shadow-xl relative" style="background:#ffffff; border: 1px solid #e2e8f0;">
 
                             <!-- Ambient glow top-left -->
-                            <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(27,69,189,0.18) 0%, transparent 70%);"></div>
-                            <!-- Ambient glow bottom-right -->
-                            <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(2,145,70,0.13) 0%, transparent 70%);"></div>
+                            <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(27,69,189,0.06) 0%, transparent 70%);"></div>
 
                             <!-- Panel Header -->
-                            <div class="relative flex items-center justify-between px-5 pt-4 pb-3" style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+                            <div class="relative flex items-center justify-between px-5 pt-4 pb-3" style="border-bottom: 1px solid #e2e8f0; background:#f8fafc;">
                                 <!-- Left: title + live dot -->
                                 <div class="flex items-center gap-2.5">
                                     <div class="flex gap-1.5 items-center">
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#029146] ai-pulse-dot flex-shrink-0"></span>
                                     </div>
-                                    <span class="text-[11px] font-mono uppercase tracking-widest font-bold" style="color: rgba(255,255,255,0.85);">Interactive HITL Inspector</span>
+                                    <span class="text-[11px] font-mono uppercase tracking-widest font-bold text-slate-700">Interactive HITL Inspector</span>
                                 </div>
                                 <!-- Right: Live badge + frame counter -->
                                 <div class="flex items-center gap-2">
-                                    <span id="hitl-frame-counter" class="text-[9px] font-mono" style="color: rgba(255,255,255,0.3);">FRAME #<span id="hitl-frame-num">0049</span></span>
-                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full font-bold" style="background: rgba(2,145,70,0.18); color: #34d399; border: 1px solid rgba(2,145,70,0.35);">● LIVE</span>
+                                    <span id="hitl-frame-counter" class="text-[9px] font-mono text-slate-400">FRAME #<span id="hitl-frame-num">0049</span></span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full font-bold" style="background:#ecfdf3; color:#029146; border:1px solid #a7f3d0;">● LIVE</span>
                                 </div>
                             </div>
 
                             <!-- Tabs -->
                             <div class="px-4 pt-3 pb-0">
-                                <div class="grid grid-cols-3 gap-1 p-0.5 rounded-lg text-xs font-medium" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                                <div class="grid grid-cols-3 gap-1 p-0.5 rounded-lg text-xs font-medium" style="background:#f1f5f9; border:1px solid #e2e8f0;">
                                     <button id="demo-tab-vision" onclick="switchDemoTab('vision')" class="demo-tab-btn py-1.5 px-2 rounded-md text-center transition-all font-bold focus:outline-none hitl-tab-active">
                                         2D/3D Vision
                                     </button>
@@ -668,211 +666,267 @@
 
                                 <!-- VISION TAB -->
                                 <div id="demo-content-vision" class="demo-pane">
-                                    <div class="relative w-full rounded-xl overflow-hidden" style="height:220px;background:#060d1a;border:1px solid rgba(255,255,255,0.08);">
+                                    <div class="relative w-full rounded-xl overflow-hidden" id="vision-canvas" style="height:220px;background:#eef2f7;border:1px solid #dde3ed;">
 
-                                        <!-- Scan line sweep -->
-                                        <div class="hitl-scanline pointer-events-none"></div>
-
-                                        <!-- Grid overlay -->
-                                        <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(27,69,189,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,69,189,0.06) 1px,transparent 1px);background-size:32px 32px;"></div>
-
-                                        <!-- Scene: road + object silhouettes -->
+                                        <!-- ONE SVG — scene + grid + scanline + annotation boxes all in same viewBox -->
                                         <div class="absolute inset-0">
-                                            <svg class="w-full h-full" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet">
-                                                <!-- Sky gradient -->
+                                            <svg id="vision-svg" class="w-full h-full" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" style="overflow:visible;">
                                                 <defs>
                                                     <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                                                        <stop offset="0%" stop-color="#060d1a"/>
-                                                        <stop offset="100%" stop-color="#0d1e35"/>
+                                                        <stop offset="0%" stop-color="#dce8f5"/>
+                                                        <stop offset="100%" stop-color="#c5d9ee"/>
                                                     </linearGradient>
+                                                    <!-- Scanline gradient -->
+                                                    <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+                                                        <stop offset="0%"   stop-color="rgba(2,145,70,0)"/>
+                                                        <stop offset="15%"  stop-color="rgba(27,69,189,0.8)"/>
+                                                        <stop offset="50%"  stop-color="rgba(2,145,70,1)"/>
+                                                        <stop offset="85%"  stop-color="rgba(27,69,189,0.8)"/>
+                                                        <stop offset="100%" stop-color="rgba(2,145,70,0)"/>
+                                                    </linearGradient>
+                                                    <!-- Scanline glow filter -->
+                                                    <filter id="scanGlow" x="-5%" y="-500%" width="110%" height="1100%">
+                                                        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                                        <feMerge>
+                                                            <feMergeNode in="blur"/>
+                                                            <feMergeNode in="SourceGraphic"/>
+                                                        </feMerge>
+                                                    </filter>
                                                 </defs>
+
+                                                <!-- Sky -->
                                                 <rect x="0" y="0" width="400" height="220" fill="url(#skyGrad)"/>
 
-                                                <!-- Road surface -->
-                                                <rect x="0" y="155" width="400" height="65" fill="#0a1220"/>
-                                                <line x1="0" y1="155" x2="400" y2="155" stroke="#1B45BD" stroke-width="0.6" opacity="0.35"/>
-                                                <!-- Lane markings -->
-                                                <line x1="200" y1="160" x2="200" y2="220" stroke="#1e3a6e" stroke-width="1.5" stroke-dasharray="10,8" opacity="0.5"/>
-                                                <line x1="120" y1="165" x2="80"  y2="220" stroke="#1e3a6e" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.25"/>
-                                                <line x1="280" y1="165" x2="320" y2="220" stroke="#1e3a6e" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.25"/>
+                                                <!-- Grid overlay -->
+                                                <g opacity="0.12">
+                                                    <!-- Vertical lines every 32px -->
+                                                    <line x1="32"  y1="0" x2="32"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="64"  y1="0" x2="64"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="96"  y1="0" x2="96"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="128" y1="0" x2="128" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="160" y1="0" x2="160" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="192" y1="0" x2="192" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="224" y1="0" x2="224" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="256" y1="0" x2="256" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="288" y1="0" x2="288" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="320" y1="0" x2="320" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="352" y1="0" x2="352" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="384" y1="0" x2="384" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <!-- Horizontal lines -->
+                                                    <line x1="0" y1="32"  x2="400" y2="32"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="64"  x2="400" y2="64"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="96"  x2="400" y2="96"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="128" x2="400" y2="128" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="160" x2="400" y2="160" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="192" x2="400" y2="192" stroke="#1B45BD" stroke-width="0.5"/>
+                                                </g>
 
-                                                <!-- Horizon depth haze -->
+                                                <!-- Road surface -->
+                                                <rect x="0" y="155" width="400" height="65" fill="#b8c8da"/>
+                                                <line x1="0" y1="155" x2="400" y2="155" stroke="#1B45BD" stroke-width="0.6" opacity="0.3"/>
+                                                <line x1="200" y1="160" x2="200" y2="220" stroke="#8aa0bb" stroke-width="1.5" stroke-dasharray="10,8" opacity="0.6"/>
+                                                <line x1="120" y1="165" x2="80"  y2="220" stroke="#8aa0bb" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.35"/>
+                                                <line x1="280" y1="165" x2="320" y2="220" stroke="#8aa0bb" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.35"/>
                                                 <rect x="0" y="130" width="400" height="26" fill="url(#skyGrad)" opacity="0.5"/>
 
-                                                <!-- ── VEHICLE silhouette (sedan, left-center) ── -->
-                                                <!-- Body -->
-                                                <rect x="72" y="130" width="112" height="34" rx="4" fill="#0e2040" opacity="0.95"/>
-                                                <!-- Cabin -->
-                                                <rect x="92" y="115" width="70"  height="18" rx="3" fill="#0e2040" opacity="0.95"/>
-                                                <!-- Windshield glint -->
-                                                <rect x="95" y="117" width="62"  height="13" rx="2" fill="#1a3a60" opacity="0.6"/>
-                                                <!-- Wheels -->
-                                                <ellipse cx="95"  cy="165" rx="10" ry="5" fill="#081018"/>
-                                                <ellipse cx="161" cy="165" rx="10" ry="5" fill="#081018"/>
-                                                <!-- Headlight glow -->
-                                                <ellipse cx="182" cy="143" rx="4" ry="3" fill="#fbbf24" opacity="0.7"/>
-                                                <ellipse cx="182" cy="143" rx="9" ry="5" fill="#fbbf24" opacity="0.12"/>
+                                                <!-- ── VEHICLE ── -->
+                                                <rect x="72" y="130" width="112" height="34" rx="4" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="92" y="115" width="70"  height="18" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="95" y="117" width="62"  height="13" rx="2" fill="#6e8fae" opacity="0.5"/>
+                                                <ellipse cx="95"  cy="165" rx="10" ry="5" fill="#2e3f52"/>
+                                                <ellipse cx="161" cy="165" rx="10" ry="5" fill="#2e3f52"/>
+                                                <ellipse cx="182" cy="143" rx="4"  ry="3"  fill="#fbbf24" opacity="0.8"/>
+                                                <ellipse cx="182" cy="143" rx="9"  ry="5"  fill="#fbbf24" opacity="0.15"/>
 
-                                                <!-- ── PEDESTRIAN silhouette (right-center) ── -->
-                                                <!-- Head -->
-                                                <circle cx="232" cy="112" r="7" fill="#0e2040" opacity="0.95"/>
-                                                <!-- Body -->
-                                                <rect x="226" y="119" width="12" height="22" rx="3" fill="#0e2040" opacity="0.95"/>
-                                                <!-- Legs -->
-                                                <rect x="226" y="139" width="5"  height="16" rx="2" fill="#0e2040" opacity="0.9"/>
-                                                <rect x="233" y="139" width="5"  height="16" rx="2" fill="#0e2040" opacity="0.9"/>
+                                                <!-- ── PEDESTRIAN ── -->
+                                                <circle cx="232" cy="112" r="7"  fill="#4a6080" opacity="0.9"/>
+                                                <rect x="226" y="119" width="12" height="22" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="226" y="139" width="5"  height="16" rx="2" fill="#4a6080" opacity="0.85"/>
+                                                <rect x="233" y="139" width="5"  height="16" rx="2" fill="#4a6080" opacity="0.85"/>
 
-                                                <!-- ── TRAFFIC SIGNAL silhouette (far right) ── -->
-                                                <!-- Pole -->
-                                                <rect x="321" y="100" width="4" height="55" fill="#0e2040" opacity="0.9"/>
-                                                <!-- Housing -->
-                                                <rect x="312" y="68" width="22" height="38" rx="3" fill="#0e2040" opacity="0.95"/>
-                                                <!-- Red light (active) -->
-                                                <circle cx="323" cy="77" r="5" fill="#ef4444" opacity="0.85"/>
-                                                <circle cx="323" cy="77" r="8" fill="#ef4444" opacity="0.12"/>
-                                                <!-- Amber light -->
-                                                <circle cx="323" cy="87" r="4" fill="#374151" opacity="0.7"/>
-                                                <!-- Green light -->
-                                                <circle cx="323" cy="97" r="4" fill="#374151" opacity="0.7"/>
+                                                <!-- ── TRAFFIC SIGNAL ── -->
+                                                <rect x="321" y="100" width="4"  height="55" fill="#4a6080" opacity="0.8"/>
+                                                <rect x="312" y="68"  width="22" height="38" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <circle cx="323" cy="77" r="5" fill="#ef4444" opacity="0.9"/>
+                                                <circle cx="323" cy="77" r="8" fill="#ef4444" opacity="0.15"/>
+                                                <circle cx="323" cy="87" r="4" fill="#94a3b8" opacity="0.5"/>
+                                                <circle cx="323" cy="97" r="4" fill="#94a3b8" opacity="0.5"/>
+
+                                                <!-- ══ ANNOTATION OVERLAYS (SVG coords = perfect alignment) ══ -->
+
+                                                <!-- VEHICLE box: x72-184, y112-170 -->
+                                                <g id="anno-vehicle" opacity="0">
+                                                    <!-- Box fill tint -->
+                                                    <rect x="72" y="112" width="112" height="58" fill="rgba(59,130,246,0.08)" stroke="none"/>
+                                                    <!-- Corner brackets -->
+                                                    <polyline id="vc-tl" points="72,124 72,112 84,112"  fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-tr" points="172,112 184,112 184,124" fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-bl" points="72,158 72,170 84,170"  fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-br" points="172,170 184,170 184,158" fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box -->
+                                                    <rect id="vc-label-bg" x="72" y="98" width="72" height="13" rx="3" fill="#1B45BD" opacity="0"/>
+                                                    <text id="vc-label" x="75" y="108" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">VEHICLE #049</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="vc-conf" x="72" y="182" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#1B45BD" opacity="0">99.8%</text>
+                                                </g>
+
+                                                <!-- PEDESTRIAN box: x220-242, y104-157 -->
+                                                <g id="anno-ped" opacity="0">
+                                                    <rect x="220" y="104" width="22" height="53" fill="rgba(2,145,70,0.08)" stroke="none"/>
+                                                    <polyline id="pd-tl" points="220,114 220,104 230,104" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-tr" points="232,104 242,104 242,114" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-bl" points="220,147 220,157 230,157" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-br" points="232,157 242,157 242,147" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box (left-anchored, allow overflow) -->
+                                                    <rect id="pd-label-bg" x="218" y="91" width="62" height="13" rx="3" fill="#029146" opacity="0"/>
+                                                    <text id="pd-label" x="221" y="101" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">PEDESTRIAN</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="pd-conf" x="220" y="169" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#029146" opacity="0">99.6%</text>
+                                                </g>
+
+                                                <!-- SIGNAL box: x310-336, y66-157 -->
+                                                <g id="anno-sig" opacity="0">
+                                                    <rect x="310" y="66" width="26" height="91" fill="rgba(217,119,6,0.08)" stroke="none"/>
+                                                    <polyline id="sg-tl" points="310,76 310,66 320,66" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-tr" points="326,66 336,66 336,76" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-bl" points="310,147 310,157 320,157" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-br" points="326,157 336,157 336,147" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box -->
+                                                    <rect id="sg-label-bg" x="308" y="53" width="38" height="13" rx="3" fill="#d97706" opacity="0"/>
+                                                    <text id="sg-label" x="311" y="63" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">SIGNAL</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="sg-conf" x="310" y="169" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#d97706" opacity="0">97.1%</text>
+                                                </g>
+
+                                                <!-- ── SCANLINE (JS moves this via y attr) ── -->
+                                                <!-- Glow layer (wider, softer) -->
+                                                <rect id="hitl-scanline-glow"
+                                                      x="0" y="-6" width="400" height="12"
+                                                      fill="url(#scanGrad)"
+                                                      opacity="0"/>
+                                                <!-- Sharp center line -->
+                                                <rect id="hitl-scanline-svg"
+                                                      x="0" y="-1" width="400" height="2"
+                                                      fill="url(#scanGrad)"
+                                                      opacity="0"/>
+
+                                                <!-- Top-right label -->
+                                                <text x="394" y="12" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#94a3b8" text-anchor="end">LiDAR+RGB FUSION</text>
                                             </svg>
                                         </div>
 
                                         <!-- Processing bar (top) -->
-                                        <div class="absolute top-0 left-0 right-0 h-0.5" style="background:rgba(255,255,255,0.04);">
+                                        <div class="absolute top-0 left-0 right-0 h-0.5" style="background:#e2e8f0;">
                                             <div id="vision-proc-bar" class="hitl-proc-bar h-full" style="background:linear-gradient(90deg,#1B45BD,#029146);width:0%;"></div>
                                         </div>
 
-                                        <!-- Annotation box: VEHICLE -->
-                                        <div class="hitl-anno-box hitl-anno-blue" id="anno-vehicle" style="left:17%;top:50%;width:31%;height:36%;">
-                                            <div class="hitl-corner tl"></div><div class="hitl-corner tr"></div><div class="hitl-corner bl"></div><div class="hitl-corner br"></div>
-                                            <span class="hitl-anno-tag" style="background:#1B45BD;">VEHICLE #049</span>
-                                            <span class="hitl-conf-ext" id="conf-vehicle" style="color:#93c5fd;">99.8%</span>
-                                        </div>
-
-                                        <!-- Annotation box: PEDESTRIAN -->
-                                        <div class="hitl-anno-box hitl-anno-green" id="anno-ped" style="left:53%;top:48%;width:13%;height:42%;">
-                                            <div class="hitl-corner tl"></div><div class="hitl-corner tr"></div><div class="hitl-corner bl"></div><div class="hitl-corner br"></div>
-                                            <span class="hitl-anno-tag" style="background:#029146;">PEDESTRIAN</span>
-                                            <span class="hitl-conf-ext" id="conf-ped" style="color:#6ee7b7;">99.6%</span>
-                                        </div>
-
-                                        <!-- Annotation box: SIGNAL -->
-                                        <div class="hitl-anno-box hitl-anno-amber" id="anno-sig" style="left:75%;top:28%;width:11%;height:40%;">
-                                            <div class="hitl-corner tl"></div><div class="hitl-corner tr"></div><div class="hitl-corner bl"></div><div class="hitl-corner br"></div>
-                                            <span class="hitl-anno-tag" style="background:#d97706;">SIGNAL</span>
-                                            <span class="hitl-conf-ext" id="conf-sig" style="color:#fcd34d;">97.1%</span>
-                                        </div>
-
                                         <!-- Tier-3 QA badge -->
-                                        <div class="absolute bottom-2 left-2 flex items-center gap-1.5 px-2 py-1 rounded-md font-mono text-[9px] font-bold" style="background:rgba(2,145,70,0.15);border:1px solid rgba(2,145,70,0.35);color:#34d399;">
+                                        <div class="absolute bottom-2 left-2 flex items-center gap-1.5 px-2 py-1 rounded-md font-mono text-[9px] font-bold" style="background:#ecfdf3;border:1px solid #a7f3d0;color:#029146;">
                                             <i data-lucide="shield-check" class="w-3 h-3"></i> Tier-3 QA Verified
                                         </div>
 
                                         <!-- Objects count -->
-                                        <div class="absolute bottom-2 right-2 font-mono text-[9px] font-bold" style="color:rgba(255,255,255,0.3);">
-                                            OBJ: <span id="vision-obj-count" style="color:#60a5fa;">0</span>/3
+                                        <div class="absolute bottom-2 right-2 font-mono text-[9px] font-bold text-slate-400">
+                                            OBJ: <span id="vision-obj-count" style="color:#1B45BD;">0</span>/3
                                         </div>
-
-                                        <!-- Top-right label -->
-                                        <div class="absolute top-2 right-2 font-mono text-[9px]" style="color:rgba(255,255,255,0.25);">LiDAR+RGB FUSION</div>
                                     </div>
 
                                     <!-- Status ticker -->
-                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
                                         <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
-                                        <span id="hitl-status-text" class="text-[10px] font-mono hitl-ticker-text" style="color:#34d399;"></span>
+                                        <span id="hitl-status-text" class="text-[10px] font-mono hitl-ticker-text text-[#029146]"></span>
                                     </div>
 
                                     <!-- Meta row -->
                                     <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
-                                        <span style="color:rgba(255,255,255,0.35);">Taxonomy: <span style="color:rgba(255,255,255,0.6);font-weight:700;">KITTI / COCO 80-Class</span></span>
-                                        <span style="color:#60a5fa;font-weight:700;">Precision: 99.82%</span>
+                                        <span class="text-slate-400">Taxonomy: <span class="text-slate-700 font-bold">KITTI / COCO 80-Class</span></span>
+                                        <span style="color:#1B45BD;font-weight:700;">Precision: 99.82%</span>
                                     </div>
                                 </div>
 
                                 <!-- NLP TAB -->
                                 <div id="demo-content-nlp" class="demo-pane hidden">
-                                    <div class="w-full rounded-xl p-3.5 font-mono leading-relaxed space-y-3 overflow-hidden" style="height:220px;background:#060d1a;border:1px solid rgba(255,255,255,0.08);font-size:12px;">
-                                        <div class="text-[9px] uppercase font-bold tracking-widest" style="color:#60a5fa;">// Legal-BERT · NER Extraction Pipeline · Live</div>
-                                        <p id="nlp-sentence" style="color:#cbd5e1;line-height:2;min-height:56px;font-size:11.5px;"></p>
-                                        <div class="pt-2 grid grid-cols-2 gap-2" style="border-top:1px solid rgba(255,255,255,0.07);">
-                                            <div class="p-2 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                                                <span class="block text-[9px] mb-0.5" style="color:rgba(255,255,255,0.35);">Intent</span>
-                                                <span id="nlp-intent" class="font-bold" style="color:#e2e8f0;font-size:11px;">—</span>
+                                    <div class="w-full rounded-xl p-3.5 font-mono leading-relaxed space-y-3 overflow-hidden" style="height:220px;background:#f8fafc;border:1px solid #e2e8f0;font-size:12px;">
+                                        <div class="text-[9px] uppercase font-bold tracking-widest text-[#1B45BD]">// Legal-BERT · NER Extraction Pipeline · Live</div>
+                                        <p id="nlp-sentence" class="text-slate-700" style="line-height:2;min-height:56px;font-size:11.5px;"></p>
+                                        <div class="pt-2 grid grid-cols-2 gap-2" style="border-top:1px solid #e2e8f0;">
+                                            <div class="p-2 rounded-lg" style="background:#fff;border:1px solid #e2e8f0;">
+                                                <span class="block text-[9px] mb-0.5 text-slate-400">Intent</span>
+                                                <span id="nlp-intent" class="font-bold text-slate-800" style="font-size:11px;">—</span>
                                             </div>
-                                            <div class="p-2 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                                                <span class="block text-[9px] mb-0.5" style="color:rgba(255,255,255,0.35);">Hallucination</span>
-                                                <span id="nlp-halluc" class="font-bold" style="color:#34d399;font-size:11px;">—</span>
+                                            <div class="p-2 rounded-lg" style="background:#fff;border:1px solid #e2e8f0;">
+                                                <span class="block text-[9px] mb-0.5 text-slate-400">Hallucination</span>
+                                                <span id="nlp-halluc" class="font-bold" style="color:#029146;font-size:11px;">—</span>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- NLP ticker -->
-                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
                                         <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
-                                        <span id="nlp-status-text" class="text-[10px] font-mono" style="color:#34d399;"></span>
+                                        <span id="nlp-status-text" class="text-[10px] font-mono text-[#029146]"></span>
                                     </div>
                                     <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
-                                        <span style="color:rgba(255,255,255,0.35);">Schema: <span style="color:rgba(255,255,255,0.6);font-weight:700;">Legal-BERT · spaCy-lg</span></span>
-                                        <span style="color:#60a5fa;font-weight:700;">F1-Score: 0.997</span>
+                                        <span class="text-slate-400">Schema: <span class="text-slate-700 font-bold">Legal-BERT · spaCy-lg</span></span>
+                                        <span style="color:#1B45BD;font-weight:700;">F1-Score: 0.997</span>
                                     </div>
                                 </div>
 
                                 <!-- AUDIO TAB -->
                                 <div id="demo-content-audio" class="demo-pane hidden">
-                                    <div class="w-full rounded-xl p-3.5 font-mono flex flex-col gap-2" style="height:220px;background:#060d1a;border:1px solid rgba(255,255,255,0.08);">
+                                    <div class="w-full rounded-xl p-3.5 font-mono flex flex-col gap-2" style="height:220px;background:#f8fafc;border:1px solid #e2e8f0;">
                                         <!-- Header row -->
                                         <div class="flex items-center justify-between">
-                                            <div class="text-[9px] uppercase font-bold tracking-widest" style="color:#34d399;">// JATS 1.3 · Audio Diarization · Live</div>
-                                            <span id="audio-timer" class="text-[9px] font-mono" style="color:rgba(255,255,255,0.3);">00:00.0</span>
+                                            <div class="text-[9px] uppercase font-bold tracking-widest text-[#029146]">// JATS 1.3 · Audio Diarization · Live</div>
+                                            <span id="audio-timer" class="text-[9px] font-mono text-slate-400">00:00.0</span>
                                         </div>
-                                        <!-- Waveform bars — JS controls heights -->
-                                        <div class="flex items-end gap-[2px] rounded-lg px-2 pb-1 pt-2 flex-shrink-0" style="height:56px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                                        <!-- Waveform bars -->
+                                        <div class="flex items-end gap-[2px] rounded-lg px-2 pb-1 pt-2 flex-shrink-0" style="height:56px;background:#fff;border:1px solid #e2e8f0;">
                                             <div class="hitl-wave-bar" id="wb0"  style="background:#3b82f6;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb1"  style="background:#60a5fa;width:9px;"></div>
-                                            <div class="hitl-wave-bar" id="wb2"  style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb2"  style="background:#029146;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb3"  style="background:#3b82f6;width:9px;"></div>
-                                            <div class="hitl-wave-bar" id="wb4"  style="background:#6ee7b7;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb4"  style="background:#34d399;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb5"  style="background:#60a5fa;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb6"  style="background:#3b82f6;width:9px;"></div>
-                                            <div class="hitl-wave-bar" id="wb7"  style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb7"  style="background:#029146;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb8"  style="background:#60a5fa;width:9px;"></div>
                                             <div class="hitl-wave-bar" id="wb9"  style="background:#3b82f6;width:9px;"></div>
-                                            <div class="hitl-wave-bar" id="wb10" style="background:#6ee7b7;width:9px;"></div>
-                                            <div class="hitl-wave-bar" id="wb11" style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb10" style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb11" style="background:#029146;width:9px;"></div>
                                             <!-- Speaker labels -->
                                             <div class="ml-auto self-center flex flex-col gap-0.5">
-                                                <span id="audio-spk-a" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:rgba(59,130,246,0.2);color:#93c5fd;border:1px solid rgba(59,130,246,0.3);">SPK_A</span>
-                                                <span id="audio-spk-b" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:rgba(2,145,70,0.2);color:#6ee7b7;border:1px solid rgba(2,145,70,0.3);opacity:0.4;">SPK_B</span>
+                                                <span id="audio-spk-a" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:#eff6ff;color:#1B45BD;border:1px solid #bfdbfe;">SPK_A</span>
+                                                <span id="audio-spk-b" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:#ecfdf3;color:#029146;border:1px solid #a7f3d0;opacity:0.4;">SPK_B</span>
                                             </div>
                                         </div>
                                         <!-- JATS XML typewriter output -->
-                                        <div class="rounded-lg p-2 flex-1 overflow-hidden" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                                            <pre id="jats-output" class="text-[8.5px] leading-relaxed m-0 whitespace-pre-wrap" style="color:#94a3b8;font-family:'JetBrains Mono',monospace;"></pre>
+                                        <div class="rounded-lg p-2 flex-1 overflow-hidden" style="background:#fff;border:1px solid #e2e8f0;">
+                                            <pre id="jats-output" class="text-[8.5px] leading-relaxed m-0 whitespace-pre-wrap text-slate-600" style="font-family:'JetBrains Mono',monospace;"></pre>
                                         </div>
                                     </div>
                                     <!-- Audio ticker -->
-                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
                                         <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
-                                        <span id="audio-status-text" class="text-[10px] font-mono" style="color:#34d399;"></span>
+                                        <span id="audio-status-text" class="text-[10px] font-mono text-[#029146]"></span>
                                     </div>
                                     <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
-                                        <span style="color:rgba(255,255,255,0.35);">Standard: <span style="color:rgba(255,255,255,0.6);font-weight:700;">PubMed Central JATS 1.3</span></span>
-                                        <span style="color:#34d399;font-weight:700;">Validation: 100% Pass</span>
+                                        <span class="text-slate-400">Standard: <span class="text-slate-700 font-bold">PubMed Central JATS 1.3</span></span>
+                                        <span style="color:#029146;font-weight:700;">Validation: 100% Pass</span>
                                     </div>
                                 </div>
 
                             </div>
 
                             <!-- Trust badges row -->
-                            <div class="flex items-center justify-between gap-2 px-4 pt-3 pb-3 mt-1" style="border-top: 1px solid rgba(255,255,255,0.06);">
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold" style="color:rgba(255,255,255,0.4);">
-                                    <i data-lucide="shield" class="w-3 h-3" style="color:#60a5fa;"></i> ISO 27001
+                            <div class="flex items-center justify-between gap-2 px-4 pt-3 pb-3 mt-1" style="border-top: 1px solid #e2e8f0; background:#f8fafc;">
+                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="shield" class="w-3 h-3 text-[#1B45BD]"></i> ISO 27001
                                 </div>
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold" style="color:rgba(255,255,255,0.4);">
-                                    <i data-lucide="cpu" class="w-3 h-3" style="color:#34d399;"></i> KITTI Certified
+                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="cpu" class="w-3 h-3 text-[#029146]"></i> KITTI Certified
                                 </div>
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold" style="color:rgba(255,255,255,0.4);">
-                                    <i data-lucide="bar-chart-2" class="w-3 h-3" style="color:#f59e0b;"></i> 99.82% Precision
+                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="bar-chart-2" class="w-3 h-3 text-amber-500"></i> 99.82% Precision
                                 </div>
                             </div>
 

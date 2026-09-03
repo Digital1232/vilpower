@@ -321,25 +321,35 @@ function initHITLPanel() {
         if (!vRunning) return;
         vMsgIdx = 0;
 
-        // Reset boxes + bar
-        ['anno-vehicle','anno-ped','anno-sig'].forEach(id => {
+        // Helper: set SVG element opacity via attribute
+        function svgShow(id, val) {
             const el = document.getElementById(id);
-            if (el) el.classList.remove('hitl-drawn');
-        });
+            if (el) el.setAttribute('opacity', String(val));
+        }
+
+        // Reset all SVG annotation groups + corners + labels
+        ['anno-vehicle','anno-ped','anno-sig'].forEach(id => svgShow(id, 0));
+        ['vc-tl','vc-tr','vc-bl','vc-br',
+         'pd-tl','pd-tr','pd-bl','pd-br',
+         'sg-tl','sg-tr','sg-bl','sg-br'].forEach(id => svgShow(id, 0));
+        ['vc-label-bg','vc-label','vc-conf',
+         'pd-label-bg','pd-label','pd-conf',
+         'sg-label-bg','sg-label','sg-conf'].forEach(id => svgShow(id, 0));
+
         vSetProcBar(0); vSetObjCount(0);
 
-        const frameEl  = document.getElementById('hitl-frame-num');
+        const frameEl   = document.getElementById('hitl-frame-num');
         const frameBase = 49 + Math.floor(Math.random() * 60);
         if (frameEl) frameEl.textContent = String(frameBase).padStart(4, '0');
 
-        // Tick status messages
+        // Status messages
         const msgIv = _every(() => {
             if (paused || activeTab !== 'vision') return;
             _fadeText('hitl-status-text', vMsgs[vMsgIdx % vMsgs.length]);
             vMsgIdx++;
         }, 850);
 
-        // Fill progress bar
+        // Progress bar
         let pct = 0;
         const barIv = _every(() => {
             if (paused) return;
@@ -348,26 +358,84 @@ function initHITLPanel() {
             if (pct >= 100) clearInterval(barIv);
         }, 55);
 
-        // Staggered annotation draw-in
-        const steps = [
-            { delay: 380,  id: 'anno-vehicle', n: 1, dFrame: 0 },
-            { delay: 780,  id: 'anno-ped',     n: 2, dFrame: 1 },
-            { delay: 1180, id: 'anno-sig',     n: 3, dFrame: 2 },
-        ];
-        steps.forEach(s => {
-            _later(() => {
-                const el = document.getElementById(s.id);
-                if (el) el.classList.add('hitl-drawn');
-                vSetObjCount(s.n);
-                if (frameEl) frameEl.textContent = String(frameBase + s.dFrame).padStart(4,'0');
-            }, s.delay);
-        });
+        // ── rAF scanline sweep → triggers each object as it crosses ──
+        const SCAN_MS  = 2400;
+        const HOLD_MS  = 1400;
+        const scanLine = document.getElementById('hitl-scanline-svg');
+        const scanGlow = document.getElementById('hitl-scanline-glow');
 
-        // After full cycle, hold then loop
+        // y = SVG coordinate of each box TOP edge
+        const svgObjects = [
+            { y: 66,  id: 'anno-sig',     n: 1, dFrame: 0,
+              corners: ['sg-tl','sg-tr','sg-bl','sg-br'],
+              labels:  ['sg-label-bg','sg-label','sg-conf'] },
+            { y: 104, id: 'anno-ped',     n: 2, dFrame: 1,
+              corners: ['pd-tl','pd-tr','pd-bl','pd-br'],
+              labels:  ['pd-label-bg','pd-label','pd-conf'] },
+            { y: 112, id: 'anno-vehicle', n: 3, dFrame: 2,
+              corners: ['vc-tl','vc-tr','vc-bl','vc-br'],
+              labels:  ['vc-label-bg','vc-label','vc-conf'] },
+        ];
+        const triggered = new Set();
+        let scanStart = null;
+
+        function scanStep(ts) {
+            if (!vRunning || activeTab !== 'vision') {
+                if (scanLine) scanLine.setAttribute('opacity', '0');
+                if (scanGlow) scanGlow.setAttribute('opacity', '0');
+                return;
+            }
+            if (!scanStart) scanStart = ts;
+            const progress = Math.min((ts - scanStart) / SCAN_MS, 1);
+            const svgY = -3 + progress * 229; // sweep y: -3 → 226
+
+            if (scanLine) {
+                scanLine.setAttribute('y', String(svgY - 1));
+                scanLine.setAttribute('opacity', progress < 0.97 ? '1' : '0');
+            }
+            if (scanGlow) {
+                scanGlow.setAttribute('y', String(svgY - 6));
+                scanGlow.setAttribute('opacity', progress < 0.97 ? '0.45' : '0');
+            }
+
+            // Reveal each object when scanline reaches its top edge
+            svgObjects.forEach(obj => {
+                if (triggered.has(obj.id)) return;
+                if (svgY >= obj.y) {
+                    triggered.add(obj.id);
+                    svgShow(obj.id, 1);
+                    obj.corners.forEach((cid, i) => {
+                        setTimeout(() => svgShow(cid, 1), i * 60);
+                    });
+                    setTimeout(() => {
+                        obj.labels.forEach(lid => svgShow(lid, 1));
+                    }, 280);
+                    vSetObjCount(obj.n);
+                    if (frameEl) frameEl.textContent = String(frameBase + obj.dFrame).padStart(4,'0');
+                }
+            });
+
+            if (progress < 1) {
+                requestAnimationFrame(scanStep);
+            } else {
+                if (scanLine) scanLine.setAttribute('opacity', '0');
+                if (scanGlow) scanGlow.setAttribute('opacity', '0');
+                _later(() => {
+                    clearInterval(msgIv);
+                    _later(() => { if (vRunning && activeTab === 'vision') vLoop(); }, 300);
+                }, HOLD_MS);
+            }
+        }
+
+        // Short delay then kick off scan
         _later(() => {
-            clearInterval(msgIv);
-            _later(() => { if (vRunning && activeTab === 'vision') vLoop(); }, 1800);
-        }, 2600);
+            if (!vRunning || activeTab !== 'vision') return;
+            triggered.clear();
+            scanStart = null;
+            if (scanLine) { scanLine.setAttribute('y', '-1'); scanLine.setAttribute('opacity', '1'); }
+            if (scanGlow) { scanGlow.setAttribute('y', '-6'); scanGlow.setAttribute('opacity', '0.45'); }
+            requestAnimationFrame(scanStep);
+        }, 300);
     }
 
     function startVision() { vRunning = true;  vLoop(); }
@@ -380,13 +448,13 @@ function initHITLPanel() {
         {
             parts: [
                 {t:'tx', v:'"The tenant '},
-                {t:'en', label:'ORG',   v:'ACME Global Logistics Inc.', color:'#93c5fd', bg:'rgba(59,130,246,0.22)',  bd:'rgba(59,130,246,0.4)'},
+                {t:'en', label:'ORG',   v:'ACME Global Logistics Inc.', color:'#1B45BD', bg:'#eff4ff',  bd:'#bfdbfe'},
                 {t:'tx', v:' agreed to lease Suite 400 at '},
-                {t:'en', label:'LOC',   v:'500 Silicon Way, Austin TX', color:'#67e8f9', bg:'rgba(6,182,212,0.22)',   bd:'rgba(6,182,212,0.4)'},
+                {t:'en', label:'LOC',   v:'500 Silicon Way, Austin TX', color:'#0e7490', bg:'#ecfeff',   bd:'#a5f3fc'},
                 {t:'tx', v:' commencing '},
-                {t:'en', label:'DATE',  v:'Nov 1, 2026',                color:'#6ee7b7', bg:'rgba(2,145,70,0.22)',    bd:'rgba(2,145,70,0.4)'},
+                {t:'en', label:'DATE',  v:'Nov 1, 2026',                color:'#029146', bg:'#ecfdf3',    bd:'#a7f3d0'},
                 {t:'tx', v:' at '},
-                {t:'en', label:'MONEY', v:'$48,500/mo',                 color:'#fcd34d', bg:'rgba(245,158,11,0.22)', bd:'rgba(245,158,11,0.4)'},
+                {t:'en', label:'MONEY', v:'$48,500/mo',                 color:'#b45309', bg:'#fffbeb', bd:'#fcd34d'},
                 {t:'tx', v:'."'},
             ],
             intent: 'COMMERCIAL_LEASE · HIGH_CONF',
@@ -395,11 +463,11 @@ function initHITLPanel() {
         {
             parts: [
                 {t:'tx', v:'"Landlord '},
-                {t:'en', label:'ORG',  v:'Pinnacle REIT LLC',  color:'#93c5fd', bg:'rgba(59,130,246,0.22)',  bd:'rgba(59,130,246,0.4)'},
+                {t:'en', label:'ORG',  v:'Pinnacle REIT LLC',  color:'#1B45BD', bg:'#eff4ff',  bd:'#bfdbfe'},
                 {t:'tx', v:' grants renewal option at '},
-                {t:'en', label:'LOC',  v:'Tower B, Floor 12',  color:'#67e8f9', bg:'rgba(6,182,212,0.22)',   bd:'rgba(6,182,212,0.4)'},
+                {t:'en', label:'LOC',  v:'Tower B, Floor 12',  color:'#0e7490', bg:'#ecfeff',   bd:'#a5f3fc'},
                 {t:'tx', v:' until '},
-                {t:'en', label:'DATE', v:'Dec 31, 2028',       color:'#6ee7b7', bg:'rgba(2,145,70,0.22)',    bd:'rgba(2,145,70,0.4)'},
+                {t:'en', label:'DATE', v:'Dec 31, 2028',       color:'#029146', bg:'#ecfdf3',    bd:'#a7f3d0'},
                 {t:'tx', v:'."'},
             ],
             intent: 'RENEWAL_OPTION · HIGH_CONF',
@@ -478,15 +546,15 @@ function initHITLPanel() {
        AUDIO ENGINE
        ══════════════════════════════════════════════════════════════════ */
     const jatsLines = [
-        '<span style="color:#7dd3fc">&lt;article&gt;</span>',
-        '  <span style="color:#7dd3fc">&lt;front&gt;&lt;article-meta&gt;</span>',
-        '    <span style="color:#7dd3fc">&lt;article-id</span> <span style="color:#fcd34d">pub-id-type</span>=<span style="color:#a3e635">"doi"</span><span style="color:#7dd3fc">&gt;</span><span style="color:#e2e8f0">10.1016/j.cell.2026.08.004</span><span style="color:#7dd3fc">&lt;/article-id&gt;</span>',
-        '    <span style="color:#7dd3fc">&lt;title-group&gt;</span>',
-        '      <span style="color:#7dd3fc">&lt;article-title&gt;</span><span style="color:#e2e8f0">Clinical Precision Bio-Assay in Neural Tissue</span><span style="color:#7dd3fc">&lt;/article-title&gt;</span>',
-        '    <span style="color:#7dd3fc">&lt;/title-group&gt;</span>',
-        '    <span style="color:#7dd3fc">&lt;pub-date</span> <span style="color:#fcd34d">pub-type</span>=<span style="color:#a3e635">"epub"</span><span style="color:#7dd3fc">&gt;&lt;year&gt;</span><span style="color:#e2e8f0">2026</span><span style="color:#7dd3fc">&lt;/year&gt;&lt;/pub-date&gt;</span>',
-        '  <span style="color:#7dd3fc">&lt;/article-meta&gt;&lt;/front&gt;</span>',
-        '<span style="color:#34d399">✓ Schema valid · PubMed DTD · 100% Pass</span>',
+        '<span style="color:#1B45BD">&lt;article&gt;</span>',
+        '  <span style="color:#1B45BD">&lt;front&gt;&lt;article-meta&gt;</span>',
+        '    <span style="color:#1B45BD">&lt;article-id</span> <span style="color:#d97706">pub-id-type</span>=<span style="color:#16a34a">"doi"</span><span style="color:#1B45BD">&gt;</span><span style="color:#334155">10.1016/j.cell.2026.08.004</span><span style="color:#1B45BD">&lt;/article-id&gt;</span>',
+        '    <span style="color:#1B45BD">&lt;title-group&gt;</span>',
+        '      <span style="color:#1B45BD">&lt;article-title&gt;</span><span style="color:#334155">Clinical Precision Bio-Assay in Neural Tissue</span><span style="color:#1B45BD">&lt;/article-title&gt;</span>',
+        '    <span style="color:#1B45BD">&lt;/title-group&gt;</span>',
+        '    <span style="color:#1B45BD">&lt;pub-date</span> <span style="color:#d97706">pub-type</span>=<span style="color:#16a34a">"epub"</span><span style="color:#1B45BD">&gt;&lt;year&gt;</span><span style="color:#334155">2026</span><span style="color:#1B45BD">&lt;/year&gt;&lt;/pub-date&gt;</span>',
+        '  <span style="color:#1B45BD">&lt;/article-meta&gt;&lt;/front&gt;</span>',
+        '<span style="color:#029146;font-weight:700;">✓ Schema valid · PubMed DTD · 100% Pass</span>',
     ];
     const audioMsgs = [
         'Diarising audio stream…',
