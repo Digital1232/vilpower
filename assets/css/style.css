@@ -1719,16 +1719,21 @@ input, select, textarea {
     }
 }
 
-/* ── Footer link row: wrap on mobile ─────────────────────────────────── */
-@media (max-width: 479px) {
-    .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
+/* ── Footer link row: wrap gracefully on very small screens ──────────── */
+footer .flex.items-center.gap-6 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+@media (min-width: 480px) {
+    footer .flex.items-center.gap-6 {
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 1.5rem;
     }
 }
 
-/* ── Announcement bar: hide scrolling text on very small screens ──────── */
+/* ── Announcement bar: hide scroll text on very small screens ──────────── */
 @media (max-width: 400px) {
     .announcement-scroll-text {
         display: none;
