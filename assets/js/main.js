@@ -1035,3 +1035,268 @@ function initRotatingServiceTitles() {
     });
 }
 
+
+/* ==========================================================================
+   VilPower AI Assistant — Pure JS FAQ Chatbot
+   ========================================================================== */
+
+(function () {
+
+    /* ── Knowledge Base ──────────────────────────────────────────────────── */
+    const VP_KB = [
+        {
+            keys: ['hello','hi','hey','start','help','what can you do','who are you'],
+            answer: 'Hi! I\'m the VilPower AI Assistant. I can answer questions about our services, pricing, quality standards, and how to get started.<br><br>What would you like to know?',
+            quick: ['Our Services', 'Pricing', 'Free Pilot', 'Turnaround Time']
+        },
+        {
+            keys: ['service','what do you do','offerings','capability','capabilities','solutions','provide'],
+            answer: 'VilPower offers <strong>4 core enterprise data services:</strong><br><br>• <strong>AI Data Annotation</strong> — 2D/3D bounding boxes, LiDAR, segmentation<br>• <strong>XML & STM Publishing</strong> — JATS 1.3, BITS, PubMed Central<br>• <strong>Commercial Lease Abstraction</strong> — 40+ clause extraction, Yardi/MRI<br>• <strong>Legal & Web Intelligence</strong> — entity disambiguation, patent mining',
+            quick: ['AI Annotation', 'XML Publishing', 'Lease Abstraction', 'Free Pilot']
+        },
+        {
+            keys: ['ai annotation','computer vision','lidar','bounding box','segmentation','annotation','label','labeling','vision'],
+            answer: '<strong>AI Data Annotation</strong><br><br>We handle:<br>• 2D/3D Bounding Boxes & Polygons<br>• LiDAR 3D Point Cloud Cuboids<br>• Semantic & Instance Segmentation<br>• Keypoint Rigging & Tracking<br>• NLP NER & RLHF<br><br>Clients: Autonomous mobility, robotics, healthcare imaging.<br>Accuracy: <strong>99.7% audited SLA</strong>',
+            quick: ['Free Pilot', 'Turnaround Time', 'Pricing', 'ISO Certified?']
+        },
+        {
+            keys: ['xml','stm','jats','publishing','pubmed','latex','bits','journal','article'],
+            answer: '<strong>XML & STM Digital Publishing</strong><br><br>• JATS 1.3 & BITS 2.1 conversion<br>• LaTeX / MathML / EPUB3<br>• PubMed Central DTD — 100% pass rate<br>• Crossref metadata & DOI tagging<br><br>Serving scientific publishers, academic journals, and STM press clients globally.',
+            quick: ['Free Pilot', 'Turnaround Time', 'Pricing']
+        },
+        {
+            keys: ['lease','abstraction','reit','real estate','yardi','mri','cam','commercial'],
+            answer: '<strong>Commercial Lease Abstraction</strong><br><br>• 40+ critical clause extraction<br>• CAM caps, rent escalations, options<br>• Yardi Voyager & MRI compatible<br>• REIT portfolio scale processing<br><br>TAT: 24–48 hours per lease batch.',
+            quick: ['Free Pilot', 'Turnaround Time', 'Pricing']
+        },
+        {
+            keys: ['legal','web intelligence','patent','entity','disambiguation','docket','kyc','corporate'],
+            answer: '<strong>Legal & Web Data Intelligence</strong><br><br>• Patent claims extraction & mining<br>• Corporate entity disambiguation<br>• KYC & beneficial ownership verification<br>• AML/sanction list screening<br>• Cleanroom web data pipelines',
+            quick: ['Free Pilot', 'Pricing', 'ISO Certified?']
+        },
+        {
+            keys: ['price','pricing','cost','rate','how much','charge','fee','per record','per image','per frame'],
+            answer: 'Our pricing is <strong>custom-quoted</strong> based on:<br><br>• Service type & annotation complexity<br>• Monthly volume (frames/records)<br>• Tooling requirements (Labelbox, CVAT, etc.)<br>• Turnaround time targets<br><br>Most clients find us <strong>40–50% more cost-effective</strong> than US/EU alternatives with superior accuracy.<br><br>Best way to start — claim a <strong>free 50-record pilot</strong> and we\'ll quote based on your actual dataset.',
+            cta: { label: '🚀 Get Free Pilot', action: 'pilot', color: 'green' },
+            quick: ['Free Pilot', 'Turnaround Time', 'Contact Team']
+        },
+        {
+            keys: ['pilot','free pilot','trial','sample','benchmark','test','50 record','50-record','demo'],
+            answer: '<strong>Free 50-Record Pilot</strong><br><br>Send us a 50-record sample — we process it <strong>free of charge</strong> and return it within 24h with a full QA accuracy audit report.<br><br>No commitment. No credit card. Just proof.',
+            cta: { label: '🚀 Claim Free Pilot Now', action: 'pilot', color: 'green' },
+            quick: ['Turnaround Time', 'ISO Certified?', 'Contact Team']
+        },
+        {
+            keys: ['turnaround','tat','delivery','fast','speed','how long','timeline','time','hours','days'],
+            answer: '<strong>Turnaround Times:</strong><br><br>• <strong>Free Pilot (50 records):</strong> &lt; 24 hours<br>• <strong>Standard batch:</strong> 24–72 hours<br>• <strong>Dedicated pod:</strong> Continuous delivery<br><br>We operate 6 days/week with overlap across IST / EST / GMT timezones.',
+            quick: ['Free Pilot', 'Pricing', 'ISO Certified?']
+        },
+        {
+            keys: ['iso','iso 27001','security','certified','compliance','nda','gdpr','hipaa','cleanroom','air gapped','air-gapped'],
+            answer: '<strong>Security & Compliance:</strong><br><br>✅ ISO 27001 Certified infrastructure<br>✅ Air-gapped cleanroom facilities<br>✅ Zero personal device policy<br>✅ Biometric dual-factor access control<br>✅ Signed NDAs before project start<br>✅ GDPR & HIPAA-aligned workflows<br>✅ No data leaves our secure vault',
+            quick: ['Free Pilot', 'Our Team', 'Contact Team']
+        },
+        {
+            keys: ['accuracy','quality','sla','precision','99.7','error','rate','multi pass'],
+            answer: '<strong>Quality Standards:</strong><br><br>• <strong>99.7% audited accuracy</strong> — guaranteed SLA<br>• 3-tier QA hierarchy (Annotator → QA → Senior Lead)<br>• Statistical sampling + 100% edge-case review<br>• Sub-pixel annotation calibration<br>• Hallucination rate: <strong>0.00%</strong> (audited)<br><br>157M+ records delivered flawlessly since 2011.',
+            quick: ['Free Pilot', 'Pricing', 'ISO Certified?']
+        },
+        {
+            keys: ['team','staff','workforce','people','employee','women','rural','tamil','india','bangalore'],
+            answer: '<strong>Our Team:</strong><br><br>• <strong>1,500+ full-time engineers</strong> — Tamil Nadu, India<br>• <strong>95%+ rural women</strong> — permanent positions, not gig<br>• <strong>&lt; 3% annual turnover</strong> — deepest domain expertise<br>• 8-week paid tech academy before production<br>• Est. 2011 — 15+ years of operational excellence',
+            quick: ['Free Pilot', 'Our Story', 'Contact Team']
+        },
+        {
+            keys: ['about','story','history','founded','vilpower','company','mission','impact','social'],
+            answer: 'VilPower was founded in <strong>2011 in Tamil Nadu, India</strong>.<br><br>Our mission: bring permanent high-growth tech careers to rural women while delivering world-class AI data operations to global enterprises.<br><br>We call it the <strong>Digital Banyan Tree</strong> — deep roots, wide canopy.',
+            quick: ['Our Team', 'Free Pilot', 'ISO Certified?']
+        },
+        {
+            keys: ['contact','email','call','talk','reach','phone','speak','human','agent','person'],
+            answer: 'You can reach our team directly:<br><br>📧 <strong>support@vilpower.com</strong><br><br>Or submit your project scope and we\'ll respond within <strong>4 hours</strong> with a formal proposal.',
+            cta: { label: '📋 Submit Project Scope', action: 'contact', color: '' },
+            quick: ['Free Pilot', 'Pricing']
+        },
+        {
+            keys: ['industry','industries','autonomous','mobility','healthcare','robotics','adas','medical','lidar','automotive'],
+            answer: '<strong>Industries We Serve:</strong><br><br>🚗 Autonomous Mobility & ADAS<br>🔬 Healthcare & Life Sciences<br>📚 Scientific & STM Publishing<br>🏢 Commercial Real Estate / REITs<br>⚖️ LegalTech & Analytics<br>🤖 AI Labs & Research',
+            quick: ['AI Annotation', 'Free Pilot', 'Pricing']
+        },
+    ];
+
+    /* ── Default quick replies (shown on open) ──────────────────────────── */
+    const VP_DEFAULT_QUICK = ['Our Services', 'Free Pilot', 'Pricing', 'ISO Certified?', 'Turnaround Time'];
+
+    /* ── State ───────────────────────────────────────────────────────────── */
+    let vpIsOpen       = false;
+    let vpHasOpened    = false;
+    let vpGreeted      = false;
+
+    /* ── Toggle ──────────────────────────────────────────────────────────── */
+    window.vpToggleChat = function () {
+        vpIsOpen = !vpIsOpen;
+        const win    = document.getElementById('vp-chat-window');
+        const iconChat  = document.getElementById('vp-toggle-icon');
+        const iconClose = document.getElementById('vp-toggle-icon-close');
+        const badge  = document.getElementById('vp-unread-badge');
+
+        if (vpIsOpen) {
+            win.style.display = 'flex';
+            // Re-trigger open animation
+            win.style.animation = 'none';
+            void win.offsetWidth;
+            win.style.animation = '';
+            iconChat.style.display  = 'none';
+            iconClose.style.display = 'flex';
+            if (badge) badge.style.display = 'none';
+            if (!vpGreeted) {
+                vpGreeted = true;
+                vpBotMessage('👋 Hi! I\'m the <strong>VilPower AI Assistant</strong>.<br>Ask me about our services, pricing, quality standards, or how to get started.', VP_DEFAULT_QUICK, 400);
+            }
+            setTimeout(() => {
+                const inp = document.getElementById('vp-input');
+                if (inp) inp.focus();
+            }, 350);
+        } else {
+            win.style.display = 'none';
+            iconChat.style.display  = 'flex';
+            iconClose.style.display = 'none';
+        }
+    };
+
+    /* ── Send message ────────────────────────────────────────────────────── */
+    window.vpSend = function (text) {
+        const inp = document.getElementById('vp-input');
+        const msg = (text || (inp ? inp.value.trim() : '')).trim();
+        if (!msg) return;
+        if (inp) inp.value = '';
+
+        vpUserMessage(msg);
+        vpClearQuickReplies();
+
+        // Find best match
+        const lower = msg.toLowerCase();
+        let best = null;
+        let bestScore = 0;
+        VP_KB.forEach(entry => {
+            let score = 0;
+            entry.keys.forEach(k => {
+                if (lower.includes(k)) score += k.split(' ').length;
+            });
+            if (score > bestScore) { bestScore = score; best = entry; }
+        });
+
+        // Show typing then answer
+        vpShowTyping();
+        setTimeout(() => {
+            vpHideTyping();
+            if (best && bestScore > 0) {
+                vpBotMessage(best.answer, best.quick || [], 0, best.cta || null);
+            } else {
+                vpBotMessage(
+                    'I\'m not sure about that — but our team can help directly.<br><br>📧 <strong>support@vilpower.com</strong><br><br>Or claim a free pilot and we\'ll scope your project.',
+                    ['Free Pilot', 'Contact Team', 'Our Services'],
+                    0
+                );
+            }
+        }, 700 + Math.random() * 400);
+    };
+
+    /* ── Message renderers ───────────────────────────────────────────────── */
+    function vpUserMessage(text) {
+        const box = document.getElementById('vp-messages');
+        if (!box) return;
+        const div = document.createElement('div');
+        div.className = 'vp-msg vp-user';
+        div.innerHTML = `<div class="vp-bubble">${escHtml(text)}</div>`;
+        box.appendChild(div);
+        vpScrollBottom();
+    }
+
+    function vpBotMessage(html, quickReplies, delay, cta) {
+        delay = delay || 0;
+        setTimeout(() => {
+            const box = document.getElementById('vp-messages');
+            if (!box) return;
+            const div = document.createElement('div');
+            div.className = 'vp-msg vp-bot';
+
+            let ctaHtml = '';
+            if (cta) {
+                const cls = cta.color === 'green' ? 'vp-cta-btn green' : 'vp-cta-btn';
+                const action = cta.action === 'pilot'
+                    ? `onclick="vpToggleChat();setTimeout(openPilotModal,200)"`
+                    : `onclick="vpToggleChat();setTimeout(()=>window.location='contact.html',200)"`;
+                ctaHtml = `<br><button class="${cls}" ${action}>${cta.label}</button>`;
+            }
+
+            div.innerHTML = `
+                <div class="vp-msg-avatar">VP</div>
+                <div class="vp-bubble">${html}${ctaHtml}</div>`;
+            box.appendChild(div);
+            vpScrollBottom();
+
+            if (quickReplies && quickReplies.length) {
+                vpShowQuickReplies(quickReplies);
+            }
+        }, delay);
+    }
+
+    /* ── Typing indicator ────────────────────────────────────────────────── */
+    function vpShowTyping() {
+        const box = document.getElementById('vp-messages');
+        if (!box) return;
+        const div = document.createElement('div');
+        div.className = 'vp-msg vp-bot vp-typing';
+        div.id = 'vp-typing-indicator';
+        div.innerHTML = `
+            <div class="vp-msg-avatar">VP</div>
+            <div class="vp-bubble">
+                <span class="vp-typing-dot"></span>
+                <span class="vp-typing-dot"></span>
+                <span class="vp-typing-dot"></span>
+            </div>`;
+        box.appendChild(div);
+        vpScrollBottom();
+    }
+    function vpHideTyping() {
+        const el = document.getElementById('vp-typing-indicator');
+        if (el) el.remove();
+    }
+
+    /* ── Quick replies ───────────────────────────────────────────────────── */
+    function vpShowQuickReplies(replies) {
+        const box = document.getElementById('vp-quick-replies');
+        if (!box) return;
+        box.innerHTML = '';
+        replies.forEach(r => {
+            const btn = document.createElement('button');
+            btn.className = 'vp-qr-btn';
+            btn.textContent = r;
+            btn.onclick = () => vpSend(r);
+            box.appendChild(btn);
+        });
+    }
+    function vpClearQuickReplies() {
+        const box = document.getElementById('vp-quick-replies');
+        if (box) box.innerHTML = '';
+    }
+
+    /* ── Helpers ─────────────────────────────────────────────────────────── */
+    function vpScrollBottom() {
+        const box = document.getElementById('vp-messages');
+        if (box) setTimeout(() => { box.scrollTop = box.scrollHeight; }, 30);
+    }
+    function escHtml(s) {
+        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    /* ── Show unread badge after 4s if not opened ────────────────────────── */
+    setTimeout(() => {
+        if (!vpIsOpen) {
+            const badge = document.getElementById('vp-unread-badge');
+            if (badge) badge.style.display = 'flex';
+        }
+    }, 4000);
+
+})();

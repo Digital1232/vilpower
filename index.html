@@ -1639,11 +1639,61 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white border border-slate-200 shadow-xl text-slate-700 hover:text-[#1B45BD] hover:border-[#bfdbfe] transition-all duration-300 translate-y-10 opacity-0 pointer-events-none hover:-translate-y-1" aria-label="Scroll back to top">
+    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 z-50 p-3 rounded-full bg-white border border-slate-200 shadow-xl text-slate-700 hover:text-[#1B45BD] hover:border-[#bfdbfe] transition-all duration-300 translate-y-10 opacity-0 pointer-events-none hover:-translate-y-1" style="right:84px;" aria-label="Scroll back to top">
         <i data-lucide="arrow-up" class="w-5 h-5"></i>
     </button>
 
     <!-- Global JS Engine -->
     <script src="assets/js/main.js"></script>
+
+    <!-- VilPower AI Assistant Widget -->
+    <div id="vp-chat-widget" aria-live="polite">
+
+        <!-- Chat Window -->
+        <div id="vp-chat-window" class="vp-chat-window" role="dialog" aria-modal="true" aria-label="VilPower AI Assistant" style="display:none;">
+            <!-- Header -->
+            <div class="vp-chat-header">
+                <div class="vp-chat-header-left">
+                    <div class="vp-bot-avatar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <div>
+                        <div class="vp-chat-title">VilPower Assistant</div>
+                        <div class="vp-chat-status"><span class="vp-status-dot"></span>Online</div>
+                    </div>
+                </div>
+                <button class="vp-chat-close" onclick="vpToggleChat()" aria-label="Close chat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Messages -->
+            <div id="vp-messages" class="vp-messages"></div>
+
+            <!-- Quick Replies -->
+            <div id="vp-quick-replies" class="vp-quick-replies"></div>
+
+            <!-- Input Row -->
+            <div class="vp-input-row">
+                <input id="vp-input" type="text" placeholder="Type your question…" autocomplete="off"
+                    onkeydown="if(event.key==='Enter')vpSend()" maxlength="200" aria-label="Chat input">
+                <button class="vp-send-btn" onclick="vpSend()" aria-label="Send">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button id="vp-chat-toggle" class="vp-chat-toggle" onclick="vpToggleChat()" aria-label="Open VilPower AI Assistant">
+            <span id="vp-toggle-icon" class="vp-toggle-icon-chat">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span id="vp-toggle-icon-close" class="vp-toggle-icon-close" style="display:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span id="vp-unread-badge" class="vp-unread-badge" style="display:none;">1</span>
+        </button>
+
+    </div>
 </body>
 </html>
