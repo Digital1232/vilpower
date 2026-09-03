@@ -483,7 +483,7 @@
     <main class="flex-grow">
         
         <!-- Breadcrumb & Hero -->
-        <section class="py-16 md:py-24 border-b border-slate-200 bg-tech-grid relative overflow-hidden">
+        <section class="py-16 md:py-24 border-b border-slate-200 bg-mesh-blue relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <nav class="reveal flex items-center gap-2 text-xs font-mono text-slate-500 mb-6" aria-label="Breadcrumb">
                     <a href="index.html" class="hover:text-[#1B45BD]">Home</a>
@@ -515,74 +515,98 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Item 0 -->
-                <div class="reveal-scale stagger-1 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Infrastructure" onclick="openLightbox(0)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-blue-50/50 transition-colors">
-                        <i data-lucide="monitor" class="w-14 h-14 text-[#1B45BD] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#1B45BD] font-bold">Cleanroom Workstations</span>
+                <div class="reveal-scale stagger-1 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Infrastructure" onclick="openLightbox(0)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/cleanroom-workstations.jpg" alt="Cleanroom Workstations & Dual-Monitor Pods" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#1B45BD] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">Dual-Monitor Pods</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Infrastructure</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#1B45BD] transition-colors">Dual-Monitor Pods</h3>
+                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold px-2 py-0.5 rounded bg-slate-100">Infrastructure</span>
                     </div>
                 </div>
 
                 <!-- Item 1 -->
-                <div class="reveal-scale stagger-2 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Infrastructure" onclick="openLightbox(1)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-blue-50/50 transition-colors">
-                        <i data-lucide="server" class="w-14 h-14 text-[#1B45BD] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#1B45BD] font-bold">Secure Network Vault</span>
+                <div class="reveal-scale stagger-2 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Infrastructure" onclick="openLightbox(1)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/server-vault.jpg" alt="ISO 27001 Certified Network Vault" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#1B45BD] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">ISO 27001 Server Rack</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Infrastructure</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#1B45BD] transition-colors">ISO 27001 Server Rack</h3>
+                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold px-2 py-0.5 rounded bg-slate-100">Infrastructure</span>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="reveal-scale stagger-3 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Training" onclick="openLightbox(2)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-emerald-50/50 transition-colors">
-                        <i data-lucide="graduation-cap" class="w-14 h-14 text-[#029146] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#029146] font-bold">8-Week Incubation Batch</span>
+                <div class="reveal-scale stagger-3 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Training" onclick="openLightbox(2)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/rural-academy.jpg" alt="Rural Academy Classroom" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#029146] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">Rural Academy Classroom</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Training</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#029146] transition-colors">Rural Academy Classroom</h3>
+                        <span class="text-[10px] font-mono text-emerald-700 uppercase font-semibold px-2 py-0.5 rounded bg-emerald-50">Training</span>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="reveal-scale stagger-1 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Team" onclick="openLightbox(3)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-blue-50/50 transition-colors">
-                        <i data-lucide="users" class="w-14 h-14 text-[#1B45BD] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#1B45BD] font-bold">Vision QA Specialist Pod</span>
+                <div class="reveal-scale stagger-1 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#bfdbfe] transition-all cursor-pointer group" data-category="Team" onclick="openLightbox(3)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/mobility-pod.jpg" alt="Autonomous Mobility Pod" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#1B45BD] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">Autonomous Mobility Pod</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Team</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#1B45BD] transition-colors">Autonomous Mobility Pod</h3>
+                        <span class="text-[10px] font-mono text-blue-700 uppercase font-semibold px-2 py-0.5 rounded bg-blue-50">Team</span>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
-                <div class="reveal-scale stagger-2 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Team" onclick="openLightbox(4)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-emerald-50/50 transition-colors">
-                        <i data-lucide="file-check" class="w-14 h-14 text-[#029146] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#029146] font-bold">STM XML Publishing Pod</span>
+                <div class="reveal-scale stagger-2 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Team" onclick="openLightbox(4)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/xml-publishing-desk.jpg" alt="JATS 1.3 Validation Desk" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#029146] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">JATS 1.3 Validation Desk</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Team</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#029146] transition-colors">JATS 1.3 Validation Desk</h3>
+                        <span class="text-[10px] font-mono text-emerald-700 uppercase font-semibold px-2 py-0.5 rounded bg-emerald-50">Team</span>
                     </div>
                 </div>
 
                 <!-- Item 5 -->
-                <div class="reveal-scale stagger-3 gallery-card bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Events" onclick="openLightbox(5)">
-                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group-hover:bg-emerald-50/50 transition-colors">
-                        <i data-lucide="award" class="w-14 h-14 text-[#029146] mb-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-mono text-[#029146] font-bold">Graduation Ceremony</span>
+                <div class="reveal-scale stagger-3 gallery-card bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#a7f3d0] transition-all cursor-pointer group" data-category="Events" onclick="openLightbox(5)">
+                    <div class="h-56 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative group">
+                        <img src="img/graduation-ceremony.jpg" alt="Empowerment Graduation Ceremony" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 text-[#029146] text-xs font-bold font-mono shadow-sm">
+                                <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> View Details
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-4 flex items-center justify-between">
-                        <h3 class="text-base font-bold text-slate-900">Empowerment Batch 2026</h3>
-                        <span class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Events</span>
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-[#029146] transition-colors">Empowerment Batch 2026</h3>
+                        <span class="text-[10px] font-mono text-emerald-700 uppercase font-semibold px-2 py-0.5 rounded bg-emerald-50">Events</span>
                     </div>
                 </div>
             </div>
@@ -592,24 +616,24 @@
 
     <!-- Lightbox Modal -->
     <div id="lightbox-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-900/75 p-4" role="dialog" aria-modal="true">
-        <div class="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 rounded-2xl border border-slate-200 shadow-2xl relative">
+        <div class="bg-white w-full max-w-3xl max-h-[92vh] overflow-y-auto p-6 rounded-2xl border border-slate-200 shadow-2xl relative">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                 <span id="lightbox-category" class="text-xs font-mono text-[#1B45BD] font-bold uppercase">Infrastructure</span>
                 <button class="rounded-lg p-1.5 text-slate-400 hover:text-slate-700" onclick="closeModal('lightbox-modal')"><i data-lucide="x" class="h-5 w-5"></i></button>
             </div>
-            <div class="my-4 h-64 sm:h-80 rounded-xl bg-slate-100 border border-slate-200 flex flex-col items-center justify-center p-6 text-center">
-                <div class="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-[#1B45BD] mb-3 shadow-sm">
-                    <i data-lucide="image" class="w-8 h-8"></i>
-                </div>
-                <h4 id="lightbox-caption" class="text-base font-bold text-slate-900"></h4>
-                <p id="lightbox-desc" class="text-xs text-slate-600 mt-2 max-w-md"></p>
+            <div class="my-4 rounded-xl bg-slate-900 border border-slate-200 overflow-hidden relative">
+                <img id="lightbox-img" src="img/cleanroom-workstations.jpg" alt="Operations Gallery Photo" class="w-full h-72 sm:h-96 object-cover object-center">
             </div>
-            <div class="flex items-center justify-between gap-4 pt-2">
-                <button class="rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-100 flex items-center gap-1 shadow-sm" onclick="moveLightbox(-1)">
+            <div class="space-y-1 mb-4">
+                <h4 id="lightbox-caption" class="text-lg font-bold text-slate-900"></h4>
+                <p id="lightbox-desc" class="text-xs text-slate-600 leading-relaxed"></p>
+            </div>
+            <div class="flex items-center justify-between gap-4 pt-3 border-t border-slate-100">
+                <button class="rounded-lg border border-slate-200 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-100 flex items-center gap-1.5 shadow-sm font-semibold transition-colors" onclick="moveLightbox(-1)">
                     <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i> Previous
                 </button>
-                <span class="text-xs font-mono text-slate-500">VilPower Operations Vault</span>
-                <button class="rounded-lg border border-slate-200 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-100 flex items-center gap-1 shadow-sm" onclick="moveLightbox(1)">
+                <span class="text-xs font-mono text-slate-500">VilPower Operations Hub</span>
+                <button class="rounded-lg border border-slate-200 px-3.5 py-2 text-xs text-slate-700 hover:bg-slate-100 flex items-center gap-1.5 shadow-sm font-semibold transition-colors" onclick="moveLightbox(1)">
                     Next <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
                 </button>
             </div>

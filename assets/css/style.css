@@ -1484,3 +1484,253 @@ input, select, textarea {
     transition: height 0.18s cubic-bezier(0.22, 1, 0.36, 1);
     flex-shrink: 0;
 }
+
+/* ==========================================================================
+   Light-Theme Visual Richness Engine
+   Atmospheric Pastel Mesh Gradients, Process Steppers & Comparison Cards
+   ========================================================================== */
+
+.bg-mesh-soft {
+    background-color: #f8fafc;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(239, 246, 255, 0.85) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(240, 253, 244, 0.75) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(250, 245, 255, 0.6) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(239, 246, 255, 0.8) 0px, transparent 50%);
+}
+
+.bg-mesh-blue {
+    background-color: #f0f7ff;
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(219, 234, 254, 0.8) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(199, 210, 254, 0.6) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(240, 249, 255, 0.9) 0px, transparent 50%);
+}
+
+.bg-mesh-emerald {
+    background-color: #f0fdf4;
+    background-image: 
+        radial-gradient(at 15% 15%, rgba(209, 250, 229, 0.85) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(224, 242, 254, 0.7) 0px, transparent 50%);
+}
+
+.bg-mesh-warm {
+    background-color: #fdfaf6;
+    background-image: 
+        radial-gradient(at 20% 10%, rgba(254, 243, 199, 0.6) 0px, transparent 45%),
+        radial-gradient(at 80% 90%, rgba(239, 246, 255, 0.7) 0px, transparent 50%);
+}
+
+/* Glassmorphic Light Cards */
+.card-light-glass {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.card-light-glass:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -12px rgba(27, 69, 189, 0.12), 0 0 0 1px rgba(191, 219, 254, 0.6) inset;
+    border-color: #bfdbfe;
+}
+
+/* 4-Stage Connected Process Pipeline Nodes */
+.pipeline-node {
+    position: relative;
+    border-radius: 1.25rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px -3px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pipeline-node:hover {
+    border-color: #1B45BD;
+    box-shadow: 0 15px 30px -8px rgba(27, 69, 189, 0.12);
+    transform: translateY(-2px);
+}
+
+.pipeline-connector-line {
+    position: absolute;
+    top: 50%;
+    right: -24px;
+    width: 24px;
+    height: 2px;
+    background: #cbd5e1;
+    z-index: 10;
+}
+
+/* Comparison Matrix Styling */
+.compare-card-fail {
+    background: #fff8f8;
+    border: 1px solid #fecaca;
+    border-radius: 1.25rem;
+}
+
+.compare-card-win {
+    background: #f0fdf4;
+    border: 2px solid #86efac;
+    border-radius: 1.25rem;
+    box-shadow: 0 12px 35px -8px rgba(2, 145, 70, 0.14);
+}
+
+/* Big Display KPI Chips */
+.kpi-chip {
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.kpi-chip:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 10px 25px -5px rgba(27, 69, 189, 0.08);
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile & Tablet Fixes
+   ========================================================================== */
+
+/* ── Pipeline connector lines: hide on mobile/tablet (only show on lg+) ── */
+.pipeline-connector-line {
+    display: none;
+}
+@media (min-width: 1024px) {
+    .pipeline-connector-line {
+        display: block;
+    }
+}
+
+/* ── HITL cockpit panel: full mobile comfort ──────────────────────────── */
+@media (max-width: 639px) {
+    /* Reduce inner padding on small screens */
+    .hitl-cockpit-panel .px-5 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    .hitl-cockpit-panel .px-4 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    /* Tab buttons — allow text to be slightly smaller */
+    .demo-tab-btn {
+        font-size: 10px !important;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+    /* Trust badges row — stack to 2+1 if needed */
+    .hitl-trust-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+/* ── Announcement / top bar: truncate long text gracefully ───────────── */
+@media (max-width: 480px) {
+    .top-bar-text {
+        display: none;
+    }
+}
+
+/* ── Stacking cards (solutions): remove sticky stacking on mobile ─────── */
+@media (max-width: 767px) {
+    .stacking-card {
+        position: relative !important;
+        top: auto !important;
+    }
+}
+
+/* ── Mega menu: ensure it never bleeds on touch tablets ──────────────── */
+@media (max-width: 1023px) {
+    .dropdown-menu-panel,
+    .mega-menu-panel {
+        display: none !important;
+    }
+}
+
+/* ── Mobile accordion chevron rotation ───────────────────────────────── */
+.mobile-accordion.open .mobile-accordion-chevron {
+    transform: rotate(180deg);
+}
+
+/* ── Hero badge: allow wrapping on small screens ─────────────────────── */
+@media (max-width: 479px) {
+    .hero-pipeline-badge {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.5;
+        max-width: 100%;
+    }
+    .hero-pipeline-badge span:last-child {
+        display: block;
+        margin-top: 0.1em;
+    }
+}
+
+/* ── Video sections: maintain aspect ratio on all screens ────────────── */
+.scroll-autoplay-video {
+    min-height: 0 !important;
+}
+@media (max-width: 639px) {
+    [style*="aspect-ratio:16/9"] {
+        aspect-ratio: 16 / 9;
+        min-height: unset;
+    }
+}
+
+/* ── About hero photo: responsive height ─────────────────────────────── */
+@media (max-width: 1023px) {
+    .about-hero-photo {
+        height: 200px !important;
+    }
+}
+@media (max-width: 479px) {
+    .about-hero-photo {
+        height: 180px !important;
+    }
+}
+
+/* ── Gallery filter bar: smaller padding on mobile ───────────────────── */
+@media (max-width: 479px) {
+    .filter-btn {
+        padding: 0.375rem 0.75rem;
+        font-size: 11px;
+    }
+}
+
+/* ── CTA sections: button stack on tiny screens ──────────────────────── */
+@media (max-width: 399px) {
+    .cta-btn-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cta-btn-group > * {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* ── Footer link row: wrap on mobile ─────────────────────────────────── */
+@media (max-width: 479px) {
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+}
+
+/* ── Announcement bar: hide scrolling text on very small screens ──────── */
+@media (max-width: 400px) {
+    .announcement-scroll-text {
+        display: none;
+    }
+}

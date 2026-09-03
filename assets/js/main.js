@@ -772,12 +772,12 @@ function closeModal(id) {
 
 // Gallery Lightbox
 const galleryData = [
-    { title: "Cleanroom Workstations & Dual-Monitor Pods", category: "Infrastructure", icon: "monitor", desc: "Ergonomic dual-monitor setups with high-resolution IPS displays and strict zero-device physical security." },
-    { title: "ISO 27001 Certified Network Vault & Server Infrastructure", category: "Infrastructure", icon: "server", desc: "Air-gapped server room with redundant UPS backup, fire suppression, and biometric dual-factor authentication." },
-    { title: "In-House 8-Week Incubation Classroom Batch", category: "Training", icon: "graduation-cap", desc: "Rigorous curriculum training rural women graduates in computer vision, JATS XML DTDs, and client platforms." },
-    { title: "Computer Vision 3-Tier Quality Assurance Pod", category: "Team", icon: "users", desc: "Senior cross-verifiers running real-time statistical audit pipelines with sub-pixel edge alignment." },
-    { title: "JATS 1.3 Scientific STM Publishing Validation Desk", category: "Team", icon: "file-check", desc: "PubMed Central schema compliance specialists converting medical and technical journal articles." },
-    { title: "Rural Women Tech Empowerment Graduation 2026", category: "Events", icon: "award", desc: "Celebrating 1,500+ rural women placed into permanent full-time digital technology careers." }
+    { title: "Cleanroom Workstations & Dual-Monitor Pods", category: "Infrastructure", img: "img/cleanroom-workstations.jpg", desc: "Ergonomic dual-monitor setups with high-resolution IPS displays and strict zero-device physical security." },
+    { title: "ISO 27001 Certified Network Vault & Server Infrastructure", category: "Infrastructure", img: "img/server-vault.jpg", desc: "Air-gapped server room with redundant UPS backup, fire suppression, and biometric dual-factor authentication." },
+    { title: "In-House 8-Week Incubation Classroom Batch", category: "Training", img: "img/rural-academy.jpg", desc: "Rigorous curriculum training rural women graduates in computer vision, JATS XML DTDs, and client platforms." },
+    { title: "Computer Vision 3-Tier Quality Assurance Pod", category: "Team", img: "img/mobility-pod.jpg", desc: "Senior cross-verifiers running real-time statistical audit pipelines with sub-pixel edge alignment." },
+    { title: "JATS 1.3 Scientific STM Publishing Validation Desk", category: "Team", img: "img/xml-publishing-desk.jpg", desc: "PubMed Central schema compliance specialists converting medical and technical journal articles." },
+    { title: "Rural Women Tech Empowerment Graduation 2026", category: "Events", img: "img/graduation-ceremony.jpg", desc: "Celebrating 1,500+ rural women placed into permanent full-time digital technology careers." }
 ];
 
 let lightboxIndex = 0;
@@ -802,10 +802,15 @@ function openLightbox(index) {
     const cat = document.getElementById('lightbox-category');
     const cap = document.getElementById('lightbox-caption');
     const desc = document.getElementById('lightbox-desc');
+    const img = document.getElementById('lightbox-img');
     const modal = document.getElementById('lightbox-modal');
     if (cat) cat.textContent = item.category;
     if (cap) cap.textContent = item.title;
     if (desc) desc.textContent = item.desc;
+    if (img && item.img) {
+        img.src = item.img;
+        img.alt = item.title;
+    }
     if (modal) modal.classList.add('show');
     if (window.lucide) lucide.createIcons();
 }

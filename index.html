@@ -489,13 +489,14 @@
             </div>
 
             <!-- Header Action CTAs -->
-            <div class="hidden sm:flex items-center gap-3">
-                <button type="button" onclick="openPilotModal()" class="btn-glare inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-[#1B45BD] hover:bg-[#15379b] rounded-lg shadow-sm transition-colors">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" onclick="openPilotModal()" class="btn-glare inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-bold text-white bg-[#1B45BD] hover:bg-[#15379b] rounded-lg shadow-sm transition-colors">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
-                    <span>Claim 50-Record Pilot</span>
+                    <span class="hidden xs:inline sm:inline">Claim 50-Record Pilot</span>
+                    <span class="xs:hidden sm:hidden">Pilot</span>
                 </button>
 
-                <a href="contact.html" class="btn-rgb-glow text-xs font-semibold text-slate-700 hover:text-[#1B45BD] transition-colors">
+                <a href="contact.html" class="hidden sm:inline-flex btn-rgb-glow text-xs font-semibold text-slate-700 hover:text-[#1B45BD] transition-colors">
                     <span class="px-3.5 py-2 z-10">Talk to Ops</span>
                 </a>
             </div>
@@ -567,15 +568,16 @@
     <main class="flex-grow">
         
         <!-- HERO SECTION WITH LIVE INTERACTIVE PLAYGROUND -->
-        <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-slate-200 bg-tech-grid">
+        <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-slate-200 bg-mesh-blue">
             <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
                     <div class="lg:col-span-7 text-center lg:text-left reveal-left">
                         <!-- Core Pipeline Workflow Badge -->
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-[#eff4ff] text-[11px] font-mono font-bold text-[#1B45BD] shadow-sm mb-4">
-                            <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot"></span>
-                            <span>Raw Data → Human Intelligence + AI → Quality Assurance → Trusted Output</span>
+                        <div class="hero-pipeline-badge inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-white/90 backdrop-blur-md text-[11px] font-mono font-bold text-[#1B45BD] shadow-sm mb-4">
+                            <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot flex-shrink-0"></span>
+                            <span class="hidden sm:inline">Raw Data → Human Intelligence + AI → Quality Assurance → Trusted Output</span>
+                            <span class="sm:hidden">Human-in-the-Loop AI Operations</span>
                         </div>
 
                         <!-- Main Headline with Animated Rotating Service Title -->
@@ -607,25 +609,25 @@
                             </a>
                         </div>
 
-                        <div class="mt-10 pt-6 border-t border-slate-200 grid grid-cols-3 gap-3 sm:gap-6 text-left">
-                            <div class="reveal stagger-1">
-                                <div class="stat-counter text-xl sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="157" data-suffix="M+">157M+</div>
-                                <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Records Verified</div>
+                        <div class="mt-10 pt-6 border-t border-slate-200/80 grid grid-cols-3 xs:grid-cols-3 gap-2 sm:gap-6 text-left">
+                            <div class="reveal stagger-1 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="157" data-suffix="M+">157M+</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Records Verified</div>
                             </div>
-                            <div class="reveal stagger-2">
-                                <div class="stat-counter text-xl sm:text-2xl lg:text-3xl font-bold font-mono text-[#029146]" data-target="99.7" data-suffix="%" data-decimals="1">99.7%</div>
-                                <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Audited Accuracy</div>
+                            <div class="reveal stagger-2 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#029146]" data-target="99.7" data-suffix="%" data-decimals="1">99.7%</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Audited Accuracy</div>
                             </div>
-                            <div class="reveal stagger-3">
-                                <div class="stat-counter text-xl sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="24" data-prefix="&lt; " data-suffix="h">&lt; 24h</div>
-                                <div class="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Pilot Delivery TAT</div>
+                            <div class="reveal stagger-3 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="24" data-prefix="&lt; " data-suffix="h">&lt; 24h</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Pilot TAT</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Column: Interactive Demo — Dark Cockpit Edition -->
                     <div class="lg:col-span-5 reveal-right">
-                        <div class="hitl-cockpit-panel rounded-2xl overflow-hidden shadow-xl relative" style="background:#ffffff; border: 1px solid #e2e8f0;">
+                        <div class="hitl-cockpit-panel rounded-2xl overflow-hidden shadow-2xl relative bg-white border border-slate-200">
 
                             <!-- Ambient glow top-left -->
                             <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(27,69,189,0.06) 0%, transparent 70%);"></div>
@@ -662,7 +664,7 @@
                             </div>
 
                             <!-- Tab Content -->
-                            <div class="px-4 pt-3 pb-0">
+                            <div class="px-4 pt-3 pb-4">
 
                                 <!-- VISION TAB -->
                                 <div id="demo-content-vision" class="demo-pane">
@@ -918,15 +920,20 @@
                             </div>
 
                             <!-- Trust badges row -->
-                            <div class="flex items-center justify-between gap-2 px-4 pt-3 pb-3 mt-1" style="border-top: 1px solid #e2e8f0; background:#f8fafc;">
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
-                                    <i data-lucide="shield" class="w-3 h-3 text-[#1B45BD]"></i> ISO 27001
+                            <!-- Trust badges row -->
+                            <div class="hitl-trust-row flex items-center justify-between gap-2 px-4 pt-3 pb-3 mt-1" style="border-top: 1px solid #e2e8f0; background:#f8fafc;">
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="shield" class="w-3 h-3 text-[#1B45BD] flex-shrink-0"></i>
+                                    <span>ISO 27001</span>
                                 </div>
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
-                                    <i data-lucide="cpu" class="w-3 h-3 text-[#029146]"></i> KITTI Certified
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="cpu" class="w-3 h-3 text-[#029146] flex-shrink-0"></i>
+                                    <span class="hidden xs:inline">KITTI Certified</span>
+                                    <span class="xs:hidden">KITTI</span>
                                 </div>
-                                <div class="flex items-center gap-1.5 text-[9px] font-mono font-bold text-slate-500">
-                                    <i data-lucide="bar-chart-2" class="w-3 h-3 text-amber-500"></i> 99.82% Precision
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="bar-chart-2" class="w-3 h-3 text-amber-500 flex-shrink-0"></i>
+                                    <span>99.82%</span>
                                 </div>
                             </div>
 
@@ -978,6 +985,85 @@
                         <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="1500" data-suffix="+" data-use-commas="true">1,500+</div>
                         <div class="text-xs text-slate-700 mt-1.5 font-bold">Empowered Lives</div>
                         <div class="text-[10px] text-slate-500 mt-0.5">95%+ Rural Women</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE 4-STAGE DATA PIPELINE (VISUAL WORKFLOW) -->
+        <section class="py-20 border-b border-slate-200 bg-mesh-soft relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#eff4ff] text-[#1B45BD] border border-[#bfdbfe] text-xs font-mono font-semibold mb-3">
+                        <i data-lucide="git-branch" class="w-3.5 h-3.5 text-[#1B45BD]"></i> End-to-End Governance
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">
+                        The 4-Stage Precision Pipeline
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                        How our human-in-the-loop architecture eliminates hallucinations, enforces zero-data-leakage cleanrooms, and guarantees 99.7% audited accuracy.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                    <!-- Stage 1 -->
+                    <div class="reveal-scale stagger-1 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#1B45BD] border border-blue-200 flex items-center justify-center font-mono font-bold text-xs">01</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Ingestion</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900">Secure Data Intake</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Encrypted S3/API ingestion into air-gapped ISO 27001 server vaults with zero external USB permissions.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#1B45BD] font-bold">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i> Air-Gapped Sandbox
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="reveal-scale stagger-2 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-50 text-[#029146] border border-emerald-200 flex items-center justify-center font-mono font-bold text-xs">02</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Pre-Process</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900">AI Model Pre-Labeling</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Auto-clustering, initial bounding proposals, and OCR parsing accelerate throughput by 3.8x.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#029146] font-bold">
+                            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> 3.8x Speed Multiplier
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="reveal-scale stagger-3 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#1B45BD] border border-blue-200 flex items-center justify-center font-mono font-bold text-xs">03</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Human QA</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900">Dual-Pass Human Review</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Full-time Tamil Nadu specialists perform sub-pixel calibration, edge correction, and paralegal clause auditing.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#1B45BD] font-bold">
+                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 100% Dedicated Staff
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="reveal-scale stagger-4 pipeline-node border-[#86efac] bg-emerald-50/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-mono font-bold text-xs shadow-sm">04</span>
+                            <span class="text-[10px] font-mono text-emerald-700 uppercase font-bold">Delivery</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900">99.7% Audited Delivery</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Tier-3 quality signoff, automated XML DTD validation, and instant export into Yardi, MRI, or client pipelines.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center gap-1.5 text-[11px] font-mono text-[#029146] font-bold">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 99.7% SLA Certified
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1251,11 +1337,117 @@
             </div>
         </section>
 
+        <!-- VISUAL COMPARISON MATRIX (CROWDSOURCED VS VILPOWER) -->
+        <section class="py-20 border-b border-slate-200 bg-mesh-warm relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-mono font-semibold mb-3">
+                        <i data-lucide="scale" class="w-3.5 h-3.5 text-amber-600"></i> The Delivery Paradigm
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">
+                        Generic Crowdsourcing vs. <span class="gradient-text">VilPower Dedicated Pods</span>
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                        Why Fortune 500 AI teams migrate away from anonymous gig platforms to our dedicated Tamil Nadu cleanroom pods.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Left: Generic Crowdsourced / Automated -->
+                    <div class="reveal-left compare-card-fail p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-4 border-b border-rose-200">
+                                <div>
+                                    <span class="text-xs font-mono text-rose-700 font-bold uppercase tracking-wider">Traditional Model</span>
+                                    <h3 class="text-xl font-bold text-slate-900 mt-0.5">Anonymous Gig Crowdsourcing</h3>
+                                </div>
+                                <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">✕</span>
+                            </div>
+
+                            <div class="mt-6 space-y-4 text-xs sm:text-sm">
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">High Churn & Unstable Operators:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Rotating anonymous workers mean zero compounding domain knowledge.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">Security & Leakage Exposure:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Remote unverified devices, no physical cleanroom or air-gapped security.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">82% - 87% Accuracy Ceiling:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Inconsistent corner-cutting, hallucinations, and missing edge-case rules.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-rose-200/60 font-mono text-xs text-rose-700 font-semibold">
+                            ⚠️ Results in costly model retraining & data contamination
+                        </div>
+                    </div>
+
+                    <!-- Right: VilPower Dedicated Pods -->
+                    <div class="reveal-right compare-card-win p-8 flex flex-col justify-between relative shadow-xl">
+                        <div class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-[#029146] text-white text-[11px] font-mono font-bold shadow-md">
+                            ★ The VilPower Standard
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between pb-4 border-b border-emerald-200">
+                                <div>
+                                    <span class="text-xs font-mono text-emerald-800 font-bold uppercase tracking-wider">VilPower Impact Sourcing</span>
+                                    <h3 class="text-xl font-bold text-slate-900 mt-0.5">Dedicated In-House QA Pods</h3>
+                                </div>
+                                <span class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold">✓</span>
+                            </div>
+
+                            <div class="mt-6 space-y-4 text-xs sm:text-sm">
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">&gt; 97% Annual Team Retention:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Permanent full-time engineering pods with compounding taxonomy mastery.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">ISO 27001 Cleanroom Vaults:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Zero-device cleanrooms, biometric access controls, and strict NDAs.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">99.7% Audited SLA Precision:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">3-tier multi-pass hierarchy with sub-pixel and paralegal calibration.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-emerald-200/80 font-mono text-xs text-[#029146] font-bold flex items-center justify-between">
+                            <span>✓ Zero-Defect Guaranteed Batch Output</span>
+                            <span class="text-[10px] bg-white px-2 py-0.5 rounded border border-emerald-200">Sub-24h TAT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- THE DIGITAL BANYAN TREE -->
-        <section class="py-20 md:py-28 border-b border-slate-200 bg-white relative">
+        <section class="py-20 md:py-28 border-b border-slate-200 bg-mesh-emerald relative">
             <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
                 <div class="reveal text-center max-w-3xl mx-auto mb-16">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ecfdf3] text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold mb-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold mb-3 shadow-sm">
                         <i data-lucide="sprout" class="w-3.5 h-3.5 text-[#029146]"></i> The Social Impact Engine
                     </span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">The Digital Banyan Tree</h2>
@@ -1265,7 +1457,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="reveal-scale stagger-1 bg-slate-50 p-7 rounded-2xl border border-[#a7f3d0] shadow-sm">
+                    <div class="reveal-scale stagger-1 bg-white p-7 rounded-2xl border border-[#a7f3d0] shadow-md hover:shadow-xl transition-all">
                         <div class="w-10 h-10 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] font-mono font-bold text-sm mb-4">
                             01
                         </div>
@@ -1273,12 +1465,12 @@
                         <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                             Grassroots outreach across rural districts in Tamil Nadu. We identify high-aptitude young women graduates who lack urban IT access.
                         </p>
-                        <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-[#029146] font-mono font-bold">
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#029146] font-mono font-bold">
                             ✓ 100% Local Community Hiring
                         </div>
                     </div>
 
-                    <div class="reveal-scale stagger-2 bg-slate-50 p-7 rounded-2xl border border-[#bfdbfe] shadow-sm">
+                    <div class="reveal-scale stagger-2 bg-white p-7 rounded-2xl border border-[#bfdbfe] shadow-md hover:shadow-xl transition-all">
                         <div class="w-10 h-10 rounded-xl bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] font-mono font-bold text-sm mb-4">
                             02
                         </div>
@@ -1286,12 +1478,12 @@
                         <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                             Intensive in-house training in Computer Vision, LiDAR, JATS XML taxonomy, ISO 27001 data governance, and specialized client platforms.
                         </p>
-                        <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-[#1B45BD] font-mono font-bold">
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#1B45BD] font-mono font-bold">
                             ✓ Continuous Pre-Trained Talent Pool
                         </div>
                     </div>
 
-                    <div class="reveal-scale stagger-3 bg-slate-50 p-7 rounded-2xl border border-[#a7f3d0] shadow-sm">
+                    <div class="reveal-scale stagger-3 bg-white p-7 rounded-2xl border border-[#a7f3d0] shadow-md hover:shadow-xl transition-all">
                         <div class="w-10 h-10 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] font-mono font-bold text-sm mb-4">
                             03
                         </div>
@@ -1299,14 +1491,14 @@
                         <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                             Flawless execution for Fortune 500 AI labs across USA, UK, Europe, Australia, and India with industry-lowest churn and 99.7% precision.
                         </p>
-                        <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-[#029146] font-mono font-bold">
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#029146] font-mono font-bold">
                             ✓ 157M+ Units Delivered Flawlessly
                         </div>
                     </div>
                 </div>
 
                 <div class="mt-12 text-center reveal">
-                    <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold transition-all shadow-sm">
+                    <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-all shadow-md">
                         <span>Read Our Full Story & Leadership Team</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 text-[#1B45BD]"></i>
                     </a>
@@ -1330,12 +1522,12 @@
                     Send us a 50-record sample batch. Our dedicated quality specialists will process it free of charge so you can test our turnaround time, taxonomy adherence, and SLA compliance.
                 </p>
 
-                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-                    <button type="button" onclick="openPilotModal()" class="btn-glare px-8 py-4 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg transition-all flex items-center gap-2">
+                <div class="cta-btn-group mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <button type="button" onclick="openPilotModal()" class="btn-glare w-full sm:w-auto px-8 py-4 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2">
                         <i data-lucide="sparkles" class="w-4 h-4"></i>
                         <span>Claim 50-Record Free Pilot</span>
                     </button>
-                    <a href="contact.html" class="px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm sm:text-base transition-colors">
+                    <a href="contact.html" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm sm:text-base transition-colors text-center">
                         Configure Project Scope
                     </a>
                 </div>
