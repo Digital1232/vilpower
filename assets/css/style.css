@@ -289,6 +289,8 @@ a, button {
                 visibility 0.18s;
     pointer-events: none;
     z-index: 90;
+    /* Prevent viewport overflow on any page */
+    max-width: calc(100vw - 32px);
 }
 
 .has-dropdown:hover > .mega-menu-panel,
@@ -509,10 +511,13 @@ input, select, textarea {
 }
 
 /* Premium Rotating RGB Gradient Border (2026 Trend) */
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
+/* @property --angle — supported Chrome/Edge only; Safari/Firefox get static border */
+@supports (background: conic-gradient(from 0deg, red, blue)) {
+    @property --angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
 }
 
 .btn-rgb-glow {
@@ -1374,8 +1379,6 @@ input, select, textarea {
     color: #1B45BD !important;
     background: #eff4ff !important;
 }
-
-/* ── Status ticker text ─────────────────────────────────────────────────── */
 .hitl-ticker-text {
     white-space: nowrap;
     overflow: hidden;
@@ -1402,7 +1405,7 @@ input, select, textarea {
 
 /* ── Waveform bars (audio tab) ───────────────────────────────────────────── */
 .hitl-wave-bar {
-    width: 7px;
+    width: 9px;
     border-radius: 2px 2px 0 0;
     height: 30%;
     transition: height 0.18s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1462,27 +1465,6 @@ input, select, textarea {
 /* Remove old .hitl-conf (inside box) overflow — keep outside variant only */
 .hitl-conf {
     display: none;
-}
-
-/* Inactive tabs — brighter so they're readable */
-.hitl-tab-inactive {
-    background: transparent !important;
-    color: #64748b !important;
-    border: 1px solid transparent !important;
-    font-weight: 500;
-}
-.hitl-tab-inactive:hover {
-    color: #1B45BD !important;
-    background: #eff4ff !important;
-}
-
-/* Wave bar — override inline width if needed */
-.hitl-wave-bar {
-    width: 9px !important;
-    border-radius: 2px 2px 0 0;
-    height: 30%;
-    transition: height 0.18s cubic-bezier(0.22, 1, 0.36, 1);
-    flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -1648,7 +1630,17 @@ input, select, textarea {
     }
 }
 
-/* ── Mega menu: ensure it never bleeds on touch tablets ──────────────── */
+/* Desktop nav is the positioning parent for mega menu panels */
+.desktop-nav {
+    position: relative;
+}
+
+/* Wide mega panels (Solutions + Industries) anchor left to nav container.
+   Triggered by JS adding class 'mega-anchored' to these panels at init. */
+.desktop-nav .dropdown-menu-panel.mega-anchored {
+    left: 0 !important;
+    right: auto !important;
+}
 @media (max-width: 1023px) {
     .dropdown-menu-panel,
     .mega-menu-panel {
@@ -1750,28 +1742,36 @@ footer .flex.items-center.gap-6 {
     bottom: 24px;
     right: 24px;
     z-index: 9999;
-    width: 52px;
-    height: 52px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1B45BD, #15379b);
+    background: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(27, 69, 189, 0.45);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.25s ease;
+    padding: 0;
+    box-shadow: none;
+    transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
 }
 .vp-chat-toggle:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 28px rgba(27, 69, 189, 0.55);
 }
 .vp-chat-toggle:active {
-    transform: scale(0.96);
+    transform: scale(0.94);
 }
 
+/* Image fills full button size */
+.vp-chat-toggle img,
+.vp-toggle-icon-svg img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: none !important;
+    display: block;
+    border-radius: 50%;
+}
 /* Unread badge */
 .vp-unread-badge {
     position: absolute;
@@ -2081,5 +2081,24 @@ footer .flex.items-center.gap-6 {
     #back-to-top {
         bottom: 24px;
         right: 84px;
+    }
+}
+
+/* ==========================================================================
+   Bug Fixes — Audit Round
+   ========================================================================== */
+
+/* ── font-display: applies Plus Jakarta Sans as the display/heading font ── */
+.font-display {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* ── btn-rgb-glow: Safari/Firefox fallback — static brand border ────────── */
+@supports not (background: conic-gradient(from var(--angle, 0deg), red, blue)) {
+    .btn-rgb-glow::before {
+        background: linear-gradient(135deg, #1B45BD, #029146) !important;
+        animation: none !important;
     }
 }

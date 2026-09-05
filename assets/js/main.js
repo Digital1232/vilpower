@@ -78,10 +78,18 @@ function initDesktopDropdowns() {
     const dropdownContainers = document.querySelectorAll('.desktop-nav .has-dropdown');
     if (!dropdownContainers.length) return;
 
+    // Mark wide mega panels so CSS can anchor them to nav-left (prevents right-overflow on pages with fewer nav CTAs)
+    dropdownContainers.forEach(container => {
+        const panel = container.querySelector('.dropdown-menu-panel, .mega-menu-panel');
+        if (panel && (panel.className.includes('w-[880px]') || panel.className.includes('w-[920px]'))) {
+            panel.classList.add('mega-anchored');
+        }
+    });
+
     dropdownContainers.forEach(container => {
         const btn = container.querySelector('.nav-item-btn');
 
-        // On mouse enter, remove stuck focus or is-open state from any other dropdown across the nav
+        // On mouse enter, close other dropdowns
         container.addEventListener('mouseenter', () => {
             dropdownContainers.forEach(other => {
                 if (other !== container) {
@@ -94,7 +102,7 @@ function initDesktopDropdowns() {
             });
         });
 
-        // Mouse leave clears any temporary is-open state
+        // Mouse leave clears is-open state
         container.addEventListener('mouseleave', () => {
             container.classList.remove('is-open');
             if (btn && document.activeElement === btn) {
@@ -102,11 +110,11 @@ function initDesktopDropdowns() {
             }
         });
 
-        // Toggle on click (for touch or click interaction)
+        // Toggle on click (for touch / keyboard)
         if (btn) {
             btn.addEventListener('click', (e) => {
                 const isCurrentlyOpen = container.classList.contains('is-open');
-                
+
                 // Close all others first
                 dropdownContainers.forEach(other => {
                     other.classList.remove('is-open');
@@ -534,8 +542,13 @@ function initHITLPanel() {
                 setTimeout(() => { hallucEl2.textContent = doc.halluc; hallucEl2.style.transition = 'opacity 0.4s'; hallucEl2.style.opacity = '1'; }, 350);
             }
             _fadeText('nlp-status-text', nlpStatusSteps[nlpStatusSteps.length - 1]);
-            // Use native setTimeout (not _later) so _clearTab won't kill the loop restart
-            setTimeout(() => { if (nlpRunning && activeTab === 'nlp') nlpLoop(); }, 2400);
+            // Use native setTimeout so _clearTab won't kill this restart,
+            // but double-guard: nlpRunning AND activeTab must still be 'nlp'
+            const restartId = setTimeout(() => {
+                if (nlpRunning && activeTab === 'nlp') nlpLoop();
+            }, 2400);
+            // Register restart timer so onTabSwitch can cancel it via _clearTab
+            _timers['nlp'].push({ t: 'to', id: restartId });
         }, done);
     }
 
@@ -876,8 +889,40 @@ function handleLeadSubmit(e) {
 
 function handlePilotSubmit(e) {
     e.preventDefault();
-    closePilotModal();
-    alert('🎉 Thank you! Your request for a Free 50-Record Benchmark Pilot has been received. Our operations team will contact you within 4 hours.');
+    const form = e.target;
+    const btn  = form.querySelector('button[type="submit"]');
+
+    // Disable button + show loading state
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    // Simulate submission (replace with real fetch() when backend ready)
+    setTimeout(() => {
+        // Reset form
+        form.reset();
+        if (btn) { btn.disabled = false; btn.textContent = 'Claim 50-Record Free Benchmark →'; }
+
+        // Swap form for success message inside the modal
+        const formWrap = form.parentElement;
+        if (formWrap) {
+            formWrap.innerHTML = `
+                <div class="text-center py-6 space-y-4">
+                    <div class="w-14 h-14 mx-auto flex items-center justify-center">
+                        <svg class="w-14 h-14" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Pilot Request Received!</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">
+                        Our operations team will contact you within <strong>4 hours</strong> with your pilot onboarding details.
+                    </p>
+                    <button onclick="closePilotModal()" class="mt-2 px-5 py-2 rounded-lg bg-[#029146] text-white text-xs font-bold hover:bg-[#027a3a] transition-colors">
+                        Close
+                    </button>
+                </div>`;
+            if (window.lucide) lucide.createIcons();
+        }
+    }, 600);
 }
 
 // Smooth scroll to top function
@@ -1231,7 +1276,7 @@ function initRotatingServiceTitles() {
             }
 
             div.innerHTML = `
-                <div class="vp-msg-avatar">VP</div>
+                <div class="vp-msg-avatar"></div>
                 <div class="vp-bubble">${html}${ctaHtml}</div>`;
             box.appendChild(div);
             vpScrollBottom();
@@ -1250,7 +1295,7 @@ function initRotatingServiceTitles() {
         div.className = 'vp-msg vp-bot vp-typing';
         div.id = 'vp-typing-indicator';
         div.innerHTML = `
-            <div class="vp-msg-avatar">VP</div>
+            <div class="vp-msg-avatar"></div>
             <div class="vp-bubble">
                 <span class="vp-typing-dot"></span>
                 <span class="vp-typing-dot"></span>

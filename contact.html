@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="img/logo/VilPower%20Logo.svg">
+    <link rel="shortcut icon" href="img/logo/VilPower%20Logo.svg">
+    <link rel="canonical" href="https://www.vilpower.com/contact.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact & Scope Builder | VilPower Solutions</title>
     <meta name="description" content="Configure your data operations scope, request a formal SLA proposal, and claim a complimentary 50-record quality benchmark pilot from VilPower Solutions.">
@@ -445,8 +448,17 @@
                 </a>
             </div>
 
+            <!-- Header CTA -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" onclick="openPilotModal()" class="btn-glare inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-bold text-white bg-[#1B45BD] hover:bg-[#15379b] rounded-lg shadow-sm transition-colors">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
+                    <span class="hidden sm:inline">Claim 50-Record Pilot</span>
+                    <span class="sm:hidden">Pilot</span>
+                </button>
+            </div>
+
             <div class="flex lg:hidden items-center gap-2">
-                <button id="mobile-toggle-btn" type="button" onclick="toggleMenu()" class="p-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-700">
+                <button id="mobile-toggle-btn" type="button" onclick="toggleMenu()" class="p-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-700" aria-label="Toggle navigation menu">
                     <i id="mobile-menu-icon" data-lucide="menu" class="h-5 w-5"></i>
                 </button>
             </div>
@@ -627,13 +639,29 @@
                 <a href="ai-data-annotation.html" class="hover:text-slate-900">AI Annotation</a>
             </div>
         </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white border border-slate-200 shadow-xl text-slate-700 hover:text-[#1B45BD] hover:border-[#bfdbfe] transition-all duration-300 translate-y-10 opacity-0 pointer-events-none hover:-translate-y-1" aria-label="Scroll back to top">
-        <i data-lucide="arrow-up" class="w-5 h-5"></i>
-    </button>
-
-    <script src="assets/js/main.js"></script>
+    </footer><script src="assets/js/main.js"></script>
+    <!-- VilPower AI Assistant Widget -->
+    <div id="vp-chat-widget" aria-live="polite">
+        <div id="vp-chat-window" class="vp-chat-window" role="dialog" aria-modal="true" aria-label="VilPower AI Assistant" style="display:none;">
+            <div class="vp-chat-header">
+                <div class="vp-chat-header-left">
+                    <div class="vp-bot-avatar"><img src="img/Chatbot%20Icon.png" alt="VilPower Bot"></div>
+                    <div><div class="vp-chat-title">VilPower Assistant</div><div class="vp-chat-status"><span class="vp-status-dot"></span>Online &middot; Replies instantly</div></div>
+                </div>
+                <button class="vp-chat-close" onclick="vpToggleChat()" aria-label="Close chat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            </div>
+            <div id="vp-messages" class="vp-messages"></div>
+            <div id="vp-quick-replies" class="vp-quick-replies"></div>
+            <div class="vp-input-row">
+                <input id="vp-input" type="text" placeholder="Type your question…" autocomplete="off" onkeydown="if(event.key==='Enter')vpSend()" maxlength="200" aria-label="Chat input">
+                <button class="vp-send-btn" onclick="vpSend()" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+            </div>
+        </div>
+        <button id="vp-chat-toggle" class="vp-chat-toggle" onclick="vpToggleChat()" aria-label="Open VilPower AI Assistant">
+            <span id="vp-toggle-icon" class="vp-toggle-icon-svg"><img src="img/Chatbot%20Icon.png" alt="Chat"></span>
+            <span id="vp-toggle-icon-close" style="display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span id="vp-unread-badge" class="vp-unread-badge" style="display:none;">1</span>
+        </button>
+    </div>
 </body>
 </html>

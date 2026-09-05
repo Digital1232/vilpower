@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -7,6 +7,9 @@
     <title>VilPower Solutions — Human-in-the-Loop AI & Enterprise Data Operations</title>
     <meta name="description" content="VilPower Solutions delivers 99.7% precision Human-in-the-Loop AI annotation, STM XML publishing, and commercial lease abstraction powered by an impact-sourcing 95%+ rural women workforce in Tamil Nadu.">
     <meta name="keywords" content="Human in the loop AI, AI data annotation, computer vision annotation, LiDAR annotation, JATS XML publishing, commercial lease abstraction, impact sourcing India">
+    <link rel="canonical" href="https://www.vilpower.com/">
+    <link rel="icon" type="image/svg+xml" href="img/logo/VilPower%20Logo.svg">
+    <link rel="shortcut icon" href="img/logo/VilPower%20Logo.svg">
     
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website">
@@ -609,7 +612,7 @@
                             </a>
                         </div>
 
-                        <div class="mt-10 pt-6 border-t border-slate-200/80 grid grid-cols-3 xs:grid-cols-3 gap-2 sm:gap-6 text-left">
+                        <div class="mt-10 pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-2 sm:gap-6 text-left">
                             <div class="reveal stagger-1 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
                                 <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="157" data-suffix="M+">157M+</div>
                                 <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Records Verified</div>
@@ -1636,14 +1639,7 @@
                 </button>
             </form>
         </div>
-    </div>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 z-50 p-3 rounded-full bg-white border border-slate-200 shadow-xl text-slate-700 hover:text-[#1B45BD] hover:border-[#bfdbfe] transition-all duration-300 translate-y-10 opacity-0 pointer-events-none hover:-translate-y-1" style="right:84px;" aria-label="Scroll back to top">
-        <i data-lucide="arrow-up" class="w-5 h-5"></i>
-    </button>
-
-    <!-- Global JS Engine -->
+    </div><!-- Global JS Engine -->
     <script src="assets/js/main.js"></script>
 
     <!-- VilPower AI Assistant Widget -->
@@ -1655,11 +1651,11 @@
             <div class="vp-chat-header">
                 <div class="vp-chat-header-left">
                     <div class="vp-bot-avatar">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        <img src="img/Chatbot%20Icon.png" alt="VilPower Bot">
                     </div>
                     <div>
                         <div class="vp-chat-title">VilPower Assistant</div>
-                        <div class="vp-chat-status"><span class="vp-status-dot"></span>Online</div>
+                        <div class="vp-chat-status"><span class="vp-status-dot"></span>Online · Replies instantly</div>
                     </div>
                 </div>
                 <button class="vp-chat-close" onclick="vpToggleChat()" aria-label="Close chat">
@@ -1685,12 +1681,8 @@
 
         <!-- Toggle Button -->
         <button id="vp-chat-toggle" class="vp-chat-toggle" onclick="vpToggleChat()" aria-label="Open VilPower AI Assistant">
-            <span id="vp-toggle-icon" class="vp-toggle-icon-chat">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <span id="vp-toggle-icon-close" class="vp-toggle-icon-close" style="display:none;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </span>
+            <span id="vp-toggle-icon" class="vp-toggle-icon-svg"><img src="img/Chatbot%20Icon.png" alt="Chat"></span>
+            <span id="vp-toggle-icon-close" style="display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
             <span id="vp-unread-badge" class="vp-unread-badge" style="display:none;">1</span>
         </button>
 
