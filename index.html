@@ -608,13 +608,18 @@
              Rotating Services Headline, Description & CTAs (Metrics moved to make space)
              ========================================================================== -->
         <section class="v-hero-outer w-full py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200/80 min-h-[calc(100vh-70px)] flex flex-col justify-center">
-            
-            <!-- Ambient Subtle Top Glow -->
-            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[380px] bg-gradient-to-b from-indigo-200/35 via-purple-100/25 to-transparent blur-3xl pointer-events-none"></div>
 
             <div class="max-w-6xl mx-auto w-full relative z-10">
 
-                <!-- 1. Hero Illustration: Solar System Planetary Orbits with Perfectly Centered Upright Tree Sun -->
+                <!-- 0. Top Pill Badge: Human + AI + Quality Assurance (from mockup) -->
+                <div class="flex justify-center mb-2 sm:mb-3">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-purple-200/80 shadow-sm text-xs font-semibold text-slate-800">
+                        <i data-lucide="users-2" class="w-3.5 h-3.5 text-purple-600"></i>
+                        <span>Human + AI + Quality Assurance</span>
+                    </div>
+                </div>
+
+                <!-- 1. Hero Illustration: Solar System Planetary Orbits with Centered Upright Tree Sun -->
                 <div class="v-orbital-stage relative select-none">
                     
                     <!-- True Solar System 3D Perspective Orbit Rings with Service Icon Badges -->
@@ -674,9 +679,9 @@
                             <div class="v-solar-planet v-solar-planet-purple" style="top: 20%; left: 12%;"></div>
                         </div>
 
-                        <!-- Center Element: Crystal Sun Orb with UPRIGHT Tree (Dead-Centered inside the exact solar system coordinate space) -->
+                        <!-- Center Element: Crystal Sun Orb with UPRIGHT Tree (Dead-Centered with hardcoded max dimensions) -->
                         <div class="v-orb-center">
-                            <img src="img/logo/vilpower-tree.png" alt="VilPower Tree" class="v-tree-still">
+                            <img src="img/logo/vilpower-tree.png" alt="VilPower Tree" class="v-tree-still w-11 h-11 sm:w-12 sm:h-12 object-contain select-none max-w-[48px] max-h-[48px]" style="max-width: 48px !important; max-height: 48px !important; width: 48px !important; height: 48px !important; margin: auto;">
                         </div>
 
                     </div>
@@ -735,33 +740,30 @@
 
                 </div>
 
-                <!-- 2. Hero Content (Clean, Minimal & Focused — Eyebrow & Trust Strip Removed as Requested) -->
-                <div class="max-w-3xl mx-auto text-center mt-5 sm:mt-6 relative z-30">
+                <!-- 2. Hero Content: Line 1: "We Transform Complex Data Into" (Single Line), Line 2: Changing Text -->
+                <div class="max-w-4xl mx-auto text-center mt-5 sm:mt-6 relative z-30">
 
-                    <!-- Main Headline with Smooth Rotating Services Text -->
-                    <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-[#151B36] tracking-tight leading-[1.14] mb-3 sm:mb-4 font-display text-center">
-                        We transform complex data<br class="hidden sm:inline">
-                        <span class="inline-flex items-center justify-center text-center">
-                            <span>into&nbsp;</span>
-                            <span class="hero-rotating-service-wrap inline-block relative text-left" aria-live="polite">
-                                <span class="hero-rotating-service-item active bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">trusted intelligence.</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">AI Training Data</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Data Annotation</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Data Processing</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Digital Publishing</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Quality-Assured Data</span>
-                                <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">AI Data Services</span>
-                            </span>
+                    <!-- Main Headline (Exact requested structure) -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-extrabold text-[#151B36] tracking-tight leading-[1.18] mb-3 sm:mb-4 font-display text-center">
+                        <span class="block">We Transform Complex Data Into</span>
+                        <span class="hero-rotating-service-wrap block w-full relative text-center mx-auto" aria-live="polite">
+                            <span class="hero-rotating-service-item active bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Trusted Intelligence.</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">AI Training Data</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Data Annotation</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Data Processing</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Digital Publishing</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">Quality-Assured Data</span>
+                            <span class="hero-rotating-service-item bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">AI Data Services</span>
                         </span>
                     </h1>
 
-                    <!-- Supporting Description -->
-                    <p class="text-xs sm:text-sm lg:text-base text-[#777D96] max-w-xl mx-auto leading-relaxed mb-6 sm:mb-7">
-                        Human expertise. AI-powered workflows. Rigorous quality assurance. VilPower empowers world-leading AI labs, autonomous mobility giants, STM publishers, and REITs with multi-pass audited data operations — powered by an impact-sourcing 95%+ rural women engineering talent pool in Tamil Nadu.
+                    <!-- Supporting Description (from user mockup) -->
+                    <p class="text-xs sm:text-sm lg:text-base text-[#777D96] max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-7">
+                        Combining human expertise, AI-powered workflows and rigorous quality assurance, VilPower delivers trusted data annotation, publishing and intelligent data operations for global enterprises — powered by an impact-driven workforce in Tamil Nadu.
                     </p>
 
                     <!-- CTA Action Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
                         <button onclick="openPilotModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#496BFF] to-[#3a58e8] hover:from-[#3a58e8] hover:to-[#2b47d6] text-white font-bold text-xs sm:text-sm shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all group">
                             <span>Launch Free 50-Record Pilot</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -770,6 +772,43 @@
                             <span>Explore Solutions</span>
                             <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
                         </a>
+                    </div>
+
+                    <!-- Bottom 3 Pillars (from user reference mockup) -->
+                    <div class="mt-6 pt-5 border-t border-slate-200/50 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-slate-700">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-purple-50 text-purple-600 border border-purple-200/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="target" class="w-4 h-4"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs font-bold text-slate-900">Human Expertise</div>
+                                <div class="text-[11px] text-slate-500">A skilled, trained workforce</div>
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:block w-px h-8 bg-slate-200/80"></div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-blue-50 text-[#496BFF] border border-blue-200/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="cpu" class="w-4 h-4"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs font-bold text-slate-900">AI-Powered Workflows</div>
+                                <div class="text-[11px] text-slate-500">Faster, smarter and scalable</div>
+                            </div>
+                        </div>
+
+                        <div class="hidden sm:block w-px h-8 bg-slate-200/80"></div>
+
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs font-bold text-slate-900">Rigorous Quality Assurance</div>
+                                <div class="text-[11px] text-slate-500">Accuracy you can trust</div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

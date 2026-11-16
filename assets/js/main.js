@@ -1237,13 +1237,15 @@ function initRotatingServiceTitles() {
         const items = wrap.querySelectorAll('.hero-rotating-service-item');
         if (items.length <= 1) return;
 
+        const isFullBlock = wrap.classList.contains('block') || wrap.classList.contains('w-full');
         let currentIndex = 0;
         const intervalTime = 3400; // 3.4s rotation cycle
         let rotateTimer = null;
         let itemWidths = [];
 
-        // Accurate in-situ measurement of each item using computed font
+        // Accurate in-situ measurement of each item using computed font (for inline-block wraps)
         function measureAll() {
+            if (isFullBlock) return;
             itemWidths = [];
             items.forEach((item, i) => {
                 const prevPos = item.style.position;
@@ -1268,6 +1270,10 @@ function initRotatingServiceTitles() {
         }
 
         function setWrapWidth(index) {
+            if (isFullBlock) {
+                wrap.style.width = '100%';
+                return;
+            }
             if (!itemWidths.length || itemWidths.every(w => w === 0)) {
                 measureAll();
             }
