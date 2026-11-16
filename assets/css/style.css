@@ -2845,57 +2845,7 @@ footer .flex.items-center.gap-6 {
     border-radius: 0;
 }
 
-/* Central Glowing V-Orb */
-/* Central Iridescent Crystal Sphere with VilPower Tree Logo */
-.v-orb-center {
-    width: 114px;
-    height: 114px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.96) 0%, rgba(215, 238, 255, 0.85) 25%, rgba(190, 218, 255, 0.6) 45%, rgba(205, 190, 255, 0.55) 70%, rgba(145, 180, 255, 0.7) 100%);
-    border: 2.5px solid rgba(255, 255, 255, 0.92);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 20;
-    box-shadow: 
-        0 0 50px 16px rgba(166, 155, 255, 0.45),
-        0 0 90px 28px rgba(73, 107, 255, 0.28),
-        inset 0 0 25px rgba(255, 255, 255, 0.95),
-        inset -8px -8px 25px rgba(114, 46, 209, 0.22);
-    animation: vOrbPulse 4.5s ease-in-out infinite;
-}
-
-.v-orb-center::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 16%;
-    width: 40%;
-    height: 24%;
-    border-radius: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
-    transform: rotate(-25deg);
-    pointer-events: none;
-}
-
-@media (min-width: 640px) {
-    .v-orb-center {
-        width: 136px;
-        height: 136px;
-    }
-}
-
-@keyframes vOrbPulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 35px 10px rgba(73, 107, 255, 0.38), 0 0 75px 20px rgba(166, 155, 255, 0.22);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 50px 15px rgba(73, 107, 255, 0.5), 0 0 95px 28px rgba(166, 155, 255, 0.3);
-    }
-}
+/* Old v-orb-center replaced by Solar System Center Orb */
 
 /* Orbital Rings (Compact & Balanced for Viewable Area) */
 .v-orbital-stage {
@@ -3096,7 +3046,7 @@ footer .flex.items-center.gap-6 {
 
 /* ==========================================================================
    True Solar System Style Orbital Architecture (Compact, Viewport-Fitting)
-   Tree Stays Upright & Still; 3D Perspective Planetary Ellipses Rotate Around Center
+   Tree Stays Upright & Still; Dead-Centered in Symmetrical 3D Solar Orbits
    ========================================================================== */
 
 .v-orbital-stage {
@@ -3106,7 +3056,6 @@ footer .flex.items-center.gap-6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    perspective: 1000px;
     overflow: visible;
 }
 
@@ -3122,7 +3071,7 @@ footer .flex.items-center.gap-6 {
     }
 }
 
-/* Solar System Orbits Container */
+/* Solar System Orbits Container — Orthographic 3D Plane Centered Exactly at 50% 50% */
 .v-solar-system {
     position: absolute;
     top: 50%;
@@ -3137,7 +3086,7 @@ footer .flex.items-center.gap-6 {
     transform-style: preserve-3d;
 }
 
-/* Planetary Orbit Rings tilted in 3D perspective — shape stays an elongated ellipse while rotating! */
+/* Planetary Orbit Rings tilted at rotateX(68deg) — Orthographic linear projection forms a 100% symmetric ellipse */
 .v-solar-ring {
     position: absolute;
     top: 50%;
@@ -3168,13 +3117,13 @@ footer .flex.items-center.gap-6 {
     animation: vSolarRotate2 42s linear infinite reverse;
 }
 
-/* Ring 3: Outer Planetary Orbit (subtly tilted for celestial depth) */
+/* Ring 3: Outer Planetary Orbit */
 .v-solar-ring-3 {
     width: 740px;
     height: 740px;
     border: 1.5px dashed rgba(73, 107, 255, 0.32);
     box-shadow: 0 0 25px rgba(73, 107, 255, 0.08);
-    transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(0deg);
+    transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
     animation: vSolarRotate3 58s linear infinite;
 }
 
@@ -3198,10 +3147,10 @@ footer .flex.items-center.gap-6 {
 
 @keyframes vSolarRotate3 {
     from {
-        transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(0deg);
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
     }
     to {
-        transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(360deg);
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg);
     }
 }
 
@@ -3239,45 +3188,60 @@ footer .flex.items-center.gap-6 {
     .v-solar-ring-3 { width: 420px; height: 420px; }
 }
 
-/* Central Sun Orb */
+/* Central Sun Orb — Dead-Centered at 50% 50% */
 .v-orb-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e0e7ff 35%, #c7d2fe 65%, #818cf8 100%);
-    box-shadow: 0 0 35px rgba(99, 102, 241, 0.4), 0 0 70px rgba(165, 180, 252, 0.25), inset 0 -4px 10px rgba(79, 70, 229, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;
-    pointer-events: auto;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e0e7ff 35%, #c7d2fe 65%, #818cf8 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.4), 0 0 70px rgba(165, 180, 252, 0.25), inset 0 -4px 10px rgba(79, 70, 229, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 30 !important;
+    pointer-events: auto !important;
+    animation: vOrbGlowOnly 4s ease-in-out infinite alternate !important;
 }
 
 @media (min-width: 640px) {
     .v-orb-center {
-        width: 90px;
-        height: 90px;
+        width: 92px !important;
+        height: 92px !important;
+    }
+}
+
+/* Breathing Glow on Orb (NO transform changes so position NEVER shifts!) */
+@keyframes vOrbGlowOnly {
+    0% {
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.35), 0 0 60px rgba(165, 180, 252, 0.2), inset 0 -4px 10px rgba(79, 70, 229, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 45px rgba(99, 102, 241, 0.55), 0 0 85px rgba(165, 180, 252, 0.35), inset 0 -4px 12px rgba(79, 70, 229, 0.4);
     }
 }
 
 /* VilPower Tree Logo — STRICTLY STILL & UPRIGHT (NO ROTATION) */
 .v-tree-still {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-    filter: drop-shadow(0 3px 8px rgba(2, 145, 70, 0.4));
+    width: 44px !important;
+    height: 44px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: auto !important;
+    filter: drop-shadow(0 3px 8px rgba(2, 145, 70, 0.4)) !important;
     transform: none !important;
-    animation: vTreeGlowPulse 4s ease-in-out infinite alternate;
+    animation: vTreeGlowPulse 4s ease-in-out infinite alternate !important;
 }
 
 @media (min-width: 640px) {
     .v-tree-still {
-        width: 48px;
-        height: 48px;
+        width: 50px !important;
+        height: 50px !important;
     }
 }
 
@@ -3291,7 +3255,6 @@ footer .flex.items-center.gap-6 {
         filter: drop-shadow(0 5px 14px rgba(2, 145, 70, 0.55));
     }
 }
-
 /* Compact, Sleek Glassmorphic Service Badges */
 .v-service-card {
     position: absolute;
