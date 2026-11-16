@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -150,6 +150,17 @@
                                                 <div>
                                                     <div class="text-xs font-bold text-slate-900 group-hover/sol:text-[#029146] transition-colors">XML & STM Digital Publishing</div>
                                                     <div class="text-[11px] text-slate-500 leading-snug mt-0.5">JATS/BITS conversion, LaTeX/MathML & PubMed central indexing.</div>
+                                                </div>
+                                            </a>
+
+                                            <!-- 3. E-Publishing Solutions -->
+                                            <a href="e-publishing.html" class="mega-sol-card p-2.5 rounded-2xl flex items-start gap-3 group/sol transition-all">
+                                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-[#0284c7] border border-sky-100/80 flex items-center justify-center shrink-0 mt-0.5 group-hover/sol:scale-105 transition-transform">
+                                                    <i data-lucide="book-marked" class="w-4 h-4"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-xs font-bold text-slate-900 group-hover/sol:text-[#0284c7] transition-colors">E-Publishing Solutions</div>
+                                                    <div class="text-[11px] text-slate-500 leading-snug mt-0.5">ePUB3, fixed layout, interactive eBooks, typesetting & WCAG.</div>
                                                 </div>
                                             </a>
 
@@ -476,6 +487,7 @@
                     <div class="mobile-accordion-content pl-3 pt-2 space-y-2 text-xs">
                         <a href="ai-data-annotation.html" class="block py-1 text-slate-600 hover:text-[#1B45BD]">AI Data Annotation & Computer Vision</a>
                         <a href="xml-stm-publishing.html" class="block py-1 text-slate-600 hover:text-[#029146]">XML & STM Digital Publishing</a>
+                        <a href="e-publishing.html" class="block py-1 text-slate-600 hover:text-[#0284c7]">E-Publishing & eBook Production</a>
                         <a href="lease-abstraction.html" class="block py-1 text-slate-600 hover:text-[#1B45BD]">Commercial Lease Abstraction</a>
                         <a href="legal-data-intelligence.html" class="block py-1 text-slate-600 hover:text-[#029146]">Legal & Web Data Intelligence</a>
                     </div>
@@ -537,6 +549,7 @@
                             <select id="service-interest" onchange="updateQualifications()" class="w-full rounded-xl bg-slate-50 border border-slate-300 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-[#1B45BD] focus:bg-white transition-colors">
                                 <option value="AI Data Services">AI Data Annotation (Vision / NLP / LiDAR)</option>
                                 <option value="XML & Digital Publishing">XML & STM Digital Publishing (JATS / BITS)</option>
+                                <option value="E-Publishing Services">E-Publishing & eBook Production (ePUB / InDesign / WCAG)</option>
                                 <option value="Lease Abstraction">Commercial Lease Abstraction</option>
                                 <option value="Legal Data Services">Legal & Web Intelligence</option>
                             </select>
@@ -592,6 +605,24 @@
                         </div>
                     </div>
 
+                    <div id="epub-fields" class="qualification hidden p-5 rounded-2xl bg-sky-50/60 border border-sky-200 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-mono text-[#0284c7] font-bold mb-1.5">Target Output Format & Modality</label>
+                            <select id="epub-format" class="w-full rounded-lg bg-white border border-sky-200 p-2.5 text-xs text-slate-900">
+                                <option>Reflowable ePUB 3.2</option>
+                                <option>Fixed-Layout ePUB (Illustrated / Comics / Children's)</option>
+                                <option>Amazon Kindle KF8 / KFX</option>
+                                <option>Adobe InDesign Typesetting (Print-Ready PDF)</option>
+                                <option>Accessible PDF/UA & WCAG 2.1 Remediation</option>
+                                <option>Interactive eBook (Audio Read-Aloud / HTML5)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-[#0284c7] font-bold mb-1.5">Estimated Monthly Titles / Pages</label>
+                            <input id="approx-volume-epub" placeholder="e.g. 50 titles or 10,000 pages / month" class="w-full rounded-lg bg-white border border-sky-200 p-2.5 text-xs text-slate-900">
+                        </div>
+                    </div>
+
                     <div>
                         <label for="project-details" class="block text-xs font-mono text-slate-700 font-semibold mb-2">PROJECT SPECIFICATIONS & TAXONOMY GUIDELINES</label>
                         <textarea id="project-details" rows="4" placeholder="Detail your edge cases, preferred tooling (Labelbox, CVAT, custom APIs), turnaround time targets, or NDA requirements..." class="w-full rounded-xl bg-slate-50 border border-slate-300 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#1B45BD] focus:bg-white transition-colors"></textarea>
@@ -637,6 +668,8 @@
                 <a href="index.html" class="hover:text-slate-900">Home</a>
                 <a href="about.html" class="hover:text-slate-900">About Us</a>
                 <a href="ai-data-annotation.html" class="hover:text-slate-900">AI Annotation</a>
+                <a href="xml-stm-publishing.html" class="hover:text-slate-900">XML & STM</a>
+                <a href="e-publishing.html" class="hover:text-slate-900 text-[#0284c7] font-semibold">E-Publishing</a>
             </div>
         </div>
     </footer><script src="assets/js/main.js"></script>

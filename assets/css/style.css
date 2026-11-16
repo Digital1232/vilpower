@@ -313,6 +313,22 @@ a, button {
     z-index: 100;
 }
 
+/* ── Dropdown Invisible Hitbox Bridge ───────────────────────────────────────
+   Bridges the physical gap between header menu and dropdown popup so slowly
+   moving the cursor down across the gap never loses hover or closes the popup. */
+.mega-menu-panel::before,
+.dropdown-menu-panel::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -28px !important;
+    left: -20px !important;
+    right: -20px !important;
+    height: 36px !important;
+    background: transparent !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+}
+
 /* Mega Menu Item Hover State (Vitara Dashed Card Effect) */
 .mega-sol-card {
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -606,6 +622,96 @@ input, select, textarea {
 .logo-glare:hover::after {
     left: 150% !important;
     transition: left 0.8s ease-in-out !important;
+}
+
+/* ==========================================================================
+   Floating Pill Navbar on Scroll (Techwitpro / Modern SaaS Light Mode)
+   ========================================================================== */
+
+#main-header {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@media (min-width: 1024px) {
+    #main-header.is-scrolled {
+        position: fixed !important;
+        top: 14px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        max-width: calc(100vw - 40px) !important;
+        border-radius: 9999px !important;
+        background: rgba(255, 255, 255, 0.94) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border: 1px solid rgba(226, 232, 240, 0.95) !important;
+        box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.04) !important;
+        z-index: 999 !important;
+    }
+
+    #main-header.is-scrolled nav {
+        padding-top: 0.35rem !important;
+        padding-bottom: 0.35rem !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        gap: 1.15rem !important;
+        max-width: none !important;
+    }
+
+    /* Harmonize action buttons in scrolled pill — elegant rounded geometry and zero edge clipping */
+    #main-header.is-scrolled .btn-rgb-glow {
+        border-radius: 9999px !important;
+        overflow: hidden !important;
+    }
+
+    #main-header.is-scrolled .btn-rgb-glow::after {
+        border-radius: 9999px !important;
+    }
+
+    #main-header.is-scrolled .btn-rgb-glow span {
+        padding: 0.4rem 1rem !important;
+        border-radius: 9999px !important;
+    }
+
+    #main-header.is-scrolled .btn-glare {
+        border-radius: 9999px !important;
+        padding-left: 1.15rem !important;
+        padding-right: 1.15rem !important;
+    }
+
+    #main-header.is-scrolled .header-logo-img,
+    #main-header.is-scrolled img[src*="Logo"] {
+        height: 2.125rem !important;
+    }
+
+    #main-header.is-scrolled .desktop-nav {
+        gap: 0.25rem !important;
+        position: static !important;
+    }
+
+    #main-header.is-scrolled .header-secondary-btn {
+        display: none !important;
+    }
+
+    /* Center mega menu panel under floating pill when scrolled */
+    #main-header.is-scrolled .has-mega-menu {
+        position: static !important;
+    }
+
+    #main-header.is-scrolled .desktop-nav .dropdown-menu-panel.mega-anchored,
+    #main-header.is-scrolled .desktop-nav .has-mega-menu .dropdown-menu-panel {
+        left: 50% !important;
+        transform: translateX(-50%) translateY(0) !important;
+        right: auto !important;
+        top: calc(100% + 14px) !important;
+    }
+
+    #main-header.is-scrolled .desktop-nav .dropdown-menu-panel::before,
+    #main-header.is-scrolled .desktop-nav .mega-menu-panel::before {
+        top: -24px !important;
+        height: 32px !important;
+    }
 }
 
 /* Sticky Stacking Cards */
@@ -2100,5 +2206,50 @@ footer .flex.items-center.gap-6 {
     .btn-rgb-glow::before {
         background: linear-gradient(135deg, #1B45BD, #029146) !important;
         animation: none !important;
+    }
+}
+
+/* ==========================================================================
+   Pinned Scroll Floating Cards (4-Stage Precision Pipeline)
+   Techwitpro / Modern SaaS Parallax Stage
+   ========================================================================== */
+
+#pipeline-scroll-section {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    #pipeline-scroll-section .pipeline-sticky-stage {
+        position: sticky !important;
+        top: 0 !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .pipeline-card-wrap {
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+        transform-origin: center center;
+    }
+
+    .pipeline-card-wrap:hover {
+        z-index: 50 !important;
+    }
+
+    /* Inner card handles hover scaling smoothly without touching the outer parallax translation */
+    .pipeline-card {
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.28s ease !important;
+        will-change: transform, box-shadow;
+        transform-origin: center center;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .pipeline-card:hover {
+        transform: scale(1.035) !important;
+        box-shadow: 0 32px 70px -15px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(27, 69, 189, 0.25) !important;
     }
 }

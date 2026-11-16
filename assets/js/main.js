@@ -9,18 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Sticky header elevation shadow behavior
+    // Floating Pill Header on Scroll behavior
     const header = document.getElementById('main-header');
     if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('shadow-md', 'bg-white/95');
+        const onHeaderScroll = () => {
+            if (window.scrollY > 50) {
+                header.classList.add('is-scrolled', 'shadow-md', 'bg-white/95');
                 header.classList.remove('bg-white/80');
             } else {
-                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.remove('is-scrolled', 'shadow-md', 'bg-white/95');
                 header.classList.add('bg-white/80');
             }
-        }, { passive: true });
+        };
+        window.addEventListener('scroll', onHeaderScroll, { passive: true });
+        onHeaderScroll();
     }
 
     // Scroll Progress Indicator Logic
@@ -71,26 +73,124 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlightCards();
     // Initialize HITL Cockpit Panel
     initHITLPanel();
+    // Initialize 4-Stage Precision Pipeline Pinned Scroll Floating Cards
+    initPipelineScrollCards();
 });
+
+// 4-Stage E-Publishing Precision Pipeline — Pinned Scroll Floating Cards Controller
+function initPipelineScrollCards() {
+    const section = document.getElementById('pipeline-scroll-section');
+    if (!section) return;
+
+    const card1 = document.getElementById('pipeline-card-1');
+    const card2 = document.getElementById('pipeline-card-2');
+    const card3 = document.getElementById('pipeline-card-3');
+    const card4 = document.getElementById('pipeline-card-4');
+    if (!card1 || !card2 || !card3 || !card4) return;
+
+    let ticking = false;
+
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    const lerp = (start, end, t) => start + (end - start) * t;
+
+    function update() {
+        if (window.innerWidth < 1024) {
+            // Reset transforms on mobile/tablet so responsive grid takes over cleanly
+            [card1, card2, card3, card4].forEach(card => {
+                card.style.transform = '';
+                card.style.opacity = '';
+            });
+            ticking = false;
+            return;
+        }
+
+        const rect = section.getBoundingClientRect();
+        const totalScroll = rect.height - window.innerHeight;
+        if (totalScroll <= 0) {
+            ticking = false;
+            return;
+        }
+
+        // Section progress from 0 to 1
+        const progress = clamp(-rect.top / totalScroll, 0, 1);
+
+        // Milestone 1 (p=0): Only heading is visible. Cards are below viewport.
+        // Milestone 2 (p~0.30 - 0.40): Card 1 (Top-Left) and Card 2 (Bottom-Right) float in.
+        // Milestone 3 (p~0.65 - 0.75): Card 1 floats up/out, Card 2 is at Top-Right, Card 3 (Mid-Left) and Card 4 (Bottom-Right) float in.
+
+        // Card 1: Enters from bottom (+105vh) at p=0.03, settles in top-left (~20vh) at p=0.35, floats off (-35vh) by p=0.68
+        const t1 = clamp((progress - 0.03) / (0.65 - 0.03), 0, 1);
+        const y1 = lerp(105, -35, t1);
+        const op1 = progress < 0.03 ? 0 : (progress > 0.58 ? clamp(lerp(1, 0, (progress - 0.58) / 0.08), 0, 1) : 1);
+        card1.style.transform = `translate3d(0, ${y1}vh, 0) rotate(-6deg)`;
+        card1.style.opacity = op1;
+
+        // Card 2: Enters from bottom (+115vh) at p=0.06, reaches bottom-right (~58vh) at p=0.35, reaches top-right (~14vh) at p=0.70, floats off (-35vh) by p=0.88
+        const t2 = clamp((progress - 0.06) / (0.88 - 0.06), 0, 1);
+        const y2 = lerp(115, -35, t2);
+        const op2 = progress < 0.06 ? 0 : (progress > 0.80 ? clamp(lerp(1, 0, (progress - 0.80) / 0.08), 0, 1) : 1);
+        card2.style.transform = `translate3d(0, ${y2}vh, 0) rotate(5deg)`;
+        card2.style.opacity = op2;
+
+        // Card 3: Enters from bottom (+115vh) at p=0.32, reaches mid-left (~38vh) at p=0.70, floats off (-30vh) by p=0.96
+        const t3 = clamp((progress - 0.32) / (0.96 - 0.32), 0, 1);
+        const y3 = lerp(115, -30, t3);
+        const op3 = progress < 0.32 ? 0 : (progress > 0.88 ? clamp(lerp(1, 0, (progress - 0.88) / 0.08), 0, 1) : 1);
+        card3.style.transform = `translate3d(0, ${y3}vh, 0) rotate(-4deg)`;
+        card3.style.opacity = op3;
+
+        // Card 4: Enters from bottom (+115vh) at p=0.42, reaches lower-right (~62vh) at p=0.75, moves to ~20vh by p=1.0
+        const t4 = clamp((progress - 0.42) / (1.0 - 0.42), 0, 1);
+        const y4 = lerp(115, 20, t4);
+        const op4 = progress < 0.42 ? 0 : 1;
+        card4.style.transform = `translate3d(0, ${y4}vh, 0) rotate(4deg)`;
+        card4.style.opacity = op4;
+
+        ticking = false;
+    }
+
+    const requestTick = () => {
+        if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
+    requestTick();
+}
 
 // Desktop Nav Dropdown Controller — prevents stuck focus, double-activation, and overlapping panels
 function initDesktopDropdowns() {
     const dropdownContainers = document.querySelectorAll('.desktop-nav .has-dropdown');
     if (!dropdownContainers.length) return;
 
-    // Mark wide mega panels so CSS can anchor them to nav-left (prevents right-overflow on pages with fewer nav CTAs)
+    // Mark wide mega panels so CSS can anchor them cleanly and center them under the floating pill
     dropdownContainers.forEach(container => {
         const panel = container.querySelector('.dropdown-menu-panel, .mega-menu-panel');
-        if (panel && (panel.className.includes('w-[880px]') || panel.className.includes('w-[920px]'))) {
+        if (panel && (
+            panel.className.includes('w-[880px]') ||
+            panel.className.includes('w-[920px]') ||
+            panel.className.includes('w-[940px]') ||
+            panel.className.includes('w-[960px]') ||
+            panel.className.includes('w-[980px]')
+        )) {
             panel.classList.add('mega-anchored');
+            container.classList.add('has-mega-menu');
         }
     });
 
     dropdownContainers.forEach(container => {
         const btn = container.querySelector('.nav-item-btn');
+        let closeTimer = null;
 
-        // On mouse enter, close other dropdowns
+        // On mouse enter, cancel pending close and open smoothly
         container.addEventListener('mouseenter', () => {
+            if (closeTimer) {
+                clearTimeout(closeTimer);
+                closeTimer = null;
+            }
             dropdownContainers.forEach(other => {
                 if (other !== container) {
                     other.classList.remove('is-open');
@@ -100,14 +200,18 @@ function initDesktopDropdowns() {
                     }
                 }
             });
+            container.classList.add('is-open');
         });
 
-        // Mouse leave clears is-open state
+        // Mouse leave clears is-open state with a grace period (buffer)
+        // so moving slowly across the gap never closes the submenu prematurely
         container.addEventListener('mouseleave', () => {
-            container.classList.remove('is-open');
-            if (btn && document.activeElement === btn) {
-                btn.blur();
-            }
+            closeTimer = setTimeout(() => {
+                container.classList.remove('is-open');
+                if (btn && document.activeElement === btn) {
+                    btn.blur();
+                }
+            }, 260); // 260ms grace window ensures slow cursor motion across gap stays open
         });
 
         // Toggle on click (for touch / keyboard)
@@ -849,6 +953,9 @@ function updateQualifications() {
     } else if (val === 'XML & Digital Publishing') {
         const el = document.getElementById('xml-fields');
         if (el) el.classList.remove('hidden');
+    } else if (val === 'E-Publishing Services') {
+        const el = document.getElementById('epub-fields');
+        if (el) el.classList.remove('hidden');
     }
 }
 
@@ -1096,8 +1203,13 @@ function initRotatingServiceTitles() {
         },
         {
             keys: ['service','what do you do','offerings','capability','capabilities','solutions','provide'],
-            answer: 'VilPower offers <strong>4 core enterprise data services:</strong><br><br>• <strong>AI Data Annotation</strong> — 2D/3D bounding boxes, LiDAR, segmentation<br>• <strong>XML & STM Publishing</strong> — JATS 1.3, BITS, PubMed Central<br>• <strong>Commercial Lease Abstraction</strong> — 40+ clause extraction, Yardi/MRI<br>• <strong>Legal & Web Intelligence</strong> — entity disambiguation, patent mining',
-            quick: ['AI Annotation', 'XML Publishing', 'Lease Abstraction', 'Free Pilot']
+            answer: 'VilPower offers <strong>5 core enterprise data services:</strong><br><br>• <strong>AI Data Annotation</strong> — 2D/3D bounding boxes, LiDAR, segmentation<br>• <strong>XML & STM Publishing</strong> — JATS 1.3, BITS, PubMed Central<br>• <strong>E-Publishing Solutions</strong> — ePUB3, Fixed Layout, InDesign Typesetting, WCAG 2.1<br>• <strong>Commercial Lease Abstraction</strong> — 40+ clause extraction, Yardi/MRI<br>• <strong>Legal & Web Intelligence</strong> — entity disambiguation, patent mining',
+            quick: ['AI Annotation', 'XML Publishing', 'E-Publishing', 'Lease Abstraction', 'Free Pilot']
+        },
+        {
+            keys: ['epub','epublishing','e-publishing','ebook','ebooks','typesetting','indesign','fixed layout','reflowable','interactive ebook','accessible publishing','daisy','nimas','kindle','kf8','kfx'],
+            answer: '<strong>E-Publishing & eBook Production</strong><br><br>• Reflowable & Fixed-Layout ePUB 3.2<br>• Amazon Kindle KF8 / KFX conversion<br>• Adobe InDesign typesetting & composition<br>• Interactive eBooks with read-aloud audio sync (SMIL)<br>• WCAG 2.1 AA & European Accessibility Act (EAA)<br>• Print-on-Demand (POD) press-ready PDFs<br><br>Accuracy: <strong>99.8% First-Pass ePUBCheck Pass Rate</strong>',
+            quick: ['Free Pilot', 'Turnaround Time', 'Pricing']
         },
         {
             keys: ['ai annotation','computer vision','lidar','bounding box','segmentation','annotation','label','labeling','vision'],
