@@ -4,6 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize 4-Stage Precision Pipeline Controller
+    initPrecisionPipelineController();
     // Initialize Lucide icons
     if (window.lucide) {
         lucide.createIcons();
@@ -75,6 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initHITLPanel();
     // Initialize 4-Stage Precision Pipeline Pinned Scroll Floating Cards
     initPipelineScrollCards();
+    // Initialize Ecosystem Directory Live Search & Filter
+    initEcosystemDirectory();
+    // Initialize Rotary Dial Architecture Tabs
+    initRotaryDial();
 });
 
 // 4-Stage E-Publishing Precision Pipeline — Pinned Scroll Floating Cards Controller
@@ -159,6 +165,105 @@ function initPipelineScrollCards() {
     window.addEventListener('scroll', requestTick, { passive: true });
     window.addEventListener('resize', requestTick, { passive: true });
     requestTick();
+}
+
+// Ecosystem Directory Live Filter
+function initEcosystemDirectory() {
+    const searchInput = document.getElementById('eco-search-input');
+    const filterBtns = document.querySelectorAll('.eco-filter-btn');
+    const cards = document.querySelectorAll('.eco-directory-card');
+    if (!cards.length) return;
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function filterCards() {
+        cards.forEach(card => {
+            const cat = card.getAttribute('data-category') || '';
+            const title = (card.querySelector('h4')?.textContent || '').toLowerCase();
+            const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
+            const tag = (card.querySelector('.eco-card-tag')?.textContent || '').toLowerCase();
+
+            const matchesCat = currentCategory === 'all' || cat.toLowerCase().includes(currentCategory);
+            const matchesSearch = !searchQuery || title.includes(searchQuery) || desc.includes(searchQuery) || tag.includes(searchQuery);
+
+            if (matchesCat && matchesSearch) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim().toLowerCase();
+            filterCards();
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => {
+                b.classList.remove('active', 'bg-[#1B45BD]', 'text-white');
+                b.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+            });
+            btn.classList.add('active', 'bg-[#1B45BD]', 'text-white');
+            btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+            currentCategory = (btn.getAttribute('data-filter') || 'all').toLowerCase();
+            filterCards();
+        });
+    });
+}
+
+// Rotary Dial Interactive Architecture Tabs
+function initRotaryDial() {
+    const tabs = document.querySelectorAll('.rotary-tab-btn');
+    const innerRing = document.querySelector('.rotary-ring-inner');
+    const outerRing = document.querySelector('.rotary-ring-outer');
+    const titleEl = document.getElementById('rotary-tab-title');
+    const descEl = document.getElementById('rotary-tab-desc');
+    if (!tabs.length || !titleEl || !descEl) return;
+
+    const data = {
+        'annotation': {
+            title: 'Annotation Operations & Sensor Calibration',
+            desc: '500+ rural women engineering talent annotating 3D LiDAR point clouds, 2D polygons, and video tracking sequences with verified ground-truth sensor fusion and zero multi-agent drift.',
+            innerDeg: 0,
+            outerDeg: 0
+        },
+        'publishing': {
+            title: 'Scientific & Digital Publishing Engine',
+            desc: 'Automated conversion of scientific manuscripts into validated NLM JATS 1.3, BITS, and MathML equations, alongside certified ePUB3 trade publishing for Apple Books and Amazon Kindle.',
+            innerDeg: 120,
+            outerDeg: -120
+        },
+        'quality': {
+            title: 'Dual-Pass Human-in-the-Loop Quality Gate',
+            desc: 'Every single record undergoes secondary blind verification and automated schema preflight, delivering our industry-leading guaranteed 99.8% audited SLA accuracy.',
+            innerDeg: 240,
+            outerDeg: -240
+        }
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => {
+                t.classList.remove('active', 'bg-blue-50', 'text-[#1B45BD]', 'border-blue-200');
+                t.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+            });
+            tab.classList.add('active', 'bg-blue-50', 'text-[#1B45BD]', 'border-blue-200');
+            tab.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+
+            const key = tab.getAttribute('data-rotary-tab');
+            if (data[key]) {
+                titleEl.textContent = data[key].title;
+                descEl.textContent = data[key].desc;
+                if (innerRing) innerRing.style.transform = `rotate(${data[key].innerDeg}deg)`;
+                if (outerRing) outerRing.style.transform = `rotate(${data[key].outerDeg}deg)`;
+            }
+        });
+    });
 }
 
 // Desktop Nav Dropdown Controller — prevents stuck focus, double-activation, and overlapping panels
@@ -1457,3 +1562,246 @@ function initRotatingServiceTitles() {
     }, 4000);
 
 })();
+
+// ==========================================================================
+// Reference Video Stacking Cards Deck Engine (Auto-Play & Interactive Transitions)
+// Features VilPower's Real Enterprise Capabilities
+// ==========================================================================
+const vilpowerCapabilities = [
+    {
+        id: 'ingestion',
+        badgeColor: '#eff4ff', // Soft Blue
+        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-[#1B45BD]">STAGE</span><span class="font-mono font-bold text-[8px] text-[#1B45BD]">01</span>',
+        title: 'Stage 01: Secure Data Intake',
+        desc: 'Encrypted S3/API ingestion into air-gapped ISO 27001 server vaults with zero external USB permissions and strict biometric access control.',
+        pillTag: 'Air-Gapped Sandbox',
+        link: 'ai-data-annotation.html',
+        bg: 'linear-gradient(135deg, #1B45BD 0%, #2546e8 100%)'
+    },
+    {
+        id: 'preprocess',
+        badgeColor: '#ecfdf5', // Mint Emerald
+        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-[#029146]">STAGE</span><span class="font-mono font-bold text-[8px] text-[#029146]">02</span>',
+        title: 'Stage 02: AI Model Pre-Labeling',
+        desc: 'Auto-clustering, initial bounding proposals, and OCR parsing accelerate throughput by 3.8x with automated schema preflight before human verification.',
+        pillTag: '3.8x Speed Multiplier',
+        link: 'ai-data-annotation.html',
+        bg: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)'
+    },
+    {
+        id: 'humanqa',
+        badgeColor: '#fef3c7', // Soft Amber
+        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-amber-800">STAGE</span><span class="font-mono font-bold text-[8px] text-amber-800">03</span>',
+        title: 'Stage 03: Dual-Pass Human Review',
+        desc: 'Full-time Tamil Nadu specialists perform sub-pixel calibration, edge correction, and paralegal clause auditing with zero multi-agent drift.',
+        pillTag: '100% Dedicated Staff',
+        link: 'ai-data-annotation.html',
+        bg: 'linear-gradient(135deg, #4f46e5 0%, #3730a3 100%)'
+    },
+    {
+        id: 'delivery',
+        badgeColor: '#dcfce7', // Bright Emerald
+        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-emerald-800">STAGE</span><span class="font-mono font-bold text-[8px] text-emerald-800">04</span>',
+        title: 'Stage 04: 99.7% Audited Delivery',
+        desc: 'Tier-3 quality signoff, automated XML DTD validation, and instant export into Yardi, MRI, CVAT, or client production pipelines.',
+        pillTag: '99.7% SLA Certified',
+        link: 'ai-data-annotation.html',
+        bg: 'linear-gradient(135deg, #029146 0%, #047857 100%)'
+    }
+];
+
+let activeCardIdx = 0;
+let deckAutoTimer = null;
+let isDeckHovered = false;
+
+function renderZkDeck(targetIdx) {
+    activeCardIdx = (targetIdx + vilpowerCapabilities.length) % vilpowerCapabilities.length;
+    const peekIdx = (activeCardIdx + 1) % vilpowerCapabilities.length;
+
+    const activeItem = vilpowerCapabilities[activeCardIdx];
+    const peekItem = vilpowerCapabilities[peekIdx];
+
+    const frontCard = document.getElementById('deck-card-front');
+    const backCard = document.getElementById('deck-card-back');
+    const tabBtns = document.querySelectorAll('.zk-cap-tab');
+
+    // Update tab indicators
+    tabBtns.forEach((btn, i) => {
+        if (i === activeCardIdx) {
+            btn.className = 'zk-cap-tab active relative overflow-hidden px-3.5 py-1.5 rounded-full bg-[#3559E0] text-white text-[11px] font-semibold transition-all shadow-sm';
+        } else {
+            btn.className = 'zk-cap-tab px-3.5 py-1.5 rounded-full bg-white text-slate-600 border border-slate-200 text-[11px] font-semibold hover:bg-slate-50 transition-all';
+        }
+    });
+
+    if (frontCard && backCard) {
+        // Smooth slide-fade transition
+        frontCard.style.opacity = '0';
+        frontCard.style.transform = 'translateY(12px) scale(0.98)';
+
+        setTimeout(() => {
+            // Update Front Card (Active)
+            frontCard.style.background = activeItem.bg;
+            const frontTitle = frontCard.querySelector('.zk-card-title');
+            const frontDesc = frontCard.querySelector('.zk-card-desc');
+            const frontBadge = frontCard.querySelector('.zk-front-badge');
+            const frontLink = frontCard.querySelector('.zk-front-link');
+            const frontTag = frontCard.querySelector('.zk-front-tag');
+
+            if (frontTitle) frontTitle.textContent = activeItem.title;
+            if (frontDesc) frontDesc.innerHTML = '<span class="text-white/80 font-mono text-sm leading-none mt-0.5">&gt;</span> <span>' + activeItem.desc + '</span>';
+            if (frontBadge) {
+                frontBadge.style.backgroundColor = activeItem.badgeColor;
+                frontBadge.innerHTML = activeItem.badgeHtml;
+            }
+            if (frontLink) frontLink.setAttribute('href', activeItem.link);
+            if (frontTag) frontTag.textContent = activeItem.pillTag;
+
+            // Update Back Card (Peek)
+            backCard.style.background = peekItem.bg;
+            const backBadge = backCard.querySelector('.zk-back-badge');
+            const backLink = backCard.querySelector('.zk-back-link');
+            const backTitlePeek = backCard.querySelector('.zk-back-title-peek');
+
+            if (backBadge) {
+                backBadge.style.backgroundColor = peekItem.badgeColor;
+                backBadge.innerHTML = peekItem.badgeHtml;
+            }
+            if (backLink) backLink.setAttribute('href', peekItem.link);
+            if (backTitlePeek) backTitlePeek.textContent = peekItem.title;
+
+            if (window.lucide && window.lucide.createIcons) {
+                window.lucide.createIcons();
+            }
+
+            frontCard.style.opacity = '1';
+            frontCard.style.transform = 'translateY(0) scale(1)';
+        }, 180);
+    }
+}
+
+function nextZkDeck() {
+    renderZkDeck(activeCardIdx + 1);
+}
+
+function startDeckTimer() {
+    stopDeckTimer();
+    deckAutoTimer = setInterval(() => {
+        if (!isDeckHovered) {
+            nextZkDeck();
+        }
+    }, 4000);
+}
+
+function stopDeckTimer() {
+    if (deckAutoTimer) {
+        clearInterval(deckAutoTimer);
+        deckAutoTimer = null;
+    }
+}
+
+function initZkDeckAnimation() {
+    const deckWrap = document.querySelector('.zk-card-deck-wrap');
+    if (!deckWrap) return;
+
+    deckWrap.addEventListener('mouseenter', () => { isDeckHovered = true; });
+    deckWrap.addEventListener('mouseleave', () => { isDeckHovered = false; });
+
+    // Initial render
+    renderZkDeck(0);
+    startDeckTimer();
+}
+
+window.renderZkDeck = renderZkDeck;
+window.nextZkDeck = nextZkDeck;
+
+document.addEventListener('DOMContentLoaded', () => {
+    initZkDeckAnimation();
+});
+
+
+// The 4-Stage Precision Pipeline Interactive Scrolling Controller
+function initPrecisionPipelineController() {
+    const section = document.getElementById('precision-pipeline');
+    if (!section) return;
+
+    const navItems = section.querySelectorAll('.pipeline-nav-item');
+    const cards = section.querySelectorAll('.pipeline-step-card');
+    const scrollTrack = section.querySelector('.pipeline-scroll-track');
+    if (!navItems.length || !cards.length) return;
+
+    let currentStage = 0;
+    let autoTimer = null;
+    let isUserInteracting = false;
+
+    function activateStage(idx, scrollIntoView = true) {
+        currentStage = (idx + navItems.length) % navItems.length;
+
+        // Update left nav items
+        navItems.forEach((item, i) => {
+            if (i === currentStage) {
+                item.classList.add('active-stage');
+            } else {
+                item.classList.remove('active-stage');
+            }
+        });
+
+        // Update right cards
+        cards.forEach((card, i) => {
+            if (i === currentStage) {
+                card.classList.add('active-card');
+            } else {
+                card.classList.remove('active-card');
+            }
+        });
+
+        // Scroll target card into view smoothly inside track
+        if (scrollIntoView && scrollTrack) {
+            const targetCard = cards[currentStage];
+            if (targetCard) {
+                const trackRect = scrollTrack.getBoundingClientRect();
+                const cardRect = targetCard.getBoundingClientRect();
+                if (cardRect.left < trackRect.left || cardRect.right > trackRect.right) {
+                    targetCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+            }
+        }
+    }
+
+    // Attach click and hover events
+    navItems.forEach((item, idx) => {
+        item.addEventListener('click', () => {
+            isUserInteracting = true;
+            activateStage(idx);
+        });
+        item.addEventListener('mouseenter', () => {
+            isUserInteracting = true;
+            activateStage(idx);
+        });
+    });
+
+    cards.forEach((card, idx) => {
+        card.addEventListener('click', () => {
+            isUserInteracting = true;
+            activateStage(idx);
+        });
+        card.addEventListener('mouseenter', () => {
+            isUserInteracting = true;
+            activateStage(idx);
+        });
+    });
+
+    section.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+    });
+
+    // Auto rotate every 3.6 seconds when user is not hovering
+    autoTimer = setInterval(() => {
+        if (!isUserInteracting) {
+            activateStage((currentStage + 1) % navItems.length);
+        }
+    }, 3600);
+
+    // Initial activation
+    activateStage(0, false);
+}

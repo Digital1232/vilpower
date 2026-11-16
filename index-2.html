@@ -1,23 +1,47 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VilPower Solutions — Human-in-the-Loop AI, Data & STM Publishing (Home v2)</title>
-    <meta name="description" content="VilPower Solutions India Private Limited delivers audited 99.7% precision Human-in-the-Loop AI annotation, STM JATS XML publishing, and commercial lease abstraction powered by 95%+ rural women engineering talent in Tamil Nadu.">
-    <meta name="keywords" content="Human in the loop AI, AI data annotation, computer vision annotation, LiDAR annotation, JATS XML publishing, commercial lease abstraction, impact sourcing India, VilPower Solutions">
+    <title>VilPower Solutions — Enterprise AI & Data Operations (Home v2)</title>
+    <meta name="description" content="VilPower Solutions delivers 99.7% precision Human-in-the-Loop AI annotation, STM XML publishing, and commercial lease abstraction powered by an impact-sourcing 95%+ rural women workforce in Tamil Nadu.">
+    <meta name="keywords" content="Human in the loop AI, AI data annotation, computer vision annotation, LiDAR annotation, JATS XML publishing, commercial lease abstraction, impact sourcing India">
+    <link rel="canonical" href="https://www.vilpower.com/">
+    <link rel="icon" type="image/svg+xml" href="img/logo/VilPower%20Logo.svg">
+    <link rel="shortcut icon" href="img/logo/VilPower%20Logo.svg">
     
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="VilPower Solutions — Precision Data & AI Operations">
-    <meta property="og:description" content="Raw Data → Human + AI + QA → Trusted Output. 16+ Years of Audited Enterprise Excellence.">
-    <meta property="og:url" content="https://www.vilpower.com/index-2.html">
+    <meta property="og:title" content="VilPower Solutions — Human-in-the-Loop AI & Enterprise Data Operations">
+    <meta property="og:description" content="High-precision HITL data annotation, STM digital publishing, and lease abstraction with audited 99.7% SLA.">
+    <meta property="og:url" content="https://www.vilpower.com/">
 
-    <!-- Google Fonts -->
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VilPower Solutions",
+      "url": "https://www.vilpower.com",
+      "logo": "https://www.vilpower.com/img/logo/VilPower%20Logo.svg",
+      "description": "Enterprise Human-in-the-Loop AI annotation, STM XML publishing, and commercial lease abstraction.",
+      "foundingDate": "2011",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "India"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/vilpower"
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (v3.4) & Shared Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,11 +58,6 @@
                             'secondary-hover': '#027a3a',
                             'secondary-light': '#ecfdf3',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
                     }
                 }
             }
@@ -50,10 +69,11 @@
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 </head>
 
-<body class="w-full flex flex-col min-h-screen text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900 font-sans">
+<body class="w-full flex flex-col min-h-screen text-slate-900 bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- Scroll Progress Indicator (Brand Gradient) -->
+    <!-- Scroll Progress Indicator -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#1B45BD] to-[#029146] z-[60] transition-all duration-75" style="width: 0%;"></div>
+
 
     <!-- Main Navigation Header -->
     <header id="main-header" class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-xl transition-all duration-300">
@@ -73,15 +93,14 @@
                         <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-100 text-[#029146] font-bold">v2</span>
                         <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
                     </button>
-                    <div class="absolute top-full left-0 pt-2 w-48 hidden group-hover:block transition-all z-50">
+                    <div class="absolute top-full left-0 pt-2 w-52 hidden group-hover:block transition-all z-50">
                         <div class="bg-white p-2 rounded-xl shadow-xl border border-slate-200 text-xs space-y-1">
-                            <a href="index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Home (v1 Classic)</a>
-                            <a href="index-2.html" class="block px-3 py-2 rounded-lg bg-emerald-50 text-[#029146] font-bold">Home (v2 Vaulta)</a>
+                            <a href="index.html" class="block px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Home (v1 Orbital)</a>
+                            <a href="index-2.html" class="block px-3 py-2 rounded-lg bg-emerald-50 text-[#029146] font-bold">Home (v2 Classic)</a>
+                            <a href="index-3.html" class="block px-3 py-2 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Home (v3 Vaulta)</a>
                         </div>
                     </div>
-                </div>
-
-                <!-- 1. SOLUTIONS DROPDOWN (Vitara Style Mega Menu) -->
+                </div>                <!-- 1. SOLUTIONS DROPDOWN (Vitara Style Mega Menu) -->
                 <div class="has-dropdown relative group py-1.5">
                     <button type="button" class="nav-item-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:text-slate-900 hover:bg-slate-100 transition-colors">
                         <span>Solutions</span>
@@ -174,17 +193,6 @@
                                                 <div>
                                                     <div class="text-xs font-bold text-slate-900 group-hover/sol:text-[#029146] transition-colors">XML & STM Digital Publishing</div>
                                                     <div class="text-[11px] text-slate-500 leading-snug mt-0.5">JATS/BITS conversion, LaTeX/MathML & PubMed central indexing.</div>
-                                                </div>
-                                            </a>
-
-                                            <!-- 3. E-Publishing Solutions -->
-                                            <a href="e-publishing.html" class="mega-sol-card p-2.5 rounded-2xl flex items-start gap-3 group/sol transition-all">
-                                                <div class="w-9 h-9 rounded-xl bg-sky-50 text-[#0284c7] border border-sky-100/80 flex items-center justify-center shrink-0 mt-0.5 group-hover/sol:scale-105 transition-transform">
-                                                    <i data-lucide="book-marked" class="w-4 h-4"></i>
-                                                </div>
-                                                <div>
-                                                    <div class="text-xs font-bold text-slate-900 group-hover/sol:text-[#0284c7] transition-colors">E-Publishing Solutions</div>
-                                                    <div class="text-[11px] text-slate-500 leading-snug mt-0.5">ePUB3, fixed layout, interactive eBooks, typesetting & WCAG.</div>
                                                 </div>
                                             </a>
 
@@ -485,13 +493,14 @@
             </div>
 
             <!-- Header Action CTAs -->
-            <div class="hidden sm:flex items-center gap-3">
-                <button type="button" onclick="openPilotModal()" class="btn-glare inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-[#1B45BD] hover:bg-[#15379b] rounded-lg shadow-sm transition-colors">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" onclick="openPilotModal()" class="btn-glare inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-bold text-white bg-[#1B45BD] hover:bg-[#15379b] rounded-lg shadow-sm transition-colors">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5 text-white"></i>
-                    <span>Claim 50-Record Pilot</span>
+                    <span class="hidden sm:inline">Claim 50-Record Pilot</span>
+                    <span class="sm:hidden">Pilot</span>
                 </button>
 
-                <a href="contact.html" class="btn-rgb-glow text-xs font-semibold text-slate-700 hover:text-[#1B45BD] transition-colors">
+                <a href="contact.html" class="hidden sm:inline-flex btn-rgb-glow text-xs font-semibold text-slate-700 hover:text-[#1B45BD] transition-colors">
                     <span class="px-3.5 py-2 z-10">Talk to Ops</span>
                 </a>
             </div>
@@ -507,7 +516,15 @@
         <!-- Mobile Drawer Menu with Accordions -->
         <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-5 py-6 shadow-xl">
             <div class="space-y-3 text-sm font-medium">
-                <a href="index.html" class="block py-1.5 text-[#1B45BD] font-bold">Home</a>
+                <!-- Mobile Home Versions -->
+                <div class="py-1">
+                    <div class="text-[11px] font-mono text-slate-400 font-bold uppercase tracking-wider mb-1">Home Versions</div>
+                    <div class="flex items-center gap-2">
+                        <a href="index.html" class="px-2.5 py-1 rounded bg-blue-50 text-[#1B45BD] font-bold text-xs">v1 Orbital</a>
+                        <a href="index-2.html" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">v2 Classic</a>
+                        <a href="index-3.html" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">v3 Vaulta</a>
+                    </div>
+                </div>
                 
                 <!-- Mobile Solutions Accordion -->
                 <div id="mobile-solutions-accordion" class="mobile-accordion border-y border-slate-100 py-2">
@@ -518,7 +535,6 @@
                     <div class="mobile-accordion-content pl-3 pt-2 space-y-2 text-xs">
                         <a href="ai-data-annotation.html" class="block py-1 text-slate-600 hover:text-[#1B45BD]">AI Data Annotation & Computer Vision</a>
                         <a href="xml-stm-publishing.html" class="block py-1 text-slate-600 hover:text-[#029146]">XML & STM Digital Publishing (JATS 1.3)</a>
-                        <a href="e-publishing.html" class="block py-1 text-slate-600 hover:text-[#0284c7]">E-Publishing & eBook Production</a>
                         <a href="lease-abstraction.html" class="block py-1 text-slate-600 hover:text-[#1B45BD]">Commercial Lease Abstraction</a>
                         <a href="legal-data-intelligence.html" class="block py-1 text-slate-600 hover:text-[#029146]">Legal & Web Data Intelligence</a>
                     </div>
@@ -562,1095 +578,1042 @@
     </header>
 
     <main class="flex-grow">
+        
+        <!-- HERO SECTION WITH LIVE INTERACTIVE PLAYGROUND -->
+        <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-slate-200 bg-mesh-blue">
+            <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
 
-        <!-- ==========================================================================
-             A. HERO SECTION (FULL-BLEED FILLED COBALT BLUE RIGHT SIDE WITH SLIDERS & NEXARIS ANIMATIONS)
-             ========================================================================== -->
-        <section id="hero-section" class="relative overflow-hidden bg-white border-b border-slate-100" data-noise="">
-            <!-- Full-bleed background element for Desktop Right Side with Atmospheric Glows -->
-            <div class="hidden lg:block absolute top-0 bottom-0 right-0 w-1/2 vaulta-hero-fullbleed z-0" data-noise="">
-                <div class="vaulta-grid-overlay"></div>
-                <div class="glow-ellipse glow-ellipse-primary w-96 h-96 -top-20 -right-20"></div>
-                <div class="glow-ellipse glow-ellipse-secondary w-80 h-80 -bottom-10 -left-10"></div>
-            </div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[620px] lg:min-h-[680px]">
-                    
-                    <!-- Left Hero Column -->
-                    <div class="lg:col-span-6 py-10 lg:py-16 pr-0 lg:pr-8 xl:pr-12 flex flex-col justify-center reveal-left space-y-6">
-                        
-                        <!-- Core Pipeline Workflow Badge with Glint Shimmer Effect -->
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-[#eff4ff] text-[11px] font-mono font-bold text-[#1B45BD] shadow-sm self-start shimmer-badge">
-                            <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot"></span>
-                            <span>Raw Data → Human + AI + QA → Trusted Output</span>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                    <div class="lg:col-span-7 text-center lg:text-left reveal-left">
+                        <!-- Core Pipeline Workflow Badge -->
+                        <div class="hero-pipeline-badge inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-white/90 backdrop-blur-md text-[11px] font-mono font-bold text-[#1B45BD] shadow-sm mb-4">
+                            <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot flex-shrink-0"></span>
+                            <span class="hidden sm:inline">Raw Data → Human Intelligence + AI → Quality Assurance → Trusted Output</span>
+                            <span class="sm:hidden">Human-in-the-Loop AI Operations</span>
                         </div>
 
-                        <!-- Main Headline (Modern Serif Italic Emphasis) -->
-                        <h1 class="text-4xl sm:text-5xl lg:text-[52px] font-extrabold text-slate-950 tracking-tight leading-[1.12]">
-                            Modern <span class="font-serif italic font-normal text-slate-800">data operations</span> for enterprise AI.
+                        <!-- Main Headline with Animated Rotating Service Title -->
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15] font-display">
+                            We transform complex data into<br class="hidden sm:inline">
+                            <span class="hero-rotating-service-wrap inline-block relative text-left" aria-live="polite">
+                                <span class="hero-rotating-service-item active gradient-text">AI Training Data</span>
+                                <span class="hero-rotating-service-item gradient-text">Data Annotation</span>
+                                <span class="hero-rotating-service-item gradient-text">Data Processing</span>
+                                <span class="hero-rotating-service-item gradient-text">Digital Publishing</span>
+                                <span class="hero-rotating-service-item gradient-text">Quality-Assured Data</span>
+                                <span class="hero-rotating-service-item gradient-text">AI Data Services</span>
+                            </span>
                         </h1>
 
-                        <!-- One-Sentence Core Business Definition & Strongest Client Message -->
-                        <p class="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-                            VilPower delivers enterprise Human-in-the-Loop AI annotation, STM XML publishing, and commercial lease abstraction with audited <strong>99.7% precision</strong>, sub-24h pilot turnaround, and dedicated cleanroom pods.
+                        <p class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            <strong class="text-slate-800 font-semibold">Human expertise. AI-powered workflows. Rigorous quality assurance.</strong> VilPower empowers world-leading AI labs, autonomous mobility giants, STM publishers, and REITs with multi-pass audited data operations — powered by an impact-sourcing 95%+ rural women engineering talent pool in Tamil Nadu.
                         </p>
 
-                        <!-- 3 Key Strengths visitors will remember -->
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-xs">
-                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 nexaris-card">
-                                <div class="font-bold text-slate-900 flex items-center gap-1.5">
-                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
-                                    <span>99.7% Precision</span>
-                                </div>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Multi-tier human + QA validation.</p>
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 nexaris-card">
-                                <div class="font-bold text-slate-900 flex items-center gap-1.5">
-                                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i>
-                                    <span>16-Yr Heritage</span>
-                                </div>
-                                <p class="text-[11px] text-slate-500 mt-0.5">157M+ records delivered.</p>
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 nexaris-card">
-                                <div class="font-bold text-slate-900 flex items-center gap-1.5">
-                                    <i data-lucide="heart" class="w-3.5 h-3.5 text-purple-600"></i>
-                                    <span>95%+ Women</span>
-                                </div>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Impact sourcing workforce.</p>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons (Neon Lime Pill + Pill Ghost) -->
-                        <div class="flex flex-wrap items-center gap-3 pt-2">
-                            <button type="button" onclick="openPilotModal()" class="btn-brand-secondary px-8 py-3.5 text-sm shimmer-badge">
-                                <span>Claim Free 50-Record Pilot</span>
+                        <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                            <button type="button" onclick="openPilotModal()" class="btn-glare px-6 py-3.5 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-900/15 transition-all flex items-center gap-2 group">
+                                <i data-lucide="rocket" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform text-cyan-300"></i>
+                                <span>Launch Free 50-Record Pilot</span>
                             </button>
-                            <a href="#what-we-do" class="btn-pill-ghost px-7 py-3.5 text-sm">
-                                <span>Explore Services</span>
+                            
+                            <a href="ai-data-annotation.html" class="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 font-semibold text-sm sm:text-base transition-colors flex items-center gap-2 shadow-sm">
+                                <i data-lucide="layers" class="w-4 h-4 text-[#1B45BD]"></i>
+                                <span>Explore Solutions</span>
                             </a>
                         </div>
 
-                        <!-- Enterprise Trust Strip -->
-                        <div class="pt-6 border-t border-slate-100">
-                            <p class="text-xs text-slate-500 font-medium leading-relaxed">
-                                Trusted by AI labs, academic publishers, and Fortune 500 enterprises across USA, UK, Europe, Australia, and India:
-                            </p>
-                            
-                            <div class="mt-3 flex flex-wrap items-center gap-6 sm:gap-8 opacity-75 grayscale hover:grayscale-0 transition-all">
-                                <span class="font-extrabold text-lg text-slate-800 tracking-tight font-mono">IEEE<span class="text-blue-600">.</span></span>
-                                <span class="font-bold text-base text-slate-700 tracking-wider">SPRINGER</span>
-                                <span class="font-extrabold text-lg text-slate-900 italic">YARDI</span>
-                                <span class="font-bold text-base text-slate-800 font-serif">PubMed</span>
-                                <span class="font-semibold text-xs px-2 py-0.5 rounded bg-slate-100 border border-slate-300 text-slate-700">ISO 27001</span>
+                        <div class="mt-10 pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-2 sm:gap-6 text-left">
+                            <div class="reveal stagger-1 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="157" data-suffix="M+">157M+</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Records Verified</div>
+                            </div>
+                            <div class="reveal stagger-2 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#029146]" data-target="99.7" data-suffix="%" data-decimals="1">99.7%</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Audited Accuracy</div>
+                            </div>
+                            <div class="reveal stagger-3 bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-xl border border-white shadow-sm">
+                                <div class="stat-counter text-lg sm:text-2xl lg:text-3xl font-bold font-mono text-[#1B45BD]" data-target="24" data-prefix="&lt; " data-suffix="h">&lt; 24h</div>
+                                <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Pilot TAT</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Hero Column (Filled Cobalt Blue Side with Interactive Multi-Workflow Slider) -->
-                    <div id="hero-slider-wrap" class="lg:col-span-6 py-8 lg:py-14 pl-0 lg:pl-8 xl:pl-12 flex flex-col justify-between relative bg-[#1B45BD] lg:bg-transparent rounded-3xl lg:rounded-none my-6 lg:my-0 shadow-2xl lg:shadow-none overflow-hidden" data-noise="">
-                        
-                        <!-- Mobile-only overlay & Glowing spotlights -->
-                        <div class="lg:hidden absolute inset-0 vaulta-grid-overlay"></div>
-                        <div class="glow-ellipse glow-ellipse-primary w-72 h-72 -top-10 -right-10 opacity-60"></div>
-                        <div class="glow-ellipse glow-ellipse-secondary w-60 h-60 -bottom-10 -left-10 opacity-50"></div>
+                    <!-- Right Column: Interactive Demo — Dark Cockpit Edition -->
+                    <div class="lg:col-span-5 reveal-right">
+                        <div class="hitl-cockpit-panel rounded-2xl overflow-hidden shadow-2xl relative bg-white border border-slate-200">
 
-                        <!-- Slider Category Switcher Tabs with Animated Progress Fill Lines -->
-                        <div class="relative z-10 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-                            <button id="hero-tab-0" onclick="setHeroSlide(0)" class="hero-slide-tab active">
-                                <span>1. Vision & 3D</span>
-                                <span class="hero-tab-progress-line"></span>
-                            </button>
-                            <button id="hero-tab-1" onclick="setHeroSlide(1)" class="hero-slide-tab">
-                                <span>2. STM JATS XML</span>
-                                <span class="hero-tab-progress-line"></span>
-                            </button>
-                            <button id="hero-tab-2" onclick="setHeroSlide(2)" class="hero-slide-tab">
-                                <span>3. Lease CRE</span>
-                                <span class="hero-tab-progress-line"></span>
-                            </button>
-                            <button id="hero-tab-3" onclick="setHeroSlide(3)" class="hero-slide-tab">
-                                <span>4. Legal Intel</span>
-                                <span class="hero-tab-progress-line"></span>
-                            </button>
-                        </div>
+                            <!-- Ambient glow top-left -->
+                            <div class="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(27,69,189,0.06) 0%, transparent 70%);"></div>
 
-                        <!-- ===================== SLIDE 0: VISION & 3D LIDAR ===================== -->
-                        <div id="hero-slide-0" class="hero-slide-item active relative z-10 my-4 space-y-6">
-                            <!-- Top Floating Badge Chip with Levitation Physics -->
-                            <div class="self-start" data-levitation="1">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-sm">
-                                        <i data-lucide="check" class="w-4 h-4"></i>
+                            <!-- Panel Header -->
+                            <div class="relative flex items-center justify-between px-5 pt-4 pb-3" style="border-bottom: 1px solid #e2e8f0; background:#f8fafc;">
+                                <!-- Left: title + live dot -->
+                                <div class="flex items-center gap-2.5">
+                                    <div class="flex gap-1.5 items-center">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-[#029146] ai-pulse-dot flex-shrink-0"></span>
                                     </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">Vision & LiDAR Accuracy</div>
-                                        <div class="text-[10px] font-mono text-emerald-600 font-bold">99.8% Verified Ground-Truth</div>
-                                    </div>
+                                    <span class="text-[11px] font-mono uppercase tracking-widest font-bold text-slate-700">Interactive HITL Inspector</span>
+                                </div>
+                                <!-- Right: Live badge + frame counter -->
+                                <div class="flex items-center gap-2">
+                                    <span id="hitl-frame-counter" class="text-[9px] font-mono text-slate-400">FRAME #<span id="hitl-frame-num">0049</span></span>
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded-full font-bold" style="background:#ecfdf3; color:#029146; border:1px solid #a7f3d0;">● LIVE</span>
                                 </div>
                             </div>
 
-                            <!-- Center Floating Glass Processing Card with Organic Levitation -->
-                            <div class="w-full max-w-md mx-auto floating-glass-card p-5 sm:p-6 shadow-2xl nexaris-card" data-levitation="3">
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-blue-600 ai-pulse-dot"></span>
-                                        <span class="text-xs font-bold text-slate-900 uppercase font-mono tracking-wide">Live Vision Stream</span>
+                            <!-- Tabs -->
+                            <div class="px-4 pt-3 pb-0">
+                                <div class="grid grid-cols-3 gap-1 p-0.5 rounded-lg text-xs font-medium" style="background:#f1f5f9; border:1px solid #e2e8f0;">
+                                    <button id="demo-tab-vision" onclick="switchDemoTab('vision')" class="demo-tab-btn py-1.5 px-2 rounded-md text-center transition-all font-bold focus:outline-none hitl-tab-active">
+                                        2D/3D Vision
+                                    </button>
+                                    <button id="demo-tab-nlp" onclick="switchDemoTab('nlp')" class="demo-tab-btn py-1.5 px-2 rounded-md text-center transition-all focus:outline-none hitl-tab-inactive">
+                                        NLP & NER
+                                    </button>
+                                    <button id="demo-tab-audio" onclick="switchDemoTab('audio')" class="demo-tab-btn py-1.5 px-2 rounded-md text-center transition-all focus:outline-none hitl-tab-inactive">
+                                        Audio / JATS
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Tab Content -->
+                            <div class="px-4 pt-3 pb-4">
+
+                                <!-- VISION TAB -->
+                                <div id="demo-content-vision" class="demo-pane">
+                                    <div class="relative w-full rounded-xl overflow-hidden" id="vision-canvas" style="height:220px;background:#eef2f7;border:1px solid #dde3ed;">
+
+                                        <!-- ONE SVG — scene + grid + scanline + annotation boxes all in same viewBox -->
+                                        <div class="absolute inset-0">
+                                            <svg id="vision-svg" class="w-full h-full" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" style="overflow:visible;">
+                                                <defs>
+                                                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                                                        <stop offset="0%" stop-color="#dce8f5"/>
+                                                        <stop offset="100%" stop-color="#c5d9ee"/>
+                                                    </linearGradient>
+                                                    <!-- Scanline gradient -->
+                                                    <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+                                                        <stop offset="0%"   stop-color="rgba(2,145,70,0)"/>
+                                                        <stop offset="15%"  stop-color="rgba(27,69,189,0.8)"/>
+                                                        <stop offset="50%"  stop-color="rgba(2,145,70,1)"/>
+                                                        <stop offset="85%"  stop-color="rgba(27,69,189,0.8)"/>
+                                                        <stop offset="100%" stop-color="rgba(2,145,70,0)"/>
+                                                    </linearGradient>
+                                                    <!-- Scanline glow filter -->
+                                                    <filter id="scanGlow" x="-5%" y="-500%" width="110%" height="1100%">
+                                                        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                                        <feMerge>
+                                                            <feMergeNode in="blur"/>
+                                                            <feMergeNode in="SourceGraphic"/>
+                                                        </feMerge>
+                                                    </filter>
+                                                </defs>
+
+                                                <!-- Sky -->
+                                                <rect x="0" y="0" width="400" height="220" fill="url(#skyGrad)"/>
+
+                                                <!-- Grid overlay -->
+                                                <g opacity="0.12">
+                                                    <!-- Vertical lines every 32px -->
+                                                    <line x1="32"  y1="0" x2="32"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="64"  y1="0" x2="64"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="96"  y1="0" x2="96"  y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="128" y1="0" x2="128" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="160" y1="0" x2="160" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="192" y1="0" x2="192" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="224" y1="0" x2="224" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="256" y1="0" x2="256" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="288" y1="0" x2="288" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="320" y1="0" x2="320" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="352" y1="0" x2="352" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="384" y1="0" x2="384" y2="220" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <!-- Horizontal lines -->
+                                                    <line x1="0" y1="32"  x2="400" y2="32"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="64"  x2="400" y2="64"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="96"  x2="400" y2="96"  stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="128" x2="400" y2="128" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="160" x2="400" y2="160" stroke="#1B45BD" stroke-width="0.5"/>
+                                                    <line x1="0" y1="192" x2="400" y2="192" stroke="#1B45BD" stroke-width="0.5"/>
+                                                </g>
+
+                                                <!-- Road surface -->
+                                                <rect x="0" y="155" width="400" height="65" fill="#b8c8da"/>
+                                                <line x1="0" y1="155" x2="400" y2="155" stroke="#1B45BD" stroke-width="0.6" opacity="0.3"/>
+                                                <line x1="200" y1="160" x2="200" y2="220" stroke="#8aa0bb" stroke-width="1.5" stroke-dasharray="10,8" opacity="0.6"/>
+                                                <line x1="120" y1="165" x2="80"  y2="220" stroke="#8aa0bb" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.35"/>
+                                                <line x1="280" y1="165" x2="320" y2="220" stroke="#8aa0bb" stroke-width="0.8" stroke-dasharray="8,8" opacity="0.35"/>
+                                                <rect x="0" y="130" width="400" height="26" fill="url(#skyGrad)" opacity="0.5"/>
+
+                                                <!-- ── VEHICLE ── -->
+                                                <rect x="72" y="130" width="112" height="34" rx="4" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="92" y="115" width="70"  height="18" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="95" y="117" width="62"  height="13" rx="2" fill="#6e8fae" opacity="0.5"/>
+                                                <ellipse cx="95"  cy="165" rx="10" ry="5" fill="#2e3f52"/>
+                                                <ellipse cx="161" cy="165" rx="10" ry="5" fill="#2e3f52"/>
+                                                <ellipse cx="182" cy="143" rx="4"  ry="3"  fill="#fbbf24" opacity="0.8"/>
+                                                <ellipse cx="182" cy="143" rx="9"  ry="5"  fill="#fbbf24" opacity="0.15"/>
+
+                                                <!-- ── PEDESTRIAN ── -->
+                                                <circle cx="232" cy="112" r="7"  fill="#4a6080" opacity="0.9"/>
+                                                <rect x="226" y="119" width="12" height="22" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <rect x="226" y="139" width="5"  height="16" rx="2" fill="#4a6080" opacity="0.85"/>
+                                                <rect x="233" y="139" width="5"  height="16" rx="2" fill="#4a6080" opacity="0.85"/>
+
+                                                <!-- ── TRAFFIC SIGNAL ── -->
+                                                <rect x="321" y="100" width="4"  height="55" fill="#4a6080" opacity="0.8"/>
+                                                <rect x="312" y="68"  width="22" height="38" rx="3" fill="#4a6080" opacity="0.9"/>
+                                                <circle cx="323" cy="77" r="5" fill="#ef4444" opacity="0.9"/>
+                                                <circle cx="323" cy="77" r="8" fill="#ef4444" opacity="0.15"/>
+                                                <circle cx="323" cy="87" r="4" fill="#94a3b8" opacity="0.5"/>
+                                                <circle cx="323" cy="97" r="4" fill="#94a3b8" opacity="0.5"/>
+
+                                                <!-- ══ ANNOTATION OVERLAYS (SVG coords = perfect alignment) ══ -->
+
+                                                <!-- VEHICLE box: x72-184, y112-170 -->
+                                                <g id="anno-vehicle" opacity="0">
+                                                    <!-- Box fill tint -->
+                                                    <rect x="72" y="112" width="112" height="58" fill="rgba(59,130,246,0.08)" stroke="none"/>
+                                                    <!-- Corner brackets -->
+                                                    <polyline id="vc-tl" points="72,124 72,112 84,112"  fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-tr" points="172,112 184,112 184,124" fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-bl" points="72,158 72,170 84,170"  fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="vc-br" points="172,170 184,170 184,158" fill="none" stroke="#1B45BD" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box -->
+                                                    <rect id="vc-label-bg" x="72" y="98" width="72" height="13" rx="3" fill="#1B45BD" opacity="0"/>
+                                                    <text id="vc-label" x="75" y="108" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">VEHICLE #049</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="vc-conf" x="72" y="182" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#1B45BD" opacity="0">99.8%</text>
+                                                </g>
+
+                                                <!-- PEDESTRIAN box: x220-242, y104-157 -->
+                                                <g id="anno-ped" opacity="0">
+                                                    <rect x="220" y="104" width="22" height="53" fill="rgba(2,145,70,0.08)" stroke="none"/>
+                                                    <polyline id="pd-tl" points="220,114 220,104 230,104" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-tr" points="232,104 242,104 242,114" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-bl" points="220,147 220,157 230,157" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="pd-br" points="232,157 242,157 242,147" fill="none" stroke="#029146" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box (left-anchored, allow overflow) -->
+                                                    <rect id="pd-label-bg" x="218" y="91" width="62" height="13" rx="3" fill="#029146" opacity="0"/>
+                                                    <text id="pd-label" x="221" y="101" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">PEDESTRIAN</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="pd-conf" x="220" y="169" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#029146" opacity="0">99.6%</text>
+                                                </g>
+
+                                                <!-- SIGNAL box: x310-336, y66-157 -->
+                                                <g id="anno-sig" opacity="0">
+                                                    <rect x="310" y="66" width="26" height="91" fill="rgba(217,119,6,0.08)" stroke="none"/>
+                                                    <polyline id="sg-tl" points="310,76 310,66 320,66" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-tr" points="326,66 336,66 336,76" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-bl" points="310,147 310,157 320,157" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <polyline id="sg-br" points="326,157 336,157 336,147" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" opacity="0"/>
+                                                    <!-- Label ABOVE box -->
+                                                    <rect id="sg-label-bg" x="308" y="53" width="38" height="13" rx="3" fill="#d97706" opacity="0"/>
+                                                    <text id="sg-label" x="311" y="63" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="white" opacity="0">SIGNAL</text>
+                                                    <!-- Confidence BELOW box -->
+                                                    <text id="sg-conf" x="310" y="169" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#d97706" opacity="0">97.1%</text>
+                                                </g>
+
+                                                <!-- ── SCANLINE (JS moves this via y attr) ── -->
+                                                <!-- Glow layer (wider, softer) -->
+                                                <rect id="hitl-scanline-glow"
+                                                      x="0" y="-6" width="400" height="12"
+                                                      fill="url(#scanGrad)"
+                                                      opacity="0"/>
+                                                <!-- Sharp center line -->
+                                                <rect id="hitl-scanline-svg"
+                                                      x="0" y="-1" width="400" height="2"
+                                                      fill="url(#scanGrad)"
+                                                      opacity="0"/>
+
+                                                <!-- Top-right label -->
+                                                <text x="394" y="12" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#94a3b8" text-anchor="end">LiDAR+RGB FUSION</text>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Processing bar (top) -->
+                                        <div class="absolute top-0 left-0 right-0 h-0.5" style="background:#e2e8f0;">
+                                            <div id="vision-proc-bar" class="hitl-proc-bar h-full" style="background:linear-gradient(90deg,#1B45BD,#029146);width:0%;"></div>
+                                        </div>
+
+                                        <!-- Tier-3 QA badge -->
+                                        <div class="absolute bottom-2 left-2 flex items-center gap-1.5 px-2 py-1 rounded-md font-mono text-[9px] font-bold" style="background:#ecfdf3;border:1px solid #a7f3d0;color:#029146;">
+                                            <i data-lucide="shield-check" class="w-3 h-3"></i> Tier-3 QA Verified
+                                        </div>
+
+                                        <!-- Objects count -->
+                                        <div class="absolute bottom-2 right-2 font-mono text-[9px] font-bold text-slate-400">
+                                            OBJ: <span id="vision-obj-count" style="color:#1B45BD;">0</span>/3
+                                        </div>
                                     </div>
-                                    <span class="text-[11px] font-mono font-bold text-[#1B45BD] bg-blue-50 px-2 py-0.5 rounded-full">Sub-24h TAT</span>
+
+                                    <!-- Status ticker -->
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
+                                        <span id="hitl-status-text" class="text-[10px] font-mono hitl-ticker-text text-[#029146]"></span>
+                                    </div>
+
+                                    <!-- Meta row -->
+                                    <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
+                                        <span class="text-slate-400">Taxonomy: <span class="text-slate-700 font-bold">KITTI / COCO 80-Class</span></span>
+                                        <span style="color:#1B45BD;font-weight:700;">Precision: 99.82%</span>
+                                    </div>
                                 </div>
 
-                                <div class="mt-3.5 space-y-2.5 text-xs">
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="box" class="w-3.5 h-3.5"></i>
+                                <!-- NLP TAB -->
+                                <div id="demo-content-nlp" class="demo-pane hidden">
+                                    <div class="w-full rounded-xl p-3.5 font-mono leading-relaxed space-y-3 overflow-hidden" style="height:220px;background:#f8fafc;border:1px solid #e2e8f0;font-size:12px;">
+                                        <div class="text-[9px] uppercase font-bold tracking-widest text-[#1B45BD]">// Legal-BERT · NER Extraction Pipeline · Live</div>
+                                        <p id="nlp-sentence" class="text-slate-700" style="line-height:2;min-height:56px;font-size:11.5px;"></p>
+                                        <div class="pt-2 grid grid-cols-2 gap-2" style="border-top:1px solid #e2e8f0;">
+                                            <div class="p-2 rounded-lg" style="background:#fff;border:1px solid #e2e8f0;">
+                                                <span class="block text-[9px] mb-0.5 text-slate-400">Intent</span>
+                                                <span id="nlp-intent" class="font-bold text-slate-800" style="font-size:11px;">—</span>
                                             </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">LiDAR 3D Point Clouds</div>
-                                                <div class="text-[10px] text-slate-400">14,250 frames annotated</div>
+                                            <div class="p-2 rounded-lg" style="background:#fff;border:1px solid #e2e8f0;">
+                                                <span class="block text-[9px] mb-0.5 text-slate-400">Hallucination</span>
+                                                <span id="nlp-halluc" class="font-bold" style="color:#029146;font-size:11px;">—</span>
                                             </div>
                                         </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">99.8% QA Pass</span>
                                     </div>
+                                    <!-- NLP ticker -->
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
+                                        <span id="nlp-status-text" class="text-[10px] font-mono text-[#029146]"></span>
+                                    </div>
+                                    <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
+                                        <span class="text-slate-400">Schema: <span class="text-slate-700 font-bold">Legal-BERT · spaCy-lg</span></span>
+                                        <span style="color:#1B45BD;font-weight:700;">F1-Score: 0.997</span>
+                                    </div>
+                                </div>
 
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="scan" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Polygon & Semantic Masking</div>
-                                                <div class="text-[10px] text-slate-400">85,000 object instances</div>
+                                <!-- AUDIO TAB -->
+                                <div id="demo-content-audio" class="demo-pane hidden">
+                                    <div class="w-full rounded-xl p-3.5 font-mono flex flex-col gap-2" style="height:220px;background:#f8fafc;border:1px solid #e2e8f0;">
+                                        <!-- Header row -->
+                                        <div class="flex items-center justify-between">
+                                            <div class="text-[9px] uppercase font-bold tracking-widest text-[#029146]">// JATS 1.3 · Audio Diarization · Live</div>
+                                            <span id="audio-timer" class="text-[9px] font-mono text-slate-400">00:00.0</span>
+                                        </div>
+                                        <!-- Waveform bars -->
+                                        <div class="flex items-end gap-[2px] rounded-lg px-2 pb-1 pt-2 flex-shrink-0" style="height:56px;background:#fff;border:1px solid #e2e8f0;">
+                                            <div class="hitl-wave-bar" id="wb0"  style="background:#3b82f6;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb1"  style="background:#60a5fa;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb2"  style="background:#029146;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb3"  style="background:#3b82f6;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb4"  style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb5"  style="background:#60a5fa;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb6"  style="background:#3b82f6;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb7"  style="background:#029146;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb8"  style="background:#60a5fa;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb9"  style="background:#3b82f6;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb10" style="background:#34d399;width:9px;"></div>
+                                            <div class="hitl-wave-bar" id="wb11" style="background:#029146;width:9px;"></div>
+                                            <!-- Speaker labels -->
+                                            <div class="ml-auto self-center flex flex-col gap-0.5">
+                                                <span id="audio-spk-a" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:#eff6ff;color:#1B45BD;border:1px solid #bfdbfe;">SPK_A</span>
+                                                <span id="audio-spk-b" class="text-[8px] font-mono px-1.5 py-0.5 rounded" style="background:#ecfdf3;color:#029146;border:1px solid #a7f3d0;opacity:0.4;">SPK_B</span>
                                             </div>
                                         </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">Sub-Pixel Exact</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">RLHF Preference Ranking</div>
-                                                <div class="text-[10px] text-slate-400">Multi-turn evaluation</div>
-                                            </div>
+                                        <!-- JATS XML typewriter output -->
+                                        <div class="rounded-lg p-2 flex-1 overflow-hidden" style="background:#fff;border:1px solid #e2e8f0;">
+                                            <pre id="jats-output" class="text-[8.5px] leading-relaxed m-0 whitespace-pre-wrap text-slate-600" style="font-family:'JetBrains Mono',monospace;"></pre>
                                         </div>
-                                        <span class="font-mono text-[10px] font-bold text-purple-600">100% Calibrated</span>
                                     </div>
+                                    <!-- Audio ticker -->
+                                    <div class="mt-2 flex items-center gap-2 px-2 py-1.5 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0;">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#029146] flex-shrink-0 animate-pulse"></span>
+                                        <span id="audio-status-text" class="text-[10px] font-mono text-[#029146]"></span>
+                                    </div>
+                                    <div class="mt-2 flex items-center justify-between text-[10px] font-mono px-0.5">
+                                        <span class="text-slate-400">Standard: <span class="text-slate-700 font-bold">PubMed Central JATS 1.3</span></span>
+                                        <span style="color:#029146;font-weight:700;">Validation: 100% Pass</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Trust badges row -->
+                            <!-- Trust badges row -->
+                            <div class="hitl-trust-row flex items-center justify-between gap-2 px-4 pt-3 pb-3 mt-1" style="border-top: 1px solid #e2e8f0; background:#f8fafc;">
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="shield" class="w-3 h-3 text-[#1B45BD] flex-shrink-0"></i>
+                                    <span>ISO 27001</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="cpu" class="w-3 h-3 text-[#029146] flex-shrink-0"></i>
+                                    <span class="hidden sm:inline">KITTI Certified</span>
+                                    <span class="sm:hidden">KITTI</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-[9px] font-mono font-bold text-slate-500">
+                                    <i data-lucide="bar-chart-2" class="w-3 h-3 text-amber-500 flex-shrink-0"></i>
+                                    <span>99.82%</span>
                                 </div>
                             </div>
 
-                            <!-- Bottom Floating User / Specialist Card -->
-                            <div class="self-end animate-float-reverse">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-slate-900 text-[#029146] flex items-center justify-center text-xs font-bold shrink-0">
-                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">450+ Dedicated Specialists</div>
-                                        <div class="text-[10px] text-slate-500">95%+ Women STEM Talent in TN</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===================== SLIDE 1: STM & JATS 1.3 PUBLISHING ===================== -->
-                        <div id="hero-slide-1" class="hero-slide-item relative z-10 my-4 space-y-6">
-                            <!-- Top Floating Badge Chip with Levitation Physics -->
-                            <div class="self-start" data-levitation="2">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">
-                                        <i data-lucide="file-code" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">PubMed Central Compliant</div>
-                                        <div class="text-[10px] font-mono text-blue-600 font-bold">100% DTD Ingestion Rate</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Center Floating Glass Processing Card with Organic Levitation -->
-                            <div class="w-full max-w-md mx-auto floating-glass-card p-5 sm:p-6 shadow-2xl nexaris-card" data-levitation="3">
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 ai-pulse-dot"></span>
-                                        <span class="text-xs font-bold text-slate-900 uppercase font-mono tracking-wide">JATS 1.3 XML Engine</span>
-                                    </div>
-                                    <span class="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Automated QC</span>
-                                </div>
-
-                                <div class="mt-3.5 space-y-2.5 text-xs">
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Journal XML Conversion</div>
-                                                <div class="text-[10px] text-slate-400">2,400 scientific articles</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">JATS 1.3 Valid</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="binary" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">MathML 3.0 & LaTeX Math</div>
-                                                <div class="text-[10px] text-slate-400">42,000 equations encoded</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-blue-600">Zero Loss</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">BITS 2.1 Book Structure</div>
-                                                <div class="text-[10px] text-slate-400">Crossref DOI registered</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-purple-600">Ingested</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Bottom Floating Specialist Card with Levitation Physics -->
-                            <div class="self-end" data-levitation="1">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-8 h-8 rounded-full bg-slate-900 text-[#029146] flex items-center justify-center text-xs font-bold shrink-0">
-                                        <i data-lucide="award" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">1.2M+ Pages Delivered</div>
-                                        <div class="text-[10px] text-slate-500">Springer & IEEE Academic Grade</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===================== SLIDE 2: COMMERCIAL LEASE ABSTRACTION ===================== -->
-                        <div id="hero-slide-2" class="hero-slide-item relative z-10 my-4 space-y-6">
-                            <!-- Top Floating Badge Chip with Levitation Physics -->
-                            <div class="self-start" data-levitation="2">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">
-                                        <i data-lucide="building-2" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">REIT Grade Abstraction</div>
-                                        <div class="text-[10px] font-mono text-purple-600 font-bold">40+ Critical Fields Audited</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Center Floating Glass Processing Card with Organic Levitation -->
-                            <div class="w-full max-w-md mx-auto floating-glass-card p-5 sm:p-6 shadow-2xl nexaris-card" data-levitation="3">
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-purple-600 ai-pulse-dot"></span>
-                                        <span class="text-xs font-bold text-slate-900 uppercase font-mono tracking-wide">CRE Portfolio Queue</span>
-                                    </div>
-                                    <span class="text-[11px] font-mono font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">Yardi Ready</span>
-                                </div>
-
-                                <div class="mt-3.5 space-y-2.5 text-xs">
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">CAM Caps & Base Rent</div>
-                                                <div class="text-[10px] text-slate-400">Pro-rata share audit</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">100% Reconciled</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Critical Renewal Dates</div>
-                                                <div class="text-[10px] text-slate-400">Options, terminations & ROFR</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-blue-600">Flagged & Logged</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="database" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Yardi / MRI Software Batch</div>
-                                                <div class="text-[10px] text-slate-400">680 commercial leases</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">Ingested</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Bottom Floating Specialist Card with Levitation Physics -->
-                            <div class="self-end" data-levitation="1">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-8 h-8 rounded-full bg-slate-900 text-[#029146] flex items-center justify-center text-xs font-bold shrink-0">
-                                        <i data-lucide="check-check" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">45,000+ Leases Abstracted</div>
-                                        <div class="text-[10px] text-slate-500">Dual Senior Auditor Verification</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===================== SLIDE 3: LEGAL & WEB DATA INTELLIGENCE ===================== -->
-                        <div id="hero-slide-3" class="hero-slide-item relative z-10 my-4 space-y-6">
-                            <!-- Top Floating Badge Chip with Levitation Physics -->
-                            <div class="self-start" data-levitation="2">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">
-                                        <i data-lucide="database-zap" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">Entity Disambiguation</div>
-                                        <div class="text-[10px] font-mono text-emerald-600 font-bold">99.9% Match Precision</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Center Floating Glass Processing Card with Organic Levitation -->
-                            <div class="w-full max-w-md mx-auto floating-glass-card p-5 sm:p-6 shadow-2xl nexaris-card" data-levitation="3">
-                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 ai-pulse-dot"></span>
-                                        <span class="text-xs font-bold text-slate-900 uppercase font-mono tracking-wide">Data Intelligence Cleanroom</span>
-                                    </div>
-                                    <span class="text-[11px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">ISO Vault</span>
-                                </div>
-
-                                <div class="mt-3.5 space-y-2.5 text-xs">
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Corporate KYC & Registry</div>
-                                                <div class="text-[10px] text-slate-400">120,000 corporate records</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-emerald-600">Verified</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="git-merge" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Entity Deduplication</div>
-                                                <div class="text-[10px] text-slate-400">Parent-subsidiary trees</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-blue-600">Reconciled</span>
-                                    </div>
-
-                                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                                        <div class="flex items-center gap-2.5">
-                                            <div class="w-6 h-6 rounded-md bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
-                                                <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-                                            </div>
-                                            <div>
-                                                <div class="font-bold text-slate-900 text-[11px]">Air-Gapped Cleanroom Pod</div>
-                                                <div class="text-[10px] text-slate-400">Zero data retention</div>
-                                            </div>
-                                        </div>
-                                        <span class="font-mono text-[10px] font-bold text-purple-600">Audited</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Bottom Floating Specialist Card with Levitation Physics -->
-                            <div class="self-end" data-levitation="1">
-                                <div class="floating-badge-chip px-4 py-2.5 inline-flex items-center gap-3 shimmer-badge">
-                                    <div class="w-8 h-8 rounded-full bg-slate-900 text-[#029146] flex items-center justify-center text-xs font-bold shrink-0">
-                                        <i data-lucide="lock" class="w-4 h-4"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs font-bold text-slate-900">Zero Data Leakage</div>
-                                        <div class="text-[10px] text-slate-500">ISO 27001 & GDPR Compliant</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slider Navigation Controls & Indicators -->
-                        <div class="relative z-10 pt-4 flex items-center justify-between">
-                            <!-- Indicator Dots -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="setHeroSlide(0)" id="hero-dot-0" class="hero-slide-dot active" aria-label="Slide 1"></button>
-                                <button onclick="setHeroSlide(1)" id="hero-dot-1" class="hero-slide-dot" aria-label="Slide 2"></button>
-                                <button onclick="setHeroSlide(2)" id="hero-dot-2" class="hero-slide-dot" aria-label="Slide 3"></button>
-                                <button onclick="setHeroSlide(3)" id="hero-dot-3" class="hero-slide-dot" aria-label="Slide 4"></button>
-                            </div>
-
-                            <!-- Prev / Next Arrow Controls -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="prevHeroSlide()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition-colors backdrop-blur-md" aria-label="Previous Slide">
-                                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                </button>
-                                <button onclick="nextHeroSlide()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition-colors backdrop-blur-md" aria-label="Next Slide">
-                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            <!-- CTA button -->
+                            <div class="px-4 pb-4">
+                                <button type="button" onclick="openPilotModal()" class="btn-glare w-full py-2.5 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all" style="background: linear-gradient(90deg, #1B45BD, #1540aa); color:#fff; border:1px solid rgba(27,69,189,0.6); box-shadow: 0 4px 20px rgba(27,69,189,0.3);">
+                                    <i data-lucide="beaker" class="w-3.5 h-3.5 text-cyan-300"></i>
+                                    <span>Benchmark Your Custom Dataset Free</span>
+                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                                 </button>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
+        <!-- PROOF METRICS BAR -->
+        <section class="py-14 border-b border-slate-200 bg-white">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="reveal text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#1B45BD]">Proven Operational Track Record</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-1 font-display">15+ Years of Audited Enterprise Excellence</h2>
+                </div>
 
-        <!-- ==========================================================================
-             B. NUMBERS THAT SPEAK FOR THEMSELVES (VERIFIED METRICS GRID)
-             ========================================================================== -->
-        <section class="py-16 bg-slate-50/80 border-y border-slate-200/80" data-noise="">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                    <span class="text-xs font-mono font-bold text-[#1B45BD] uppercase tracking-wider">Enterprise Performance</span>
-                    <h2 class="split-headline text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
-                        Numbers That Speak For Themselves
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 sm:gap-4">
+                    <div class="reveal stagger-1 bg-slate-50 p-5 text-center rounded-xl border border-slate-200 hover:border-[#bfdbfe] hover:shadow-md transition-all">
+                        <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="15" data-suffix="+">15+</div>
+                        <div class="text-xs text-slate-700 mt-1.5 font-bold">Years in Ops</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Est. 2011 in Tamil Nadu</div>
+                    </div>
+                    <div class="reveal stagger-2 bg-slate-50 p-5 text-center rounded-xl border border-slate-200 hover:border-[#bfdbfe] hover:shadow-md transition-all">
+                        <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="70" data-suffix="+">70+</div>
+                        <div class="text-xs text-slate-700 mt-1.5 font-bold">Global Projects</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">USA, UK, EU & APAC</div>
+                    </div>
+                    <div class="reveal stagger-3 bg-slate-50 p-5 text-center rounded-xl border border-slate-200 hover:border-[#a7f3d0] hover:shadow-md transition-all">
+                        <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#029146]" data-target="157" data-suffix="M+">157M+</div>
+                        <div class="text-xs text-slate-700 mt-1.5 font-bold">Verified Units</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Images, XML & Leases</div>
+                    </div>
+                    <div class="reveal stagger-4 bg-slate-50 p-5 text-center rounded-xl border border-slate-200 hover:border-[#a7f3d0] hover:shadow-md transition-all">
+                        <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#029146]" data-target="99.7" data-suffix="%" data-decimals="1">99.7%</div>
+                        <div class="text-xs text-slate-700 mt-1.5 font-bold">Multi-Pass SLA</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">Zero-Defect Quality</div>
+                    </div>
+                    <div class="reveal stagger-5 bg-slate-50 p-5 text-center rounded-xl border border-slate-200 hover:border-[#bfdbfe] hover:shadow-md transition-all col-span-2 sm:col-span-1 md:col-span-1">
+                        <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="1500" data-suffix="+" data-use-commas="true">1,500+</div>
+                        <div class="text-xs text-slate-700 mt-1.5 font-bold">Empowered Lives</div>
+                        <div class="text-[10px] text-slate-500 mt-0.5">95%+ Rural Women</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE 4-STAGE DATA PIPELINE (VISUAL WORKFLOW) -->
+        <section class="py-20 border-b border-slate-200 bg-mesh-soft relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#eff4ff] text-[#1B45BD] border border-[#bfdbfe] text-xs font-mono font-semibold mb-3">
+                        <i data-lucide="git-branch" class="w-3.5 h-3.5 text-[#1B45BD]"></i> End-to-End Governance
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">
+                        The 4-Stage Precision Pipeline
                     </h2>
-                    <p class="text-xs sm:text-sm text-slate-600">
-                        Over 16 years of audited precision, proven operational scale, and ethical impact.
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                        How our human-in-the-loop architecture eliminates hallucinations, enforces zero-data-leakage cleanrooms, and guarantees 99.7% audited accuracy.
                     </p>
                 </div>
 
-                <!-- 8-Metric Grid with Multi-Column Slot-Machine Tumbler Animations -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                    
-                    <!-- Metric 1: 16+ Years -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-slate-950 font-mono">
-                            <span data-stat-counter="16" data-suffix="+">16+</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                    <!-- Stage 1 -->
+                    <div class="reveal-scale stagger-1 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#1B45BD] border border-blue-200 flex items-center justify-center font-mono font-bold text-xs">01</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Ingestion</span>
                         </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Years of Experience</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Established in 2011</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-[#1B45BD]" data-fill="100%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Metric 2: 2,800+ Projects -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-slate-950 font-mono">
-                            <span data-stat-counter="2800" data-use-commas="true" data-suffix="+">2,800+</span>
-                        </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Projects Completed</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Global Enterprises & Labs</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-[#1B45BD]" data-fill="100%"></div>
+                        <h3 class="text-base font-bold text-slate-900">Secure Data Intake</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Encrypted S3/API ingestion into air-gapped ISO 27001 server vaults with zero external USB permissions.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#1B45BD] font-bold">
+                            <i data-lucide="lock" class="w-3.5 h-3.5"></i> Air-Gapped Sandbox
                         </div>
                     </div>
 
-                    <!-- Metric 3: 157M+ Records -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-[#1B45BD] font-mono">
-                            <span data-stat-counter="157" data-suffix="M+">157M+</span>
+                    <!-- Stage 2 -->
+                    <div class="reveal-scale stagger-2 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-50 text-[#029146] border border-emerald-200 flex items-center justify-center font-mono font-bold text-xs">02</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Pre-Process</span>
                         </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Records Processed</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Vision, NLP & JATS XML</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-[#1B45BD]" data-fill="100%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Metric 4: 99.7% Accuracy -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card-emerald group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-[#029146] font-mono">
-                            <span data-stat-counter="99.7" data-decimals="1" data-suffix="%">99.7%</span>
-                        </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Audited Accuracy</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">SLA Guaranteed QA</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-[#029146]" data-fill="99.7%"></div>
+                        <h3 class="text-base font-bold text-slate-900">AI Model Pre-Labeling</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Auto-clustering, initial bounding proposals, and OCR parsing accelerate throughput by 3.8x.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#029146] font-bold">
+                            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> 3.8x Speed Multiplier
                         </div>
                     </div>
 
-                    <!-- Metric 5: 2,500+ Empowered -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-purple-600 font-mono">
-                            <span data-stat-counter="2500" data-use-commas="true" data-suffix="+">2,500+</span>
+                    <!-- Stage 3 -->
+                    <div class="reveal-scale stagger-3 pipeline-node">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#1B45BD] border border-blue-200 flex items-center justify-center font-mono font-bold text-xs">03</span>
+                            <span class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Human QA</span>
                         </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Employees Empowered</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Rural Women in Tech</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-purple-600" data-fill="100%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Metric 6: 450+ Specialists -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-slate-950 font-mono">
-                            <span data-stat-counter="450" data-suffix="+">450+</span>
-                        </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Current Specialists</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">Full-Time Delivery Team</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-slate-900" data-fill="100%"></div>
+                        <h3 class="text-base font-bold text-slate-900">Dual-Pass Human Review</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Full-time Tamil Nadu specialists perform sub-pixel calibration, edge correction, and paralegal clause auditing.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-[#1B45BD] font-bold">
+                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 100% Dedicated Staff
                         </div>
                     </div>
 
-                    <!-- Metric 7: 12+ Countries -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-slate-950 font-mono">
-                            <span data-stat-counter="12" data-suffix="+">12+</span>
+                    <!-- Stage 4 -->
+                    <div class="reveal-scale stagger-4 pipeline-node border-[#86efac] bg-emerald-50/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center font-mono font-bold text-xs shadow-sm">04</span>
+                            <span class="text-[10px] font-mono text-emerald-700 uppercase font-bold">Delivery</span>
                         </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Countries Served</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">USA, UK, EU, AU, IN</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-[#1B45BD]" data-fill="100%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Metric 8: < 24h TAT -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center nexaris-card group">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-amber-500 font-mono">
-                            <span data-stat-counter="24" data-prefix="< " data-suffix="h">< 24h</span>
-                        </div>
-                        <div class="text-xs font-bold text-slate-700 mt-2">Free Pilot TAT</div>
-                        <div class="text-[11px] text-slate-400 mt-0.5">50-Record Benchmark</div>
-                        <div class="metric-progress-track">
-                            <div class="metric-progress-fill bg-amber-500" data-fill="100%"></div>
+                        <h3 class="text-base font-bold text-slate-900">99.7% Audited Delivery</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            Tier-3 quality signoff, automated XML DTD validation, and instant export into Yardi, MRI, or client pipelines.
+                        </p>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center gap-1.5 text-[11px] font-mono text-[#029146] font-bold">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 99.7% SLA Certified
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-
-        <!-- ==========================================================================
-             C. WHAT WE DO (AI SERVICES, DATA SERVICES, PUBLISHING SERVICES)
-             ========================================================================== -->
-        <section id="what-we-do" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-                    <div class="max-w-3xl space-y-3">
-                        <span class="text-xs font-mono font-bold text-[#1B45BD] uppercase tracking-wider">Comprehensive Capabilities</span>
-                        <h2 class="split-headline text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.15]">
-                            What We Do: AI, Data & STM Publishing
-                        </h2>
-                        <p class="text-base text-slate-600 leading-relaxed">
-                            From cutting-edge autonomous mobility datasets to academic publishing DTDs and complex commercial real estate abstractions.
+        <!-- DEDICATED SOLUTIONS CARDS GRID -->
+        <section class="py-20 md:py-28 border-b border-slate-200 bg-slate-50">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+                    <div>
+                        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#1B45BD]">Core Capabilities</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1 font-display">Specialized Enterprise Offerings</h2>
+                        <p class="mt-2 text-sm sm:text-base text-slate-600 max-w-xl">
+                            Dedicated operational pods trained on your custom tooling, strict taxonomy guidelines, and ISO 27001 cleanroom data security.
                         </p>
                     </div>
-                    <div class="shrink-0">
-                        <button type="button" onclick="openPilotModal()" class="btn-brand-secondary text-xs shimmer-badge">
-                            <span>Request Pilot Batch</span>
-                        </button>
-                    </div>
                 </div>
 
-                <!-- 3 Major Pillar Cards (AI Services, Data Services, Publishing Services) -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Pillar 1: AI Services -->
-                    <div class="bg-slate-50/80 rounded-3xl p-8 border border-slate-200/80 flex flex-col justify-between space-y-6 hover:border-blue-300 transition-all shadow-sm nexaris-card">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-2xl bg-[#eff4ff] text-[#1B45BD] flex items-center justify-center font-bold">
-                                <i data-lucide="scan" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-mono font-bold text-blue-600 bg-blue-100/70 px-2 py-0.5 rounded uppercase">Vision & LLMs</span>
-                                <h3 class="text-2xl font-bold text-slate-950 mt-2">AI Services</h3>
-                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                    High-precision training and ground-truth validation datasets for production AI and computer vision models.
-                                </p>
-                            </div>
+                <div class="stacking-cards-container flex flex-col gap-10 max-w-5xl mx-auto py-6">
+                    <!-- Solution 1 -->
+                    <div class="stacking-card bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-md hover:border-[#bfdbfe] transition-all" style="position: sticky; top: 100px; z-index: 1;">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                            <div class="md:col-span-7 flex flex-col justify-between h-full text-left">
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 mb-5">
+                                        <div class="w-12 h-12 rounded-xl bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] shadow-sm">
+                                            <i data-lucide="scan" class="w-6 h-6"></i>
+                                        </div>
+                                        <span class="px-3 py-1 rounded-full bg-[#eff4ff] text-[#1B45BD] border border-[#bfdbfe] text-xs font-mono font-semibold">99.7% SLA</span>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-display">AI Data Annotation & Computer Vision</h3>
+                                    <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                        High-precision 2D/3D Bounding Boxes, Semantic Segmentation, Keypoint Rigging, Polygons, and LiDAR 3D Point Cloud cuboids for Autonomous Mobility and Robotics.
+                                    </p>
+                                    <div class="mt-6 flex flex-wrap gap-2 text-left">
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">CVAT / Labelbox</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">LiDAR 3D Cuboids</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">Sub-pixel Segmentation</span>
+                                    </div>
+                                </div>
 
-                            <ul class="space-y-2.5 text-xs text-slate-700 pt-2 border-t border-slate-200/60">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>Computer Vision:</strong> 2D/3D Bounding Boxes, Polygons & Semantic Segmentation.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>LiDAR 3D Point Clouds:</strong> Multi-sensor calibration, 3D cuboids & tracking.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>NLP & NER:</strong> Named entity recognition, sentiment & text classification.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-blue-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>GenAI & RLHF:</strong> Reinforcement learning from human feedback & red-teaming.</span>
-                                </li>
-                            </ul>
+                                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                                    <a href="ai-data-annotation.html" class="text-xs font-bold text-[#1B45BD] hover:text-[#15379b] flex items-center gap-1.5">
+                                        View Dedicated Solution Page <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </a>
+                                    <button onclick="openPilotModal('Computer Vision & 3D LiDAR Annotation')" class="btn-glare text-xs font-semibold text-slate-500 hover:text-slate-900">
+                                        Request 50-Frame Pilot
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Mockup Panel -->
+                            <div class="md:col-span-5 hidden md:block mockup-cv-bg border border-slate-800 rounded-xl p-4 overflow-hidden h-64 relative shadow-inner">
+                                <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+                                <!-- Target Vehicle -->
+                                <div class="absolute top-10 left-10 w-40 h-28 border-2 border-green-400 rounded bg-green-500/10 flex flex-col justify-between p-1.5 text-left">
+                                    <span class="text-[8px] bg-green-500 text-slate-950 font-mono px-1 py-0.5 rounded font-bold w-fit">SUV: 99.7%</span>
+                                    <div class="w-full flex justify-between">
+                                        <span class="w-2.5 h-2.5 border-b border-r border-green-400"></span>
+                                        <span class="w-2.5 h-2.5 border-b border-l border-green-400"></span>
+                                    </div>
+                                </div>
+                                <!-- Pedestrian -->
+                                <div class="absolute top-16 right-12 w-16 h-36 border-2 border-blue-400 rounded bg-blue-500/10 flex flex-col justify-between p-1 text-left">
+                                    <span class="text-[8px] bg-blue-400 text-slate-950 font-mono px-1 py-0.5 rounded font-bold w-fit">Pedestrian</span>
+                                    <div class="w-full flex justify-between">
+                                        <span class="w-1.5 h-1.5 border-b border-r border-blue-400"></span>
+                                        <span class="w-1.5 h-1.5 border-b border-l border-blue-400"></span>
+                                    </div>
+                                </div>
+                                <!-- 3D Bounding Box overlay -->
+                                <div class="absolute bottom-6 left-8 w-24 h-12 border border-dashed border-yellow-400 rounded bg-yellow-400/5 text-[8px] font-mono p-1 text-yellow-400 text-left">
+                                    LiDAR Box [x: 4.2]
+                                </div>
+                            </div>
                         </div>
-
-                        <a href="ai-data-annotation.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1B45BD] hover:underline pt-2">
-                            <span>Explore AI Data Annotation</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
                     </div>
 
-                    <!-- Pillar 2: Data Services -->
-                    <div class="bg-slate-50/80 rounded-3xl p-8 border border-slate-200/80 flex flex-col justify-between space-y-6 hover:border-emerald-300 transition-all shadow-sm nexaris-card-emerald">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-2xl bg-[#ecfdf3] text-[#029146] flex items-center justify-center font-bold">
-                                <i data-lucide="database" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/70 px-2 py-0.5 rounded uppercase">Enterprise CRE & Legal</span>
-                                <h3 class="text-2xl font-bold text-slate-950 mt-2">Data Services</h3>
-                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                    Cleanroom data normalization, financial abstractions, and corporate entity reconciliation.
-                                </p>
+                    <!-- Solution 2 -->
+                    <div class="stacking-card bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-md hover:border-[#a7f3d0] transition-all" style="position: sticky; top: 125px; z-index: 2;">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                            <div class="md:col-span-7 flex flex-col justify-between h-full text-left">
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 mb-5">
+                                        <div class="w-12 h-12 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] shadow-sm">
+                                            <i data-lucide="file-code-2" class="w-6 h-6"></i>
+                                        </div>
+                                        <span class="px-3 py-1 rounded-full bg-[#ecfdf3] text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold">JATS 1.3 / BITS</span>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-display">XML & Digital STM Publishing</h3>
+                                    <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                        End-to-end scientific and academic publishing transformation. Automated parsing to JATS, BITS, Crossref metadata schema, complex MathML formulas, and accessible EPUB3.
+                                    </p>
+                                    <div class="mt-6 flex flex-wrap gap-2 text-left">
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">JATS 1.3 XML</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">PubMed / Crossref</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">LaTeX / MathML</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                                    <a href="xml-stm-publishing.html" class="text-xs font-bold text-[#029146] hover:text-[#027a3a] flex items-center gap-1.5">
+                                        View Dedicated Solution Page <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </a>
+                                    <button onclick="openPilotModal('XML & Digital STM Publishing (JATS 1.3)')" class="btn-glare text-xs font-semibold text-slate-500 hover:text-slate-900">
+                                        Request XML Benchmark
+                                    </button>
+                                </div>
                             </div>
 
-                            <ul class="space-y-2.5 text-xs text-slate-700 pt-2 border-t border-slate-200/60">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>Lease Abstraction:</strong> 40+ critical dates, CAM caps, renewal terms & Yardi/MRI.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>Legal & Web Intelligence:</strong> KYC verification, corporate registry audits.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>Entity Disambiguation:</strong> Multi-source database cross-matching & deduplication.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>Master Data Cleansing:</strong> ISO 27001 secure cleanroom processing.</span>
-                                </li>
-                            </ul>
+                            <!-- Mockup Panel -->
+                            <div class="md:col-span-5 hidden md:block bg-slate-900 border border-slate-800 rounded-xl p-4 overflow-hidden h-64 relative font-mono shadow-inner text-left text-xs">
+                                <!-- Top Bar -->
+                                <div class="flex items-center gap-1.5 border-b border-slate-800 pb-2 mb-3">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                    <span class="text-[9px] text-slate-500 ml-2">jats-article.xml</span>
+                                </div>
+                                <!-- Code Editor mock -->
+                                <div class="text-[10px] text-slate-400 space-y-1.5 leading-normal">
+                                    <div><span class="text-pink-500">&lt;article</span> <span class="text-purple-400">article-type=</span><span class="text-green-400">"research-article"</span><span class="text-pink-500">&gt;</span></div>
+                                    <div class="pl-3"><span class="text-pink-500">&lt;front&gt;</span></div>
+                                    <div class="pl-6"><span class="text-pink-500">&lt;journal-meta&gt;</span></div>
+                                    <div class="pl-9"><span class="text-pink-500">&lt;journal-id</span> <span class="text-purple-400">id-type=</span><span class="text-green-400">"nlm"</span><span class="text-pink-500">&gt;</span>pub-11<span class="text-pink-500">&lt;/journal-id&gt;</span></div>
+                                    <div class="pl-6"><span class="text-pink-500">&lt;/journal-meta&gt;</span></div>
+                                    <div class="pl-6"><span class="text-pink-500">&lt;article-meta&gt;</span></div>
+                                    <div class="pl-9 text-yellow-500/90">&lt;!-- MathML Formula --&gt;</div>
+                                    <div class="pl-9"><span class="text-pink-500">&lt;mml:math&gt;</span><span class="text-slate-300">E = mc²</span><span class="text-pink-500">&lt;/mml:math&gt;</span></div>
+                                    <div class="pl-6"><span class="text-pink-500">&lt;/article-meta&gt;</span></div>
+                                    <div class="pl-3"><span class="text-pink-500">&lt;/front&gt;</span></div>
+                                </div>
+                                <div class="absolute bottom-4 right-4 bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 px-2 py-1 rounded text-[10px] flex items-center gap-1 font-sans font-bold shadow-md">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> PubMed Validated
+                                </div>
+                            </div>
                         </div>
-
-                        <a href="lease-abstraction.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#029146] hover:underline pt-2">
-                            <span>Explore Lease & Data Ops</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
                     </div>
 
-                    <!-- Pillar 3: Publishing Services -->
-                    <div class="bg-slate-50/80 rounded-3xl p-8 border border-slate-200/80 flex flex-col justify-between space-y-6 hover:border-purple-300 transition-all shadow-sm nexaris-card">
-                        <div class="space-y-4">
-                            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-                                <i data-lucide="file-code-2" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-mono font-bold text-purple-700 bg-purple-100/70 px-2 py-0.5 rounded uppercase">STM & Academic</span>
-                                <h3 class="text-2xl font-bold text-slate-950 mt-2">Publishing Services</h3>
-                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                                    Scholarly journal XML conversions and digital typesetting compliant with international scientific repositories.
-                                </p>
+                    <!-- Solution 3 -->
+                    <div class="stacking-card bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-md hover:border-[#bfdbfe] transition-all" style="position: sticky; top: 150px; z-index: 3;">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                            <div class="md:col-span-7 flex flex-col justify-between h-full text-left">
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 mb-5">
+                                        <div class="w-12 h-12 rounded-xl bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] shadow-sm">
+                                            <i data-lucide="layers-3" class="w-6 h-6"></i>
+                                        </div>
+                                        <span class="px-3 py-1 rounded-full bg-[#eff4ff] text-[#1B45BD] border border-[#bfdbfe] text-xs font-mono font-semibold">REIT Grade</span>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-display">Commercial Lease Abstraction</h3>
+                                    <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                        Multi-tenant retail, industrial, and office portfolio extraction. Critical date tracking, rent step schedules, CAM recovery caps, option rights, and tenant covenants audit.
+                                    </p>
+                                    <div class="mt-6 flex flex-wrap gap-2 text-left">
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">Yardi / MRI Integration</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">40+ Point Extraction</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">CAM Reconciliations</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                                    <a href="lease-abstraction.html" class="text-xs font-bold text-[#1B45BD] hover:text-[#15379b] flex items-center gap-1.5">
+                                        View Dedicated Solution Page <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </a>
+                                    <button onclick="openPilotModal('Commercial Lease Abstraction')" class="btn-glare text-xs font-semibold text-slate-500 hover:text-slate-900">
+                                        Request 5-Lease Trial
+                                    </button>
+                                </div>
                             </div>
 
-                            <ul class="space-y-2.5 text-xs text-slate-700 pt-2 border-t border-slate-200/60">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>JATS 1.3 XML Conversion:</strong> PubMed Central compliant journal tagging.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>BITS 2.1 & Books:</strong> Comprehensive book DTD structuring & indexing.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>MathML 3.0 & LaTeX:</strong> Complex mathematical equation encoding.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check" class="w-4 h-4 text-purple-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>EPUB3 & Typesetting:</strong> Accessible reflowable formats & digital proofs.</span>
-                                </li>
-                            </ul>
+                            <!-- Mockup Panel -->
+                            <div class="md:col-span-5 hidden md:block bg-slate-50 border border-slate-200 rounded-xl p-4 overflow-hidden h-64 relative shadow-inner text-left text-xs">
+                                <div class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-3 border-b pb-1.5 flex items-center justify-between">
+                                    <span>Extraction Pipeline</span>
+                                    <span class="text-blue-600 font-mono lowercase">mri-audit.pdf</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="bg-white p-2 rounded border border-slate-200 shadow-sm flex items-center justify-between">
+                                        <div>
+                                            <div class="text-[8px] text-slate-400 font-bold uppercase">Landlord Entities</div>
+                                            <div class="text-[10px] text-slate-800 font-bold">Empire REIT Holdings LLC</div>
+                                        </div>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-600 font-bold border border-green-200 flex items-center gap-0.5">✓ Extracted</span>
+                                    </div>
+                                    <div class="bg-white p-2 rounded border border-slate-200 shadow-sm flex items-center justify-between">
+                                        <div>
+                                            <div class="text-[8px] text-slate-400 font-bold uppercase">CAM Cap Schedule</div>
+                                            <div class="text-[10px] text-slate-800 font-bold">5.0% Cumulative Max</div>
+                                        </div>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-600 font-bold border border-green-200 flex items-center gap-0.5">✓ Extracted</span>
+                                    </div>
+                                    <div class="bg-white p-2 rounded border border-slate-200 shadow-sm flex items-center justify-between">
+                                        <div>
+                                            <div class="text-[8px] text-slate-400 font-bold uppercase">Renewal Option</div>
+                                            <div class="text-[10px] text-slate-800 font-bold">180 Days Prior Notice</div>
+                                        </div>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-50 text-green-600 font-bold border border-green-200 flex items-center gap-0.5">✓ Extracted</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <a href="xml-stm-publishing.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 hover:underline pt-2">
-                            <span>Explore STM Publishing</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
                     </div>
 
+                    <!-- Solution 4 -->
+                    <div class="stacking-card bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-md hover:border-[#a7f3d0] transition-all" style="position: sticky; top: 175px; z-index: 4;">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                            <div class="md:col-span-7 flex flex-col justify-between h-full text-left">
+                                <div>
+                                    <div class="flex items-center justify-between gap-4 mb-5">
+                                        <div class="w-12 h-12 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] shadow-sm">
+                                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                        </div>
+                                        <span class="px-3 py-1 rounded-full bg-[#ecfdf3] text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold">ISO 27001 Ready</span>
+                                    </div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 font-display">Legal Intelligence & Web Verification</h3>
+                                    <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                        Complex entity resolution, corporate registry verification, KYC validation, patent data structuring, and large-scale web data mining with 100% human audited ground truth.
+                                    </p>
+                                    <div class="mt-6 flex flex-wrap gap-2 text-left">
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">Entity Disambiguation</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">KYC & Registry Audit</span>
+                                        <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-700">Cleanroom Vaults</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                                    <a href="legal-data-intelligence.html" class="text-xs font-bold text-[#029146] hover:text-[#027a3a] flex items-center gap-1.5">
+                                        View Dedicated Solution Page <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </a>
+                                    <button onclick="openPilotModal('Legal & Web Data Intelligence')" class="btn-glare text-xs font-semibold text-slate-500 hover:text-slate-900">
+                                        Schedule NDA Call
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Mockup Panel -->
+                            <div class="md:col-span-5 hidden md:block bg-[#fafbfd] border border-slate-200 rounded-xl p-4 overflow-hidden h-64 relative text-left shadow-inner flex flex-col justify-between">
+                                <div>
+                                    <div class="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-2">Entity Verification Status</div>
+                                    <div class="space-y-1.5 text-[10px]">
+                                        <div class="flex items-center justify-between border-b pb-1">
+                                            <span class="text-slate-500">Corporate Name</span>
+                                            <span class="font-bold text-slate-800">VilPower Solutions Pvt Ltd</span>
+                                        </div>
+                                        <div class="flex items-center justify-between border-b pb-1">
+                                            <span class="text-slate-500">Registrar Validation</span>
+                                            <span class="text-green-600 font-bold">MATCH FOUND (100%)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between border-b pb-1">
+                                            <span class="text-slate-500">Incorporation Date</span>
+                                            <span class="text-slate-800">04/05/2011</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-slate-500">AML/Sanction List</span>
+                                            <span class="text-green-600 font-bold">CLEAR (0 MATCHES)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between bg-white border border-slate-100 p-2.5 rounded-lg shadow-sm">
+                                    <div class="text-[10px]">
+                                        <div class="font-bold text-slate-800">Quality Score</div>
+                                        <div class="text-[8px] text-slate-400">After Dual-Audits</div>
+                                    </div>
+                                    <span class="text-xs font-extrabold text-[#029146] font-mono bg-[#ecfdf3] px-2 py-1 rounded border border-[#a7f3d0]">99.7%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </section>
 
-
-        <!-- ==========================================================================
-             D. WHY GLOBAL CLIENTS CHOOSE US (TOP 5 GENUINE REASONS)
-             ========================================================================== -->
-        <section id="why-us" class="py-20 bg-slate-50/60 border-y border-slate-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="max-w-3xl space-y-4 mb-16">
-                    <span class="text-xs font-mono font-bold text-[#1B45BD] uppercase tracking-wider">The VilPower Advantage</span>
-                    <h2 class="split-headline text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.15]">
-                        Why Global Clients Choose VilPower
+        <!-- VISUAL COMPARISON MATRIX (CROWDSOURCED VS VILPOWER) -->
+        <section class="py-20 border-b border-slate-200 bg-mesh-warm relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-mono font-semibold mb-3">
+                        <i data-lucide="scale" class="w-3.5 h-3.5 text-amber-600"></i> The Delivery Paradigm
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">
+                        Generic Crowdsourcing vs. <span class="gradient-text">VilPower Dedicated Pods</span>
                     </h2>
-                    <p class="text-base text-slate-600 leading-relaxed">
-                        Five genuine operational differentiators that have earned long-term partnerships with leading enterprises across North America, Europe, and Asia-Pacific.
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+                        Why Fortune 500 AI teams migrate away from anonymous gig platforms to our dedicated Tamil Nadu cleanroom pods.
                     </p>
                 </div>
 
-                <!-- 5 Reasons Grid with Nexaris Card Physics -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Reason 1: Accuracy -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-4 nexaris-card-emerald">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Left: Generic Crowdsourced / Automated -->
+                    <div class="reveal-left compare-card-fail p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between pb-4 border-b border-rose-200">
+                                <div>
+                                    <span class="text-xs font-mono text-rose-700 font-bold uppercase tracking-wider">Traditional Model</span>
+                                    <h3 class="text-xl font-bold text-slate-900 mt-0.5">Anonymous Gig Crowdsourcing</h3>
+                                </div>
+                                <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">✕</span>
+                            </div>
+
+                            <div class="mt-6 space-y-4 text-xs sm:text-sm">
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">High Churn & Unstable Operators:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Rotating anonymous workers mean zero compounding domain knowledge.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">Security & Leakage Exposure:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Remote unverified devices, no physical cleanroom or air-gapped security.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">82% - 87% Accuracy Ceiling:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Inconsistent corner-cutting, hallucinations, and missing edge-case rules.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-rose-200/60 font-mono text-xs text-rose-700 font-semibold">
+                            ⚠️ Results in costly model retraining & data contamination
+                        </div>
+                    </div>
+
+                    <!-- Right: VilPower Dedicated Pods -->
+                    <div class="reveal-right compare-card-win p-8 flex flex-col justify-between relative shadow-xl">
+                        <div class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-[#029146] text-white text-[11px] font-mono font-bold shadow-md">
+                            ★ The VilPower Standard
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between pb-4 border-b border-emerald-200">
+                                <div>
+                                    <span class="text-xs font-mono text-emerald-800 font-bold uppercase tracking-wider">VilPower Impact Sourcing</span>
+                                    <h3 class="text-xl font-bold text-slate-900 mt-0.5">Dedicated In-House QA Pods</h3>
+                                </div>
+                                <span class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold">✓</span>
+                            </div>
+
+                            <div class="mt-6 space-y-4 text-xs sm:text-sm">
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">&gt; 97% Annual Team Retention:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Permanent full-time engineering pods with compounding taxonomy mastery.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">ISO 27001 Cleanroom Vaults:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">Zero-device cleanrooms, biometric access controls, and strict NDAs.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-bold text-slate-900">99.7% Audited SLA Precision:</span>
+                                        <p class="text-slate-600 text-xs mt-0.5">3-tier multi-pass hierarchy with sub-pixel and paralegal calibration.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-emerald-200/80 font-mono text-xs text-[#029146] font-bold flex items-center justify-between">
+                            <span>✓ Zero-Defect Guaranteed Batch Output</span>
+                            <span class="text-[10px] bg-white px-2 py-0.5 rounded border border-emerald-200">Sub-24h TAT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE DIGITAL BANYAN TREE -->
+        <section class="py-20 md:py-28 border-b border-slate-200 bg-mesh-emerald relative">
+            <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="reveal text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold mb-3 shadow-sm">
+                        <i data-lucide="sprout" class="w-3.5 h-3.5 text-[#029146]"></i> The Social Impact Engine
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-display">The Digital Banyan Tree</h2>
+                    <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+                        How our deep roots in rural talent incubation nurture world-class AI models and global enterprise deliveries.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="reveal-scale stagger-1 bg-white p-7 rounded-2xl border border-[#a7f3d0] shadow-md hover:shadow-xl transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] font-mono font-bold text-sm mb-4">
                             01
                         </div>
-                        <h3 class="text-xl font-bold text-slate-950">99.7% Audited Accuracy</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Every batch passes through our multi-tier QA engine — automated syntax/schema linting combined with 100% senior human specialist verification to eliminate AI hallucinations.
+                        <h3 class="text-lg font-bold text-slate-900">Roots: Rural Talent Incubation</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Grassroots outreach across rural districts in Tamil Nadu. We identify high-aptitude young women graduates who lack urban IT access.
                         </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#029146] font-mono font-bold">
+                            ✓ 100% Local Community Hiring
+                        </div>
                     </div>
 
-                    <!-- Reason 2: Scale & Sub-24h Pilot -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-4 nexaris-card">
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#1B45BD] flex items-center justify-center font-bold">
+                    <div class="reveal-scale stagger-2 bg-white p-7 rounded-2xl border border-[#bfdbfe] shadow-md hover:shadow-xl transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-[#eff4ff] border border-[#bfdbfe] flex items-center justify-center text-[#1B45BD] font-mono font-bold text-sm mb-4">
                             02
                         </div>
-                        <h3 class="text-xl font-bold text-slate-950">Sub-24h Pilot & Elastic Scale</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Test our quality with a complimentary 50-record sample returned in &lt; 24 hours. Effortlessly scale from a 5-analyst dedicated pod to 100+ specialists with zero lag.
+                        <h3 class="text-lg font-bold text-slate-900">Trunk: 8-Week Deep Tech Academy</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Intensive in-house training in Computer Vision, LiDAR, JATS XML taxonomy, ISO 27001 data governance, and specialized client platforms.
                         </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#1B45BD] font-mono font-bold">
+                            ✓ Continuous Pre-Trained Talent Pool
+                        </div>
                     </div>
 
-                    <!-- Reason 3: Data Security & Cleanroom -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-4 nexaris-card">
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+                    <div class="reveal-scale stagger-3 bg-white p-7 rounded-2xl border border-[#a7f3d0] shadow-md hover:shadow-xl transition-all">
+                        <div class="w-10 h-10 rounded-xl bg-[#ecfdf3] border border-[#a7f3d0] flex items-center justify-center text-[#029146] font-mono font-bold text-sm mb-4">
                             03
                         </div>
-                        <h3 class="text-xl font-bold text-slate-950">ISO 27001 Vault Security</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Biometrically secured physical cleanrooms, air-gapped workstations, encrypted TLS/S3 batch pipelines, strict non-disclosure compliance, and zero local data caching.
+                        <h3 class="text-lg font-bold text-slate-900">Canopy: Global Enterprise Delivery</h3>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Flawless execution for Fortune 500 AI labs across USA, UK, Europe, Australia, and India with industry-lowest churn and 99.7% precision.
                         </p>
-                    </div>
-
-                    <!-- Reason 4: Social Impact Sourcing -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-4 nexaris-card">
-                        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">
-                            04
+                        <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-[#029146] font-mono font-bold">
+                            ✓ 157M+ Units Delivered Flawlessly
                         </div>
-                        <h3 class="text-xl font-bold text-slate-950">95%+ Women Impact Sourcing</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Our Digital Banyan Tree model empowers rural women engineering talent in Tamil Nadu. The result: industry-lowest attrition (&lt; 2%), deep institutional domain knowledge, and unmatched dedication.
-                        </p>
                     </div>
-
-                    <!-- Reason 5: 16-Year Delivery Track Record -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-4 md:col-span-2 lg:col-span-2 nexaris-card-emerald">
-                        <div class="w-10 h-10 rounded-xl bg-slate-900 text-[#029146] flex items-center justify-center font-bold">
-                            05
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-950">16-Year Enterprise Delivery Experience</h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                            Since 2011, VilPower has successfully completed over 2,800 enterprise projects and delivered 157M+ validated data units to Fortune 500 tech firms, leading STM journals, and North American REITs without missing an SLA.
-                        </p>
-                    </div>
-
                 </div>
 
+                <div class="mt-12 text-center reveal">
+                    <a href="about.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-bold transition-all shadow-md">
+                        <span>Read Our Full Story & Leadership Team</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-[#1B45BD]"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
-
-        <!-- ==========================================================================
-             E. OUR 5-STAGE PROCESS (Understand → Pilot → QC → Scale → Deliver & Support)
-             ========================================================================== -->
-        <section id="process" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <span class="text-xs font-mono font-bold text-[#1B45BD] uppercase tracking-wider">Flawless Execution</span>
-                    <h2 class="split-headline text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight">
-                        Our Proven 5-Stage Process
-                    </h2>
-                    <p class="text-xs sm:text-sm text-slate-600">
-                        Raw Data → Human + AI + QA → Trusted Output
-                    </p>
-                </div>
-
-                <!-- 5 Steps Flow Layout with Nexaris Card Physics -->
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-6 relative">
-                    
-                    <!-- Step 1 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4 relative group hover:border-blue-400 transition-colors nexaris-card">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#1B45BD] bg-blue-100 px-2 py-0.5 rounded">01</span>
-                            <i data-lucide="search" class="w-4 h-4 text-slate-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-slate-950">1. Understand</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                Deep dive into edge cases, custom taxonomy guidelines, format DTDs, and SLA milestones.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4 relative group hover:border-emerald-400 transition-colors nexaris-card-emerald">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#029146] bg-emerald-100 px-2 py-0.5 rounded">02</span>
-                            <i data-lucide="sparkles" class="w-4 h-4 text-slate-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-slate-950">2. Pilot Batch</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                Free 50-record pilot delivered in &lt; 24h with a full QA accuracy audit report.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4 relative group hover:border-purple-400 transition-colors nexaris-card">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded">03</span>
-                            <i data-lucide="shield-alert" class="w-4 h-4 text-slate-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-slate-950">3. QC & Audit</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                Dual-pass senior verification + statistical QA ensuring 99.7%+ precision guarantee.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4 relative group hover:border-blue-400 transition-colors nexaris-card">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#1B45BD] bg-blue-100 px-2 py-0.5 rounded">04</span>
-                            <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-slate-950">4. Scale Pods</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                Seamlessly ramp up dedicated full-time talent pods (5 to 100+ analysts) in &lt; 7 days.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-4 relative group hover:border-emerald-400 transition-colors nexaris-card-emerald">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#029146] bg-emerald-100 px-2 py-0.5 rounded">05</span>
-                            <i data-lucide="send" class="w-4 h-4 text-slate-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-slate-950">5. Deliver & Support</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                Encrypted batch delivery via API/S3 with continuous SLA monitoring & 24/7 PM support.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
+        <!-- CONVERSION CTA BANNER -->
+        <section class="reveal py-20 text-white relative overflow-hidden" style="background-color:#0a1020;">
+            <!-- Background photo -->
+            <div class="absolute inset-0 z-0">
+                <img src="img/banner-dark-tech.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover object-center" style="opacity:0.18;">
+                <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(10,16,32,0.92) 0%,rgba(27,69,189,0.55) 50%,rgba(10,16,32,0.92) 100%);"></div>
             </div>
-        </section>
+            <div class="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center">
+                <span class="text-xs font-mono font-semibold uppercase tracking-wider text-[#bfdbfe]">Zero Risk Benchmark</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 font-display">
+                    Experience 99.7% Precision On Your Dataset
+                </h2>
+                <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Send us a 50-record sample batch. Our dedicated quality specialists will process it free of charge so you can test our turnaround time, taxonomy adherence, and SLA compliance.
+                </p>
 
-
-        <!-- ==========================================================================
-             SECTION 6: DARK HERO CONVERSION BANNER (NEXARIS ATMOSPHERIC GLOWS & NOISE)
-             ========================================================================== -->
-        <section class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="relative rounded-3xl overflow-hidden bg-slate-950 text-white min-h-[400px] flex items-center shadow-2xl" data-noise="">
-                    
-                    <!-- Background Dark Tech Image with Subtle Gradient Overlay & Glowing Atmospheric Spotlights -->
-                    <img src="img/banner-dark-tech.jpg" alt="VilPower Operations Hub" class="absolute inset-0 w-full h-full object-cover object-center opacity-40">
-                    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
-                    <div class="glow-ellipse glow-ellipse-primary w-96 h-96 -top-20 -right-20 opacity-70"></div>
-                    <div class="glow-ellipse glow-ellipse-secondary w-80 h-80 -bottom-20 -left-20 opacity-60"></div>
-
-                    <!-- Content -->
-                    <div class="relative z-10 p-8 sm:p-14 lg:p-16 max-w-2xl space-y-6">
-                        
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs font-mono font-bold text-[#029146] uppercase tracking-wider shimmer-badge">⚡ ZERO RISK BENCHMARK</span>
-                        </div>
-
-                        <h2 class="split-headline text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                            Experience 99.7% Precision On Your Dataset.
-                        </h2>
-
-                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-                            Send us a 50-record sample batch. Our dedicated quality specialists will process it free of charge so you can test our turnaround time, taxonomy adherence, and SLA compliance.
-                        </p>
-
-                        <!-- Action Buttons (Neon Lime Pill + White Border Pill) -->
-                        <div class="flex flex-wrap items-center gap-4 pt-2">
-                            <button type="button" onclick="openPilotModal()" class="btn-brand-secondary text-xs px-7 py-3.5 shimmer-badge">
-                                <span>Claim 50-Record Free Pilot</span>
-                            </button>
-                            <a href="contact.html" class="btn-pill-dark-ghost text-xs px-7 py-3.5">
-                                <span>Configure Custom Scope</span>
-                            </a>
-                        </div>
-
-                    </div>
+                <div class="cta-btn-group mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <button type="button" onclick="openPilotModal()" class="btn-glare w-full sm:w-auto px-8 py-4 rounded-xl bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Claim 50-Record Free Pilot</span>
+                    </button>
+                    <a href="contact.html" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm sm:text-base transition-colors text-center">
+                        Configure Project Scope
+                    </a>
                 </div>
             </div>
         </section>
 
     </main>
 
-
-    <!-- ==========================================================================
-         FOOTER WITH EXACT COMPANY DETAILS, ADDRESS & SOCIAL CHANNELS
-         ========================================================================== -->
-    <footer class="border-t border-slate-200 bg-white text-slate-600 text-xs pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-16 border-b border-slate-100">
-                
-                <!-- Column 1: Company Profile & Address (4 cols) -->
-                <div class="md:col-span-4 space-y-4">
-                    <a href="index-2.html" class="inline-block">
+    <!-- FOOTER WITH OFFICIAL LOGO -->
+    <footer class="border-t border-slate-200 bg-white text-slate-600 text-xs py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
+                <div class="space-y-3">
+                    <a href="index.html" class="inline-block">
                         <img src="img/logo/VilPower%20Logo.svg" alt="VilPower Solutions Logo" class="h-9 w-auto object-contain">
                     </a>
-
-                    <p class="font-bold text-slate-900 text-sm">
-                        VilPower Solutions India Private Limited
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Human-in-the-Loop AI annotation, STM publishing, and enterprise data operations powered by 95%+ rural women engineering talent in Tamil Nadu.
                     </p>
-
-                    <div class="space-y-2 text-slate-600 leading-relaxed">
-                        <p class="flex items-start gap-2">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-[#1B45BD] shrink-0 mt-0.5"></i>
-                            <span>4/228, Rajiv Nagar, Nallur, Alangulam Taluk, Tenkasi(Dt), Tamil Nadu, India - 627853</span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4 text-[#1B45BD] shrink-0"></i>
-                            <a href="mailto:support@vilpower.com" class="hover:text-[#1B45BD] font-mono font-semibold">support@vilpower.com</a>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i data-lucide="phone" class="w-4 h-4 text-[#1B45BD] shrink-0"></i>
-                            <span class="font-mono">+91 94880 20022 / +91 (04633) 295853</span>
-                        </p>
-                    </div>
-
-                    <!-- Social Media Links (LinkedIn, Instagram, Facebook, YouTube) -->
-                    <div class="pt-2 flex items-center gap-3">
-                        <a href="https://www.linkedin.com/company/vilpower" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#1B45BD] hover:text-white flex items-center justify-center text-slate-700 transition-colors" aria-label="VilPower on LinkedIn">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i>
-                        </a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-pink-600 hover:text-white flex items-center justify-center text-slate-700 transition-colors" aria-label="VilPower on Instagram">
-                            <i data-lucide="instagram" class="w-4 h-4"></i>
-                        </a>
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-700 transition-colors" aria-label="VilPower on Facebook">
-                            <i data-lucide="facebook" class="w-4 h-4"></i>
-                        </a>
-                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-red-600 hover:text-white flex items-center justify-center text-slate-700 transition-colors" aria-label="VilPower on YouTube">
-                            <i data-lucide="youtube" class="w-4 h-4"></i>
-                        </a>
+                    <div class="flex items-center gap-2 font-mono text-[10px] text-[#029146] font-bold">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> ISO 27001 Ready • GDPR Compliant
                     </div>
                 </div>
 
-                <!-- Column 2: Solutions & Capabilities (3 cols) -->
-                <div class="md:col-span-3 space-y-3">
-                    <h4 class="text-xs font-bold text-slate-950 uppercase tracking-wider mb-4 font-mono">Solutions</h4>
-                    <ul class="space-y-2.5 text-slate-600">
-                        <li><a href="ai-data-annotation.html" class="hover:text-slate-900 transition-colors">Computer Vision & 3D LiDAR</a></li>
-                        <li><a href="ai-data-annotation.html" class="hover:text-slate-900 transition-colors">NLP NER & LLM RLHF</a></li>
-                        <li><a href="xml-stm-publishing.html" class="hover:text-slate-900 transition-colors">PubMed Central JATS 1.3 XML</a></li>
-                        <li><a href="e-publishing.html" class="hover:text-[#0284c7] transition-colors font-medium">ePUB3 & Digital E-Publishing</a></li>
-                        <li><a href="lease-abstraction.html" class="hover:text-slate-900 transition-colors">Commercial Lease Abstraction</a></li>
-                        <li><a href="legal-data-intelligence.html" class="hover:text-slate-900 transition-colors">Legal Entity Disambiguation</a></li>
-                        <li><a href="ai-data-annotation.html" class="hover:text-slate-900 transition-colors">Dedicated Cleanroom Pods</a></li>
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-3">Capabilities</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="ai-data-annotation.html" class="hover:text-[#1B45BD] transition-colors">Computer Vision & LiDAR 3D</a></li>
+                        <li><a href="ai-data-annotation.html" class="hover:text-[#1B45BD] transition-colors">NLP NER & LLM RLHF</a></li>
+                        <li><a href="xml-stm-publishing.html" class="hover:text-[#029146] transition-colors">JATS 1.3 XML Conversion</a></li>
+                        <li><a href="lease-abstraction.html" class="hover:text-[#1B45BD] transition-colors">Commercial Lease Abstraction</a></li>
+                        <li><a href="legal-data-intelligence.html" class="hover:text-[#029146] transition-colors">Entity Disambiguation</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 3: Company & Quick Links (2 cols) -->
-                <div class="md:col-span-2 space-y-3">
-                    <h4 class="text-xs font-bold text-slate-950 uppercase tracking-wider mb-4 font-mono">Company</h4>
-                    <ul class="space-y-2.5 text-slate-600">
-                        <li><a href="about.html" class="hover:text-slate-900 transition-colors">About & Heritage</a></li>
-                        <li><a href="about.html" class="hover:text-slate-900 transition-colors">Digital Banyan Tree</a></li>
-                        <li><a href="gallery.html" class="hover:text-slate-900 transition-colors">Operations Gallery</a></li>
-                        <li><a href="industries.html" class="hover:text-slate-900 transition-colors">Industries Served</a></li>
-                        <li><a href="contact.html" class="hover:text-slate-900 transition-colors">Scope Builder & Contact</a></li>
-                        <li><a href="index.html" class="text-blue-600 font-semibold hover:underline">Switch to Home (v1)</a></li>
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-3">VilPower</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="about.html" class="hover:text-[#1B45BD] transition-colors">About Us & Heritage</a></li>
+                        <li><a href="industries.html" class="hover:text-[#1B45BD] transition-colors">Industries Served</a></li>
+                        <li><a href="gallery.html" class="hover:text-[#1B45BD] transition-colors">Operations Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-[#1B45BD] transition-colors">Scope Builder & Contact</a></li>
+                        <li><button onclick="openPilotModal()" class="hover:text-[#1B45BD] transition-colors text-left">Claim Free Pilot Batch</button></li>
                     </ul>
                 </div>
 
-                <!-- Column 4: Customer Ratings & Compliance (3 cols) -->
-                <div class="md:col-span-3 space-y-4">
-                    <h4 class="text-xs font-bold text-slate-950 uppercase tracking-wider mb-4 font-mono">Ratings & Security</h4>
-                    
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-1 text-amber-500 text-sm">
-                            ★ ★ ★ ★ ★
-                        </div>
-                        <div class="space-y-1 text-[11px] text-slate-600">
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-blue-600 font-bold">4.9/5</span> on Clutch & G2 Enterprise
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-emerald-600 font-bold">99.7%</span> Audited SLA Accuracy
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-purple-600 font-bold">157M+</span> Units Delivered Flawlessly
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-3 border-t border-slate-100 space-y-1.5 text-[11px] font-mono text-slate-500">
-                        <div class="flex items-center gap-2 text-[#029146] font-bold">
-                            <i data-lucide="shield-check" class="w-4 h-4"></i> ISO 27001 Ready • GDPR Compliant
-                        </div>
-                        <p class="text-slate-400">Global Hub: Tamil Nadu, India</p>
+                <div>
+                    <h4 class="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-3">Delivery Centers</h4>
+                    <div class="space-y-2 text-xs text-slate-500">
+                        <p><strong class="text-slate-800">Global Operations Hub:</strong><br>Tamil Nadu, India</p>
+                        <p><strong class="text-slate-800">Client Coverage:</strong><br>USA, UK, Europe, Australia, India</p>
+                        <p class="font-mono text-[#1B45BD] pt-1 font-bold">support@vilpower.com</p>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Bottom Copyright Bar -->
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-[11px]">
-                <p>© 2026 VilPower Solutions India Private Limited. All rights reserved.</p>
+                <p>© 2026 VilPower Solutions. All rights reserved. Precision Human-in-the-Loop Operations.</p>
                 <div class="flex items-center gap-6">
-                    <a href="contact.html" class="hover:text-slate-600 transition-colors">Privacy Policy</a>
-                    <a href="contact.html" class="hover:text-slate-600 transition-colors">Terms of Use</a>
-                    <a href="contact.html" class="hover:text-slate-600 transition-colors">ISO 27001 Protocol</a>
+                    <span>Privacy Policy</span>
+                    <span>Security & ISO Protocol</span>
+                    <span>Terms of Service</span>
                 </div>
             </div>
-
         </div>
     </footer>
 
-
-    <!-- ==========================================================================
-         FREE PILOT MODAL (SHARED SYSTEM)
-         ========================================================================== -->
+    <!-- FREE PILOT MODAL -->
     <div id="pilot-modal" class="modal fixed inset-0 z-50 items-center justify-center bg-slate-900/60 p-4" role="dialog" aria-modal="true">
-        <div class="bg-white w-full max-w-md max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xl relative">
+        <div class="bg-white w-full max-w-md max-h-[90vh] overflow-y-auto p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-2xl relative">
             <div class="flex items-start justify-between pb-3 border-b border-slate-100">
                 <div>
                     <span class="text-[10px] font-mono text-[#1B45BD] uppercase font-bold">Zero-Cost Benchmark</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-0.5">Request Free 50-Record Pilot</h3>
+                    <h3 class="text-xl font-bold text-slate-900 font-display mt-0.5">Request Free 50-Record Pilot</h3>
                 </div>
                 <button class="rounded-lg p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100" onclick="closePilotModal()">
                     <i data-lucide="x" class="h-5 w-5"></i>
@@ -1664,29 +1627,74 @@
             <form onsubmit="handlePilotSubmit(event)" class="mt-5 space-y-4 text-xs">
                 <div>
                     <label class="block font-mono text-slate-700 mb-1 font-semibold">Your Full Name *</label>
-                    <input id="pilot-name" required placeholder="Full Name" class="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
+                    <input id="pilot-name" required placeholder="Full Name" class="w-full rounded-lg bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
                 </div>
                 <div>
                     <label class="block font-mono text-slate-700 mb-1 font-semibold">Work Email *</label>
-                    <input id="pilot-email" type="email" required placeholder="name@company.com" class="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
+                    <input id="pilot-email" type="email" required placeholder="name@company.com" class="w-full rounded-lg bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
                 </div>
                 <div>
                     <label class="block font-mono text-slate-700 mb-1 font-semibold">Service Type *</label>
-                    <select id="pilot-service" class="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
+                    <select id="pilot-service" class="w-full rounded-lg bg-slate-50 border border-slate-300 p-2.5 text-slate-900 focus:outline-none focus:border-[#1B45BD]">
                         <option>Computer Vision & 3D LiDAR Annotation</option>
                         <option>NLP NER & LLM Training / RLHF</option>
                         <option>XML & Digital STM Publishing (JATS 1.3)</option>
-                        <option>E-Publishing & eBook Production (ePUB3 / Fixed Layout)</option>
                         <option>Commercial Lease Abstraction</option>
                         <option>Legal & Web Data Intelligence</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-lime w-full py-3 text-slate-950 font-bold shadow-sm transition-all text-xs">
-                    <span>Claim 50-Record Free Benchmark →</span>
+                <button type="submit" class="btn-glare w-full py-3 rounded-lg bg-[#1B45BD] hover:bg-[#15379b] text-white font-bold shadow-sm transition-all text-xs">
+                    Claim 50-Record Free Benchmark →
                 </button>
             </form>
         </div>
     </div><!-- Global JS Engine -->
     <script src="assets/js/main.js"></script>
+
+    <!-- VilPower AI Assistant Widget -->
+    <div id="vp-chat-widget" aria-live="polite">
+
+        <!-- Chat Window -->
+        <div id="vp-chat-window" class="vp-chat-window" role="dialog" aria-modal="true" aria-label="VilPower AI Assistant" style="display:none;">
+            <!-- Header -->
+            <div class="vp-chat-header">
+                <div class="vp-chat-header-left">
+                    <div class="vp-bot-avatar">
+                        <img src="img/Chatbot%20Icon.png" alt="VilPower Bot">
+                    </div>
+                    <div>
+                        <div class="vp-chat-title">VilPower Assistant</div>
+                        <div class="vp-chat-status"><span class="vp-status-dot"></span>Online · Replies instantly</div>
+                    </div>
+                </div>
+                <button class="vp-chat-close" onclick="vpToggleChat()" aria-label="Close chat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Messages -->
+            <div id="vp-messages" class="vp-messages"></div>
+
+            <!-- Quick Replies -->
+            <div id="vp-quick-replies" class="vp-quick-replies"></div>
+
+            <!-- Input Row -->
+            <div class="vp-input-row">
+                <input id="vp-input" type="text" placeholder="Type your question…" autocomplete="off"
+                    onkeydown="if(event.key==='Enter')vpSend()" maxlength="200" aria-label="Chat input">
+                <button class="vp-send-btn" onclick="vpSend()" aria-label="Send">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button id="vp-chat-toggle" class="vp-chat-toggle" onclick="vpToggleChat()" aria-label="Open VilPower AI Assistant">
+            <span id="vp-toggle-icon" class="vp-toggle-icon-svg"><img src="img/Chatbot%20Icon.png" alt="Chat"></span>
+            <span id="vp-toggle-icon-close" style="display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span id="vp-unread-badge" class="vp-unread-badge" style="display:none;">1</span>
+        </button>
+
+    </div>
 </body>
 </html>
