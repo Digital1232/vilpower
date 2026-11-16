@@ -1230,73 +1230,102 @@ function initCounters() {
 
 // Hero Rotating Service Title Controller (Vertical Slide + Fade)
 function initRotatingServiceTitles() {
-    const wrap = document.querySelector('.hero-rotating-service-wrap');
-    if (!wrap) return;
+    const wraps = document.querySelectorAll('.hero-rotating-service-wrap');
+    if (!wraps.length) return;
 
-    const items = wrap.querySelectorAll('.hero-rotating-service-item');
-    if (items.length <= 1) return;
+    wraps.forEach(wrap => {
+        const items = wrap.querySelectorAll('.hero-rotating-service-item');
+        if (items.length <= 1) return;
 
-    let currentIndex = 0;
-    const intervalTime = 3400; // 3.4 seconds rotation cycle
-    let rotateTimer = null;
+        let currentIndex = 0;
+        const intervalTime = 3400; // 3.4s rotation cycle
+        let rotateTimer = null;
 
-    // Measure and set minimum width to prevent any layout shifts
-    function adjustWrapWidth() {
-        if (window.innerWidth >= 640) {
-            let maxWidth = 0;
-            items.forEach(item => {
-                const prevPos = item.style.position;
-                item.style.position = 'relative';
-                const w = item.offsetWidth;
-                item.style.position = prevPos;
-                if (w > maxWidth) maxWidth = w;
-            });
-            if (maxWidth > 0) {
-                wrap.style.minWidth = (maxWidth + 4) + 'px';
-            }
-        } else {
-            wrap.style.minWidth = 'auto';
+        // Measure item natural width using an offscreen span with identical computed font styles
+        function measureItemWidth(item) {
+            const span = document.createElement('span');
+            span.style.visibility = 'hidden';
+            span.style.position = 'absolute';
+            span.style.whiteSpace = 'nowrap';
+            span.style.top = '-9999px';
+            span.style.left = '-9999px';
+            
+            const computed = window.getComputedStyle(wrap);
+            span.style.font = computed.font;
+            span.style.fontFamily = computed.fontFamily;
+            span.style.fontSize = computed.fontSize;
+            span.style.fontWeight = computed.fontWeight;
+            span.style.letterSpacing = computed.letterSpacing;
+            span.textContent = item.textContent;
+            
+            document.body.appendChild(span);
+            const w = span.getBoundingClientRect().width;
+            document.body.removeChild(span);
+            return Math.ceil(w);
         }
-    }
 
-    adjustWrapWidth();
-    window.addEventListener('resize', adjustWrapWidth);
+        // Cache widths
+        let itemWidths = [];
+        function cacheWidths() {
+            itemWidths = Array.from(items).map(item => measureItemWidth(item));
+        }
 
-    function rotateNext() {
-        const currentItem = items[currentIndex];
-        const nextIndex = (currentIndex + 1) % items.length;
-        const nextItem = items[nextIndex];
+        function setWrapWidth(index) {
+            if (!itemWidths.length) cacheWidths();
+            const w = itemWidths[index] || 0;
+            if (w > 0) {
+                wrap.style.width = (w + 2) + 'px';
+            }
+        }
 
-        // Animate current out
-        currentItem.classList.remove('active');
-        currentItem.classList.add('exit');
+        // Initial measurement
+        cacheWidths();
+        setWrapWidth(0);
 
-        // Animate next in
-        nextItem.classList.remove('exit');
-        nextItem.classList.add('active');
+        window.addEventListener('resize', () => {
+            cacheWidths();
+            setWrapWidth(currentIndex);
+        });
 
-        // Cleanup previous after animation finishes
-        setTimeout(() => {
-            currentItem.classList.remove('exit');
-        }, 700);
+        function rotateNext() {
+            const currentItem = items[currentIndex];
+            const nextIndex = (currentIndex + 1) % items.length;
+            const nextItem = items[nextIndex];
 
-        currentIndex = nextIndex;
-    }
+            // Animate current out
+            currentItem.classList.remove('active');
+            currentItem.classList.add('exit');
 
-    function startRotation() {
-        if (rotateTimer) clearInterval(rotateTimer);
-        rotateTimer = setInterval(rotateNext, intervalTime);
-    }
+            // Animate next in
+            nextItem.classList.remove('exit');
+            nextItem.classList.add('active');
 
-    startRotation();
+            // Smoothly animate wrap width so "into [word]" stays exactly centered
+            setWrapWidth(nextIndex);
 
-    // Pause on hover
-    wrap.addEventListener('mouseenter', () => {
-        if (rotateTimer) clearInterval(rotateTimer);
-    });
+            // Cleanup exit state after animation ends
+            setTimeout(() => {
+                currentItem.classList.remove('exit');
+            }, 680);
 
-    wrap.addEventListener('mouseleave', () => {
+            currentIndex = nextIndex;
+        }
+
+        function startRotation() {
+            if (rotateTimer) clearInterval(rotateTimer);
+            rotateTimer = setInterval(rotateNext, intervalTime);
+        }
+
         startRotation();
+
+        // Pause on hover
+        wrap.addEventListener('mouseenter', () => {
+            if (rotateTimer) clearInterval(rotateTimer);
+        });
+
+        wrap.addEventListener('mouseleave', () => {
+            startRotation();
+        });
     });
 }
 
