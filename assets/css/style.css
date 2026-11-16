@@ -3095,117 +3095,225 @@ footer .flex.items-center.gap-6 {
 }
 
 /* ==========================================================================
-   Fixed Stationary Orbital Tracks (Connected with 5 Service Boxes) & Rotating Tree
+   True Solar System Style Orbital Architecture (Compact, Viewport-Fitting)
+   Tree Stays Upright & Still; 3D Perspective Planetary Ellipses Rotate Around Center
    ========================================================================== */
 
 .v-orbital-stage {
     position: relative;
     width: 100%;
-    height: 380px;
+    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
     perspective: 1000px;
+    overflow: visible;
 }
 
 @media (min-width: 640px) {
     .v-orbital-stage {
-        height: 440px;
+        height: 275px;
     }
 }
 
 @media (min-width: 1024px) {
     .v-orbital-stage {
-        height: 480px;
+        height: 290px;
     }
 }
 
-/* Stationary Fixed Orbital Tracks — No wobbling rotation on ellipse geometry */
-.v-orbit-track {
+/* Solar System Orbits Container */
+.v-solar-system {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
+    transform-style: preserve-3d;
 }
 
-/* Outer Fixed Ellipse: Connects Card 1 (top-left), Card 2 (top-right), Card 3 (mid-left), Card 4 (mid-right) */
-.v-orbit-track-outer {
-    width: 860px;
-    height: 340px;
+/* Planetary Orbit Rings tilted in 3D perspective — shape stays an elongated ellipse while rotating! */
+.v-solar-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     border-radius: 50%;
-    border: 1.5px dashed rgba(166, 155, 255, 0.55);
-    box-shadow: 0 0 25px rgba(166, 155, 255, 0.12);
+    pointer-events: none;
+    transform-origin: center center;
+    transform-style: preserve-3d;
 }
 
-/* Inner Fixed Ellipse: Connects directly into Card 5 (bottom-center) */
-.v-orbit-track-inner {
-    width: 540px;
-    height: 270px;
-    border-radius: 50%;
+/* Ring 1: Inner Planetary Orbit */
+.v-solar-ring-1 {
+    width: 320px;
+    height: 320px;
     border: 1.5px dashed rgba(73, 107, 255, 0.45);
-    box-shadow: 0 0 18px rgba(73, 107, 255, 0.1);
+    box-shadow: 0 0 15px rgba(73, 107, 255, 0.1);
+    transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
+    animation: vSolarRotate1 28s linear infinite;
 }
 
-/* Core Circular Ring hugging the central crystal orb */
-.v-orbit-track-core {
-    width: 220px;
-    height: 220px;
+/* Ring 2: Middle Planetary Orbit */
+.v-solar-ring-2 {
+    width: 520px;
+    height: 520px;
+    border: 1.5px dashed rgba(166, 155, 255, 0.55);
+    box-shadow: 0 0 20px rgba(166, 155, 255, 0.12);
+    transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
+    animation: vSolarRotate2 42s linear infinite reverse;
+}
+
+/* Ring 3: Outer Planetary Orbit (subtly tilted for celestial depth) */
+.v-solar-ring-3 {
+    width: 740px;
+    height: 740px;
+    border: 1.5px dashed rgba(73, 107, 255, 0.32);
+    box-shadow: 0 0 25px rgba(73, 107, 255, 0.08);
+    transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(0deg);
+    animation: vSolarRotate3 58s linear infinite;
+}
+
+@keyframes vSolarRotate1 {
+    from {
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg);
+    }
+}
+
+@keyframes vSolarRotate2 {
+    from {
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg);
+    }
+}
+
+@keyframes vSolarRotate3 {
+    from {
+        transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateX(66deg) rotateY(4deg) rotateZ(360deg);
+    }
+}
+
+/* Traveling Planetary Particles attached to the rotating rings */
+.v-solar-planet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    border: 1px dashed rgba(2, 145, 70, 0.35);
+    background: #496BFF;
+    box-shadow: 0 0 10px #496BFF, 0 0 20px #A69BFF;
+    transform: translate(-50%, -50%);
 }
 
+.v-solar-planet-cyan {
+    background: #029146;
+    box-shadow: 0 0 10px #029146, 0 0 18px #a7f3d0;
+}
+
+.v-solar-planet-purple {
+    background: #A69BFF;
+    box-shadow: 0 0 10px #A69BFF, 0 0 18px #c4b5fd;
+}
+
+/* Scaled responsiveness for tablets and mobile */
 @media (max-width: 1024px) {
-    .v-orbit-track-outer { width: 720px; height: 300px; }
-    .v-orbit-track-inner { width: 440px; height: 230px; }
+    .v-solar-ring-1 { width: 280px; height: 280px; }
+    .v-solar-ring-2 { width: 440px; height: 440px; }
+    .v-solar-ring-3 { width: 600px; height: 600px; }
 }
 
 @media (max-width: 640px) {
-    .v-orbit-track-outer { width: 360px; height: 260px; }
-    .v-orbit-track-inner { width: 280px; height: 190px; }
-    .v-orbit-track-core { width: 170px; height: 170px; }
+    .v-solar-ring-1 { width: 220px; height: 220px; }
+    .v-solar-ring-2 { width: 330px; height: 330px; }
+    .v-solar-ring-3 { width: 420px; height: 420px; }
 }
 
-/* Rotating Tree Logo inside the Crystal Orb */
-.v-tree-rotating {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 10px rgba(2, 145, 70, 0.35));
-    animation: vTreeRotate 22s linear infinite;
-    transform-origin: center center;
-    transition: transform 0.3s ease;
+/* Central Sun Orb */
+.v-orb-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e0e7ff 35%, #c7d2fe 65%, #818cf8 100%);
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.4), 0 0 70px rgba(165, 180, 252, 0.25), inset 0 -4px 10px rgba(79, 70, 229, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: auto;
 }
 
 @media (min-width: 640px) {
-    .v-tree-rotating {
-        width: 64px;
-        height: 64px;
+    .v-orb-center {
+        width: 90px;
+        height: 90px;
     }
 }
 
-@keyframes vTreeRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+/* VilPower Tree Logo — STRICTLY STILL & UPRIGHT (NO ROTATION) */
+.v-tree-still {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 8px rgba(2, 145, 70, 0.4));
+    transform: none !important;
+    animation: vTreeGlowPulse 4s ease-in-out infinite alternate;
+}
+
+@media (min-width: 640px) {
+    .v-tree-still {
+        width: 48px;
+        height: 48px;
     }
 }
 
-/* Spinning Iridescent Aura Ring around the Tree Orb */
-.v-orb-aura-ring {
+@keyframes vTreeGlowPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 3px 8px rgba(2, 145, 70, 0.35));
+    }
+    100% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 5px 14px rgba(2, 145, 70, 0.55));
+    }
+}
+
+/* Compact, Sleek Glassmorphic Service Badges */
+.v-service-card {
     position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 2px dashed rgba(73, 107, 255, 0.45);
-    animation: vSpinAura 15s linear infinite;
-    pointer-events: none;
+    z-index: 25;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 9999px;
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
 }
 
-@keyframes vSpinAura {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.v-service-card:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 14px 30px -4px rgba(73, 107, 255, 0.2);
+    border-color: rgba(166, 155, 255, 0.6);
 }
 
 .btn-rgb-glow span {

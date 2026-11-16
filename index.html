@@ -607,100 +607,111 @@
              Iridescent Crystal Orb with VilPower Tree Logo, 5 Floating Service Cards,
              Rotating Services Headline, Description & CTAs (Metrics moved to make space)
              ========================================================================== -->
-        <section class="v-hero-outer w-full pt-10 pb-16 sm:pt-14 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200/80">
+        <section class="v-hero-outer w-full py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-200/80 min-h-[calc(100vh-70px)] flex flex-col justify-center">
             
             <!-- Ambient Subtle Top Glow -->
-            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[950px] h-[450px] bg-gradient-to-b from-indigo-200/40 via-purple-100/30 to-transparent blur-3xl pointer-events-none"></div>
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[380px] bg-gradient-to-b from-indigo-200/35 via-purple-100/25 to-transparent blur-3xl pointer-events-none"></div>
 
-            <div class="max-w-7xl mx-auto relative z-10">
+            <div class="max-w-6xl mx-auto w-full relative z-10">
 
-                <!-- 1. Hero Illustration: Fixed Orbital Tracks in Direct Contact with Service Boxes & Rotating Tree Logo -->
+                <!-- 1. Hero Illustration: Solar System Style Planetary Orbits with Upright VilPower Tree Sun -->
                 <div class="v-orbital-stage relative select-none">
                     
-                    <!-- Fixed Stationary Orbital Tracks — Form steady cosmic paths connecting to the boxes -->
-                    <div class="v-orbit-track v-orbit-track-outer"></div>
-                    <div class="v-orbit-track v-orbit-track-inner"></div>
-                    <div class="v-orbit-track v-orbit-track-core"></div>
+                    <!-- True Solar System 3D Perspective Orbit Rings -->
+                    <div class="v-solar-system">
+                        
+                        <!-- Ring 1: Inner Orbit with Revolving Planetary Particle -->
+                        <div class="v-solar-ring v-solar-ring-1">
+                            <div class="v-solar-planet" style="top: 0; left: 50%;"></div>
+                            <div class="v-solar-planet v-solar-planet-cyan" style="bottom: 0; left: 50%;"></div>
+                        </div>
 
-                    <!-- Traveling Particles along fixed orbital paths -->
-                    <div class="v-orbit-particle top-[14%] left-[22%] hidden sm:block animate-pulse"></div>
-                    <div class="v-orbit-particle bottom-[18%] right-[24%] hidden sm:block animate-pulse"></div>
-                    <div class="v-orbit-particle top-[32%] right-[18%] hidden sm:block animate-pulse"></div>
-                    <div class="v-orbit-particle bottom-[32%] left-[16%] hidden sm:block animate-pulse"></div>
+                        <!-- Ring 2: Middle Orbit with Revolving Planetary Particle -->
+                        <div class="v-solar-ring v-solar-ring-2">
+                            <div class="v-solar-planet v-solar-planet-purple" style="top: 50%; left: 0;"></div>
+                            <div class="v-solar-planet" style="top: 50%; right: 0;"></div>
+                        </div>
 
-                    <!-- 5 Floating Service Cards in Direct Contact with the Fixed Orbital Lines -->
+                        <!-- Ring 3: Outer Orbit with Revolving Planetary Particle -->
+                        <div class="v-solar-ring v-solar-ring-3">
+                            <div class="v-solar-planet v-solar-planet-cyan" style="top: 15%; right: 20%;"></div>
+                            <div class="v-solar-planet v-solar-planet-purple" style="bottom: 15%; left: 20%;"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- 5 Floating Service Cards in Orbit around Center -->
                     
-                    <!-- Card 1: AI Data Annotation (Top-Left on Outer Ellipse) -->
-                    <div class="v-service-card v-float-1 top-[10%] left-[3%] sm:left-[8%] lg:left-[13%]">
-                        <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
-                            <i data-lucide="image" class="w-4 h-4"></i>
+                    <!-- Card 1: AI Data Annotation (Top-Left) -->
+                    <div class="v-service-card v-float-1 top-[6%] left-[3%] sm:left-[10%] lg:left-[16%]">
+                        <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
+                            <i data-lucide="image" class="w-3.5 h-3.5"></i>
                         </div>
                         <div class="text-left pr-1">
-                            <div class="text-xs sm:text-sm font-bold text-[#151B36] tracking-tight">AI Data Annotation</div>
+                            <div class="text-xs font-bold text-[#151B36] tracking-tight">AI Data Annotation</div>
                         </div>
                     </div>
 
-                    <!-- Card 2: LiDAR / 3D Vision (Top-Right on Outer Ellipse) -->
-                    <div class="v-service-card v-float-2 top-[10%] right-[3%] sm:right-[8%] lg:right-[13%]">
-                        <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm border border-indigo-100/60">
-                            <i data-lucide="box" class="w-4 h-4"></i>
+                    <!-- Card 2: LiDAR / 3D Vision (Top-Right) -->
+                    <div class="v-service-card v-float-2 top-[6%] right-[3%] sm:right-[10%] lg:right-[16%]">
+                        <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm border border-indigo-100/60">
+                            <i data-lucide="box" class="w-3.5 h-3.5"></i>
                         </div>
                         <div class="text-left pr-1">
-                            <div class="text-xs sm:text-sm font-bold text-[#151B36] tracking-tight">LiDAR / 3D Vision</div>
+                            <div class="text-xs font-bold text-[#151B36] tracking-tight">LiDAR / 3D Vision</div>
                         </div>
                     </div>
 
-                    <!-- Card 3: JATS/XML Publishing (Mid-Left on Outer Ellipse Apex) -->
-                    <div class="v-service-card v-float-3 top-[52%] left-[1%] sm:left-[4%] lg:left-[6%]">
-                        <div class="w-9 h-9 rounded-xl bg-purple-50 text-[#A69BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-purple-100/60">
-                            <i data-lucide="code-2" class="w-4 h-4 text-purple-600"></i>
+                    <!-- Card 3: JATS/XML Publishing (Mid-Left) -->
+                    <div class="v-service-card v-float-3 top-[46%] left-[1%] sm:left-[3%] lg:left-[6%]">
+                        <div class="w-7 h-7 rounded-lg bg-purple-50 text-[#A69BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-purple-100/60">
+                            <i data-lucide="code-2" class="w-3.5 h-3.5 text-purple-600"></i>
                         </div>
                         <div class="text-left pr-1">
-                            <div class="text-xs sm:text-sm font-bold text-[#151B36] tracking-tight">JATS/XML Publishing</div>
+                            <div class="text-xs font-bold text-[#151B36] tracking-tight">JATS/XML Publishing</div>
                         </div>
                     </div>
 
-                    <!-- Card 4: Legal Intelligence (Mid-Right on Outer Ellipse Apex) -->
-                    <div class="v-service-card v-float-4 top-[52%] right-[1%] sm:right-[4%] lg:right-[6%]">
-                        <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
+                    <!-- Card 4: Legal Intelligence (Mid-Right) -->
+                    <div class="v-service-card v-float-4 top-[46%] right-[1%] sm:right-[3%] lg:right-[6%]">
+                        <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
+                            <i data-lucide="shield" class="w-3.5 h-3.5"></i>
                         </div>
                         <div class="text-left pr-1">
-                            <div class="text-xs sm:text-sm font-bold text-[#151B36] tracking-tight">Legal Intelligence</div>
+                            <div class="text-xs font-bold text-[#151B36] tracking-tight">Legal Intelligence</div>
                         </div>
                     </div>
 
-                    <!-- Card 5: Quality Assurance (Bottom-Center on Inner Ellipse Arc) -->
-                    <div class="v-service-card v-float-5 bottom-[3%] sm:bottom-[5%] left-1/2 -translate-x-1/2">
-                        <div class="w-9 h-9 rounded-xl bg-emerald-50 text-[#029146] flex items-center justify-center flex-shrink-0 shadow-sm border border-emerald-100/60">
-                            <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    <!-- Card 5: Quality Assurance (Bottom-Center) -->
+                    <div class="v-service-card v-float-5 bottom-[2%] left-1/2 -translate-x-1/2">
+                        <div class="w-7 h-7 rounded-lg bg-emerald-50 text-[#029146] flex items-center justify-center flex-shrink-0 shadow-sm border border-emerald-100/60">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
                         </div>
                         <div class="text-left pr-1">
-                            <div class="text-xs sm:text-sm font-bold text-[#151B36] tracking-tight">Quality Assurance</div>
+                            <div class="text-xs font-bold text-[#151B36] tracking-tight">Quality Assurance</div>
                         </div>
                     </div>
 
-                    <!-- Center Element: Iridescent Crystal Sphere with Rotating VilPower Tree Logo -->
+                    <!-- Center Element: Crystal Sun Orb with UPRIGHT STILL VilPower Tree (Roots down, leaves up!) -->
                     <div class="v-orb-center">
-                        <div class="v-orb-aura-ring"></div>
-                        <img src="img/logo/vilpower-tree.png" alt="VilPower Tree" class="v-tree-rotating">
+                        <img src="img/logo/vilpower-tree.png" alt="VilPower Tree" class="v-tree-still">
                     </div>
 
                 </div>
 
-                <!-- 2. Hero Content (Eyebrow, Headline with Rotating Text, Description, CTAs) -->
-                <div class="max-w-4xl mx-auto text-center mt-6 sm:mt-8 relative z-30">
+                <!-- 2. Hero Content (Compact, Perfectly Proportionate to Fit 100vh) -->
+                <div class="max-w-3xl mx-auto text-center mt-3 sm:mt-4 relative z-30">
                     
                     <!-- Eyebrow Pill -->
-                    <div class="mb-4">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F1F0FF] border border-[#A69BFF]/40 text-[#496BFF] font-mono text-[11px] font-bold tracking-wider uppercase shadow-sm">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F1F0FF] border border-[#A69BFF]/40 text-[#496BFF] font-mono text-[10px] font-bold tracking-wider uppercase shadow-sm">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#496BFF] animate-pulse"></span>
                             <span>HUMAN-IN-THE-LOOP AI OPERATIONS</span>
                         </span>
                     </div>
 
                     <!-- Main Headline with Smooth Rotating Services Text -->
-                    <h1 class="text-3xl sm:text-5xl lg:text-[56px] font-extrabold text-[#151B36] tracking-tight leading-[1.14] mb-4 font-display">
+                    <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-[#151B36] tracking-tight leading-[1.16] mb-2 sm:mb-2.5 font-display">
                         We transform complex data<br class="hidden sm:inline">
                         into <span class="hero-rotating-service-wrap inline-block relative text-left" aria-live="polite">
                             <span class="hero-rotating-service-item active bg-gradient-to-r from-[#496BFF] via-[#7b61ff] to-[#A69BFF] bg-clip-text text-transparent">trusted intelligence.</span>
@@ -714,54 +725,54 @@
                     </h1>
 
                     <!-- Supporting Description -->
-                    <p class="text-xs sm:text-sm lg:text-base text-[#777D96] max-w-2xl mx-auto leading-relaxed mb-8">
+                    <p class="text-xs sm:text-[13px] text-[#777D96] max-w-xl mx-auto leading-relaxed mb-3.5 sm:mb-4">
                         Human expertise. AI-powered workflows. Rigorous quality assurance. VilPower empowers world-leading AI labs, autonomous mobility giants, STM publishers, and REITs with multi-pass audited data operations — powered by an impact-sourcing 95%+ rural women engineering talent pool in Tamil Nadu.
                     </p>
 
                     <!-- CTA Action Buttons -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
-                        <button onclick="openPilotModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#496BFF] to-[#3a58e8] hover:from-[#3a58e8] hover:to-[#2b47d6] text-white font-bold text-sm shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all group">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 mb-2">
+                        <button onclick="openPilotModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#496BFF] to-[#3a58e8] hover:from-[#3a58e8] hover:to-[#2b47d6] text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all group">
                             <span>Launch Free 50-Record Pilot</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
                         </button>
-                        <a href="ai-data-annotation.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-[#151B36] font-semibold text-sm shadow-sm hover:border-slate-300 transition-all group">
+                        <a href="ai-data-annotation.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-[#151B36] font-semibold text-xs sm:text-sm shadow-sm hover:border-slate-300 transition-all group">
                             <span>Explore Solutions</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
 
-                    <!-- Trust Badges Strip (as requested in user reference) -->
-                    <div class="mt-8 sm:mt-10 pt-5 border-t border-slate-200/60 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3.5 text-xs sm:text-sm font-semibold text-slate-700 select-none">
-                        <div class="inline-flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                    <!-- Trust Badges Strip (from user reference) -->
+                    <div class="mt-3 sm:mt-4 pt-3 border-t border-slate-200/60 max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-xs font-semibold text-slate-600 select-none">
+                        <div class="inline-flex items-center gap-1.5">
+                            <span class="w-4 h-4 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-2.5 h-2.5 stroke-[2.5]"></i>
                             </span>
                             <span>99% Accuracy Guaranteed</span>
                         </div>
-                        <div class="inline-flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                        <div class="inline-flex items-center gap-1.5">
+                            <span class="w-4 h-4 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-2.5 h-2.5 stroke-[2.5]"></i>
                             </span>
                             <span>420+ Rural Employees</span>
                         </div>
-                        <div class="inline-flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
-                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                        <div class="inline-flex items-center gap-1.5">
+                            <span class="w-4 h-4 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-2.5 h-2.5 stroke-[2.5]"></i>
                             </span>
                             <span>120M+ Records Verified</span>
                         </div>
-                        <div class="inline-flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-blue-50 text-[#1B45BD] border border-blue-200/80 flex items-center justify-center shrink-0">
-                                <i data-lucide="globe" class="w-3 h-3 stroke-[2.5]"></i>
+                        <div class="inline-flex items-center gap-1.5">
+                            <span class="w-4 h-4 rounded-full bg-blue-50 text-[#1B45BD] border border-blue-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="globe" class="w-2.5 h-2.5 stroke-[2.5]"></i>
                             </span>
                             <span>14 Countries Served</span>
                         </div>
                     </div>
-</div>
+
+                </div>
 
             </div>
         </section>
-
         <section class="py-14 border-b border-slate-200 bg-white">
             <div class="mx-auto max-w-7xl px-4 sm:px-6">
                 <div class="reveal text-center max-w-2xl mx-auto mb-10">
