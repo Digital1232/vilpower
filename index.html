@@ -614,27 +614,24 @@
 
             <div class="max-w-7xl mx-auto relative z-10">
 
-                <!-- 1. Hero Illustration: Animated Orbital Ecosystem with Iridescent Crystal Tree Orb -->
+                <!-- 1. Hero Illustration: Fixed Orbital Tracks in Direct Contact with Service Boxes & Rotating Tree Logo -->
                 <div class="v-orbital-stage relative select-none">
                     
-                    <!-- Orbital Ring 3 (Outer Ellipse) -->
-                    <div class="v-orbit-ring v-orbit-ring-3"></div>
+                    <!-- Fixed Stationary Orbital Tracks — Form steady cosmic paths connecting to the boxes -->
+                    <div class="v-orbit-track v-orbit-track-outer"></div>
+                    <div class="v-orbit-track v-orbit-track-inner"></div>
+                    <div class="v-orbit-track v-orbit-track-core"></div>
 
-                    <!-- Orbital Ring 2 (Middle Ellipse) -->
-                    <div class="v-orbit-ring v-orbit-ring-2"></div>
-
-                    <!-- Orbital Ring 1 (Inner Circle) -->
-                    <div class="v-orbit-ring v-orbit-ring-1"></div>
-
-                    <!-- Traveling Particles along orbital paths -->
+                    <!-- Traveling Particles along fixed orbital paths -->
                     <div class="v-orbit-particle top-[14%] left-[22%] hidden sm:block animate-pulse"></div>
                     <div class="v-orbit-particle bottom-[18%] right-[24%] hidden sm:block animate-pulse"></div>
                     <div class="v-orbit-particle top-[32%] right-[18%] hidden sm:block animate-pulse"></div>
+                    <div class="v-orbit-particle bottom-[32%] left-[16%] hidden sm:block animate-pulse"></div>
 
-                    <!-- 5 Floating Service Cards surrounding the crystal tree orb -->
+                    <!-- 5 Floating Service Cards in Direct Contact with the Fixed Orbital Lines -->
                     
-                    <!-- Card 1: AI Data Annotation (Top-Left) -->
-                    <div class="v-service-card v-float-1 top-[8%] left-[2%] sm:left-[8%] lg:left-[14%]">
+                    <!-- Card 1: AI Data Annotation (Top-Left on Outer Ellipse) -->
+                    <div class="v-service-card v-float-1 top-[10%] left-[3%] sm:left-[8%] lg:left-[13%]">
                         <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
                             <i data-lucide="image" class="w-4 h-4"></i>
                         </div>
@@ -643,8 +640,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: LiDAR / 3D Vision (Top-Right) -->
-                    <div class="v-service-card v-float-2 top-[8%] right-[2%] sm:right-[8%] lg:right-[14%]">
+                    <!-- Card 2: LiDAR / 3D Vision (Top-Right on Outer Ellipse) -->
+                    <div class="v-service-card v-float-2 top-[10%] right-[3%] sm:right-[8%] lg:right-[13%]">
                         <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm border border-indigo-100/60">
                             <i data-lucide="box" class="w-4 h-4"></i>
                         </div>
@@ -653,8 +650,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: JATS/XML Publishing (Mid-Left) -->
-                    <div class="v-service-card v-float-3 top-[54%] left-[1%] sm:left-[5%] lg:left-[8%]">
+                    <!-- Card 3: JATS/XML Publishing (Mid-Left on Outer Ellipse Apex) -->
+                    <div class="v-service-card v-float-3 top-[52%] left-[1%] sm:left-[4%] lg:left-[6%]">
                         <div class="w-9 h-9 rounded-xl bg-purple-50 text-[#A69BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-purple-100/60">
                             <i data-lucide="code-2" class="w-4 h-4 text-purple-600"></i>
                         </div>
@@ -663,8 +660,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 4: Legal Intelligence (Mid-Right) -->
-                    <div class="v-service-card v-float-4 top-[54%] right-[1%] sm:right-[5%] lg:right-[8%]">
+                    <!-- Card 4: Legal Intelligence (Mid-Right on Outer Ellipse Apex) -->
+                    <div class="v-service-card v-float-4 top-[52%] right-[1%] sm:right-[4%] lg:right-[6%]">
                         <div class="w-9 h-9 rounded-xl bg-blue-50 text-[#496BFF] flex items-center justify-center flex-shrink-0 shadow-sm border border-blue-100/60">
                             <i data-lucide="shield" class="w-4 h-4"></i>
                         </div>
@@ -673,8 +670,8 @@
                         </div>
                     </div>
 
-                    <!-- Card 5: Quality Assurance (Bottom-Center below the crystal tree orb) -->
-                    <div class="v-service-card v-float-5 -bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2">
+                    <!-- Card 5: Quality Assurance (Bottom-Center on Inner Ellipse Arc) -->
+                    <div class="v-service-card v-float-5 bottom-[3%] sm:bottom-[5%] left-1/2 -translate-x-1/2">
                         <div class="w-9 h-9 rounded-xl bg-emerald-50 text-[#029146] flex items-center justify-center flex-shrink-0 shadow-sm border border-emerald-100/60">
                             <i data-lucide="check-circle" class="w-4 h-4"></i>
                         </div>
@@ -683,9 +680,10 @@
                         </div>
                     </div>
 
-                    <!-- Center Element: Iridescent Crystal Sphere with Reduced-Size VilPower Tree Logo -->
+                    <!-- Center Element: Iridescent Crystal Sphere with Rotating VilPower Tree Logo -->
                     <div class="v-orb-center">
-                        <img src="img/logo/VilPower%20Tree.svg" alt="VilPower Tree" class="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-[0_4px_8px_rgba(2,145,70,0.3)] transition-transform duration-500 hover:scale-105">
+                        <div class="v-orb-aura-ring"></div>
+                        <img src="img/logo/vilpower-tree.png" alt="VilPower Tree" class="v-tree-rotating">
                     </div>
 
                 </div>
@@ -732,7 +730,34 @@
                         </a>
                     </div>
 
-                </div>
+                    <!-- Trust Badges Strip (as requested in user reference) -->
+                    <div class="mt-8 sm:mt-10 pt-5 border-t border-slate-200/60 max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3.5 text-xs sm:text-sm font-semibold text-slate-700 select-none">
+                        <div class="inline-flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                            </span>
+                            <span>99% Accuracy Guaranteed</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                            </span>
+                            <span>420+ Rural Employees</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-emerald-50 text-[#029146] border border-emerald-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="check" class="w-3 h-3 stroke-[2.5]"></i>
+                            </span>
+                            <span>120M+ Records Verified</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-blue-50 text-[#1B45BD] border border-blue-200/80 flex items-center justify-center shrink-0">
+                                <i data-lucide="globe" class="w-3 h-3 stroke-[2.5]"></i>
+                            </span>
+                            <span>14 Countries Served</span>
+                        </div>
+                    </div>
+</div>
 
             </div>
         </section>
@@ -1065,7 +1090,7 @@
              SECTION 2: COLLABORATING WITH INDUSTRY-LEADING GLOBAL PARTNERS
              4-Stage Precision Pipeline Architecture: Left Narrative & Pillars + Right Card Deck
              ========================================================================== -->
-        <section class="py-20 sm:py-24 bg-white border-b border-slate-100">
+        <section class="py-20 sm:py-24 bg-white border-b border-slate-100 reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -1214,7 +1239,7 @@
             </div>
         </section>
 
-        <section class="py-20 md:py-28 border-b border-slate-200 bg-slate-50">
+        <section class="py-20 md:py-28 border-b border-slate-200 bg-slate-50 reveal">
             <div class="mx-auto max-w-7xl px-4 sm:px-6">
                 <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
                     <div>
@@ -1481,7 +1506,7 @@
             </div>
         </section>
 
-        <section class="py-20 border-b border-slate-200 bg-mesh-warm relative overflow-hidden">
+        <section class="py-20 border-b border-slate-200 bg-mesh-warm relative overflow-hidden reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="reveal text-center max-w-3xl mx-auto mb-16">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-mono font-semibold mb-3">
@@ -1586,7 +1611,7 @@
             </div>
         </section>
 
-        <section class="py-20 md:py-28 border-b border-slate-200 bg-mesh-emerald relative">
+        <section class="py-20 md:py-28 border-b border-slate-200 bg-mesh-emerald relative reveal">
             <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
                 <div class="reveal text-center max-w-3xl mx-auto mb-16">
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#029146] border border-[#a7f3d0] text-xs font-mono font-semibold mb-3 shadow-sm">
@@ -1653,7 +1678,7 @@
              SECTION 7: CURVED HORIZON ARC & EXPERIENCE 99.7% PRECISION CTA
              Zero Risk Benchmark, 50-Record Free Pilot & 4 Impact Metrics
              ========================================================================== -->
-        <section class="relative overflow-hidden pt-28 pb-24 bg-[#0a1027] text-white border-t border-slate-800">
+        <section class="relative overflow-hidden pt-28 pb-24 bg-[#0a1027] text-white border-t border-slate-800 reveal">
             
             <!-- Glowing Curved Planetary Horizon Arc -->
             <div class="horizon-arc-glow"></div>
