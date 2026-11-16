@@ -4,6 +4,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure homepage always starts at the top hero section on load
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+        window.scrollTo(0, 0);
+    }
+
     // Initialize 4-Stage Precision Pipeline Controller
     initPrecisionPipelineController();
     // Initialize Lucide icons
@@ -1755,14 +1763,16 @@ function initPrecisionPipelineController() {
             }
         });
 
-        // Scroll target card into view smoothly inside track
+        // Scroll target card horizontally inside scrollTrack ONLY (never scroll window)
         if (scrollIntoView && scrollTrack) {
             const targetCard = cards[currentStage];
             if (targetCard) {
                 const trackRect = scrollTrack.getBoundingClientRect();
                 const cardRect = targetCard.getBoundingClientRect();
-                if (cardRect.left < trackRect.left || cardRect.right > trackRect.right) {
-                    targetCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                const isSectionVisible = trackRect.top < window.innerHeight && trackRect.bottom > 0;
+                if (isSectionVisible && (cardRect.left < trackRect.left || cardRect.right > trackRect.right)) {
+                    const scrollOffset = targetCard.offsetLeft - (scrollTrack.clientWidth / 2) + (targetCard.clientWidth / 2);
+                    scrollTrack.scrollTo({ left: scrollOffset, behavior: 'smooth' });
                 }
             }
         }
@@ -1795,10 +1805,10 @@ function initPrecisionPipelineController() {
         isUserInteracting = false;
     });
 
-    // Auto rotate every 3.6 seconds when user is not hovering
+    // Auto rotate every 3.6 seconds when user is not hovering (pass false to NEVER trigger scrolling)
     autoTimer = setInterval(() => {
         if (!isUserInteracting) {
-            activateStage((currentStage + 1) % navItems.length);
+            activateStage((currentStage + 1) % navItems.length, false);
         }
     }, 3600);
 
