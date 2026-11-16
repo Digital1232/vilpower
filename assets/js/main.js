@@ -1240,50 +1240,57 @@ function initRotatingServiceTitles() {
         let currentIndex = 0;
         const intervalTime = 3400; // 3.4s rotation cycle
         let rotateTimer = null;
-
-        // Measure item natural width using an offscreen span with identical computed font styles
-        function measureItemWidth(item) {
-            const span = document.createElement('span');
-            span.style.visibility = 'hidden';
-            span.style.position = 'absolute';
-            span.style.whiteSpace = 'nowrap';
-            span.style.top = '-9999px';
-            span.style.left = '-9999px';
-            
-            const computed = window.getComputedStyle(wrap);
-            span.style.font = computed.font;
-            span.style.fontFamily = computed.fontFamily;
-            span.style.fontSize = computed.fontSize;
-            span.style.fontWeight = computed.fontWeight;
-            span.style.letterSpacing = computed.letterSpacing;
-            span.textContent = item.textContent;
-            
-            document.body.appendChild(span);
-            const w = span.getBoundingClientRect().width;
-            document.body.removeChild(span);
-            return Math.ceil(w);
-        }
-
-        // Cache widths
         let itemWidths = [];
-        function cacheWidths() {
-            itemWidths = Array.from(items).map(item => measureItemWidth(item));
+
+        // Accurate in-situ measurement of each item using computed font
+        function measureAll() {
+            itemWidths = [];
+            items.forEach((item, i) => {
+                const prevPos = item.style.position;
+                const prevDisplay = item.style.display;
+                const prevVis = item.style.visibility;
+                const prevTransform = item.style.transform;
+
+                item.style.position = 'relative';
+                item.style.display = 'inline-block';
+                item.style.visibility = 'hidden';
+                item.style.transform = 'none';
+
+                const rect = item.getBoundingClientRect();
+                const width = rect.width || item.offsetWidth || item.scrollWidth;
+                itemWidths[i] = Math.ceil(width);
+
+                item.style.position = prevPos;
+                item.style.display = prevDisplay;
+                item.style.visibility = prevVis;
+                item.style.transform = prevTransform;
+            });
         }
 
         function setWrapWidth(index) {
-            if (!itemWidths.length) cacheWidths();
+            if (!itemWidths.length || itemWidths.every(w => w === 0)) {
+                measureAll();
+            }
             const w = itemWidths[index] || 0;
             if (w > 0) {
-                wrap.style.width = (w + 2) + 'px';
+                wrap.style.width = w + 'px';
             }
         }
 
-        // Initial measurement
-        cacheWidths();
+        // Measure on initial execution
+        measureAll();
         setWrapWidth(0);
 
+        // Re-measure accurately when fonts finish loading or window resizes
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => {
+                measureAll();
+                setWrapWidth(currentIndex);
+            });
+        }
+
         window.addEventListener('resize', () => {
-            cacheWidths();
+            measureAll();
             setWrapWidth(currentIndex);
         });
 
