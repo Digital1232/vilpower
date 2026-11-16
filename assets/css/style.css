@@ -589,15 +589,19 @@ textarea {
 .btn-rgb-glow {
     position: relative !important;
     z-index: 0 !important;
-    border-radius: 8px !important;
+    border-radius: 9999px !important;
     overflow: hidden !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     border: none !important;
-    padding: 1px !important;
+    padding: 1.5px !important;
     background: transparent !important;
     text-decoration: none !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -626,12 +630,12 @@ textarea {
     content: '' !important;
     position: absolute !important;
     z-index: -1 !important;
-    left: 1px !important;
-    top: 1px !important;
-    width: calc(100% - 2px) !important;
-    height: calc(100% - 2px) !important;
+    left: 1.5px !important;
+    top: 1.5px !important;
+    width: calc(100% - 3px) !important;
+    height: calc(100% - 3px) !important;
     background: #ffffff !important;
-    border-radius: 7px !important;
+    border-radius: 9999px !important;
     transition: background-color 0.25s ease !important;
 }
 
@@ -709,6 +713,9 @@ textarea {
     #main-header.is-scrolled .btn-rgb-glow {
         border-radius: 9999px !important;
         overflow: hidden !important;
+        height: 36px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
     }
 
     #main-header.is-scrolled .btn-rgb-glow::after {
@@ -716,14 +723,27 @@ textarea {
     }
 
     #main-header.is-scrolled .btn-rgb-glow span {
-        padding: 0.4rem 1rem !important;
+        padding: 0 16px !important;
         border-radius: 9999px !important;
+        height: 100% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
     }
 
     #main-header.is-scrolled .btn-glare {
         border-radius: 9999px !important;
+        height: 36px !important;
         padding-left: 1.15rem !important;
         padding-right: 1.15rem !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
     }
 
     #main-header.is-scrolled .header-logo-img,
@@ -3186,4 +3206,37 @@ footer .flex.items-center.gap-6 {
 @keyframes vSpinAura {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+.btn-rgb-glow span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    padding: 0 16px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    color: #334155 !important;
+    letter-spacing: -0.01em !important;
+}
+
+.btn-rgb-glow:hover span {
+    color: #1B45BD !important;
+}
+
+.btn-glare {
+    position: relative !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 36px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
 }
