@@ -589,16 +589,34 @@ if (typeof window !== "undefined") sidebarAnimation.init();
 //#region src/js/utils/smooth-scrolling.js
 var lenis;
 var smoothScrolling = () => {
+	if (typeof Lenis === "undefined") return;
 	if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || globalThis.innerWidth <= 768 || "ontouchstart" in globalThis)) {
-		lenis = new Lenis({
-			lerp: .1,
-			smoothWheel: true
-		});
-		lenis.on("scroll", () => ScrollTrigger.update());
-		gsap.ticker.add((time) => {
-			lenis.raf(time * 1e3);
-		});
-		gsap.ticker.lagSmoothing(0);
+		try {
+			lenis = new Lenis({
+				lerp: 0.1,
+				smoothWheel: true,
+				wheelMultiplier: 1.0,
+				touchMultiplier: 1.2,
+				infinite: false
+			});
+			lenis.on("scroll", () => {
+				if (typeof ScrollTrigger !== "undefined") ScrollTrigger.update();
+			});
+			if (typeof gsap !== "undefined" && gsap.ticker) {
+				gsap.ticker.add((time) => {
+					lenis.raf(time * 1e3);
+				});
+				gsap.ticker.lagSmoothing(0);
+			} else {
+				function raf(time) {
+					lenis.raf(time);
+					requestAnimationFrame(raf);
+				}
+				requestAnimationFrame(raf);
+			}
+		} catch (err) {
+			console.warn("Lenis init fallback:", err);
+		}
 	}
 	globalThis.lenis = lenis;
 };
@@ -952,7 +970,7 @@ var initCardRotatingOnScroll = () => {
 		gsap.set(cards, {
 			x: (i) => center + adjustedRadius * Math.sin(i * slice * DEG2RAD),
 			y: (i) => center - adjustedRadius * Math.cos(i * slice * DEG2RAD),
-			rotation: (i) => i * slice,
+			rotation: 0, // Keep cards upright — never upside-down!
 			scale: CARD_SCALE,
 			xPercent: -50,
 			yPercent: -50
@@ -960,12 +978,27 @@ var initCardRotatingOnScroll = () => {
 	}
 	setup();
 	window.addEventListener("resize", setup);
-	gsap.to(wheel, {
-		rotation: -360,
-		ease: "none",
-		duration: Math.max(cards.length * 4, 16),
-		repeat: -1
-	});
+
+	if (typeof ScrollTrigger !== "undefined") {
+		gsap.to(wheel, {
+			rotation: -45,
+			ease: "none",
+			scrollTrigger: {
+				trigger: "[data-rotating-cards]",
+				start: "top bottom",
+				end: "bottom top",
+				scrub: 1.2
+			}
+		});
+	} else {
+		gsap.to(wheel, {
+			rotation: 12,
+			repeat: -1,
+			yoyo: true,
+			duration: 8,
+			ease: "sine.inOut"
+		});
+	}
 };
 document.addEventListener("DOMContentLoaded", initCardRotatingOnScroll);
 //#endregion

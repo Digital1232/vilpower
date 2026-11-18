@@ -919,15 +919,18 @@ Header
   <div data-ns-animate data-delay="0.5" class="relative overflow-hidden">
     <!-- left gradient -->
     <div
-      class="pointer-events-none absolute left-0 top-0 z-10 h-full sm:w-24 bg-linear-to-r from-background-13 to-transparent"
+      class="pointer-events-none absolute left-0 top-0 z-10 h-full sm:w-28"
+      style="background: linear-gradient(to right, var(--bg-page, #f8fafc) 0%, transparent 100%);"
     ></div>
     <!-- right gradient -->
     <div
-      class="pointer-events-none absolute right-0 top-0 z-10 h-full sm:w-24 bg-linear-to-l from-background-13 to-transparent"
+      class="pointer-events-none absolute right-0 top-0 z-10 h-full sm:w-28"
+      style="background: linear-gradient(to left, var(--bg-page, #f8fafc) 0%, transparent 100%);"
     ></div>
-    <!-- bottom gradient -->
+    <!-- bottom gradient (masks cards at lower perimeter so they never collide with About section) -->
     <div
-      class="pointer-events-none absolute bottom-0 left-0 z-10 h-24 w-full bg-linear-to-t from-background-13 to-transparent"
+      class="pointer-events-none absolute bottom-0 left-0 z-10 h-36 w-full"
+      style="background: linear-gradient(to top, var(--bg-page, #f8fafc) 25%, transparent 100%);"
     ></div>
 
     <div
