@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    // Initialize 4-Stage Precision Pipeline Controller
-    initPrecisionPipelineController();
+    // Initialize 4-Stage Precision Pipeline Scroll-Driven Stacking Cards
+    initPrecisionPipelineStack();
     // Initialize Lucide icons
     if (window.lucide) {
         lucide.createIcons();
@@ -1770,90 +1770,85 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// The 4-Stage Precision Pipeline Interactive Scrolling Controller
-function initPrecisionPipelineController() {
+// The 4-Stage Precision Pipeline — Direct 1-to-1 Smooth Scroll Controller
+function initPrecisionPipelineStack() {
     const section = document.getElementById('precision-pipeline');
     if (!section) return;
 
-    const navItems = section.querySelectorAll('.pipeline-nav-item');
-    const cards = section.querySelectorAll('.pipeline-step-card');
-    const scrollTrack = section.querySelector('.pipeline-scroll-track');
-    if (!navItems.length || !cards.length) return;
+    const pinWrap = section.querySelector('.pipeline-pin-wrap');
+    const cards = section.querySelectorAll('.pipeline-stack-card');
+    if (!pinWrap || cards.length < 4) return;
 
-    let currentStage = 0;
-    let autoTimer = null;
-    let isUserInteracting = false;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function activateStage(idx, scrollIntoView = true) {
-        currentStage = (idx + navItems.length) % navItems.length;
+    // Helper functions
+    const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+    // Smooth natural easing
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-        // Update left nav items
-        navItems.forEach((item, i) => {
-            if (i === currentStage) {
-                item.classList.add('active-stage');
-            } else {
-                item.classList.remove('active-stage');
-            }
-        });
+    let ticking = false;
 
-        // Update right cards
-        cards.forEach((card, i) => {
-            if (i === currentStage) {
-                card.classList.add('active-card');
-            } else {
-                card.classList.remove('active-card');
-            }
-        });
+    function update() {
+        if (window.innerWidth < 1024 || window.innerHeight < 680 || prefersReducedMotion) {
+            cards.forEach(card => {
+                card.style.transform = '';
+                card.style.opacity = '';
+            });
+            ticking = false;
+            return;
+        }
 
-        // Scroll target card horizontally inside scrollTrack ONLY (never scroll window)
-        if (scrollIntoView && scrollTrack) {
-            const targetCard = cards[currentStage];
-            if (targetCard) {
-                const trackRect = scrollTrack.getBoundingClientRect();
-                const cardRect = targetCard.getBoundingClientRect();
-                const isSectionVisible = trackRect.top < window.innerHeight && trackRect.bottom > 0;
-                if (isSectionVisible && (cardRect.left < trackRect.left || cardRect.right > trackRect.right)) {
-                    const scrollOffset = targetCard.offsetLeft - (scrollTrack.clientWidth / 2) + (targetCard.clientWidth / 2);
-                    scrollTrack.scrollTo({ left: scrollOffset, behavior: 'smooth' });
-                }
-            }
+        const rect = pinWrap.getBoundingClientRect();
+        const totalScroll = pinWrap.offsetHeight - window.innerHeight;
+        if (totalScroll <= 0) {
+            ticking = false;
+            return;
+        }
+
+        // Section scroll progress from 0 (at entry) to 1 (at exit)
+        const progress = clamp(-rect.top / totalScroll, 0, 1);
+
+        // Card 01: Stationary at top: 0px
+        cards[0].style.transform = 'translate3d(0, 0, 0)';
+        cards[0].style.opacity = '1';
+
+        // Stage 02: Rises smoothly from 140px below during progress 0.00 -> 0.33
+        const t1 = clamp(progress / 0.33, 0, 1);
+        const y1 = (1 - easeOutCubic(t1)) * 140;
+        cards[1].style.transform = `translate3d(0, ${y1.toFixed(1)}px, 0)`;
+        cards[1].style.opacity = String(clamp(t1 * 3, 0, 1));
+
+        // Stage 03: Rises smoothly from 140px below during progress 0.33 -> 0.66
+        const t2 = clamp((progress - 0.33) / 0.33, 0, 1);
+        const y2 = (1 - easeOutCubic(t2)) * 140;
+        cards[2].style.transform = `translate3d(0, ${y2.toFixed(1)}px, 0)`;
+        cards[2].style.opacity = String(clamp(t2 * 3, 0, 1));
+
+        // Stage 04: Rises smoothly from 140px below during progress 0.66 -> 0.96
+        const t3 = clamp((progress - 0.66) / 0.30, 0, 1);
+        const y3 = (1 - easeOutCubic(t3)) * 140;
+        cards[3].style.transform = `translate3d(0, ${y3.toFixed(1)}px, 0)`;
+        cards[3].style.opacity = String(clamp(t3 * 3, 0, 1));
+
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(update);
         }
     }
 
-    // Attach click and hover events
-    navItems.forEach((item, idx) => {
-        item.addEventListener('click', () => {
-            isUserInteracting = true;
-            activateStage(idx);
-        });
-        item.addEventListener('mouseenter', () => {
-            isUserInteracting = true;
-            activateStage(idx);
-        });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+        update();
     });
 
-    cards.forEach((card, idx) => {
-        card.addEventListener('click', () => {
-            isUserInteracting = true;
-            activateStage(idx);
-        });
-        card.addEventListener('mouseenter', () => {
-            isUserInteracting = true;
-            activateStage(idx);
-        });
-    });
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 
-    section.addEventListener('mouseleave', () => {
-        isUserInteracting = false;
-    });
-
-    // Auto rotate every 3.6 seconds when user is not hovering (pass false to NEVER trigger scrolling)
-    autoTimer = setInterval(() => {
-        if (!isUserInteracting) {
-            activateStage((currentStage + 1) % navItems.length, false);
-        }
-    }, 3600);
-
-    // Initial activation
-    activateStage(0, false);
+    // Initial render
+    update();
 }
