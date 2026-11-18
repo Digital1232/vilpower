@@ -334,6 +334,19 @@ button {
     z-index: 100;
 }
 
+.has-dropdown.is-open>.mega-menu-panel,
+.has-dropdown.is-open>.dropdown-menu-panel {
+    z-index: 120 !important;
+}
+
+.has-dropdown:not(.is-open):not(:hover)>.mega-menu-panel,
+.has-dropdown:not(.is-open):not(:hover)>.dropdown-menu-panel {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(6px) !important;
+}
+
 .has-dropdown:focus-within:has(:focus-visible)>.mega-menu-panel,
 .has-dropdown:focus-within:has(:focus-visible)>.dropdown-menu-panel {
     opacity: 1;
@@ -343,20 +356,15 @@ button {
     z-index: 100;
 }
 
-/* ── Dropdown Invisible Hitbox Bridge ───────────────────────────────────────
-   Bridges the physical gap between header menu and dropdown popup so slowly
-   moving the cursor down across the gap never loses hover or closes the popup. */
+/* ── Dropdown Hitbox Bridge ─────────────────────────────────────────────────
+   The dropdown menu panels already start directly at top: 100% and have pt-3
+   (12px top padding) built into their DOM structure, ensuring zero physical gap.
+   The full-width ::before pseudo-element is disabled so it never forms an invisible
+   overlay over adjacent navigation buttons (e.g. Solutions -> Industries). */
 .mega-menu-panel::before,
 .dropdown-menu-panel::before {
-    content: '' !important;
-    position: absolute !important;
-    top: -28px !important;
-    left: -20px !important;
-    right: -20px !important;
-    height: 36px !important;
-    background: transparent !important;
-    pointer-events: auto !important;
-    z-index: 10 !important;
+    display: none !important;
+    pointer-events: none !important;
 }
 
 /* Mega Menu Item Hover State (Vitara Dashed Card Effect) */
@@ -775,8 +783,8 @@ textarea {
 
     #main-header.is-scrolled .desktop-nav .dropdown-menu-panel::before,
     #main-header.is-scrolled .desktop-nav .mega-menu-panel::before {
-        top: -24px !important;
-        height: 32px !important;
+        display: none !important;
+        pointer-events: none !important;
     }
 }
 
@@ -1910,12 +1918,8 @@ textarea {
     position: relative;
 }
 
-/* Wide mega panels (Solutions + Industries) anchor left to nav container.
-   Triggered by JS adding class 'mega-anchored' to these panels at init. */
-.desktop-nav .dropdown-menu-panel.mega-anchored {
-    left: 0 !important;
-    right: auto !important;
-}
+/* Wide mega panels use their inline offset classes (-left-20, -left-48) when unscrolled,
+   and are centered horizontally under the pill when scrolled. */
 
 @media (max-width: 1023px) {
 

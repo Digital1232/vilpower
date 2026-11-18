@@ -276,10 +276,11 @@ function initRotaryDial() {
 
 // Desktop Nav Dropdown Controller — prevents stuck focus, double-activation, and overlapping panels
 function initDesktopDropdowns() {
+    const desktopNav = document.querySelector('.desktop-nav');
     const dropdownContainers = document.querySelectorAll('.desktop-nav .has-dropdown');
     if (!dropdownContainers.length) return;
 
-    // Mark wide mega panels so CSS can anchor them cleanly and center them under the floating pill
+    // Mark wide mega panels so CSS can center them under the floating pill when scrolled
     dropdownContainers.forEach(container => {
         const panel = container.querySelector('.dropdown-menu-panel, .mega-menu-panel');
         if (panel && (
@@ -294,17 +295,28 @@ function initDesktopDropdowns() {
         }
     });
 
+    const closeAllDropdowns = () => {
+        dropdownContainers.forEach(c => {
+            if (c._closeTimer) {
+                clearTimeout(c._closeTimer);
+                c._closeTimer = null;
+            }
+            c.classList.remove('is-open');
+            const b = c.querySelector('.nav-item-btn');
+            if (b && document.activeElement === b) b.blur();
+        });
+    };
+
     dropdownContainers.forEach(container => {
         const btn = container.querySelector('.nav-item-btn');
-        let closeTimer = null;
 
-        // On mouse enter, cancel pending close and open smoothly
+        // On mouse enter, cancel all pending close timers and immediately close any other open dropdowns
         container.addEventListener('mouseenter', () => {
-            if (closeTimer) {
-                clearTimeout(closeTimer);
-                closeTimer = null;
-            }
             dropdownContainers.forEach(other => {
+                if (other._closeTimer) {
+                    clearTimeout(other._closeTimer);
+                    other._closeTimer = null;
+                }
                 if (other !== container) {
                     other.classList.remove('is-open');
                     const otherBtn = other.querySelector('.nav-item-btn');
@@ -316,15 +328,19 @@ function initDesktopDropdowns() {
             container.classList.add('is-open');
         });
 
-        // Mouse leave clears is-open state with a grace period (buffer)
-        // so moving slowly across the gap never closes the submenu prematurely
+        // Mouse leave clears is-open state with a grace window (160ms)
+        // so moving cursor straight down into dropdown panel stays open smoothly
         container.addEventListener('mouseleave', () => {
-            closeTimer = setTimeout(() => {
+            if (container._closeTimer) {
+                clearTimeout(container._closeTimer);
+            }
+            container._closeTimer = setTimeout(() => {
                 container.classList.remove('is-open');
                 if (btn && document.activeElement === btn) {
                     btn.blur();
                 }
-            }, 260); // 260ms grace window ensures slow cursor motion across gap stays open
+                container._closeTimer = null;
+            }, 160);
         });
 
         // Toggle on click (for touch / keyboard)
@@ -333,11 +349,7 @@ function initDesktopDropdowns() {
                 const isCurrentlyOpen = container.classList.contains('is-open');
 
                 // Close all others first
-                dropdownContainers.forEach(other => {
-                    other.classList.remove('is-open');
-                    const otherBtn = other.querySelector('.nav-item-btn');
-                    if (otherBtn) otherBtn.blur();
-                });
+                closeAllDropdowns();
 
                 if (!isCurrentlyOpen) {
                     container.classList.add('is-open');
@@ -348,25 +360,27 @@ function initDesktopDropdowns() {
         }
     });
 
+    // When hovering over non-dropdown links in desktop-nav (e.g. Contact), close any open dropdowns immediately
+    if (desktopNav) {
+        const directNavLinks = desktopNav.querySelectorAll(':scope > a, :scope > div:not(.has-dropdown)');
+        directNavLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                closeAllDropdowns();
+            });
+        });
+    }
+
     // Close when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.desktop-nav .has-dropdown')) {
-            dropdownContainers.forEach(c => {
-                c.classList.remove('is-open');
-                const b = c.querySelector('.nav-item-btn');
-                if (b && document.activeElement === b) b.blur();
-            });
+            closeAllDropdowns();
         }
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            dropdownContainers.forEach(c => {
-                c.classList.remove('is-open');
-                const b = c.querySelector('.nav-item-btn');
-                if (b) b.blur();
-            });
+            closeAllDropdowns();
         }
     });
 }
