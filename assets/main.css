@@ -117,9 +117,9 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-inter-tight: "Inter Tight", sans-serif;
-    --color-primary-50: #f4f2fe;
-    --color-primary-500: #864ffe;
-    --color-primary-600: #7c31f6;
+    --color-primary-50: #eef4ff;
+    --color-primary-500: #1b45bd;
+    --color-primary-600: #15379b;
     --color-secondary: #1a1a1c;
     --color-accent: #fcfcfc;
     --color-background-1: #fcfcfd;

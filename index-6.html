@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VilPower Solutions — Precision Data, AI & Digital Transformation Services (Home v6)</title>
+    <meta name="description" content="VilPower delivers enterprise Data Processing, Human-in-the-Loop AI Annotation, and E-Publishing services powered by a 95%+ rural women engineering talent pool in Tamil Nadu.">
+    <meta name="keywords" content="Data services, AI data annotation, HITL, Lease abstraction, E-publishing, Digitization, GIS services, Synthetic data, VilPower Solutions">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VilPower Solutions — Data, AI & Digital Transformation">
+    <meta property="og:description" content="Empowering Global Enterprises with Precision Data, Ethical AI & Digital Transformation. 16+ Years Audited Excellence.">
+    <meta property="og:url" content="https://www.vilpower.com/index-6.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/logo/VilPower%20Logo.svg">
+    <link rel="shortcut icon" href="img/logo/VilPower%20Logo.svg">
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (v3.4) & Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#6342EC',
+                            'primary-hover': '#5233DB',
+                            'primary-light': '#F5F3FF',
+                            purple: '#7C3AED',
+                            violet: '#8B5CF6',
+                            charcoal: '#0F172A',
+                            dark: '#111827',
+                            offwhite: '#F8FAFC',
+                            lime: '#BEF264',
+                            cyan: '#38BDF8',
+                            yellow: '#FEF08A',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft-float': '0 20px 45px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.7)',
+                        'purple-glow': '0 12px 28px -6px rgba(99, 66, 236, 0.38)',
+                        'card-depth': '0 25px 60px -15px rgba(15, 23, 42, 0.10), 0 0 0 1px rgba(226, 232, 240, 0.8)',
+                        'mega-menu': '0 30px 70px -15px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.9)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Smooth base animations */
+        .mega-dropdown-menu {
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+        }
+        .mega-dropdown-parent:hover .mega-dropdown-menu,
+        .mega-dropdown-parent.is-open .mega-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Float animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.4deg); }
+        }
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(8px) rotate(-0.4deg); }
+        }
+        .animate-float-1 { animation: floatSlow 7s ease-in-out infinite; }
+        .animate-float-2 { animation: floatReverse 8s ease-in-out infinite 0.8s; }
+
+        /* Subtle glowing gradient text */
+        .text-purple-gradient {
+            background: linear-gradient(135deg, #6342EC 0%, #8B5CF6 50%, #A855F7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Shimmer effect for button */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+            transform: translateX(-150%) rotate(25deg);
+            transition: transform 0.8s ease;
+        }
+        .btn-shimmer:hover::after {
+            transform: translateX(150%) rotate(25deg);
+        }
+
+        /* 3D abstract visual glow */
+        .hero-blob-purple {
+            background: radial-gradient(circle, rgba(99, 66, 236, 0.16) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
+        }
+        .hero-blob-cyan {
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(103, 232, 249, 0.06) 50%, transparent 70%);
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#6342EC] selection:text-white min-h-screen flex flex-col">
+
+    <!-- ======================================================================
+         1. TOP HEADER NAVIGATION
+         - Home Dropdown (v1 to v6)
+         - Services Mega Dropdown (Data Services, AI Services, E-Publishing Services)
+         - Contact Us Link
+         - "Get a Quote" CTA Button
+         ====================================================================== -->
+    <header id="main-header" class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300">
+        <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3.5" aria-label="Main Navigation">
+            
+            <!-- Left: Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 text-left focus:outline-none group">
+                <img src="img/logo/VilPower%20Logo.svg" alt="VilPower Solutions Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform group-hover:scale-[1.02]">
+            </a>
+
+            <!-- Center: Desktop Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-slate-700">
+                
+                <!-- 1. HOME VERSIONS DROPDOWN -->
+                <div class="relative group py-1.5" id="home-dropdown-parent">
+                    <button type="button" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-slate-900 font-semibold hover:bg-slate-100 transition-colors cursor-pointer" aria-expanded="false" aria-haspopup="true">
+                        <i data-lucide="layers" class="w-4 h-4 text-[#1B45BD]"></i>
+                        <span>Home</span>
+                        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-blue-100 text-[#1B45BD] font-bold">v6</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+
+                    <!-- Home Versions Menu -->
+                    <div class="absolute top-full left-0 pt-2 w-64 hidden group-hover:block transition-all z-50">
+                        <div class="bg-white p-2.5 rounded-2xl shadow-xl border border-slate-200 text-xs space-y-1">
+                            <div class="px-3 py-1.5 text-[10px] font-mono text-slate-400 uppercase tracking-wider font-bold">
+                                Select Homepage Version
+                            </div>
+                            <a href="index.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                    <span>Home (v1 Orbital)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-slate-400">v1</span>
+                            </a>
+                            <a href="index-2.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                    <span>Home (v2 Classic)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-slate-400">v2</span>
+                            </a>
+                            <a href="index-3.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                    <span>Home (v3 Vaulta)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-slate-400">v3</span>
+                            </a>
+                            <a href="index-4.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                    <span>Home (v4 Nexsas)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-slate-400">v4</span>
+                            </a>
+                            <a href="index-5.html" class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-slate-50 text-slate-700 font-medium transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                    <span>Home (v5 Nexsas Hero)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-[#1B45BD]">v5</span>
+                            </a>
+                            <a href="index-6.html" class="flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-[#1B45BD] font-bold transition-colors">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#1B45BD]"></span>
+                                    <span>Home (v6 Corporate &amp; Services)</span>
+                                </span>
+                                <span class="text-[10px] font-mono text-[#1B45BD] font-bold">Active</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SERVICES MEGA DROPDOWN MENU -->
+                <div class="relative py-1.5 mega-dropdown-parent group" id="services-dropdown-parent">
+                    <button type="button" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-slate-900 font-semibold hover:bg-slate-100 transition-colors cursor-pointer" aria-expanded="false" aria-haspopup="true">
+                        <i data-lucide="grid" class="w-4 h-4 text-[#1B45BD]"></i>
+                        <span>Services</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform duration-200"></i>
+                    </button>
+
+                    <!-- MEGA DROPDOWN CONTAINER (Desktop: 3-column structured menu) -->
+                    <div class="mega-dropdown-menu absolute top-full left-[-260px] xl:left-[-310px] pt-2 w-[920px] max-w-[95vw] opacity-0 invisible pointer-events-none transform -translate-y-2 z-50">
+                        <div class="bg-white rounded-3xl p-6 lg:p-7 shadow-mega-menu border border-slate-200/90 text-xs">
+                            
+                            <!-- Mega Menu Header -->
+                            <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900 font-display">Categorized Enterprise Services</h4>
+                                    <p class="text-xs text-slate-500">Scalable data processing, AI annotation, and digital publishing pipelines.</p>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#029146] text-[11px] font-semibold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#029146] animate-pulse"></span>
+                                    <span>ISO 27001 Cleanroom Certified</span>
+                                </span>
+                            </div>
+
+                            <!-- 3 Main Columns Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+
+                                <!-- CATEGORY A: DATA SERVICES -->
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100 text-slate-900 font-bold text-sm">
+                                        <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                                            <i data-lucide="database" class="w-4 h-4"></i>
+                                        </div>
+                                        <span>Data Services</span>
+                                    </div>
+                                    <ul class="space-y-1.5 pt-1">
+                                        <li>
+                                            <a href="lease-abstraction.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Data Processing &amp; Management</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="lease-abstraction.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="building" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Lease Abstraction</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="legal-data-intelligence.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="scale" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Legal Services</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="legal-data-intelligence.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Web Research</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="xml-stm-publishing.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Document Digitization Services</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="xml-stm-publishing.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="scan-line" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Digitization Services</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>GIS Services</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- CATEGORY B: AI SERVICES -->
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100 text-slate-900 font-bold text-sm">
+                                        <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#1B45BD] flex items-center justify-center shrink-0">
+                                            <i data-lucide="cpu" class="w-4 h-4"></i>
+                                        </div>
+                                        <span>AI Services</span>
+                                    </div>
+                                    <ul class="space-y-1.5 pt-1">
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Synthetic Data Creation</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>AI Data Annotation</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="tag" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Data Labeling</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>Human-in-the-Loop (HITL) Services</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ai-data-annotation.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                <span class="flex items-center gap-2 font-medium">
+                                                    <i data-lucide="workflow" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                    <span>AI Annotation &amp; HITL Solutions</span>
+                                                </span>
+                                                <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- CATEGORY C: E-PUBLISHING SERVICES & HIGHLIGHT -->
+                                <div class="space-y-4">
+                                    <div class="space-y-3">
+                                        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100 text-slate-900 font-bold text-sm">
+                                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                                            </div>
+                                            <span>E-Publishing Services</span>
+                                        </div>
+                                        <ul class="space-y-1.5 pt-1">
+                                            <li>
+                                                <a href="e-publishing.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                    <span class="flex items-center gap-2 font-medium">
+                                                        <i data-lucide="book-marked" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                        <span>E-Publishing</span>
+                                                    </span>
+                                                    <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="e-publishing.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                    <span class="flex items-center gap-2 font-medium">
+                                                        <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                        <span>E-Learning</span>
+                                                    </span>
+                                                    <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="e-publishing.html" class="group/item flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors text-slate-700 hover:text-[#1B45BD]">
+                                                    <span class="flex items-center gap-2 font-medium">
+                                                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5 text-slate-400 group-hover/item:text-[#1B45BD]"></i>
+                                                        <span>E-Commerce Support</span>
+                                                    </span>
+                                                    <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover/item:text-[#1B45BD] group-hover/item:translate-x-0.5 transition-all"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Quick Pilot Offer Card Inside Dropdown -->
+                                    <div class="rounded-2xl p-4 bg-gradient-to-br from-blue-50 to-teal-50/70 border border-blue-100 flex flex-col justify-between">
+                                        <div class="space-y-1">
+                                            <span class="text-[10px] font-mono font-bold text-[#1B45BD] uppercase tracking-wider">Free Enterprise Pilot</span>
+                                            <p class="text-xs font-bold text-slate-900 leading-snug">Launch a 50-Record Data or Annotation Pilot with 24h TAT.</p>
+                                        </div>
+                                        <a href="#contact" class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#1B45BD] hover:text-[#15379B] transition-colors">
+                                            <span>Claim Pilot Free</span>
+                                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Mega Menu Bottom Bar -->
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                                <div class="flex items-center gap-4">
+                                    <span>&bull; Air-Gapped Cleanrooms</span>
+                                    <span>&bull; 99.7% Audited Precision SLA</span>
+                                    <span>&bull; SOC-2 &amp; GDPR Compliant</span>
+                                </div>
+                                <a href="#services" class="font-bold text-[#1B45BD] hover:underline flex items-center gap-1">
+                                    <span>View All Service Categories</span>
+                                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. CONTACT US DEDICATED LINK -->
+                <a href="contact.html" class="px-3.5 py-2 rounded-xl text-slate-900 font-semibold hover:bg-slate-100 transition-colors">
+                    Contact Us
+                </a>
+
+            </div>
+
+            <!-- Right: "Get a Quote" CTA Button & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="btn-shimmer inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold text-white bg-[#1B45BD] hover:bg-[#15379B] text-white rounded-full shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 transition-all transform hover:-translate-y-0.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i><span>Get a Quote</span>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button type="button" id="mobile-menu-toggle" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+        </nav>
+
+        <!-- MOBILE & TABLET EXPANDABLE DRAWER -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 py-6 space-y-4">
+            
+            <!-- Mobile Home Versions -->
+            <div class="border-b border-slate-100 pb-3">
+                <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-2">Homepage Versions</div>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <a href="index.html" class="p-2 rounded-lg bg-slate-50 text-slate-700">Home v1 (Orbital)</a>
+                    <a href="index-2.html" class="p-2 rounded-lg bg-slate-50 text-slate-700">Home v2 (Classic)</a>
+                    <a href="index-3.html" class="p-2 rounded-lg bg-slate-50 text-slate-700">Home v3 (Vaulta)</a>
+                    <a href="index-4.html" class="p-2 rounded-lg bg-slate-50 text-slate-700">Home v4 (Nexsas)</a>
+                    <a href="index-5.html" class="p-2 rounded-lg bg-slate-50 text-slate-700">Home v5 (Nexsas Hero)</a>
+                    <a href="index-6.html" class="p-2 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Home v6 (Corporate)</a>
+                </div>
+            </div>
+
+            <!-- Mobile Services Accordion -->
+            <div class="space-y-3">
+                <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Services Categories</div>
+                
+                <details class="group bg-slate-50 rounded-xl p-3">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer list-none text-xs">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="database" class="w-4 h-4 text-blue-600"></i>
+                            <span>Data Services</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="mt-2.5 pt-2 border-t border-slate-200/60 space-y-1.5 text-xs text-slate-600">
+                        <li><a href="lease-abstraction.html" class="block py-1">Data Processing &amp; Management</a></li>
+                        <li><a href="lease-abstraction.html" class="block py-1">Lease Abstraction</a></li>
+                        <li><a href="legal-data-intelligence.html" class="block py-1">Legal Services</a></li>
+                        <li><a href="legal-data-intelligence.html" class="block py-1">Web Research</a></li>
+                        <li><a href="xml-stm-publishing.html" class="block py-1">Document Digitization Services</a></li>
+                        <li><a href="xml-stm-publishing.html" class="block py-1">Digitization Services</a></li>
+                        <li><a href="ai-data-annotation.html" class="block py-1">GIS Services</a></li>
+                    </ul>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl p-3">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer list-none text-xs">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#1B45BD]"></i>
+                            <span>AI Services</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="mt-2.5 pt-2 border-t border-slate-200/60 space-y-1.5 text-xs text-slate-600">
+                        <li><a href="ai-data-annotation.html" class="block py-1">Synthetic Data Creation</a></li>
+                        <li><a href="ai-data-annotation.html" class="block py-1">AI Data Annotation</a></li>
+                        <li><a href="ai-data-annotation.html" class="block py-1">Data Labeling</a></li>
+                        <li><a href="ai-data-annotation.html" class="block py-1">Human-in-the-Loop (HITL) Services</a></li>
+                        <li><a href="ai-data-annotation.html" class="block py-1">AI Annotation &amp; HITL Solutions</a></li>
+                    </ul>
+                </details>
+
+                <details class="group bg-slate-50 rounded-xl p-3">
+                    <summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer list-none text-xs">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4 text-emerald-600"></i>
+                            <span>E-Publishing Services</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="mt-2.5 pt-2 border-t border-slate-200/60 space-y-1.5 text-xs text-slate-600">
+                        <li><a href="e-publishing.html" class="block py-1">E-Publishing</a></li>
+                        <li><a href="e-publishing.html" class="block py-1">E-Learning</a></li>
+                        <li><a href="e-publishing.html" class="block py-1">E-Commerce Support</a></li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Mobile Contact & CTA -->
+            <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <a href="contact.html" class="text-center py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-800">
+                    Contact Us
+                </a>
+                <a href="#contact" class="text-center py-2.5 rounded-xl bg-[#1B45BD] hover:bg-[#15379B] text-xs font-bold text-white shadow-md shadow-blue-600/20">
+                    Get a Quote
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ======================================================================
+         4. HOMEPAGE STRUCTURE
+         - Hero Section (Headline, Description, 2 CTAs, 3D abstract visual)
+         - About Section (Company intro, expertise, impact sourcing)
+         - Our Services Section (3 core categories with modern cards)
+         - Why Choose Us (Quality, Scale, Domain, HITL synergy)
+         - Our Process (4 steps)
+         - Contact Section (Professional enquiry form + "Let's Work Together")
+         - Footer
+         ====================================================================== -->
+    <main class="flex-1">
+
+        <!-- ==================================================================
+             HERO SECTION
+             ================================================================== -->
+        <section class="relative pt-12 sm:pt-16 lg:pt-20 pb-16 lg:pb-24 overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F1F5F9]">
+            
+            <!-- Soft Organic 3D Decorative Background Blobs -->
+            <div class="hero-blob-purple absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full pointer-events-none filter blur-3xl opacity-80" aria-hidden="true"></div>
+            <div class="hero-blob-cyan absolute top-1/4 -right-24 w-[550px] h-[550px] rounded-full pointer-events-none filter blur-3xl opacity-70" aria-hidden="true"></div>
+
+            <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Hero Content Left Column -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Yellow Rounded Badge -->
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FEF08A]/70 border border-[#FEF08A] text-[#854D0E] text-xs font-semibold shadow-xs">
+                            <span class="w-2 h-2 rounded-full bg-[#EAB308] animate-ping"></span>
+                            <span>Enterprise Data, AI &amp; Digital Transformation Partner</span>
+                        </div>
+
+                        <!-- Strong Corporate Headline -->
+                        <h1 data-text-reveal class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.12] font-display">
+                            Transforming Complex Data into <span class="text-purple-gradient">Audited AI Intelligence</span> &amp; Digital Growth
+                        </h1>
+
+                        <!-- Supporting Description -->
+                        <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                            VilPower delivers multi-pass audited data management, human-in-the-loop AI annotation, and digital publishing pipelines &mdash; powered by an impact-sourcing 95%+ rural women engineering workforce in Tamil Nadu.
+                        </p>
+
+                        <!-- Two CTA Buttons -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <!-- CTA 1: Explore Services -->
+                            <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#1B45BD] to-[#15379B] text-white font-bold text-sm shadow-md shadow-blue-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                                <span>Explore Services</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                            <!-- CTA 2: Contact Us -->
+                            <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white border border-slate-200 text-slate-800 font-bold text-sm shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                <i data-lucide="mail" class="w-4 h-4 text-[#6342EC]"></i>
+                                <span>Contact Us</span>
+                            </a>
+                        </div>
+
+                        <!-- Trust Mini-Bar -->
+                        <div class="pt-6 border-t border-slate-200/70 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 font-medium">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+                                <span>157M+ Records Audited</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+                                <span>99.7% Precision SLA</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
+                                <span>ISO 27001 Cleanrooms</span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Hero Visual Right Column: Abstract 3D Visual Mockup with Animations -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        
+                        <div class="relative w-full max-w-[480px]">
+                            
+                            <!-- Central 3D Visual Card -->
+                            <div class="relative rounded-3xl bg-white p-6 sm:p-8 shadow-card-depth border border-slate-200/90 overflow-hidden">
+                                
+                                <!-- Top Bar Inside Card -->
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                                    <div class="flex items-center gap-2.5">
+                                        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        <span class="font-mono text-xs font-bold text-slate-800 uppercase tracking-wider">PIPELINE TELEMETRY</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-[#029146] font-bold border border-emerald-200">ACTIVE &bull; 99.82%</span>
+                                </div>
+
+                                <!-- 3D Isometric AI & Data Workflow Graphic -->
+                                <div class="relative bg-slate-950 rounded-2xl p-5 overflow-hidden text-white font-mono text-xs">
+                                    
+                                    <!-- Sensor Reticle Grid Overlay -->
+                                    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#6342EC_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+                                    <div class="relative z-10 space-y-4">
+                                        <!-- Stream 1 -->
+                                        <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-cyan-400 flex items-center justify-center">
+                                                    <i data-lucide="database" class="w-4 h-4"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-[11px] font-bold text-slate-200">Data Management</div>
+                                                    <div class="text-[9px] text-slate-500">Structured &amp; Lease Processing</div>
+                                                </div>
+                                            </div>
+                                            <span class="text-cyan-400 font-bold text-[11px]">100% Ingested</span>
+                                        </div>
+
+                                        <!-- Stream 2 -->
+                                        <div class="p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 flex items-center justify-between">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                                                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-[11px] font-bold text-slate-200">AI Annotation &amp; HITL</div>
+                                                    <div class="text-[9px] text-purple-400">Multi-Pass Neural Verification</div>
+                                                </div>
+                                            </div>
+                                            <span class="text-emerald-400 font-bold text-[11px]">99.7% Audited</span>
+                                        </div>
+
+                                        <!-- Stream 3 -->
+                                        <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="text-[11px] font-bold text-slate-200">E-Publishing &amp; XML</div>
+                                                    <div class="text-[9px] text-slate-500">JATS 1.3 DTD Schematron</div>
+                                                </div>
+                                            </div>
+                                            <span class="text-emerald-400 font-bold text-[11px]">Validated</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Card Footer Quick Metrics -->
+                                <div class="mt-6 pt-4 border-t border-slate-100 grid grid-cols-2 gap-4 text-left">
+                                    <div>
+                                        <div class="text-[10px] text-slate-500 font-semibold uppercase">Verification Turnaround</div>
+                                        <div class="text-lg font-bold text-slate-900 font-display">&lt; 24h TAT</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-[10px] text-slate-500 font-semibold uppercase">Impact Sourcing</div>
+                                        <div class="text-lg font-bold text-[#6342EC] font-display">95%+ Women</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Floating Card 1: Precision Accuracy -->
+                            <div class="animate-float-1 absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-soft-float border border-slate-200/80 flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-[#029146] flex items-center justify-center shrink-0">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-slate-500 font-bold uppercase">Audited Quality</div>
+                                    <div class="text-base font-bold text-slate-900 font-display">99.7% Precision</div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Card 2: 157M+ Records -->
+                            <div class="animate-float-2 absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-soft-float border border-slate-200/80 flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-purple-100 text-[#6342EC] flex items-center justify-center shrink-0">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-slate-500 font-bold uppercase">Total Volume</div>
+                                    <div class="text-base font-bold text-slate-900 font-display">157M+ Records</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             ABOUT SECTION
+             ================================================================== -->
+        <section id="about" class="py-16 sm:py-24 bg-white border-t border-b border-slate-200/70">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column: About Copy -->
+                    <div class="lg:col-span-6 space-y-6">
+                        
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-[#6342EC] text-xs font-bold font-mono uppercase tracking-wider">
+                            About VilPower Solutions
+                        </div>
+
+                        <h2 class="text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight font-display">
+                            16+ Years of Proven Excellence in Data, AI &amp; Digital Publishing
+                        </h2>
+
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            VilPower Solutions India is an industry-leading knowledge process partner specializing in high-precision data operations, human-in-the-loop AI annotation, commercial real estate lease abstraction, and scientific XML publishing.
+                        </p>
+
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            Headquartered in Tamil Nadu, our distinctive <strong>social impact sourcing model</strong> employs a 95%+ rural women engineering and graduate workforce. We bridge digital employment and transformative careers while delivering ISO 27001-certified, zero-data-leakage enterprise solutions for Fortune 500 enterprises, STM publishers, and AI research labs worldwide.
+                        </p>
+
+                        <!-- Key Highlights Bullets -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="shield" class="w-5 h-5 text-[#6342EC] shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Cleanroom Security</h4>
+                                    <p class="text-[11px] text-slate-500">Air-gapped biometric facilities with zero USB or external data access.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="heart-handshake" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Impact Sourcing</h4>
+                                    <p class="text-[11px] text-slate-500">Empowering rural women graduates with tech careers and sustainable wages.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: 4 Stat Metric Cards -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-6">
+                        
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                            <span class="text-3xl sm:text-4xl font-bold text-[#6342EC] font-display">157M+</span>
+                            <div class="text-xs sm:text-sm font-bold text-slate-900 mt-2">Records Audited</div>
+                            <p class="text-[11px] text-slate-500 mt-1">Spanning computer vision, lease abstracts, and medical text.</p>
+                        </div>
+
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                            <span class="text-3xl sm:text-4xl font-bold text-emerald-600 font-display">99.7%</span>
+                            <div class="text-xs sm:text-sm font-bold text-slate-900 mt-2">Audited Precision</div>
+                            <p class="text-[11px] text-slate-500 mt-1">Multi-tier QA review by senior subject matter domain specialists.</p>
+                        </div>
+
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                            <span class="text-3xl sm:text-4xl font-bold text-blue-600 font-display">1,500+</span>
+                            <div class="text-xs sm:text-sm font-bold text-slate-900 mt-2">Dedicated Specialists</div>
+                            <p class="text-[11px] text-slate-500 mt-1">Full-time, thoroughly trained and vetted engineering talent pool.</p>
+                        </div>
+
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                            <span class="text-3xl sm:text-4xl font-bold text-slate-900 font-display">&lt; 24h</span>
+                            <div class="text-xs sm:text-sm font-bold text-slate-900 mt-2">Pilot Turnaround</div>
+                            <p class="text-[11px] text-slate-500 mt-1">Rapid proof-of-concept turnaround with zero obligation.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================================
+             OUR SERVICES SECTION
+             Categorized 3 Core Services with Modern Cards & Deep Subservices
+             ================================================================== -->
+        <section id="services" class="py-16 sm:py-24 bg-[#F8FAFC]">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-[#6342EC] text-xs font-bold font-mono uppercase tracking-wider">
+                        Enterprise Solutions
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-display">
+                        Our Core Service Categories
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        End-to-end data processing, cutting-edge AI annotation, and scientific digital publishing pipelines engineered for mission-critical accuracy.
+                    </p>
+                </div>
+
+                <!-- 3 Service Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- SERVICE CARD 1: DATA SERVICES -->
+                    <div class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-soft-float hover:shadow-card-depth hover:-translate-y-1 transition-all flex flex-col justify-between group">
+                        <div class="space-y-5">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 font-display group-hover:text-blue-600 transition-colors">
+                                    Data Services
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+                                    High-volume data processing, document digitization, legal abstraction, and spatial data transformation.
+                                </p>
+                            </div>
+
+                            <!-- Subservices Checklist -->
+                            <div class="space-y-2 pt-2 border-t border-slate-100">
+                                <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Included Subservices:</div>
+                                <ul class="space-y-2 text-xs text-slate-700">
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Data Processing &amp; Management</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Commercial Lease Abstraction</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Legal Services &amp; Research</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Web Research &amp; Market Intelligence</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Document Digitization Services</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>Digitization Services &amp; OCR</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-blue-500 shrink-0"></i>
+                                        <span>GIS &amp; Spatial Data Services</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 mt-6 border-t border-slate-100">
+                            <a href="lease-abstraction.html" class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors">
+                                <span>Learn More About Data Services</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SERVICE CARD 2: AI SERVICES -->
+                    <div class="bg-white rounded-3xl p-7 sm:p-8 border border-purple-200/90 shadow-soft-float hover:shadow-card-depth hover:-translate-y-1 transition-all flex flex-col justify-between relative group">
+                        <!-- Popular Tag -->
+                        <div class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-[#1B45BD] to-[#15379B] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                            High Demand
+                        </div>
+
+                        <div class="space-y-5">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-[#6342EC] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 font-display group-hover:text-[#6342EC] transition-colors">
+                                    AI Services
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+                                    Enterprise computer vision, NLP/NER, LiDAR 3D cloud, and multi-tier Human-in-the-Loop AI annotation.
+                                </p>
+                            </div>
+
+                            <!-- Subservices Checklist -->
+                            <div class="space-y-2 pt-2 border-t border-slate-100">
+                                <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Included Subservices:</div>
+                                <ul class="space-y-2 text-xs text-slate-700">
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-[#6342EC] shrink-0"></i>
+                                        <span>Synthetic Data Creation</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-[#6342EC] shrink-0"></i>
+                                        <span>AI Data Annotation (2D / 3D / LiDAR)</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-[#6342EC] shrink-0"></i>
+                                        <span>High-Volume Data Labeling</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-[#6342EC] shrink-0"></i>
+                                        <span>Human-in-the-Loop (HITL) Services</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-[#6342EC] shrink-0"></i>
+                                        <span>AI Annotation &amp; HITL Solutions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 mt-6 border-t border-slate-100">
+                            <a href="ai-data-annotation.html" class="inline-flex items-center gap-2 text-xs font-bold text-[#6342EC] hover:text-purple-800 transition-colors">
+                                <span>Learn More About AI Services</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SERVICE CARD 3: E-PUBLISHING SERVICES -->
+                    <div class="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-soft-float hover:shadow-card-depth hover:-translate-y-1 transition-all flex flex-col justify-between group">
+                        <div class="space-y-5">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 font-display group-hover:text-emerald-600 transition-colors">
+                                    E-Publishing Services
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+                                    STM scientific publishing, JATS 1.3 XML conversion, e-learning production, and catalog e-commerce support.
+                                </p>
+                            </div>
+
+                            <!-- Subservices Checklist -->
+                            <div class="space-y-2 pt-2 border-t border-slate-100">
+                                <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Included Subservices:</div>
+                                <ul class="space-y-2 text-xs text-slate-700">
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                        <span>E-Publishing &amp; XML / EPUB3 Transformation</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                        <span>E-Learning Courseware &amp; SCORM Content</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                        <span>E-Commerce Catalog &amp; Product Support</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i>
+                                        <span>JATS 1.3 / PubMed Central Schema Compliance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 mt-6 border-t border-slate-100">
+                            <a href="e-publishing.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 hover:text-emerald-800 transition-colors">
+                                <span>Learn More About E-Publishing</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================================
+             WHY CHOOSE US SECTION
+             4 Key Pillars: Quality, Scale, Domain Expertise, HITL Synergy
+             ================================================================== -->
+        <section class="py-16 sm:py-24 bg-white border-t border-b border-slate-200/70">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#029146] text-xs font-bold font-mono uppercase tracking-wider">
+                        The VilPower Advantage
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-display">
+                        Why Leading Global Enterprises Choose Us
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Precision engineering, multi-tier QA auditing, and a dedicated career workforce eliminate errors and reduce operational overhead.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Pillar 1: Quality-Focused Solutions -->
+                    <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:bg-white hover:shadow-card-depth hover:border-purple-200 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-[#6342EC] flex items-center justify-center">
+                            <i data-lucide="target" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Quality-Focused Solutions</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            99.7% audited accuracy maintained through multi-pass human verification, automated regression tests, and zero-defect QA protocols.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2: Scalable Service Delivery -->
+                    <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:bg-white hover:shadow-card-depth hover:border-purple-200 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Scalable Service Delivery</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Elastic scaling from dedicated squads of 10 to 500+ full-time specialists ready to match aggressive sprint deadlines with zero quality drift.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3: Domain Expertise -->
+                    <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:bg-white hover:shadow-card-depth hover:border-purple-200 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Deep Domain Expertise</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            16+ years delivering mission-critical accuracy for autonomous mobility pioneers, Tier-1 academic publishers, and commercial real estate REITs.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4: Human + AI Synergy -->
+                    <div class="bg-slate-50 rounded-3xl p-6 sm:p-7 border border-slate-200/80 hover:bg-white hover:shadow-card-depth hover:border-purple-200 transition-all space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                            <i data-lucide="workflow" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Human + AI Synergy</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Combining automated pre-annotation and model-assisted tooling with rigorous human judgment for complex edge-cases and critical outputs.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================================
+             OUR PROCESS SECTION
+             4 Progressive Steps: Analysis -> Planning -> Execution -> Delivery
+             ================================================================== -->
+        <section class="py-16 sm:py-24 bg-[#F8FAFC]">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold font-mono uppercase tracking-wider">
+                        Workflow Methodology
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-display">
+                        Our 4-Stage Audited Process
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        A structured, transparent lifecycle engineered for rapid deployment, zero data leakage, and verified quality outputs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                    
+                    <!-- Step 1: Requirement Analysis -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs relative space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-[#6342EC] font-bold font-mono flex items-center justify-center text-sm">
+                                01
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">Phase 1</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Requirement Analysis</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Detailed taxonomy review, edge-case definition, security requirements, and a free 50-record calibration pilot to set clear precision SLAs.
+                        </p>
+                    </div>
+
+                    <!-- Step 2: Solution Planning -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs relative space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 font-bold font-mono flex items-center justify-center text-sm">
+                                02
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">Phase 2</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Solution Planning</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Cleanroom configuration, pipeline tooling integration, annotator skill certification, and multi-tier quality checklist configuration.
+                        </p>
+                    </div>
+
+                    <!-- Step 3: Execution & QA -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs relative space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 font-bold font-mono flex items-center justify-center text-sm">
+                                03
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">Phase 3</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Execution &amp; QA</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Active multi-pass human execution combined with real-time automated validation checks and senior auditor spot-checks.
+                        </p>
+                    </div>
+
+                    <!-- Step 4: Delivery & Support -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs relative space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 font-bold font-mono flex items-center justify-center text-sm">
+                                04
+                            </div>
+                            <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">Phase 4</span>
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 font-display">Delivery &amp; Support</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Encrypted delivery via secure API/S3 endpoints, full compliance audit certificate, and continuous feedback loop integration.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================================================================
+             CONTACT SECTION
+             Professional Enquiry Form + "Let's Work Together" CTA
+             ================================================================== -->
+        <section id="contact" class="py-16 sm:py-24 bg-white border-t border-slate-200/70">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left: Contact Details & Value Prop -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-[#6342EC] text-xs font-bold font-mono uppercase tracking-wider">
+                            Get In Touch
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight font-display">
+                            Let's Work Together on Your Next Data or AI Milestone
+                        </h2>
+
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                            Request a consultation, explore custom pricing, or activate a <strong>Free 50-Record Calibration Pilot</strong> with zero obligation. Our engineering team responds within 24 hours.
+                        </p>
+
+                        <!-- Contact Channels Card -->
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-purple-100 text-[#6342EC] flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] font-bold text-slate-500 uppercase">Direct Email</div>
+                                    <a href="mailto:contact@vilpower.com" class="text-sm font-bold text-slate-900 hover:text-[#6342EC] transition-colors">contact@vilpower.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] font-bold text-slate-500 uppercase">Enterprise Security</div>
+                                    <div class="text-sm font-bold text-slate-900">Mutual NDA Executed Upfront</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <div class="text-[11px] font-bold text-slate-500 uppercase">Guaranteed SLA</div>
+                                    <div class="text-sm font-bold text-slate-900">&lt; 24 Hour Pilot Turnaround</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Professional Enquiry Form -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-card-depth border border-slate-200/90">
+                            
+                            <h3 class="text-xl font-bold text-slate-900 mb-6 font-display">Request a Quote / Project Brief</h3>
+
+                            <form id="quote-form" onsubmit="event.preventDefault(); alert('Thank you! Your quote request has been received. Our team will contact you within 24 hours.');" class="space-y-4">
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <!-- Field 1: Name -->
+                                    <div class="space-y-1.5 text-left">
+                                        <label for="form-name" class="block text-xs font-bold text-slate-700">Full Name *</label>
+                                        <input type="text" id="form-name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6342EC] text-xs sm:text-sm bg-slate-50/50">
+                                    </div>
+
+                                    <!-- Field 2: Business Email -->
+                                    <div class="space-y-1.5 text-left">
+                                        <label for="form-email" class="block text-xs font-bold text-slate-700">Business Email *</label>
+                                        <input type="email" id="form-email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6342EC] text-xs sm:text-sm bg-slate-50/50">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <!-- Field 3: Company -->
+                                    <div class="space-y-1.5 text-left">
+                                        <label for="form-company" class="block text-xs font-bold text-slate-700">Company Name *</label>
+                                        <input type="text" id="form-company" required placeholder="Acme AI Corp" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6342EC] text-xs sm:text-sm bg-slate-50/50">
+                                    </div>
+
+                                    <!-- Field 4: Required Service Category -->
+                                    <div class="space-y-1.5 text-left">
+                                        <label for="form-service" class="block text-xs font-bold text-slate-700">Required Service *</label>
+                                        <select id="form-service" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6342EC] text-xs sm:text-sm bg-slate-50/50">
+                                            <option value="">Select a Service Category...</option>
+                                            <optgroup label="Data Services">
+                                                <option value="data-processing">Data Processing &amp; Management</option>
+                                                <option value="lease-abstraction">Lease Abstraction</option>
+                                                <option value="legal-services">Legal Services</option>
+                                                <option value="web-research">Web Research</option>
+                                                <option value="document-digitization">Document Digitization</option>
+                                                <option value="gis-services">GIS Services</option>
+                                            </optgroup>
+                                            <optgroup label="AI Services">
+                                                <option value="synthetic-data">Synthetic Data Creation</option>
+                                                <option value="ai-annotation">AI Data Annotation (Vision/LiDAR)</option>
+                                                <option value="data-labeling">High-Volume Data Labeling</option>
+                                                <option value="hitl-services">Human-in-the-Loop (HITL) Services</option>
+                                            </optgroup>
+                                            <optgroup label="E-Publishing Services">
+                                                <option value="e-publishing">E-Publishing &amp; XML Conversion</option>
+                                                <option value="e-learning">E-Learning Courseware</option>
+                                                <option value="e-commerce">E-Commerce Support</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Field 5: Message -->
+                                <div class="space-y-1.5 text-left">
+                                    <label for="form-message" class="block text-xs font-bold text-slate-700">Project Details / Scope *</label>
+                                    <textarea id="form-message" rows="4" required placeholder="Tell us about your volume, taxonomy, timeline, or pilot requirements..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#6342EC] text-xs sm:text-sm bg-slate-50/50"></textarea>
+                                </div>
+
+                                <!-- Strong "Let's Work Together" CTA Button -->
+                                <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-[#1B45BD] to-[#15379B] text-white font-bold text-sm shadow-md shadow-blue-600/20 hover:shadow-xl hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                                    <span>Let's Work Together</span>
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                </button>
+
+                                <p class="text-[11px] text-center text-slate-400 pt-1">
+                                    &bull; Strict NDA Protected &bull; 100% Confidential &bull; Response Within 24 Hours
+                                </p>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ======================================================================
+         FOOTER
+         - Logo & Description
+         - Quick Links
+         - Categorized Services Links
+         - Contact Info
+         - Social Media Links
+         ====================================================================== -->
+    <footer class="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
+        
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                
+                <!-- Col 1: Logo & Company Description -->
+                <div class="md:col-span-4 space-y-4">
+                    <img src="img/logo/VilPower%20Logo.svg" alt="VilPower Solutions" class="h-10 w-auto brightness-0 invert">
+                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed pr-6">
+                        VilPower Solutions delivers multi-pass audited data processing, human-in-the-loop AI annotation, and scientific XML publishing &mdash; powered by an impact-sourcing 95%+ rural women engineering talent pool.
+                    </p>
+                    <div class="pt-2 text-[11px] font-mono text-slate-500">
+                        ISO 27001 Cleanrooms &bull; SOC-2 Compliant &bull; GDPR Ready
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="md:col-span-2 space-y-3">
+                    <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home (v1 Orbital)</a></li>
+                        <li><a href="index-5.html" class="hover:text-white transition-colors">Home (v5 Nexsas Hero)</a></li>
+                        <li><a href="index-6.html" class="hover:text-white text-purple-400 font-bold transition-colors">Home (v6 Corporate)</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About VilPower</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services Overview</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact Page</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Categorized Services Links -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider">Services Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="lease-abstraction.html" class="hover:text-white transition-colors">Data Processing &amp; Management</a></li>
+                        <li><a href="lease-abstraction.html" class="hover:text-white transition-colors">Commercial Lease Abstraction</a></li>
+                        <li><a href="legal-data-intelligence.html" class="hover:text-white transition-colors">Legal Services &amp; Research</a></li>
+                        <li><a href="ai-data-annotation.html" class="hover:text-white transition-colors">AI Data Annotation &amp; HITL</a></li>
+                        <li><a href="ai-data-annotation.html" class="hover:text-white transition-colors">Synthetic Data Creation</a></li>
+                        <li><a href="e-publishing.html" class="hover:text-white transition-colors">E-Publishing &amp; JATS 1.3 XML</a></li>
+                        <li><a href="e-publishing.html" class="hover:text-white transition-colors">E-Learning &amp; E-Commerce</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info & Social Media Links -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider">Contact &amp; Connect</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-3.5 h-3.5 text-purple-400"></i>
+                            <a href="mailto:contact@vilpower.com" class="hover:text-white">contact@vilpower.com</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-purple-400"></i>
+                            <span>Tamil Nadu, India (Global Delivery)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-3.5 h-3.5 text-purple-400"></i>
+                            <span>24/7 Global Cleanroom Operations</span>
+                        </li>
+                    </ul>
+
+                    <!-- Social Media Links -->
+                    <div class="pt-3 border-t border-slate-800">
+                        <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2.5">Social Media</div>
+                        <div class="flex items-center gap-3">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500 transition-colors" aria-label="LinkedIn">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500 transition-colors" aria-label="X / Twitter">
+                                <i data-lucide="twitter" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500 transition-colors" aria-label="GitHub">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://youtube.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500 transition-colors" aria-label="YouTube">
+                                <i data-lucide="youtube" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Strip -->
+            <div class="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+                <div>
+                    &copy; 2026 VilPower Solutions India Private Limited. All rights reserved.
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="contact.html" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="contact.html" class="hover:text-slate-400">Terms of Service</a>
+                    <a href="contact.html" class="hover:text-slate-400">Cleanroom Compliance</a>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ======================================================================
+         INTERACTIVE JAVASCRIPT
+         - Lucide Icons
+         - Mobile Menu Toggle
+         - Smooth Dropdown Logic
+         ====================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide Icons
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+
+            // 2. Mobile Menu Drawer Toggle
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // 3. Desktop Click-Outside Close for Mega Dropdown
+            const servicesParent = document.getElementById('services-dropdown-parent');
+            if (servicesParent) {
+                const btn = servicesParent.querySelector('button');
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    servicesParent.classList.toggle('is-open');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!servicesParent.contains(e.target)) {
+                        servicesParent.classList.remove('is-open');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Nexsas Motion & Interactive Engine Scripts -->
+    <script src="vendor/split-text.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/scroll-trigger.min.js"></script>
+    <script src="vendor/custom-ease.min.js"></script>
+    <script src="vendor/lenis.min.js"></script>
+    <script src="assets/main.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

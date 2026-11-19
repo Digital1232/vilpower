@@ -3711,3 +3711,92 @@ footer .flex.items-center.gap-6 {
         transform: translate(-50%, -50%) rotateZ(-360deg) rotateX(-68deg);
     }
 }
+
+
+/* ==========================================================================
+   GLOBAL PAGE PRELOADER & STAGGERED CASCADE ENTRANCE ANIMATIONS (Nexsas Style)
+   ========================================================================== */
+#page-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Staggered Page Cascade on Load */
+body:not(.page-ready) #main-header {
+    opacity: 0;
+    transform: translateY(-18px);
+}
+body.page-ready #main-header {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}
+
+body:not(.page-ready) .hero-cascade-badge,
+body:not(.page-ready) .v-hero-outer .inline-flex,
+body:not(.page-ready) .hero-cascade-1 {
+    opacity: 0;
+    transform: translateY(18px);
+}
+body.page-ready .hero-cascade-badge,
+body.page-ready .v-hero-outer .inline-flex,
+body.page-ready .hero-cascade-1 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+body:not(.page-ready) .hero-cascade-2 {
+    opacity: 0;
+    transform: translateY(22px);
+}
+body.page-ready .hero-cascade-2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+body:not(.page-ready) .v-hero-outer p,
+body:not(.page-ready) .hero-cascade-3 {
+    opacity: 0;
+    transform: translateY(18px);
+}
+body.page-ready .v-hero-outer p,
+body.page-ready .hero-cascade-3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+}
+
+body:not(.page-ready) .v-hero-outer .btn-glare,
+body:not(.page-ready) .v-hero-outer .btn-rgb-glow,
+body:not(.page-ready) .hero-cascade-4 {
+    opacity: 0;
+    transform: translateY(16px);
+}
+body.page-ready .v-hero-outer .btn-glare,
+body.page-ready .v-hero-outer .btn-rgb-glow,
+body.page-ready .hero-cascade-4 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+}
+
+body:not(.page-ready) .v-hero-card,
+body:not(.page-ready) .hero-cascade-5 {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+}
+body.page-ready .v-hero-card,
+body.page-ready .hero-cascade-5 {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
+}

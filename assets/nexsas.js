@@ -979,26 +979,34 @@ var initCardRotatingOnScroll = () => {
 	setup();
 	window.addEventListener("resize", setup);
 
+	// Synchronized upright counter-rotation: cards stay 100% horizontal and perfectly readable at all times
+	function keepCardsUpright() {
+		const currentRot = gsap.getProperty(wheel, "rotation");
+		gsap.set(cards, { rotation: -currentRot });
+	}
+
+	// Smooth continuous Ferris wheel rotation
+	const wheelTween = gsap.to(wheel, {
+		rotation: -360,
+		repeat: -1,
+		duration: 45,
+		ease: "none",
+		onUpdate: keepCardsUpright
+	});
+
+	// Optional: subtle speed-up on scroll without breaking upright alignment
 	if (typeof ScrollTrigger !== "undefined") {
-		gsap.to(wheel, {
-			rotation: -45,
-			ease: "none",
-			scrollTrigger: {
-				trigger: "[data-rotating-cards]",
-				start: "top bottom",
-				end: "bottom top",
-				scrub: 1.2
+		ScrollTrigger.create({
+			trigger: "[data-rotating-cards]",
+			start: "top bottom",
+			end: "bottom top",
+			onUpdate: (self) => {
+				// keep cards strictly upright during any scroll acceleration
+				keepCardsUpright();
 			}
 		});
-	} else {
-		gsap.to(wheel, {
-			rotation: 12,
-			repeat: -1,
-			yoyo: true,
-			duration: 8,
-			ease: "sine.inOut"
-		});
 	}
+	keepCardsUpright();
 };
 document.addEventListener("DOMContentLoaded", initCardRotatingOnScroll);
 //#endregion
