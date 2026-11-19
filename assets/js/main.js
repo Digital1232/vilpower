@@ -1872,59 +1872,8 @@ function initPrecisionPipelineStack() {
 
 // Global Page Preloader & Smooth Cascade Entrance (Nexsas SaaS Style)
 function initPagePreloader() {
-    let preloader = document.getElementById('page-preloader');
-    
-    // Auto-inject preloader if not already present in the DOM
-    if (!preloader) {
-        preloader = document.createElement('div');
-        preloader.id = 'page-preloader';
-        preloader.className = 'fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white transition-all duration-500 ease-out';
-        preloader.innerHTML = `
-            <div class="relative flex flex-col items-center">
-                <div class="absolute w-24 h-24 rounded-full bg-gradient-to-tr from-[#1B45BD]/20 to-[#029146]/30 blur-xl animate-pulse"></div>
-                <div class="relative w-16 h-16 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center p-2.5 mb-4">
-                    <img src="img/logo/vilpower-tree.png" alt="VilPower" class="w-full h-full object-contain">
-                    <div class="absolute -inset-1 rounded-[18px] border-2 border-transparent border-t-[#1B45BD] border-r-[#029146] animate-spin" style="animation-duration: 1.1s;"></div>
-                </div>
-                <div class="flex items-center gap-2 text-xs font-bold text-slate-800 tracking-wider uppercase font-mono mb-2">
-                    <span>VilPower</span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#1B45BD] animate-ping"></span>
-                </div>
-                <div class="w-32 h-1 bg-slate-100 rounded-full overflow-hidden">
-                    <div id="preloader-bar" class="h-full bg-gradient-to-r from-[#1B45BD] via-[#15379B] to-[#029146] rounded-full transition-all duration-300" style="width: 25%;"></div>
-                </div>
-            </div>
-        `;
-        document.body.prepend(preloader);
-    }
-
-    const bar = document.getElementById('preloader-bar');
-    if (bar) {
-        setTimeout(() => { bar.style.width = '70%'; }, 100);
-        setTimeout(() => { bar.style.width = '100%'; }, 320);
-    }
-
-    const dismissPreloader = () => {
-        if (!preloader || preloader.classList.contains('dismissed')) return;
-        preloader.classList.add('dismissed');
-        preloader.style.opacity = '0';
-        preloader.style.transform = 'scale(1.02)';
-        preloader.style.pointerEvents = 'none';
-
-        // Trigger cascade entrance on page contents
-        document.body.classList.add('page-ready');
-
-        setTimeout(() => {
-            if (preloader.parentNode) {
-                preloader.remove();
-            }
-        }, 550);
-    };
-
-    if (document.readyState === 'complete') {
-        setTimeout(dismissPreloader, 380);
-    } else {
-        window.addEventListener('load', () => setTimeout(dismissPreloader, 320));
-        setTimeout(dismissPreloader, 900); // Fail-safe
-    }
+    // Immediately set page ready so on-load animations fire instantly without blocking preloader
+    document.body.classList.add('page-ready');
+    const existing = document.getElementById('page-preloader');
+    if (existing) existing.remove();
 }

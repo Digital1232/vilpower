@@ -3800,3 +3800,41 @@ body.page-ready .hero-cascade-5 {
     transform: scale(1) translateY(0);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
 }
+
+/* ==========================================================================
+   Nexsas Animation Core System (Masked Text Reveal & Staggered Scroll Motion)
+   ========================================================================== */
+[data-ns-animate],
+[data-text-reveal],
+[data-ns-avatar] {
+    opacity: 0;
+}
+
+.line-mask {
+    position: relative;
+    display: block;
+    overflow: hidden !important;
+}
+
+.line {
+    position: relative;
+    display: block;
+}
+
+.word {
+    position: relative;
+    display: inline-block;
+}
+
+.letter {
+    position: relative;
+    display: inline-block;
+}
+
+/* Fallback if JS fails */
+.no-js [data-text-reveal],
+.no-js [data-ns-animate],
+body.animation-fallback [data-text-reveal],
+body.animation-fallback [data-ns-animate] {
+    opacity: 1 !important;
+}

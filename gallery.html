@@ -47,51 +47,6 @@
 
 <body class="w-full flex flex-col min-h-screen text-slate-900 bg-slate-50 selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- ==========================================================================
-         GLOBAL PRELOADER (Nexsas Style Loading Animation)
-         ========================================================================== -->
-    <div id="page-preloader" class="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white transition-all duration-500 ease-out">
-        <div class="relative flex flex-col items-center">
-            <div class="absolute w-24 h-24 rounded-full bg-gradient-to-tr from-[#1B45BD]/20 to-[#6342EC]/30 blur-xl animate-pulse"></div>
-            <div class="relative w-16 h-16 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center p-2.5 mb-4">
-                <img src="img/logo/vilpower-tree.png" alt="VilPower Logo" class="w-full h-full object-contain">
-                <div class="absolute -inset-1 rounded-[18px] border-2 border-transparent border-t-[#6342EC] border-r-[#1B45BD] animate-spin" style="animation-duration: 1.1s;"></div>
-            </div>
-            <div class="flex items-center gap-2 text-xs font-bold text-slate-800 tracking-wider uppercase font-mono mb-2">
-                <span>VilPower</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-[#6342EC] animate-ping"></span>
-            </div>
-            <div class="w-32 h-1 bg-slate-100 rounded-full overflow-hidden">
-                <div id="preloader-bar" class="h-full bg-gradient-to-r from-[#1B45BD] via-[#6342EC] to-[#029146] rounded-full transition-all duration-300" style="width: 25%;"></div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Scroll Progress Indicator -->
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[#1B45BD] to-[#029146] z-[60] transition-all duration-75" style="width: 0%;"></div>
-
-    <!-- Top Announcement Bar -->
-    <aside class="bg-white border-b border-slate-200 text-[11px] sm:text-xs py-2 px-4 sm:px-6 relative z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3 truncate">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#eff4ff] text-[#1B45BD] border border-[#bfdbfe] text-[10px] font-mono font-semibold shrink-0">
-                    <span class="w-2 h-2 rounded-full bg-[#1B45BD] ai-pulse-dot"></span>
-                    <span>VISUAL EVIDENCE</span>
-                </span>
-                <span class="truncate text-slate-600">
-                    Tour our Tamil Nadu Cleanrooms • Dual-Monitor Workstations • Air-Gapped Vaults
-                </span>
-            </div>
-            <button onclick="openPilotModal()" class="text-[#1B45BD] hover:text-[#15379b] font-bold transition-colors flex items-center gap-1 text-xs shrink-0">
-                <span>Free Pilot Batch</span>
-                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-            </button>
-        </div>
-    </aside>
-
-    <!-- Header Navigation -->
-    <!-- Main Navigation Header (Client Preview Mode) -->
     <header id="main-header" class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300">
         <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3.5" aria-label="Main Navigation">
             
@@ -710,7 +665,7 @@
             </form>
         </div>
     </div>
-    <script src="assets/js/main.js"></script><!-- VilPower AI Assistant Widget -->
+    <!-- VilPower AI Assistant Widget -->
     <div id="vp-chat-widget" aria-live="polite">
         <div id="vp-chat-window" class="vp-chat-window" role="dialog" aria-modal="true" aria-label="VilPower AI Assistant" style="display:none;">
             <div class="vp-chat-header">
@@ -734,11 +689,16 @@
         </button>
     </div>
     <!-- Nexsas Motion & Interactive Engine Scripts -->
+    
+    <!-- Nexsas Motion & Interactive Engine Scripts -->
     <script src="vendor/split-text.min.js"></script>
     <script src="vendor/gsap.min.js"></script>
     <script src="vendor/scroll-trigger.min.js"></script>
     <script src="vendor/custom-ease.min.js"></script>
     <script src="vendor/lenis.min.js"></script>
+    <script src="vendor/springer.min.js"></script>
+    <script src="vendor/number-flow.min.js"></script>
     <script src="assets/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

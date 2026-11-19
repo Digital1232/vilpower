@@ -1693,7 +1693,26 @@ function initMaskedTextReveal() {
 		});
 	});
 }
-document.addEventListener("DOMContentLoaded", () => {
-	document.fonts.ready.then(initMaskedTextReveal);
-});
+function startMaskedReveal() {
+	initMaskedTextReveal();
+	if (typeof ScrollTrigger !== "undefined") {
+		setTimeout(() => ScrollTrigger.refresh(), 100);
+	}
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", () => {
+		if (document.fonts && document.fonts.ready) {
+			document.fonts.ready.then(startMaskedReveal).catch(startMaskedReveal);
+		} else {
+			startMaskedReveal();
+		}
+	});
+} else {
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(startMaskedReveal).catch(startMaskedReveal);
+	} else {
+		startMaskedReveal();
+	}
+}
 //#endregion

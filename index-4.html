@@ -202,30 +202,6 @@ Head links
 
   <body>
 
-    <!-- ==========================================================================
-         GLOBAL PRELOADER (Nexsas Style Loading Animation)
-         ========================================================================== -->
-    <div id="page-preloader" class="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white transition-all duration-500 ease-out">
-        <div class="relative flex flex-col items-center">
-            <div class="absolute w-24 h-24 rounded-full bg-gradient-to-tr from-[#1B45BD]/20 to-[#6342EC]/30 blur-xl animate-pulse"></div>
-            <div class="relative w-16 h-16 rounded-2xl bg-white shadow-xl border border-slate-100 flex items-center justify-center p-2.5 mb-4">
-                <img src="img/logo/vilpower-tree.png" alt="VilPower Logo" class="w-full h-full object-contain">
-                <div class="absolute -inset-1 rounded-[18px] border-2 border-transparent border-t-[#6342EC] border-r-[#1B45BD] animate-spin" style="animation-duration: 1.1s;"></div>
-            </div>
-            <div class="flex items-center gap-2 text-xs font-bold text-slate-800 tracking-wider uppercase font-mono mb-2">
-                <span>VilPower</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-[#6342EC] animate-ping"></span>
-            </div>
-            <div class="w-32 h-1 bg-slate-100 rounded-full overflow-hidden">
-                <div id="preloader-bar" class="h-full bg-gradient-to-r from-[#1B45BD] via-[#6342EC] to-[#029146] rounded-full transition-all duration-300" style="width: 25%;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =========================
-Header
-===========================-->
-<!-- Main Navigation Header (Client Preview Mode) -->
     <header id="main-header" class="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-xl transition-all duration-300">
         <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3.5" aria-label="Main Navigation">
             
@@ -646,8 +622,8 @@ Header
         class="w-full lg:w-[70%] gap-y-10 lg:gap-y-0 flex items-center lg:items-start justify-between flex-col h-full"
       >
         <div class="space-y-4 text-center md:text-left">
-          <h1 class="text-heading-2 lg:text-heading-1 font-semibold text-secondary">Human-in-the-Loop AI &amp; Enterprise Data Operations</h1>
-          <p class="text-tagline-1 text-secondary/80 max-w-xl">99.7% precision Human-in-the-Loop data annotation, STM XML publishing, and commercial lease abstraction <br class="hidden md:block" />powered by an impact-sourcing 95%+ rural women workforce in Tamil Nadu, India.</p>
+          <h1 data-text-reveal data-delay="0.1" class="text-heading-2 lg:text-heading-1 font-semibold text-secondary">Human-in-the-Loop AI &amp; Enterprise Data Operations</h1>
+          <p data-text-reveal data-delay="0.2" class="text-tagline-1 text-secondary/80 max-w-xl">99.7% precision Human-in-the-Loop data annotation, STM XML publishing, and commercial lease abstraction <br class="hidden md:block" />powered by an impact-sourcing 95%+ rural women workforce in Tamil Nadu, India.</p>
         </div>
 
         <!-- buttons -->
@@ -5185,23 +5161,15 @@ Footer
 
   <script src="vendor/leaflet.min.js"></script>
 <script src="vendor/vanilla-infinite-marquee.min.js"></script>
-<script src="vendor/split-text.min.js"></script>
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/scroll-trigger.min.js"></script>
 <script src="vendor/gsap-flip.min.js"></script>
 <script src="vendor/draw-svg.min.js"></script>
 <script src="vendor/motion-path.min.js"></script>
-<script src="vendor/lenis.min.js"></script>
-<script src="vendor/springer.min.js"></script>
-<script src="vendor/number-flow.min.js"></script>
 <script src="vendor/stack-card.min.js"></script>
 <script src="vendor/swiper.min.js"></script>
-<script src="vendor/custom-ease.min.js"></script>
 <script src="vendor/morph-svg.min.js"></script>
 
   
-  <script  src="assets/main.js"></script>
-</footer>
+  </footer>
 
   
     <!-- FREE PILOT MODAL -->
@@ -5249,7 +5217,6 @@ Footer
     </div>
 
     <!-- Global JS Engine for Unified Navigation & Mobile Drawer -->
-    <script src="assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             if (window.lucide) {
@@ -5257,6 +5224,17 @@ Footer
             }
         });
     </script>
+
+    <!-- Nexsas Motion & Interactive Engine Scripts -->
+    <script src="vendor/split-text.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/scroll-trigger.min.js"></script>
+    <script src="vendor/custom-ease.min.js"></script>
+    <script src="vendor/lenis.min.js"></script>
+    <script src="vendor/springer.min.js"></script>
+    <script src="vendor/number-flow.min.js"></script>
+    <script src="assets/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 <!-- Mirrored from https://digital-agency-nexsas.netlify.app/ by HTTrack Website Copier/3.x [XR&CO], Wed, 18 Nov 2026 05:16:42 GMT -->
