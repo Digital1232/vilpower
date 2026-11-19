@@ -3838,3 +3838,53 @@ body.animation-fallback [data-text-reveal],
 body.animation-fallback [data-ns-animate] {
     opacity: 1 !important;
 }
+
+/* ==========================================================================
+   Circular Orbiting Text Logo Centering Fix
+   ========================================================================== */
+[data-circular-text-icon] {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    translate: -50% -50% !important;
+    transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+}
+
+[data-circular-text-icon] figure {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+}
+
+[data-circular-text-icon] img {
+    margin: auto !important;
+}
+
+/* ==========================================================================
+   Process Expand Cards Active Image & Typography Fix
+   ========================================================================== */
+[data-process-expand-card][data-active] figure,
+[data-process-expand-card][data-active] > div.bg-linear-to-t,
+[data-process-expand-card][data-active] > div[class*="bg-linear-to-t"] {
+    opacity: 1 !important;
+}
+
+[data-process-expand-card][data-active] [data-process-content] p,
+[data-process-expand-card][data-active] [data-process-content] h3,
+[data-process-expand-card][data-active] > h3 {
+    color: #ffffff !important;
+}
+
+@media (min-width: 1024px) {
+    [data-process-expand-card]:not([data-active]) figure,
+    [data-process-expand-card]:not([data-active]) > div.bg-linear-to-t,
+    [data-process-expand-card]:not([data-active]) > div[class*="bg-linear-to-t"] {
+        opacity: 0 !important;
+    }
+}
+
