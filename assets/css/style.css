@@ -2602,11 +2602,11 @@ footer .flex.items-center.gap-6 {
    Bug Fixes — Audit Round
    ========================================================================== */
 
-/* ── font-display: applies Plus Jakarta Sans as the display/heading font ── */
+/* ── font-display: applies Inter Tight as the display/heading font ── */
 .font-display {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-family: var(--font-heading) !important;
+    font-weight: 700;
+    letter-spacing: -0.025em;
 }
 
 /* ── btn-rgb-glow: Safari/Firefox fallback — static brand border ────────── */
@@ -2838,7 +2838,7 @@ footer .flex.items-center.gap-6 {
 
 /* Reference Typography System */
 .zk-heading {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: var(--font-heading) !important;
     font-weight: 600 !important;
     letter-spacing: -0.035em !important;
     color: #0f172a !important;
@@ -2846,7 +2846,7 @@ footer .flex.items-center.gap-6 {
 }
 
 .zk-subheading {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: var(--font-body) !important;
     color: #64748b !important;
     letter-spacing: -0.01em !important;
     font-weight: 400 !important;
@@ -3887,4 +3887,31 @@ body.animation-fallback [data-ns-animate] {
         opacity: 0 !important;
     }
 }
+
+/* ==========================================================================
+   Home v1 Unified Font Family & Style Harmonization
+   ========================================================================== */
+html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.font-display, .font-heading, .font-serif,
+[class*="font-display"],
+[class*="font-heading"],
+.section-title, .hero-title, .card-title,
+.font-inter-tight,
+.font-serif {
+    font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+body, p, li, a, button, input, textarea, select, label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+}
+
 

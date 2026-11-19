@@ -19,9 +19,12 @@
     <link rel="shortcut icon" href="img/logo/VilPower%20Logo.svg">
 
     <!-- Google Fonts Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
     <!-- Tailwind CSS (v3.4) & Shared Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,9 +48,11 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        sans: ["'Inter'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                        display: ["'Inter Tight'", "'Inter'", "-apple-system", "sans-serif"],
+                        heading: ["'Inter Tight'", "'Inter'", "-apple-system", "sans-serif"],
+                        serif: ["'Inter Tight'", "'Inter'", "sans-serif"],
+                        mono: ["'JetBrains Mono'", "monospace"],
                     },
                     boxShadow: {
                         'soft-float': '0 20px 45px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.7)',
@@ -283,6 +288,7 @@
         }
     </style>
 
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="w-full flex flex-col min-h-screen text-slate-900 bg-[#F7F8FC] selection:bg-purple-100 selection:text-purple-900 font-sans antialiased overflow-x-hidden">
