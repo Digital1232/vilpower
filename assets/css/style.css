@@ -1,3 +1,35 @@
+
+/* ==========================================================================
+   Home v1 Unified Typography System (Strictly enforced across all pages)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..900;1,300..900&family=Inter:wght@300..800&display=swap');
+
+:root {
+    --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-inter-tight: 'Inter Tight', sans-serif !important;
+}
+
+html, body {
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+[class*="text-heading-"],
+.font-display,
+.zk-heading,
+.zk-card-title,
+.section-title,
+.hero-title {
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    letter-spacing: -0.02em !important;
+}
+
+p, span, a, li, button, input, label, blockquote, div {
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
 /* ==========================================================================
    VilPower Solutions — Official Brand Design System
    Primary Color: #1B45BD (Deep Royal Sapphire Blue)
