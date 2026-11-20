@@ -76,8 +76,7 @@
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji";
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-      "Courier New", monospace;
+    --font-mono: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --color-black: #000;
     --color-white: #fff;
     --spacing: .25rem;
@@ -115,7 +114,7 @@
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
-    --default-mono-font-family: var(--font-mono);
+    --default-mono-font-family: "Inter Tight", sans-serif;
     --font-inter-tight: "Inter Tight", sans-serif;
     --color-primary-50: #eef4ff;
     --color-primary-500: #1b45bd;

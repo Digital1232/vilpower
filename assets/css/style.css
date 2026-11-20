@@ -1729,7 +1729,7 @@ textarea {
     /* above the box top edge */
     left: -1px;
     font-size: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     color: #fff;
     padding: 2px 5px;
@@ -1747,7 +1747,7 @@ textarea {
     bottom: 2px;
     right: 4px;
     font-size: 9px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     color: #fff;
     opacity: 0;
@@ -1859,7 +1859,7 @@ textarea {
     bottom: -17px;
     left: 0;
     font-size: 9px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     white-space: nowrap;
     opacity: 0;
@@ -2203,7 +2203,7 @@ footer .flex.items-center.gap-6 {
     color: #fff;
     font-size: 10px;
     font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3910,8 +3910,8 @@ body, p, li, a, button, input, textarea, select, label {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-code, kbd, samp, pre, .font-mono {
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+code, kbd, samp, pre, .font-mono, .font-inter-tight {
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
 }
 
 /* ==========================================================================

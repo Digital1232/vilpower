@@ -1638,7 +1638,7 @@ const vilpowerCapabilities = [
     {
         id: 'ingestion',
         badgeColor: '#eff4ff', // Soft Blue
-        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-[#1B45BD]">STAGE</span><span class="font-mono font-bold text-[8px] text-[#1B45BD]">01</span>',
+        badgeHtml: '<span class="font-inter-tight font-black text-[11px] leading-tight text-[#1B45BD]">STAGE</span><span class="font-inter-tight font-bold text-[8px] text-[#1B45BD]">01</span>',
         title: 'Stage 01: Secure Data Intake',
         desc: 'Encrypted S3/API ingestion into air-gapped ISO 27001 server vaults with zero external USB permissions and strict biometric access control.',
         pillTag: 'Air-Gapped Sandbox',
@@ -1648,7 +1648,7 @@ const vilpowerCapabilities = [
     {
         id: 'preprocess',
         badgeColor: '#ecfdf5', // Mint Emerald
-        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-[#029146]">STAGE</span><span class="font-mono font-bold text-[8px] text-[#029146]">02</span>',
+        badgeHtml: '<span class="font-inter-tight font-black text-[11px] leading-tight text-[#029146]">STAGE</span><span class="font-inter-tight font-bold text-[8px] text-[#029146]">02</span>',
         title: 'Stage 02: AI Model Pre-Labeling',
         desc: 'Auto-clustering, initial bounding proposals, and OCR parsing accelerate throughput by 3.8x with automated schema preflight before human verification.',
         pillTag: '3.8x Speed Multiplier',
@@ -1658,7 +1658,7 @@ const vilpowerCapabilities = [
     {
         id: 'humanqa',
         badgeColor: '#fef3c7', // Soft Amber
-        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-amber-800">STAGE</span><span class="font-mono font-bold text-[8px] text-amber-800">03</span>',
+        badgeHtml: '<span class="font-inter-tight font-black text-[11px] leading-tight text-amber-800">STAGE</span><span class="font-inter-tight font-bold text-[8px] text-amber-800">03</span>',
         title: 'Stage 03: Dual-Pass Human Review',
         desc: 'Full-time Tamil Nadu specialists perform sub-pixel calibration, edge correction, and paralegal clause auditing with zero multi-agent drift.',
         pillTag: '100% Dedicated Staff',
@@ -1668,7 +1668,7 @@ const vilpowerCapabilities = [
     {
         id: 'delivery',
         badgeColor: '#dcfce7', // Bright Emerald
-        badgeHtml: '<span class="font-mono font-black text-[11px] leading-tight text-emerald-800">STAGE</span><span class="font-mono font-bold text-[8px] text-emerald-800">04</span>',
+        badgeHtml: '<span class="font-inter-tight font-black text-[11px] leading-tight text-emerald-800">STAGE</span><span class="font-inter-tight font-bold text-[8px] text-emerald-800">04</span>',
         title: 'Stage 04: 99.7% Audited Delivery',
         desc: 'Tier-3 quality signoff, automated XML DTD validation, and instant export into Yardi, MRI, CVAT, or client production pipelines.',
         pillTag: '99.7% SLA Certified',
@@ -1716,7 +1716,7 @@ function renderZkDeck(targetIdx) {
             const frontTag = frontCard.querySelector('.zk-front-tag');
 
             if (frontTitle) frontTitle.textContent = activeItem.title;
-            if (frontDesc) frontDesc.innerHTML = '<span class="text-white/80 font-mono text-sm leading-none mt-0.5">&gt;</span> <span>' + activeItem.desc + '</span>';
+            if (frontDesc) frontDesc.innerHTML = '<span class="text-white/80 font-inter-tight text-sm leading-none mt-0.5">&gt;</span> <span>' + activeItem.desc + '</span>';
             if (frontBadge) {
                 frontBadge.style.backgroundColor = activeItem.badgeColor;
                 frontBadge.innerHTML = activeItem.badgeHtml;
