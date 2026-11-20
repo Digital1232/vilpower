@@ -6,7 +6,7 @@ echo ==============================================
 
 set "PATH=%LOCALAPPDATA%\Programs\Git\cmd;%LOCALAPPDATA%\Programs\Git\ucrt64\bin;%PATH%"
 
-cd /d "C:\VIlpower"
+cd /d "%~dp0"
 git push origin main
 
 echo.
