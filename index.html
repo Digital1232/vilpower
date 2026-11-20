@@ -822,51 +822,117 @@ Head links
       <!-- ==========================================================================
            PROVEN OPERATIONAL TRACK RECORD (ENTERPRISE STATS)
            ========================================================================== -->
-      <section data-ns-animate data-delay="0.1" class="py-14 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50 border-y border-slate-200/60">
+      <section class="xl:py-24 md:py-20 py-14">
         <div class="main-container">
-          <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
-            <div class="flex items-center justify-center gap-x-1.5 mb-2.5">
-              <span class="text-xs font-mono font-bold tracking-widest text-[#1B45BD] uppercase">PROVEN OPERATIONAL TRACK RECORD</span>
+          <div class="space-y-4 text-center max-w-3xl mx-auto mb-10 lg:mb-14">
+            <!-- Theme Eyebrow Badge -->
+            <div data-ns-animate data-delay="0.1">
+              <div
+                class="relative flex items-center justify-center gap-x-1 before:mr-2.5 before:block before:h-px before:w-11.5 before:bg-[linear-gradient(90deg,rgba(0,0,0,0)_0%,#000_100%)] before:opacity-50 before:content-[''] after:ml-2.5 after:block after:h-px after:w-11.5 after:bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0)_100%)] after:opacity-50 after:content-['']"
+              >
+                <span class="shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 17 16"
+                    fill="none"
+                    class="fill-primary-500 size-4.25"
+                  >
+                    <path
+                      d="M8.33333 0L10.9083 5.21667L16.6667 6.05833L12.5 10.1167L13.4833 15.85L8.33333 13.1417L3.18333 15.85L4.16667 10.1167L0 6.05833L5.75833 5.21667L8.33333 0Z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="font-inter-tight text-tagline-2 font-normal text-secondary uppercase"
+                >
+                  PROVEN OPERATIONAL TRACK RECORD
+                </span>
+              </div>
             </div>
-            <h2 data-text-reveal data-delay="0.2" class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] lg:leading-[1.18] font-bold text-slate-900 tracking-tight font-display">
+
+            <!-- Theme Display Heading -->
+            <h2 data-text-reveal data-delay="0.2" class="font-inter-tight text-heading-3 lg:text-heading-2 text-secondary text-center">
               15+ Years of Audited Enterprise Excellence
             </h2>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+          <!-- 5 Enterprise Stat Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
             <!-- Card 1: 15+ Years in Ops -->
-            <div data-ns-animate data-delay="0.1" class="bg-white p-5 sm:p-6 lg:p-7 text-center rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-[#1B45BD]/30 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-center">
-              <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="15" data-suffix="+">15+</div>
-              <div class="text-xs sm:text-sm text-slate-900 mt-2 font-bold font-display">Years in Ops</div>
-              <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-medium">Est. 2011 in Tamil Nadu</div>
+            <div
+              data-ns-animate
+              data-delay="0.1"
+              class="bg-white p-6 sm:p-7 text-center rounded-xl border border-stroke-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-secondary/40 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div
+                class="stat-counter font-inter-tight text-heading-3 font-bold text-primary-500"
+                data-target="15"
+                data-suffix="+"
+              >15+</div>
+              <div class="font-inter-tight text-tagline-1 font-semibold text-secondary mt-2">Years in Ops</div>
+              <div class="font-inter-tight text-tagline-3 text-secondary/60 mt-1">Est. 2011 in Tamil Nadu</div>
             </div>
 
             <!-- Card 2: 70+ Global Projects -->
-            <div data-ns-animate data-delay="0.2" class="bg-white p-5 sm:p-6 lg:p-7 text-center rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-[#1B45BD]/30 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-center">
-              <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="70" data-suffix="+">70+</div>
-              <div class="text-xs sm:text-sm text-slate-900 mt-2 font-bold font-display">Global Projects</div>
-              <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-medium">USA, UK, EU &amp; APAC</div>
+            <div
+              data-ns-animate
+              data-delay="0.2"
+              class="bg-white p-6 sm:p-7 text-center rounded-xl border border-stroke-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-secondary/40 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div
+                class="stat-counter font-inter-tight text-heading-3 font-bold text-primary-500"
+                data-target="70"
+                data-suffix="+"
+              >70+</div>
+              <div class="font-inter-tight text-tagline-1 font-semibold text-secondary mt-2">Global Projects</div>
+              <div class="font-inter-tight text-tagline-3 text-secondary/60 mt-1">USA, UK, EU &amp; APAC</div>
             </div>
 
             <!-- Card 3: 157M+ Verified Units -->
-            <div data-ns-animate data-delay="0.3" class="bg-white p-5 sm:p-6 lg:p-7 text-center rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-[#029146]/30 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-center">
-              <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#029146]" data-target="157" data-suffix="M+">157M+</div>
-              <div class="text-xs sm:text-sm text-slate-900 mt-2 font-bold font-display">Verified Units</div>
-              <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-medium">Images, XML &amp; Leases</div>
+            <div
+              data-ns-animate
+              data-delay="0.3"
+              class="bg-white p-6 sm:p-7 text-center rounded-xl border border-stroke-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-[#029146]/50 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div
+                class="stat-counter font-inter-tight text-heading-3 font-bold text-[#029146]"
+                data-target="157"
+                data-suffix="M+"
+              >157M+</div>
+              <div class="font-inter-tight text-tagline-1 font-semibold text-secondary mt-2">Verified Units</div>
+              <div class="font-inter-tight text-tagline-3 text-secondary/60 mt-1">Images, XML &amp; Leases</div>
             </div>
 
             <!-- Card 4: 99.7% Multi-Pass SLA -->
-            <div data-ns-animate data-delay="0.4" class="bg-white p-5 sm:p-6 lg:p-7 text-center rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-[#029146]/30 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-center">
-              <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#029146]" data-target="99.7" data-suffix="%" data-decimals="1">99.7%</div>
-              <div class="text-xs sm:text-sm text-slate-900 mt-2 font-bold font-display">Multi-Pass SLA</div>
-              <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-medium">Zero-Defect Quality</div>
+            <div
+              data-ns-animate
+              data-delay="0.4"
+              class="bg-white p-6 sm:p-7 text-center rounded-xl border border-stroke-3 flex flex-col items-center justify-center transition-all duration-300 hover:border-[#029146]/50 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div
+                class="stat-counter font-inter-tight text-heading-3 font-bold text-[#029146]"
+                data-target="99.7"
+                data-suffix="%"
+                data-decimals="1"
+              >99.7%</div>
+              <div class="font-inter-tight text-tagline-1 font-semibold text-secondary mt-2">Multi-Pass SLA</div>
+              <div class="font-inter-tight text-tagline-3 text-secondary/60 mt-1">Zero-Defect Quality</div>
             </div>
 
             <!-- Card 5: 1,500+ Empowered Lives -->
-            <div data-ns-animate data-delay="0.5" class="bg-white p-5 sm:p-6 lg:p-7 text-center rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-[#1B45BD]/30 hover:-translate-y-1 transition-all duration-300 col-span-2 sm:col-span-1 lg:col-span-1 flex flex-col justify-center">
-              <div class="stat-counter text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#1B45BD]" data-target="1500" data-suffix="+" data-use-commas="true">1,500+</div>
-              <div class="text-xs sm:text-sm text-slate-900 mt-2 font-bold font-display">Empowered Lives</div>
-              <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-medium">95%+ Rural Women</div>
+            <div
+              data-ns-animate
+              data-delay="0.5"
+              class="bg-white p-6 sm:p-7 text-center rounded-xl border border-stroke-3 col-span-2 sm:col-span-1 lg:col-span-1 flex flex-col items-center justify-center transition-all duration-300 hover:border-secondary/40 hover:shadow-lg hover:-translate-y-1"
+            >
+              <div
+                class="stat-counter font-inter-tight text-heading-3 font-bold text-primary-500"
+                data-target="1500"
+                data-suffix="+"
+                data-use-commas="true"
+              >1,500+</div>
+              <div class="font-inter-tight text-tagline-1 font-semibold text-secondary mt-2">Empowered Lives</div>
+              <div class="font-inter-tight text-tagline-3 text-secondary/60 mt-1">95%+ Rural Women</div>
             </div>
           </div>
         </div>
